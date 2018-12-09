@@ -1,0 +1,1 @@
+UPDATE sys_menu SET CODE='ASN' WHERE CODE='asn_policy'

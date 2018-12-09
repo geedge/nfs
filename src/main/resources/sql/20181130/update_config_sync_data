@@ -1,0 +1,8 @@
+UPDATE `sys_menu` SET `id`='1169', `parent_id`='2', `parent_ids`='0,1,2,', `code`='config_sync', `name`='配置同步', `sort`='5030', `href`='/config/synchronization/configSyncInfo', `target`='', `icon`='', `is_show`='1', `permission`='', `create_by`='1', `create_date`='2018-11-23 15:12:26', `update_by`='1', `update_date`='2018-11-30 18:04:19', `remarks`='', `del_flag`='1', `menu_bg`=NULL, `quick_action`='0', `is_top`='0', `function_id`=NULL WHERE (`id`='1169');
+delete from sys_data_dictionary_item where dictionary_id=141;
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3148', '0', 'start', '开始', '0', '1', '1', '141');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3149', '1', 'init', '初始化', '0', '1', '1', '141');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3150', '2', 'doing', '进行中', '0', '1', '1', '141');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3151', '3', 'finish', '完成', '0', '1', '1', '141');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3152', '-1', 'serverFail', '服务端同步失败', '0', '1', '1', '141');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3153', '-2', 'fail', '界面端同步失败', '0', '1', '1', '141');

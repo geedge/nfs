@@ -1,0 +1,1 @@
+alter table ddos_ip_cfg add do_log int(11)  COMMENT 'do_log:1记录所有日志2只记录结构化日志。默认是2'

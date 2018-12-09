@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.configuration.AppBuiltInFeatureDao" >
+  
+	  <resultMap id="AppBuiltInFeatureFileMap" type="com.nis.domain.configuration.AppBuiltInFeatureFile" >
+	    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+	    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+	    <result column="file_path" property="filePath" jdbcType="VARCHAR" />
+	    <result column="action" property="action" jdbcType="INTEGER" />
+	    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+	    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+	    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+	    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+	    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+	    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+	    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+	    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+	    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+	    <result column="classify" property="classify" jdbcType="VARCHAR" />
+	    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+	    <result column="lable" property="lable" jdbcType="VARCHAR" />
+	    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+	    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+	    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+	    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+	    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+	  </resultMap>
+    <sql id="AppBuiltInFeatureFileColumns">
+		 r.cfg_id,r.cfg_desc
+		, r.file_path
+		,r.cfg_type,r.action
+		,r.is_valid,r.is_audit,r.creator_id,r.create_time,r.editor_id
+		,r.edit_time,r.auditor_id,r.audit_time,r.service_id,r.request_id
+		,r.is_area_effective,r.classify,r.attribute,r.lable
+		,r.area_effective_ids,r.function_id,r.cfg_region_code,r.compile_id
+	</sql>
+  
+   <!-- 查出所有 有效数据-->
+      <select id="findPage" resultMap="AppBuiltInFeatureFileMap">
+		SELECT
+			<include refid="AppBuiltInFeatureFileColumns"/>
+		<trim prefix="," prefixOverrides=",">
+			,s.name as creator_name,e.name as editor_name,u.name as auditor_name
+		</trim>
+	    FROM  app_builtin_feature_file r
+	    left join sys_user s on r.creator_id=s.id
+		left join sys_user e on r.editor_id=e.id
+		left join sys_user u on r.auditor_id=u.id
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="page !=null and page.where != null and page.where != ''">
+				 AND ${page.where}
+			</if>
+	 		<if test="cfgId != null">
+	   			AND r.CFG_ID=#{cfgId,jdbcType=BIGINT}
+	   		</if>
+	 		<if test="compileId != null">
+	   			AND r.compile_id=#{compileId,jdbcType=BIGINT}
+	   		</if>
+	    	<if test="cfgDesc != null and cfgDesc != ''">
+	    		AND r.CFG_DESC like concat(concat('%',#{cfgDesc,jdbcType=VARCHAR}),'%') 
+	    	</if>
+	    	<if test="action != null">
+	    		AND r.ACTION=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid != null">
+	    		AND r.IS_VALID=#{isValid,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid == null">
+	    		AND r.IS_VALID != -1
+	    	</if>
+	    	<if test="isAudit != null">
+	    		AND r.IS_AUDIT=#{isAudit,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="creatorName != null and creatorName != ''">
+	    		AND CREATOR_NAME like concat(concat('%',#{creatorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="editorName != null and editorName != ''">
+	    		AND r.EDITOR_NAME like concat(concat('%',#{editorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="auditorName != null and auditorName != ''">
+	    		AND AUDITOR_NAME like concat(concat('%',#{auditorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="serviceId != null">
+	    		AND r.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isAreaEffective != null">
+	    		AND r.IS_AREA_EFFECTIVE=#{isAreaEffective,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="classify != null and classify != ''">
+	    		AND r.classify like concat(concat('%',#{classify,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="attribute != null and attribute != ''">
+	    		AND r.attribute like concat(concat('%',#{attribute,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="lable != null and lable != ''">
+	    		AND r.lable like concat(concat('%',#{lable,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND r.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<!-- 数据范围过滤 -->
+			${sqlMap.dsf}
+	    </trim>
+	    <choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY r.CFG_ID desc
+			</otherwise>
+		</choose>
+  </select>
+   <!-- 查出所有 有效数据-->
+      <select id="findList" resultMap="AppBuiltInFeatureFileMap">
+		SELECT
+			<include refid="AppBuiltInFeatureFileColumns"/>
+	    FROM app_builtin_feature_file r
+	    <where>
+	   	 <if test="isValid == -1">
+   			AND r.is_valid !=-1
+   		</if>
+	   	 <if test="isValid == 1">
+   			AND r.is_valid =1
+   		</if>
+	   	 <if test="isValid == 0">
+   			AND r.is_valid =0
+   		</if>
+	   	 <if test="isAudit == 0">
+   			AND r.is_audit =0
+   		</if>
+	   	 <if test="isAudit == 1">
+   			AND r.is_audit =1
+   		</if>
+	   	 <if test="cfgType != null">
+   			AND r.cfg_type =#{cfgType,jdbcType=VARCHAR}
+   		</if>
+	   	 <if test="cfgId != null">
+   			AND r.CFG_ID=#{cfgId,jdbcType=BIGINT}
+   		</if>
+	    </where>
+	</select>
+	<insert id="insert" parameterType="com.nis.domain.configuration.AppBuiltInFeatureFile" >
+    insert into app_builtin_feature_file (
+     CFG_ID,
+     CFG_DESC,
+     ACTION,
+     IS_VALID,
+     IS_AUDIT,
+     CREATOR_ID,
+    CREATE_TIME,
+    EDITOR_ID,
+    EDIT_TIME,
+    AUDITOR_ID,
+    AUDIT_TIME,
+   	SERVICE_ID,
+   	REQUEST_ID,
+   	IS_AREA_EFFECTIVE,
+   	CLASSIFY,
+    ATTRIBUTE,
+    LABLE,
+    AREA_EFFECTIVE_IDS,
+    function_id,
+   file_path, 
+	cfg_type,
+	compile_Id,
+    cfg_region_code
+    )values (
+   		#{cfgId,jdbcType=VARCHAR},
+   		#{cfgDesc,jdbcType=VARCHAR},
+   		#{action,jdbcType=INTEGER}, 
+    	0,
+    	0,
+    	#{creatorId,jdbcType=INTEGER}, 
+   		#{createTime,jdbcType=TIMESTAMP},
+   		#{editorId,jdbcType=INTEGER},
+   		#{editTime,jdbcType=TIMESTAMP}, 
+   	 	#{auditorId,jdbcType=INTEGER},
+    	#{auditTime,jdbcType=TIMESTAMP},
+    	#{serviceId,jdbcType=INTEGER}, 
+    	#{requestId,jdbcType=INTEGER},
+    	#{isAreaEffective,jdbcType=INTEGER},
+    	#{classify,jdbcType=VARCHAR},
+    	#{attribute,jdbcType=VARCHAR},
+    	#{lable,jdbcType=VARCHAR},    
+   	 	#{areaEffectiveIds,jdbcType=VARCHAR},
+    	#{functionId,jdbcType=INTEGER},
+    	#{filePath, jdbcType=VARCHAR},
+    	#{cfgType,jdbcType=VARCHAR},
+    	#{compileId,jdbcType=INTEGER},
+    	#{cfgRegionCode,jdbcType=INTEGER}
+    )
+  </insert>
+	
+ <update id="update" parameterType="com.nis.domain.configuration.AppBuiltInFeatureFile" >
+    update app_builtin_feature_file
+    <set >
+      <trim suffixOverrides=",">
+      <if test="cfgDesc != null and cfgDesc != ''" >
+        cfg_desc = #{cfgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="compileId != null " >
+        compile_Id = #{compileId,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="isAudit != null" >
+        is_audit = #{isAudit,jdbcType=INTEGER},
+      </if>
+      <if test="editorId != null" >
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+       <if test="editTime != null  and editTime != ''" >
+      	edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorId != null" >
+        AUDITOR_ID = #{auditorId,jdbcType=INTEGER},
+      </if>
+       <if test="auditTime != null  and auditTime != ''" >
+     	AUDIT_TIME = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isAreaEffective != null" >
+        is_area_effective = #{isAreaEffective,jdbcType=INTEGER},
+      </if>
+      <if test="classify != null and classify != ''" >
+        classify = #{classify,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null and attribute != ''" >
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="lable != null and lable != ''" >
+        lable = #{lable,jdbcType=VARCHAR},
+      </if>
+      <if test="areaEffectiveIds != null" >
+        area_effective_ids =  #{areaEffectiveIds,jdbcType=VARCHAR},
+      </if>
+      <if test="functionId != null" >
+        function_id =  #{functionId,jdbcType=INTEGER},
+      </if>
+      <if test="serviceId != null" >
+        service_id =  #{serviceId,jdbcType=INTEGER},
+      </if>
+       <if test="filePath != null" >
+        file_path =  #{filePath,jdbcType=VARCHAR},
+      </if>
+      </trim>
+    </set>
+    <where>
+       	and cfg_id =  #{cfgId,jdbcType=INTEGER}
+    	<if test="functionId != null" >
+        	and function_id =  #{functionId,jdbcType=INTEGER}
+      	</if>
+    </where>
+  </update>
+  	
+</mapper>

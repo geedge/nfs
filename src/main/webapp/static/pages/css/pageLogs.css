@@ -1,0 +1,20 @@
+/* logs page  */
+/* table.logTb {
+	table-layout: fixed;
+}
+
+table.logTb td ~td {
+	width: 100px;
+	overflow: hidden; 
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	-icab-text-overflow: ellipsis;
+	-khtml-text-overflow: ellipsis;
+	-moz-text-overflow: ellipsis;
+	-webkit-text-overflow: ellipsis;
+} */ 
+/*列表标题首字母大写  */
+table thead tr th{
+	text-transform: capitalize;
+}

@@ -1,0 +1,257 @@
+ <%@ page contentType="text/html;charset=UTF-8"%>
+ <%@ include file="/WEB-INF/include/taglib.jsp"%>
+
+<p class="border-top border-top-blue-sharp"></p>
+<h3 class="form-section"><spring:message code="basic_config"/></h3> 
+<div class="row">
+   <div class="col-md-6">
+       <div class="form-group">
+           <label class="control-label col-md-3"><font color="red">*</font><spring:message code="letter"/></label>
+           <div class="col-md-6">
+               <select name="requestId" data-live-search="true" data-live-search-placeholder="search" class="selectpicker form-control required">
+               		<option value=""><spring:message code="select"/></option>
+               	<c:forEach items="${requestInfos}" var="requestInfo">
+               		<c:if test="${requestInfo.isValid!=0 and requestInfo.isAudit!=3}">
+               			<option value="${requestInfo.id}" 
+               		 	<c:if test="${requestInfo.id==_cfg.requestId}">selected</c:if>>${requestInfo.requestTitle}</option>
+               		</c:if>
+               		<%-- <option value="${requestInfo.id}"
+               		 <c:if test="${requestInfo.isValid==0 or requestInfo.isAudit==3}">disabled="disabled"</c:if>
+               		 <c:if test="${requestInfo.id==_cfg.requestId}">selected</c:if>>${requestInfo.requestTitle}</option> --%>
+               	</c:forEach>
+               </select>
+           </div>
+           <div for="requestId"></div>
+       </div>
+   </div>
+   <!--/span-->
+   <div class="col-md-6">
+       <div class="form-group">
+           <label class="control-label col-md-3"><spring:message code="classification"/></label>
+           <div class="col-md-6">
+           		<c:set var="classifyValue" value=""></c:set>
+           		<c:forEach items="${fn:split(_cfg.classify,',')}" var="_classify" varStatus="status">
+           			<c:if test="${status.index+1 eq 1}">
+           				<c:set var="classifyValue" value="${fns:getServiceDictInfoById(_classify).itemValue}"></c:set>
+           			</c:if>
+				    <c:if test="${status.index+1 ne 1}">
+				    	<c:set var="classifyValue" value="${classifyValue},${fns:getServiceDictInfoById(_classify).itemValue}"></c:set>
+				    </c:if>           			
+		        </c:forEach>
+           		<sys:treeselect id="classify" name="classify" value="${empty _cfg.classify?0:_cfg.classify}" labelName="classifyName" extId="0"
+				labelValue="${classifyValue}" labelEmptyValue="0"
+					title="classification" url="/basics/serviceDictInfo/treeData?itType=1&isShowLeaf=true" notAllowSelectRoot="false" allowClear="true" notAllowSelectParent="false"
+					checked="true" cssClass="form-control" checkedPS="ps" unCheckedPS="s"/>
+           	 <%-- <select name="classify" multiple class="selectpicker form-control" title=<spring:message code="select"/>>
+               	
+               	<c:forEach items="${fls}" var="fl">
+               		<c:choose>
+               			<c:when test="${_cfg.classify==null or _cfg.classify==''}">
+               				<option value="${fl.serviceDictId}">${fl.itemValue}</option>
+               			</c:when>
+               			<c:otherwise>
+               				<c:if test="${fl.isValid!=0}">
+               					<option value="${fl.serviceDictId}"
+		               				<c:forEach items="${fn:split(_cfg.classify,',')}" var="_classify">
+				               			<c:if test="${fn:trim(fl.serviceDictId) eq _classify}">selected</c:if>
+		               				</c:forEach>>
+		               				${fl.itemValue}
+		               			</option>
+               				</c:if>
+               			<option value="${fl.serviceDictId}"
+               				<c:forEach items="${fn:split(_cfg.classify,',')}" var="_classify">
+		               			<c:if test="${fl.isValid==0}">disabled="disabled"</c:if>
+		               			<c:if test="${fn:trim(fl.serviceDictId) eq _classify}">selected</c:if>
+               				</c:forEach>
+               			>${fl.itemValue}</option>	
+               			</c:otherwise>
+               		</c:choose>
+               	</c:forEach>
+             </select> --%>
+           </div>
+       </div>
+   </div>
+   <!--/span-->
+</div>
+
+ <div class="row">
+     <div class="col-md-6">
+         <div class="form-group">
+             <label class="control-label col-md-3"><spring:message code="attribute"/></label>
+             <div class="col-md-6">
+             	<c:set var="attributeValue" value=""></c:set>
+           		<c:forEach items="${fn:split(_cfg.attribute,',')}" var="_attribute" varStatus="status">
+           			<c:if test="${status.index+1 eq 1}">
+           				<c:set var="attributeValue" value="${fns:getServiceDictInfoById(_attribute).itemValue}"></c:set>
+           			</c:if>
+				    <c:if test="${status.index+1 ne 1}">
+				    	<c:set var="attributeValue" value="${attributeValue},${fns:getServiceDictInfoById(_attribute).itemValue}"></c:set>
+				    </c:if>           			
+		        </c:forEach>
+           		<sys:treeselect id="attribute" name="attribute" value="${empty _cfg.attribute?0:_cfg.attribute}" labelName="attributeName" extId="0"
+				labelValue="${attributeValue}" labelEmptyValue="0"
+					title="attribute" url="/basics/serviceDictInfo/treeData?itType=2&isShowLeaf=true" notAllowSelectRoot="false" allowClear="true" notAllowSelectParent="false"
+					checked="true" cssClass="form-control" checkedPS="ps" unCheckedPS="s"/>
+               <%--  <select name="attribute" multiple class="selectpicker form-control" title=<spring:message code="select"/>>
+               		<c:forEach items="${xzs}" var="xz">
+	               		<c:choose>
+	               			<c:when test="${_cfg.attribute==null or _cfg.attribute==''}">
+	               				<option value="${xz.serviceDictId}">${xz.itemValue}</option>
+	               			</c:when>
+	               			<c:otherwise>
+	               				<c:if test="${xz.isValid!=0}">
+	               					<option value="${xz.serviceDictId}"
+			               				<c:forEach items="${fn:split(_cfg.attribute,',')}" var="_attribute">
+					               			<c:if test="${fn:trim(xz.serviceDictId) eq _attribute}">selected</c:if>
+			               				</c:forEach>>
+			               				${xz.itemValue}
+			               			</option>
+	               				</c:if>
+	               				<c:forEach items="${fn:split(_cfg.attribute,',')}" var="_attribute">
+	               				<option value="${xz.serviceDictId}"
+	               				<c:if test="${xz.isValid==0}">disabled="disabled"</c:if>
+	               		 		<c:if test="${fn:trim(xz.serviceDictId) eq _attribute}">selected</c:if>
+	               				>${xz.itemValue}</option>
+	               				</c:forEach>
+	               			</c:otherwise>
+	               		</c:choose>
+               		</c:forEach>
+             	</select> --%>
+             </div>
+         </div>
+     </div>
+     <div class="col-md-6">
+         <div class="form-group">
+             <label class="control-label col-md-3"><spring:message code="label"/></label>
+             <div class="col-md-6">
+             	<c:set var="lableValue" value=""></c:set>
+           		<c:forEach items="${fn:split(_cfg.lable,',')}" var="_lable" varStatus="status">
+           			<c:if test="${status.index+1 eq 1}">
+           				<c:set var="lableValue" value="${fns:getServiceDictInfoById(_lable).itemValue}"></c:set>
+           			</c:if>
+				    <c:if test="${status.index+1 ne 1}">
+				    	<c:set var="lableValue" value="${lableValue},${fns:getServiceDictInfoById(_lable).itemValue}"></c:set>
+				    </c:if>           			
+		        </c:forEach>
+           		<sys:treeselect id="lable" name="lable" value="${empty _cfg.lable?0:_cfg.lable}" labelName="lableName" extId="0"
+				labelValue="${lableValue}" labelEmptyValue="0"
+					title="label" url="/basics/serviceDictInfo/treeData?itType=3&isShowLeaf=true" notAllowSelectRoot="false" allowClear="true" notAllowSelectParent="false"
+					checked="true" cssClass="form-control" checkedPS="ps" unCheckedPS="s"/>
+                <%-- <select name="lable" multiple class="selectpicker form-control" title=<spring:message code="select"/>>
+               		<c:forEach items="${lables}" var="lable">
+	               		<c:choose>
+	               			<c:when test="${_cfg.lable==null or _cfg.lable==''}">
+	               				<option value="${lable.serviceDictId}">${lable.itemValue}</option>
+	               			</c:when>
+	               			<c:otherwise>
+	               				<c:if test="${lable.isValid!=0}">
+	               					<option value="${lable.serviceDictId}"
+			               				<c:forEach items="${fn:split(_cfg.lable,',')}" var="_lable">
+					               			<c:if test="${fn:trim(lable.serviceDictId) eq _lable}">selected</c:if>
+			               				</c:forEach>>
+			               				${lable.itemValue}
+			               			</option>
+	               				</c:if>
+	               				<c:forEach items="${fn:split(_cfg.lable,',')}" var="_lable">
+	               					<option value="${lable.serviceDictId}"
+			               			<c:if test="${lable.isValid==0}">disabled="disabled"</c:if>
+				               		<c:if test="${fn:trim(lable.serviceDictId) eq _lable}">selected</c:if>
+				               		>${lable.itemValue}</option>
+	               				</c:forEach>
+	               			</c:otherwise>
+	               		</c:choose>
+	               		
+	               		</c:forEach>
+             	</select> --%>
+     		</div>
+		 </div>
+ 	</div>
+ </div>
+ <%-- <div class="row">
+ 	<div class="col-md-6">
+         <div class="form-group">
+             <label class="control-label col-md-3"><spring:message code="attribute"/></label>
+             <div class="col-md-6">
+              <div class="input-group">
+				<input id="classifyId" name="classify" class="form-control singleClass" value="" type="hidden">
+				<input id="classifyName" onclick="openSelct(this);" name="classifyName" readonly="readonly" value="" data-msg-required="" placeholder="" class="form-control" style="background-color:transparent" type="text">
+				
+				<div class="input-group-btn">
+					 <a id="classifyButton" class="btn btn-default dropdown-toggle" href="javascript:void(0);" style=""><i class="fa fa-angle-down"></i></a>
+						</div>
+					
+				</div>
+               <select name="classifyTest" multiple="multiple" class="form-control">
+               	
+               	<c:forEach items="${fls}" var="fl">
+               		<c:choose>
+               			<c:when test="${_cfg.classify==null or _cfg.classify==''}">
+               				<option value="${fl.serviceDictId}" data-section="${fl.pNames}">${fl.itemValue}</option>
+               			</c:when>
+               			<c:otherwise>
+               				<c:if test="${fl.isValid!=0}">
+               					<option value="${fl.serviceDictId}"
+		               				<c:forEach items="${fn:split(_cfg.classify,',')}" var="_classify">
+				               			<c:if test="${fn:trim(fl.serviceDictId) eq _classify}">selected</c:if>
+		               				</c:forEach>
+		               				data-section="${fl.pNames}"
+		               				>
+		               				${fl.itemValue}
+		               			</option>
+               				</c:if>
+               			<option value="${fl.serviceDictId}"
+               				<c:forEach items="${fn:split(_cfg.classify,',')}" var="_classify">
+		               			<c:if test="${fl.isValid==0}">disabled="disabled"</c:if>
+		               			data-section="${fl.pNames}"
+		               			<c:if test="${fn:trim(fl.serviceDictId) eq _classify}">selected</c:if>
+               				</c:forEach>
+               			>${fl.itemValue}</option>	
+               			</c:otherwise>
+               		</c:choose>
+               	</c:forEach>
+             </select>
+             </div>
+         </div>
+     </div>
+     <div class="col-md-6">
+         <div class="form-group">
+             <label class="control-label col-md-3"><spring:message code="label"/></label>
+             <div class="col-md-6">
+             	<div class="btn-group bootstrap-select form-control required dropup">
+					<button aria-expanded="true" title="" type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown">
+					<span class="caret"></span></button>
+				</div>
+             	<select name="lableTest" multiple="multiple"  title=<spring:message code="select"/>>
+               		<c:forEach items="${lables}" var="lable">
+	               		<c:choose>
+	               			<c:when test="${_cfg.lable==null or _cfg.lable==''}">
+	               				<option value="${lable.serviceDictId}" data-section="${lable.pNames}">${lable.itemValue}</option>
+	               			</c:when>
+	               			<c:otherwise>
+	               				<c:if test="${lable.isValid!=0}"> 
+	               					<option value="${lable.serviceDictId}"
+			               				<c:forEach items="${fn:split(_cfg.lable,',')}" var="_lable">
+					               			<c:if test="${fn:trim(lable.serviceDictId) eq _lable}">selected</c:if>
+			               				</c:forEach>
+			               				data-section="${lable.pNames}"
+			               				>
+			               				${lable.itemValue}
+			               			</option>
+	               				</c:if>
+	               				<c:forEach items="${fn:split(_cfg.lable,',')}" var="_lable">
+	               					<option value="${lable.serviceDictId}"
+			               			<c:if test="${lable.isValid==0}"> readonly</c:if>
+				               		<c:if test="${fn:trim(lable.serviceDictId) eq _lable}">selected</c:if>
+				               		data-section="${lable.pNames}"
+				               		>${lable.itemValue}</option>
+	               				</c:forEach>
+	               			</c:otherwise>
+	               		</c:choose>
+	               		
+	               		</c:forEach>
+             	</select>
+
+         </div>
+     </div>
+ </div>
+ </div> --%>

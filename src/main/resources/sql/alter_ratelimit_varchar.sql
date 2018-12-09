@@ -1,0 +1,10 @@
+ALTER TABLE app_byte_cfg MODIFY ratelimit VARCHAR(10) NULL COMMENT '限速比例,0到1之间';
+ALTER TABLE app_domain_cfg MODIFY ratelimit VARCHAR(10) NULL COMMENT '限速比例,0到1之间';
+ALTER TABLE app_http_cfg MODIFY ratelimit VARCHAR(10) NULL COMMENT '限速比例,0到1之间';
+ALTER TABLE app_layer_header_cfg MODIFY ratelimit VARCHAR(10) NULL COMMENT '限速比例,0到1之间';
+ALTER TABLE app_policy_cfg MODIFY ratelimit VARCHAR(10) NULL COMMENT '限速比例,0到1之间';
+ALTER TABLE app_ssl_cert_cfg MODIFY ratelimit VARCHAR(10) NULL COMMENT '限速比例,0到1之间';
+ALTER TABLE area_ip_cfg MODIFY ratelimit VARCHAR(10) NULL COMMENT '限速比例,0到1之间';
+ALTER TABLE dns_domain_cfg MODIFY ratelimit VARCHAR(10) NULL COMMENT '限速比例,0到1之间';
+ALTER TABLE http_url_cfg MODIFY ratelimit VARCHAR(10) NULL COMMENT '限速比例,0到1之间';
+ALTER TABLE ip_port_cfg MODIFY ratelimit VARCHAR(10) NULL COMMENT '限速比例,0到1之间';

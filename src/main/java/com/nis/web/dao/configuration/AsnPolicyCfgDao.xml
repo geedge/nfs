@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.configuration.AsnPolicyCfgDao">
+	<resultMap id="CfgIndexInfoMap" type="com.nis.domain.configuration.CfgIndexInfo" >
+	    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+	    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+	    <result column="action" property="action" jdbcType="INTEGER" />
+	    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+	    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+	    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+	    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+	    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+	    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+	    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+	    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+	    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+	    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+	    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+	    <result column="classify" property="classify" jdbcType="VARCHAR" />
+	    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+	    <result column="lable" property="lable" jdbcType="VARCHAR" />
+	    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+	    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+	    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+	    <result column="user_region1" property="userRegion1" jdbcType="VARCHAR" />
+	    <result column="user_region2" property="userRegion2" jdbcType="VARCHAR" />
+	    <result column="user_region3" property="userRegion3" jdbcType="VARCHAR" />
+	    <result column="user_region4" property="userRegion4" jdbcType="VARCHAR" />
+	    <result column="user_region5" property="userRegion5" jdbcType="VARCHAR" />
+	  </resultMap>
+ 
+  	<sql id="ConfigIndex_Column" >
+	    r.CFG_ID,r.CFG_DESC,r.ACTION,r.IS_VALID,r.IS_AUDIT,
+	    r.CREATOR_ID,r.CREATE_TIME,r.EDITOR_ID,r.EDIT_TIME,r.AUDITOR_ID,r.AUDIT_TIME,
+	    r.SERVICE_ID,r.REQUEST_ID,r.COMPILE_ID,r.IS_AREA_EFFECTIVE,r.CLASSIFY,
+	    r.ATTRIBUTE,r.LABLE,r.AREA_EFFECTIVE_IDS,r.function_id,r.user_region1,
+	    r.user_region2,r.user_region3,r.user_region4,r.user_region5,r.do_log
+	  </sql>
+   
+    <select id="findPage" resultMap="CfgIndexInfoMap">
+    	select 
+    		<include refid="ConfigIndex_Column"></include>
+    		 <trim prefix="," prefixOverrides=",">
+				,s.name as creator_name,e.name as editor_name,u.name as auditor_name
+				,ri.request_title as requestName,asn.group_name as asnIpGroupName
+			</trim>
+    	from cfg_index_info r
+    	left join policy_group_info asn on asn.service_group_id=r.user_region1
+    	left join sys_user s on r.creator_id=s.id
+		left join sys_user e on r.editor_id=e.id
+		left join sys_user u on r.auditor_id=u.id
+		left join request_info ri on r.request_id=ri.id
+    	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="page !=null and page.where != null and page.where != ''">
+				 AND ${page.where}
+			</if>
+	 		<if test="cfgId != null">
+	   			AND r.CFG_ID=#{cfgId,jdbcType=BIGINT}
+	   		</if>
+	    	<if test="cfgDesc != null and cfgDesc != ''">
+	    		AND r.CFG_DESC like concat(concat('%',#{cfgDesc,jdbcType=VARCHAR}),'%') 
+	    	</if>
+	    	<if test="action != null">
+	    		AND r.ACTION=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid != null">
+	    		AND r.IS_VALID=#{isValid,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid == null">
+	    		AND r.IS_VALID != -1
+	    	</if>
+	    	<if test="isAudit != null">
+	    		AND r.IS_AUDIT=#{isAudit,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="creatorName != null and creatorName != ''">
+	    		AND CREATOR_NAME like concat(concat('%',#{creatorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="editorName != null and editorName != ''">
+	    		AND EDITOR_NAME like concat(concat('%',#{editorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="auditorName != null and auditorName != ''">
+	    		AND AUDITOR_NAME like concat(concat('%',#{auditorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="serviceId != null">
+	    		AND r.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="requestId != null">
+	    		AND r.REQUEST_ID=#{requestId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="compileId != null">
+	    		AND r.COMPILE_ID=#{compileId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isAreaEffective != null">
+	    		AND r.IS_AREA_EFFECTIVE=#{isAreaEffective,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="classify != null and classify != ''">
+	    		AND r.classify like concat(concat('%',#{classify,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="attribute != null and attribute != ''">
+	    		AND r.attribute like concat(concat('%',#{attribute,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="lable != null and lable != ''">
+	    		AND r.lable like concat(concat('%',#{lable,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="areaEffectiveIds != null and areaEffectiveIds != ''">
+	    		AND r.AREA_EFFECTIVE_IDS like concat(concat('%',#{areaEffectiveIds,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="userRegion1 != null and userRegion1 !=''">
+	    		AND r.user_region1=#{userRegion1,jdbcType=VARCHAR}
+	    	</if>
+	    	<if test="userRegion2 != null and userRegion2 !=''">
+	    		AND r.user_region2=#{userRegion2,jdbcType=VARCHAR}
+	    	</if>
+	    	<if test="userRegion3 != null and userRegion3 !=''">
+	    		AND r.user_region3=#{userRegion3,jdbcType=VARCHAR}
+	    	</if>
+	    	<if test="userRegion4 != null and userRegion4 !=''">
+	    		AND r.user_region4=#{userRegion4,jdbcType=VARCHAR}
+	    	</if>
+	    	<if test="userRegion5 != null and userRegion5 !=''">
+	    		AND r.user_region5=#{userRegion5,jdbcType=VARCHAR}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND r.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<!-- 数据范围过滤 -->
+			${sqlMap.dsf}
+	    </trim>
+	    <choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY r.CFG_ID desc
+			</otherwise>
+		</choose>
+    </select>
+    
+    <select id="get" resultMap="CfgIndexInfoMap" parameterType="java.lang.Long">
+		 SELECT 
+	    <include refid="ConfigIndex_Column" />
+	    FROM cfg_index_info r where cfg_id=#{cfgId}
+  </select>
+  <insert id="save" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="cfgId">
+    	SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into cfg_index_info(
+     CFG_DESC,
+     ACTION,
+     IS_VALID,
+     IS_AUDIT,
+     CREATOR_ID,
+    CREATE_TIME,
+    EDITOR_ID,
+    EDIT_TIME,
+    AUDITOR_ID,
+    AUDIT_TIME,
+   	SERVICE_ID,
+   	REQUEST_ID,
+   	COMPILE_ID,
+   	IS_AREA_EFFECTIVE,
+   	CLASSIFY,
+    ATTRIBUTE,
+    LABLE,
+    AREA_EFFECTIVE_IDS,
+    function_id,
+    dns_strategy_id,
+    user_region1,
+    user_region2,
+    user_region3,
+    user_region4,
+    user_region5,
+    do_log
+    )values (
+   		#{cfgDesc,jdbcType=VARCHAR},
+   		#{action,jdbcType=INTEGER}, 
+    	0,
+    	0,
+    	#{creatorId,jdbcType=INTEGER}, 
+   		#{createTime,jdbcType=TIMESTAMP},
+   		#{editorId,jdbcType=INTEGER},
+   		#{editTime,jdbcType=TIMESTAMP}, 
+   	 	#{auditorId,jdbcType=INTEGER},
+    	#{auditTime,jdbcType=TIMESTAMP},
+    	#{serviceId,jdbcType=INTEGER}, 
+    	#{requestId,jdbcType=INTEGER},
+    	#{compileId,jdbcType=INTEGER},
+    	#{isAreaEffective,jdbcType=INTEGER},
+    	#{classify,jdbcType=VARCHAR},
+    	#{attribute,jdbcType=VARCHAR},
+    	#{lable,jdbcType=VARCHAR},    
+   	 	#{areaEffectiveIds,jdbcType=VARCHAR},
+    	#{functionId,jdbcType=INTEGER},
+    	#{dnsStrategyId,jdbcType=INTEGER},
+    	#{userRegion1,jdbcType=VARCHAR},
+    	#{userRegion2,jdbcType=VARCHAR},
+    	#{userRegion3,jdbcType=VARCHAR},
+    	#{userRegion4,jdbcType=VARCHAR},
+    	#{userRegion5,jdbcType=VARCHAR},
+    	#{doLog,jdbcType=INTEGER}
+    )
+  </insert>
+    <update id="updateCfgIndexInfo" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+    update cfg_index_info
+    <set >
+      <trim suffixOverrides=",">
+      <if test="cfgDesc != null and cfgDesc != ''" >
+        cfg_desc = #{cfgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=INTEGER},
+      </if>
+      <if test="doLog != null" >
+        do_log = #{doLog,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="isAudit != null" >
+        is_audit = #{isAudit,jdbcType=INTEGER},
+      </if>
+      <if test="creatorId != null" >
+        creator_id = #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null and createTime != ''" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editorId != null" >
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      <if test="serviceId != null" >
+        service_id = #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="requestId != null" >
+        request_id = #{requestId,jdbcType=INTEGER},
+      </if>
+      <if test="isAreaEffective != null" >
+        is_area_effective = #{isAreaEffective,jdbcType=INTEGER},
+      </if>
+      <if test="classify != null and classify != ''" >
+        classify = #{classify,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null and attribute != ''" >
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="lable != null and lable != ''" >
+        lable = #{lable,jdbcType=VARCHAR},
+      </if>
+      <if test="areaEffectiveIds != null" >
+        area_effective_ids =  #{areaEffectiveIds,jdbcType=VARCHAR},
+      </if>
+      <if test="functionId != null" >
+        function_id =  #{functionId,jdbcType=INTEGER},
+      </if>
+        user_region1 = #{userRegion1,jdbcType=VARCHAR},
+        user_region2 = #{userRegion2,jdbcType=VARCHAR},
+        user_region3 = #{userRegion3,jdbcType=VARCHAR},
+        user_region4 = #{userRegion4,jdbcType=VARCHAR},
+        user_region5 = #{userRegion5,jdbcType=VARCHAR},
+        dns_strategy_id =  #{dnsStrategyId,jdbcType=INTEGER},
+      </trim>
+    </set>
+    where cfg_id = #{cfgId,jdbcType=BIGINT}
+  </update>
+   <update id="updateValid" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+    update cfg_index_info set is_valid=#{isValid} where cfg_id in (${ids}) 
+   </update>
+   <select id="getConfigGroupInfoList" resultType="com.nis.domain.specific.ConfigGroupInfo" parameterType="java.lang.Integer">
+   SELECT c.id,c.group_id,c.group_name,c.is_issued,c.insert_time,c.update_time,c.group_type,c.asn_id FROM (
+   SELECT DISTINCT asn_ip_group FROM asn_ip_cfg WHERE is_valid !=-1) a 
+   LEFT JOIN config_group_info c ON a.asn_ip_group=c.group_id where c.group_type=#{groupType}
+	</select>
+</mapper>

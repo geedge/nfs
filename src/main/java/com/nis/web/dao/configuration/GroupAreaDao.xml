@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.configuration.GroupAreaDao">
+	
+	<resultMap id="GroupAreaInfoMap" type="com.nis.domain.configuration.GroupAreaInfo" >
+	    <id column="id" property="id" jdbcType="INTEGER" />
+	    <result column="group_id" property="groupId" jdbcType="INTEGER" />
+	    <result column="area_code" property="areaCode" jdbcType="INTEGER" />
+	    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+	    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+	    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+	    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+  	</resultMap>
+  	
+    <sql id="GroupAreaInfoColumns">
+		r.id,
+		r.group_id,
+		r.area_code,
+		r.is_valid,
+		r.creator_id,
+		r.create_time,
+		r.editor_id,
+		r.edit_time
+	</sql>
+  
+   	<!-- 查出所有 有效数据-->
+    <select id="findGroupAreaInfoList" resultMap="GroupAreaInfoMap">
+		SELECT
+			<include refid="GroupAreaInfoColumns"/>
+		<trim prefix="," prefixOverrides=",">
+			, s.name as creator_name
+			,e.name as editor_name
+		</trim>
+	    FROM group_area_info r
+	    left join sys_user s on r.creator_id=s.id
+		left join sys_user e on r.editor_id=e.id
+		
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="page !=null and page.where != null and page.where != ''">
+				 AND ${page.where}
+			</if>
+	    	<if test="groupId != null">
+	    		AND r.group_id =#{groupId }
+	    	</if>
+	    	<if test="areaCode != null">
+	    		AND r.area_code =#{areaCode }
+	    	</if>
+    		AND r.IS_VALID =1
+	    	<if test="creatorName != null and creatorName != ''">
+	    		AND CREATOR_NAME like concat(concat('%',#{creatorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="editorName != null and editorName != ''">
+	    		AND r.EDITOR_NAME like concat(concat('%',#{editorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<!-- 数据范围过滤 -->
+			<!-- ${sqlMap.dsf} -->
+	    </trim>
+	    <choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY r.id desc
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="getInfoById" resultType="com.nis.domain.configuration.GroupAreaInfo">
+		SELECT
+			<include refid="GroupAreaInfoColumns"/>
+		FROM
+			group_area_info r
+		WHERE
+			r.id = #{Id} AND is_valid = 1
+	</select>
+	
+	<insert id="insert" parameterType="com.nis.domain.configuration.GroupAreaInfo" >
+	    insert into group_area_info(
+	    	ID,
+		    GROUP_ID,
+		    AREA_CODE,
+		    IS_VALID,
+		    CREATOR_ID,
+		    CREATE_TIME
+	    )values (
+	    	#{id,jdbcType=INTEGER}, 
+	    	#{groupId,jdbcType=INTEGER}, 
+	    	#{areaCode,jdbcType=INTEGER},
+	    	#{isValid,jdbcType=INTEGER}, 
+	    	#{creatorId,jdbcType=INTEGER}, 
+	   		#{createTime,jdbcType=TIMESTAMP}
+	    )
+  	</insert>
+  	
+  	<update id="update" parameterType="com.nis.domain.configuration.GroupAreaInfo" >
+	    update group_area_info
+	    <set >
+		    <trim suffixOverrides=",">
+		    <if test="id != null" >
+		      id = #{id,jdbcType=INTEGER},
+		    </if>
+		    <if test="groupId != null" >
+		      group_Id = #{groupId,jdbcType=INTEGER},
+		    </if>
+		    <if test="areaCode != null" >
+		      area_code = #{areaCode,jdbcType=INTEGER},
+		    </if>
+		    <if test="isValid != null" >
+		      is_valid = #{isValid,jdbcType=INTEGER},
+		    </if>
+		    <if test="editorId != null" >
+		      editor_id = #{editorId,jdbcType=INTEGER},
+		    </if>
+		     <if test="editTime != null  and editTime != ''" >
+		    	edit_time = #{editTime,jdbcType=TIMESTAMP},
+		    </if>
+		    </trim>
+	    </set>
+	    <where>
+	    	<if test="id != null" >
+	        	and id =  #{id,jdbcType=INTEGER}
+	      	</if>
+	    </where>
+	</update>
+	
+	<!-- 获取该分组的区域信息 -->
+	<select id="getAreaCodeByGroupId" resultType="java.lang.Integer">
+		SELECT
+			area_code
+		FROM
+			group_area_info
+		WHERE
+			group_id = #{groupId} AND is_valid = 1
+	</select>
+</mapper>

@@ -1,0 +1,2 @@
+UPDATE function_region_dict SET config_protocol='6,17,1,8,15' WHERE function_id=5 AND config_region_value='INLINE_IP_CB';
+UPDATE function_region_dict SET config_protocol='6,17' WHERE function_id=5 AND config_region_value='LIMIT_IP';

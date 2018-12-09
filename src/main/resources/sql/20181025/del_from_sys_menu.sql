@@ -1,0 +1,1 @@
+UPDATE sys_menu SET del_flag=0 WHERE id=116 AND CODE='agreement_ip_configuration';

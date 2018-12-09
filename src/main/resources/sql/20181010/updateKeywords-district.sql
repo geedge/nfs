@@ -1,0 +1,10 @@
+ALTER TABLE ssl_keyword_cfg MODIFY cfg_keywords VARCHAR(2048),MODIFY district varchar(128);
+ALTER TABLE app_ssl_cert_cfg MODIFY cfg_keywords VARCHAR(2048);
+ALTER TABLE app_string_feature_cfg MODIFY cfg_keywords VARCHAR(2048);
+ALTER TABLE byte_features_cfg MODIFY cfg_desc VARCHAR(128);
+ALTER TABLE complex_keyword_cfg MODIFY district VARCHAR(128);
+ALTER TABLE dns_domain_cfg MODIFY district VARCHAR(128);
+ALTER TABLE http_req_head_cfg MODIFY district VARCHAR(128);
+ALTER TABLE http_res_head_cfg MODIFY district VARCHAR(128);
+ALTER TABLE intercept_pkt_bin MODIFY district VARCHAR(128);
+ALTER TABLE mail_keyword_cfg MODIFY district VARCHAR(128),MODIFY cfg_keywords VARCHAR(2048);

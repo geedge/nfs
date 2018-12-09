@@ -1,0 +1,3 @@
+#加入导入asn ip是否全量下发的开关
+INSERT INTO sys_data_dictionary_name (id,module_name, mark, remark, revision, create_time, modify_time, STATUS) VALUES ( 124,'asn ip导入是否全量下发', 'IS_ASN_IP_IMPORT_ALL', '', '', '2018-10-26 15:28:29.494', '2018-10-26 15:28:29.494', 1) ;
+INSERT INTO sys_data_dictionary_item (id,item_code, item_value, item_desc, item_sort, STATUS, TYPE, dictionary_id) VALUES (2958,1, 'yes_no', '1是；0不是', 0, 1, 1, 124) ;

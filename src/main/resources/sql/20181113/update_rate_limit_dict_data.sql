@@ -1,0 +1,10 @@
+delete from sys_data_dictionary_ITEM  where dictionary_id=117;
+INSERT INTO `sys_data_dictionary_ITEM`(`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES (2731, '0.1', '0.1', '', 1, 1, 1, 117);
+INSERT INTO `sys_data_dictionary_ITEM`(`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES (2732, '0.2', '0.2', '', 2, 1, 1, 117);
+INSERT INTO `sys_data_dictionary_ITEM`(`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES (2733, '0.3', '0.3', '', 3, 1, 1, 117);
+INSERT INTO `sys_data_dictionary_ITEM`(`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES (2734, '0.4', '0.4', '', 4, 1, 1, 117);
+INSERT INTO `sys_data_dictionary_ITEM`(`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES (2735, '0.5', '0.5', '', 5, 1, 1, 117);
+INSERT INTO `sys_data_dictionary_ITEM`(`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES (2736, '0.6', '0.6', '', 6, 1, 1, 117);
+INSERT INTO `sys_data_dictionary_ITEM`(`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES (2737, '0.7', '0.7', '', 7, 1, 1, 117);
+INSERT INTO `sys_data_dictionary_ITEM`(`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES (2738, '0.8', '0.8', '', 8, 1, 1, 117);
+INSERT INTO `sys_data_dictionary_ITEM`(`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES (2739, '0.9', '0.9', '', 9, 1, 1, 117);

@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.configuration.DdosCfgDao">
+    <resultMap id="ddosIpCfgMap" type="com.nis.domain.configuration.DdosIpCfg">
+	    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+	    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+	    <result column="ip_type" property="ipType" jdbcType="INTEGER" />
+	    <result column="ip_pattern" property="ipPattern" jdbcType="INTEGER" />
+	    <result column="dest_ip_address" property="destIpAddress" jdbcType="VARCHAR" />
+	    <result column="src_ip_address" property="srcIpAddress" jdbcType="VARCHAR" />
+	    <result column="dest_port" property="destPort" jdbcType="VARCHAR" />
+	    <result column="src_port" property="srcPort" jdbcType="VARCHAR" />
+	    <result column="port_pattern" property="portPattern" jdbcType="INTEGER" />
+	    <result column="direction" property="direction" jdbcType="INTEGER" />
+	    <result column="protocol" property="protocol" jdbcType="INTEGER" />
+	    <result column="protocol_id" property="protocolId" jdbcType="INTEGER" />
+	    <result column="action" property="action" jdbcType="INTEGER" />
+	    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+	    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+	    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+	    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+	    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+	    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+	    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+	    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+	    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+	    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+	    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+	    <result column="classify" property="classify" jdbcType="VARCHAR" />
+	    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+	    <result column="lable" property="lable" jdbcType="VARCHAR" />
+	    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+	    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+	    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+	    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+	    <result column="antiddos_protocol" property="antiddosProtocol" jdbcType="VARCHAR" />
+	    <result column="bps_threadshold" property="bpsThreadshold" jdbcType="BIGINT" />
+	    <result column="pps_threadshold" property="ppsThreadshold" jdbcType="BIGINT" />
+	    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+    </resultMap>
+  
+    <sql id="columns">
+	    r.cfg_id,r.cfg_desc,r.ip_type,r.src_ip_address,r.ip_pattern,r.port_pattern,r.src_port
+	    ,r.protocol,r.protocol_id,r.direction,r.cfg_type,r.action,r.dest_port,r.dest_ip_address
+		,r.is_valid,r.is_audit,r.creator_id,r.create_time,r.editor_id
+		,r.edit_time,r.auditor_id,r.audit_time,r.service_id,r.request_id,
+		r.compile_id,r.is_area_effective,r.classify,r.attribute,r.lable,r.do_log
+		,r.area_effective_ids,r.function_id,r.cfg_region_code,r.antiddos_protocol,r.bps_threadshold,r.pps_threadshold
+    </sql>
+    
+    <select id="findPage" resultMap="ddosIpCfgMap">
+    	select 
+    		<include refid="columns"></include>
+    		 <trim prefix="," prefixOverrides=",">
+				,s.name as creator_name,e.name as editor_name,u.name as auditor_name
+				,ri.request_title as requestName
+			</trim>
+    	from ddos_ip_cfg r
+    	left join sys_user s on r.creator_id=s.id
+		left join sys_user e on r.editor_id=e.id
+		left join sys_user u on r.auditor_id=u.id
+		left join request_info ri on r.request_id=ri.id
+    	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+    		<if test="page !=null and page.where != null and page.where != ''">
+				 AND ${page.where}
+			</if>
+    		<if test="cfgId != null">
+    			AND r.CFG_ID=#{cfgId,jdbcType=BIGINT}
+    		</if>
+	    	<if test="cfgDesc != null and cfgDesc != ''">
+	    		AND r.CFG_DESC like concat(concat('%',#{cfgDesc,jdbcType=VARCHAR}),'%') 
+	    	</if>
+	    	<if test="cfgRegionCode != null">
+	    		AND r.CFG_REGION_CODE=#{cfgRegionCode,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="cfgType != null and cfgType != ''">
+	    		AND r.CFG_TYPE like concat(concat('%',#{CFG_TYPE,jdbcType=VARCHAR}),'%') 
+	    	</if>
+	    	<if test="ipType != null">
+	    		AND r.IP_TYPE=#{ipType,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="ipPattern != null">
+	    		AND r.IP_PATTERN=#{ipPattern,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="srcIpAddress != null and srcIpAddress != ''">
+	    		AND r.SRC_IP_ADDRESS=#{srcIpAddress,jdbcType=VARCHAR}
+	    	</if>
+	    	<if test="destIpAddress != null and destIpAddress != ''">
+	    		AND r.DEST_IP_ADDRESS=#{destIpAddress,jdbcType=VARCHAR}
+	    	</if>
+	    	<if test="portPattern != null">
+	    		AND r.PORT_PATTERN=#{portPattern,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="srcPort != null and srcPort !=''">
+	    		AND r.SRC_PORT=#{srcPort,jdbcType=VARCHAR}
+	    	</if>
+	    	<if test="destPort != null and destPort !=''">
+	    		AND r.DEST_PORT=#{destPort,jdbcType=VARCHAR}
+	    	</if>
+	    	<if test="direction != null">
+	    		AND r.DIRECTION=#{direction,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="protocol != null">
+	    		AND r.PROTOCOL=#{protocol,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="protocolId != null">
+	    		AND r.PROTOCOL_ID=#{protocolId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND r.ACTION=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid != null">
+	    		AND r.IS_VALID=#{isValid,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid == null">
+	    		AND r.IS_VALID != -1
+	    	</if>
+	    	<if test="isAudit != null">
+	    		AND r.IS_AUDIT=#{isAudit,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="creatorName != null and creatorName !=''">
+	    		AND CREATOR_NAME like concat(concat('%',#{creatorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="createTime != null and createTime !=''">
+	    		AND r.CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}
+	    	</if>
+	    	<if test="editorName != null and editorName !=''">
+	    		AND EDITOR_NAME like concat(concat('%',#{editorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="editTime != null and editTime !='' ">
+	    		AND r.EDIT_TIME=#{editTime,jdbcType=TIMESTAMP}
+	    	</if>
+	    	<if test="auditorName != null and auditorName !=''">
+	    		AND AUDITOR_NAME like concat(concat('%',#{auditorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="auditTime != null and auditTime !=''">
+	    		AND r.AUDIT_TIME=#{auditTime,jdbcType=TIMESTAMP}
+	    	</if>
+	    	<if test="serviceId != null">
+	    		AND r.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="requestId != null">
+	    		AND r.REQUEST_ID=#{requestId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="compileId != null">
+	    		AND r.COMPILE_ID=#{compileId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isAreaEffective != null">
+	    		AND r.IS_AREA_EFFECTIVE=#{isAreaEffective,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="classify != null and classify !=''">
+	    		AND r.classify like concat(concat('%',#{classify,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="attribute != null and attribute !=''">
+	    		AND r.attribute like concat(concat('%',#{attribute,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="lable != null and lable !=''">
+	    		AND r.lable like concat(concat('%',#{lable,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="areaEffectiveIds != null and areaEffectiveIds !=''">
+	    		AND r.AREA_EFFECTIVE_IDS like concat(concat('%',#{areaEffectiveIds,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND r.FUNCTION_ID=#{functionId,jdbcType=INTEGER}
+	    	</if>
+    		
+	    	<!-- 数据范围过滤 -->
+			${sqlMap.dsf}
+	    </trim>
+	    <choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY r.CFG_ID desc
+			</otherwise>
+		</choose>
+    </select>
+    
+    <select id="getDdosIpCfg" resultMap="ddosIpCfgMap">
+    	select 
+    		<include refid="columns"></include>
+    	from ddos_ip_cfg r
+    	<where>
+		    <if test="cfgId !=null">
+				CFG_ID = #{cfgId,jdbcType=BIGINT}
+			</if>
+		    <if test="compileId != null">
+				AND COMPILE_ID=#{compileId,jdbcType=INTEGER}
+			</if>
+   		</where>
+    </select>
+    
+  <insert id="insert" parameterType="com.nis.domain.configuration.DdosIpCfg" >
+    insert into ddos_ip_cfg (
+     CFG_DESC,
+     ACTION,
+     IS_VALID,
+     IS_AUDIT,
+     CREATOR_ID,
+    CREATE_TIME,
+    EDITOR_ID,
+    EDIT_TIME,
+    AUDITOR_ID,
+    AUDIT_TIME,
+   	SERVICE_ID,
+   	REQUEST_ID,
+   	COMPILE_ID,
+   	IS_AREA_EFFECTIVE,
+   	CLASSIFY,
+    ATTRIBUTE,
+    LABLE,
+    AREA_EFFECTIVE_IDS,
+    function_id,
+    ip_type,
+    src_ip_address,
+    ip_pattern,
+    port_pattern,
+    src_port,
+    protocol,
+    protocol_id,
+    direction,
+    dest_port,
+    dest_ip_address,
+    cfg_type,
+    cfg_region_code,
+    antiddos_protocol,
+    bps_threadshold,
+    pps_threadshold,
+    do_log
+    )values (
+   		#{cfgDesc,jdbcType=VARCHAR},
+   		#{action,jdbcType=INTEGER}, 
+    	#{isValid,jdbcType=INTEGER},
+    	#{isAudit,jdbcType=INTEGER},
+    	#{creatorId,jdbcType=INTEGER}, 
+   		#{createTime,jdbcType=TIMESTAMP},
+   		#{editorId,jdbcType=INTEGER},
+   		#{editTime,jdbcType=TIMESTAMP}, 
+   	 	#{auditorId,jdbcType=INTEGER},
+    	#{auditTime,jdbcType=TIMESTAMP},
+    	#{serviceId,jdbcType=INTEGER}, 
+    	#{requestId,jdbcType=INTEGER},
+    	#{compileId,jdbcType=INTEGER},
+    	#{isAreaEffective,jdbcType=INTEGER},
+    	#{classify,jdbcType=VARCHAR},
+    	#{attribute,jdbcType=VARCHAR},
+    	#{lable,jdbcType=VARCHAR},    
+   	 	#{areaEffectiveIds,jdbcType=VARCHAR},
+    	#{functionId,jdbcType=INTEGER},
+    	#{ipType,jdbcType=INTEGER},
+    	#{srcIpAddress,jdbcType=VARCHAR},
+    	#{ipPattern,jdbcType=INTEGER},
+    	#{portPattern,jdbcType=INTEGER},
+    	#{srcPort,jdbcType=VARCHAR},
+    	#{protocol,jdbcType=INTEGER},
+    	#{protocolId,jdbcType=INTEGER},
+    	#{direction,jdbcType=INTEGER},
+    	#{destPort,jdbcType=VARCHAR},
+    	#{destIpAddress,jdbcType=VARCHAR},
+    	#{cfgType,jdbcType=VARCHAR},
+    	#{cfgRegionCode,jdbcType=INTEGER},
+    	#{antiddosProtocol,jdbcType=VARCHAR},
+    	#{bpsThreadshold,jdbcType=BIGINT},
+    	#{ppsThreadshold,jdbcType=BIGINT},
+    	#{doLog,jdbcType=INTEGER}
+    )
+  </insert>
+    
+    <update id="update" parameterType="com.nis.domain.configuration.DdosIpCfg" >
+    update ddos_ip_cfg
+    <set >
+      <trim suffixOverrides=",">
+      <if test="cfgDesc != null and cfgDesc != ''" >
+        cfg_desc = #{cfgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="isAudit != null" >
+        is_audit = #{isAudit,jdbcType=INTEGER},
+      </if>
+      <if test="editorId != null" >
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+       <if test="editTime != null  and editTime != ''" >
+      	edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorId != null" >
+        AUDITOR_ID = #{auditorId,jdbcType=INTEGER},
+      </if>
+       <if test="auditTime != null  and auditTime != ''" >
+     	AUDIT_TIME = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+       <if test="compileId != null" >
+     	COMPILE_ID = #{compileId,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestId != null" >
+        request_id = #{requestId,jdbcType=INTEGER},
+      </if>
+      <if test="isAreaEffective != null" >
+        is_area_effective = #{isAreaEffective,jdbcType=INTEGER},
+      </if>
+      <if test="classify != null and classify != ''" >
+        classify = #{classify,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null and attribute != ''" >
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="lable != null and lable != ''" >
+        lable = #{lable,jdbcType=VARCHAR},
+      </if>
+      <if test="areaEffectiveIds != null" >
+        area_effective_ids =  #{areaEffectiveIds,jdbcType=VARCHAR},
+      </if>
+      <if test="functionId != null" >
+        function_id =  #{functionId,jdbcType=INTEGER},
+      </if>
+      <if test="serviceId != null" >
+        service_id =  #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="ipType != null" >
+        ip_type = #{ipType,jdbcType=INTEGER},
+      </if>
+      <if test="srcIpAddress != null and srcIpAddress != ''" >
+        src_ip_address = #{srcIpAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ipPattern != null" >
+        ip_pattern = #{ipPattern,jdbcType=INTEGER},
+      </if>
+      <if test="portPattern != null" >
+        port_pattern = #{portPattern,jdbcType=INTEGER},
+      </if>
+      <if test="srcPort != null and srcPort != ''" >
+        src_port = #{srcPort,jdbcType=VARCHAR},
+      </if>
+      <if test="protocol != null" >
+        protocol = #{protocol,jdbcType=INTEGER},
+      </if>
+      <if test="protocolId != null" >
+        protocol_id = #{protocolId,jdbcType=INTEGER},
+      </if>
+      <if test="direction != null" >
+        direction = #{direction,jdbcType=INTEGER},
+      </if>
+      <if test="destPort != null and destPort != ''" >
+        dest_port = #{destPort,jdbcType=VARCHAR},
+      </if>
+       <if test="destIpAddress != null and destIpAddress != ''" >
+        dest_ip_address = #{destIpAddress,jdbcType=VARCHAR},
+      </if>
+       <if test="cfgType != null and cfgType != ''" >
+        cfg_type = #{cfgType,jdbcType=VARCHAR},
+      </if>
+       <if test="cfgRegionCode != null " >
+        cfg_region_code = #{cfgRegionCode,jdbcType=INTEGER},
+      </if>
+      <if test="doLog != null " >
+        do_log = #{doLog,jdbcType=INTEGER},
+      </if>
+        antiddos_protocol = #{antiddosProtocol,jdbcType=VARCHAR},
+        bps_threadshold = #{bpsThreadshold,jdbcType=BIGINT},
+        pps_threadshold = #{ppsThreadshold,jdbcType=BIGINT}
+      </trim>
+    </set>
+    <where>
+       	and cfg_id =  #{cfgId,jdbcType=INTEGER}
+    </where>
+  </update>
+  
+</mapper>

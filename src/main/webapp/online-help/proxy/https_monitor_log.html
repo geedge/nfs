@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.0
+Version: 3.5
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="utf-8"/>
+<title>online help</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+<link href="../../static/global/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="../../static/global/plugins/simple-line-icons/simple-line-icons.css" rel="stylesheet" type="text/css" />
+<link href="../../static/global/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<!-- <link href="../../static/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/> -->
+<link href="../../static/global/plugins/bootstrap-switch/css/bootstrap-switch.css" rel="stylesheet" type="text/css" />
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN THEME STYLES -->
+<link href="../../static/global/css/components.css" rel="stylesheet" id="style_components" type="text/css" />
+<link href="../../static/global/css/plugins.css" rel="stylesheet" type="text/css" />
+<link href="../../static/layouts/layout/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="../../static/layouts/layout/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
+<link href="../../static/layouts/layout/css/custom.css" rel="stylesheet" type="text/css" />
+<!-- END THEME STYLES -->
+<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
+<!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
+<!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
+<!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
+<!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
+<!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
+<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+<body class="page-header-fixed page-quick-sidebar-over-content ">
+<div class="page-content" style="margin:15px 20px 0 15px">
+	<div class="row">
+				<div id="accordion1" class="panel-group">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_1">
+							1.基础信息</a>
+							</h4>
+						</div>
+						<div id="accordion1_1" class="panel-collapse collapse in">
+							<div class="panel-body">
+								Proxy日志按照控制策略类型进行分类，分为HTTP(S)监测、HTTP(S)管控、HTTP(S)重定向配置、HTTP(S)替换。每类日志页面下有两个基础搜索选项：开始时间、结束时间。和三个功能按钮搜：搜索、重置、筛选和右侧的设置按钮。
+								 <ul>
+								 	<li>选项名称：开始时间-</li>
+									<li>执行动作：点击“开始时间”可以选择搜索日志的时间范围。时间选项中有当前时间的日历和时间表，以确定具体的筛选时间，下方三个选项“clear”表示清空当前选择、“Today”表示将选择时间定为当前时间，“OK”表示确认。确认时间范围后，搜索结果将返回时间范围内的满足搜索条件的HTTP(S)监测日志</li>			
+								 </ul>
+								 <ul>
+								 	<li>选项名称：结束时间-</li>
+									<li>执行动作：点击“结束时间”可以选择搜索日志的时间范围。时间选项中有当前时间的日历和时间表，以确定具体的筛选时间，下方三个选项“clear”表示清空当前选择、“Today”表示将选择时间定为当前时间，“OK”表示确认。确认时间范围后，搜索结果将返回时间范围内的满足搜索条件的HTTP(S)监测日志</li>			
+								 </ul>
+								 <ul>
+								 	<li>选项名称：搜索-</li>
+									<li>执行动作：点击“搜索”，将返回满足时间范围和筛选条件内的HTTP(S)监测日志</li>			
+								 </ul>
+								 <ul>
+								 	<li>选项名称：重置-</li>
+									<li>执行动作：点击“重置”，将筛选条件和开始时间结束时间清空</li>			
+								 </ul>
+								 <ul>
+								 	<li>选项名称：筛选-</li>
+									<li>执行动作：点击“筛选”，扩展日志筛选条件。eg.传输层协议、传输方向等</li>			
+								 </ul>
+								 <ul>
+								 	<li>选项名称：筛选-</li>
+									<li>执行动作：点击“筛选”，选择查询结果输出的日志信息项</li>			
+								 </ul>
+								 <ul> 
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_3">
+							2.拓展筛选项 </a>
+							</h4>
+						</div>
+						<div id="accordion1_3" class="panel-collapse collapse">
+							<div class="panel-body">
+								 点开筛选按钮后，会出现扩展搜索选项：传输层协议、传输方向、出入口、处理机IP、源IP、目的IP和配置ID。
+								 <ul>
+								 	<li>选项名称：传输层协议-</li>
+									<li>执行动作：点击“筛选”——>选择“传输层协议”，可以选择：L2TP、IPv4_UDP、IPv6、IPv6_UDP、OpenVPN、MAC、MPLS、IPv4_TCP、IPv4、IPv6_TCP、PPTP、VLAN、GRE。确认筛选的传输层协议后，搜索结果将返回选定时间范围内的对应协议的HTTP(S)监测日志，不做选择时默认所有协议</li>			
+								 </ul>
+								 <ul>
+								 	<li>选项名称：传输方向-</li>
+									<li>执行动作：点击“筛选”——>选择“传输方向”，可以选择：境内、境外。境内表示触发规则的源IP为内部IP，境外表示触发规则的源IP为外部IP。确认筛选的传输方向后，搜索结果将返回选定时间范围内的对应传输方向的HTTP(S)监测日志，不做选择时默认境内外</li>
+								 </ul>
+								 <ul>
+								 	<li>选项名称：出入口-</li>
+									<li>执行动作：点击“筛选”——>选择“出入口”。暂时不支持该功能</li>
+								 </ul>
+								 <ul>
+								 	<li>选项名称：处理机IP-</li>
+									<li>执行动作：点击“筛选”——>选择“处理机IP”，输入筛选的处理机IP地址，支持IPv4和IPv6，IPv4输入“IPv4 xxx”，IPv输入“IPv6 xxx”（xxx为对应IP地址），eg."IPv4 192.168.17.3"、"IPv6 fc00::1:1f"。确认筛选的处理机IP后，搜索结果将返回选定时间范围内的对应处理机IP的HTTP(S)监测日志，不做选择时默认所有IP</li>
+								 </ul>
+								 <ul>
+								 	<li>选项名称：源IP-</li>
+									<li>执行动作：点击“筛选”——>选择“源IP”，输入筛选的源IP地址，支持IPv4和IPv6，IPv4输入“IPv4 xxx”，IPv输入“IPv6 xxx”（xxx为对应IP地址），eg."IPv4 192.168.17.3"、"IPv6 fc00::1:1f"。确认筛选的源IP后，搜索结果将返回选定时间范围内的对应源IP的HTTP(S)监测日志，不做选择时默认所有IP</li>
+								 </ul>
+								 <ul>
+								 	<li>选项名称：目的IP-</li>
+									<li>执行动作：点击“筛选”——>选择“目的IP”，输入筛选的目的IP地址，支持IPv4和IPv6，IPv4输入“IPv4 xxx”，IPv输入“IPv6 xxx”（xxx为对应IP地址），eg."IPv4 192.168.17.3"、"IPv6 fc00::1:1f"。确认筛选的目的IP后，搜索结果将返回选定时间范围内的对应目的IP的HTTP(S)监测日志，不做选择时默认所有IP</li>
+								 </ul>
+								 <ul>
+								 	<li>选项名称：配置ID-</li>
+									<li>执行动作：点击“筛选”——>选择“配置ID”，输入筛选的配置ID。确认筛选的目的IP后，搜索结果将返回选定时间范围内的对应配置ID的HTTP(S)监测日志，不做选择时默认所有配置</li>
+								 </ul>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">
+							3.日志信息标签：配置ID、发现时间、出入口、URL、处理机IP、传输层协议、源目的IP端口等 </a>
+							</h4>
+						</div>
+						<div id="accordion1_2" class="panel-collapse collapse">
+							<div class="panel-body">
+								此处对日志信息每项标签做解析，帮助使用人员理解日志具体信息：
+								Proxy在命中记录日志的控制策略时将会产生相应的日志信息，命中配置的消息日志信息包括：配置ID、发现时间、出入口、URL、处理机IP、传输层协议、目的IP、源IP、目的端口、源端口、串联设备、方向、流类型、服务端地址、客户端地址、客户端ASN、服务端ASN、客户端用户名、服务端用户名、现场日志文件地址。
+								<ul>
+								 	<li>配置ID：命中配置的配置ID</li>
+								 	<li>发现时间：命中规则的时间</li>
+								 	<li>出入口:暂不支持</li>
+								 	<li>URL：命中配置的URL</li>
+								 	<li>处理机IP：处理这条命中规则的服务器IP</li>
+								 	<li>传输层协议：这条消息的传输层协议</li>		
+								 	<li>目的IP：命中配置的连接的目的IP</li>		
+								 	<li>源IP：命中配置的连接的源IP</li>		
+								 	<li>目的端口：命中配置的连接的目的端口</li>		
+								 	<li>源端口：命中配置的连接的源端口</li>
+								 	<li>串联设备：暂不支持</li>
+								 	<li>方向：该日志是传输方向--境内/境外</li>
+								 	<li>流类型：该流是单向或双向流</li>
+								 	<li>服务端地址：该流服务端所在的地理区域，eg.Hong Kong、United States</li>
+								 	<li>客户端地址：该流客户端所在的地理区域，eg.Hong Kong、United States</li>
+								 	<li>客户端ASN：客户端的ASN号（自治系统号）</li>
+								 	<li>服务端ASN：服务端的ASN号（自治系统号）</li>
+								 	<li>客户端用户名：客户端账户的用户名</li>
+								 	<li>服务端用户名：服务端账户的用户名</li>
+								 	<li>现场日志文件地址：该日志保存的地址</li>
+								 </ul>
+																
+							</div>
+						</div>
+					</div>
+				<!--	<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_7">
+							4.其他</a>
+							</h4>
+						</div>
+						<div id="accordion1_7" class="panel-collapse collapse">
+							<div class="panel-body">
+								 
+							</div>
+						</div>
+					</div>-->
+				</div>
+</div>
+</div>
+
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="../../static/global/plugins/respond.min.js"></script>
+<script src="../../static/global/plugins/excanvas.min.js"></script> 
+<![endif]-->
+<script src="../../static/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../../static/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script>
+jQuery(document).ready(function() {    
+   
+});
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

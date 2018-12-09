@@ -1,0 +1,1 @@
+ALTER TABLE cfg_index_info ADD  source_compile_id bigint(20) DEFAULT 0 COMMENT '与http内容关键字关联';

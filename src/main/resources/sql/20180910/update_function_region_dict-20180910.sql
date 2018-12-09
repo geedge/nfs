@@ -1,0 +1,3 @@
+INSERT INTO `function_region_dict` VALUES ('', '', '', '', '', '196', '630', '1', 'MM_SPEAKER_RECOGNIZATION', null, '说话人识别配置', '1', null, null, null, null, '2', '5', null, null, null, null, null, null, '1');
+INSERT INTO `function_region_dict` VALUES ('', '', '', '', '', '197', '631', '1', 'MM_LOGO_DETECTION', null, '台标识别配置', '1', null, null, null, null, '2', '5', null, null, null, null, null, null, '1');
+INSERT INTO `function_region_dict` VALUES ('', '', '', '', '', '198', '632', '1', 'MM_FACE_RECOGNIZATION', null, '人脸识别配置', '1', null, null, null, null, '2', '5', null, null, null, null, null, null, '1');

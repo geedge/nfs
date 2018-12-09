@@ -1,0 +1,13 @@
+INSERT INTO `sys_data_dictionary_name` (`id`, `module_name`, `mark`, `remark`, `revision`, `create_time`, `modify_time`, `status`) VALUES ('141', '配置同步状态', 'config_sync_status', '', '', '2018-11-23 10:32:08', '2018-11-23 10:32:08', '1');
+INSERT INTO `sys_data_dictionary_name` (`id`, `module_name`, `mark`, `remark`, `revision`, `create_time`, `modify_time`, `status`) VALUES ('142', '配置同步当前状态', 'currrent_sync_status', '此状态在配置同步时线程定义获取综合服务端的同步状态，随时更新。', '', '2018-11-23 10:34:27', '2018-11-23 10:34:27', '1');
+INSERT INTO `sys_data_dictionary_name` (`id`, `module_name`, `mark`, `remark`, `revision`, `create_time`, `modify_time`, `status`) VALUES ('143', '配置同步接口URL', 'config_sync_url', '', '', '2018-11-23 10:50:52', '2018-11-23 10:50:52', '1');
+
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3024', '0', 'start', '开始', '0', '1', '1', '141');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3025', '1', 'init', '初始化', '0', '1', '1', '141');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3026', '2', 'doing', '进行中', '0', '1', '1', '141');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3027', '3', 'finish', '完成', '0', '1', '1', '141');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3028', '-1', 'fail', '失败', '0', '1', '1', '141');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3029', 'status', '0', '', '0', '1', '1', '142');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3030', 'get_sync_status', 'http://192.168.10.204:9999/galaxy-service/service/cfg_batch/v1/status', '', '0', '1', '1', '143');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3031', 'sync_send', 'http://192.168.10.204:9999/galaxy-service/service/cfg_batch/v1/configSources', '', '0', '1', '1', '143');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3032', 'sync_cmd', 'http://192.168.10.204:9999/galaxy-service/service/cfg_batch/v1/status', '', '0', '1', '1', '143');

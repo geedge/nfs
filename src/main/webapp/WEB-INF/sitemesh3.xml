@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+
+	  <!--默认情况下，
+        sitemesh 只对 HTTP 响应头中 Content-Type 为 text/html 的类型进行拦截和装饰，
+        我们可以添加更多的 mime 类型-->
+  <mime-type>text/html</mime-type>
+  <mime-type>application/vnd.wap.xhtml+xml</mime-type>
+  <mime-type>application/xhtml+xml</mime-type>
+  
+   <!-- 默认装饰器，当下面的路径都不匹配时，启用该装饰器进行装饰 -->
+  <mapping decorator="/WEB-INF/views/layouts/decorator.jsp"/>
+  
+  
+   <!-- 指明满足“/nis/*”的页面，将被“layouts/decorator.jsp”所装饰 -->
+    <!-- 对不同的路径，启用不同的装饰器 -->
+  <mapping path="/sys/*" decorator="/WEB-INF/views/layouts/blank.jsp"/>
+  
+  <!-- 指明满足“/exclude.jsp*”的页面，将被排除，不被装饰 -->
+    <!-- 排除，不进行装饰的路径 -->
+  <mapping path="/javadoc/*" exclue="true"/>
+  <mapping path="/brochures/*" exclue="true"/>
+  <mapping path="/nis/ntc/website/ajax*" exclue="true"/>
+  <mapping path="/nis/ntc/mail/ajax*" exclue="true"/>
+  <mapping path="/nis/ntc/fileTransfer/ajax*" exclue="true"/>
+  <mapping path="/nis/ntc/app/ajax*" exclue="true"/>
+  <mapping path="/nis/ntc/other/ajax*" exclue="true"/>
+  <mapping path="/nis/proxy/control/httpRedirect/ajax*" exclue="true"/>
+  <mapping path="/nis/app/ajax*" exclue="true"/>
+  <mapping path="/nis/report/ajax*" exclue="true"/>
+  <mapping path="/nis/basicprotocol/ajax*" exclue="true"/>
+  <mapping path="/nis/encryptedtunnelbehav/ajax*" exclue="true"/>
+  <mapping path="/nis/ntc/av/ajax*" exclue="true"/>
+  <mapping path="/nis/proxy/intercept/ajax*" exclue="true"/>
+  <mapping path="/nis/ntc/whitelist/ip/ajax*" exclue="true"/>
+  <mapping path="/nis/ntc/whitelist/domain/ajax*" exclue="true"/>
+  <mapping path="/nis/ntc/iplist/ajax*" exclue="true"/>
+  <mapping path="/nis/ntc/whitelist/ajax*" exclue="true"/>
+  <mapping path="/nis/app/feature/ajax*" exclue="true"/>
+  <mapping path="/nis/proxy/cache/ajax*" exclue="true"/>
+  <mapping path="/nis/manipulation/ddos/ajax*" exclue="true"/>
+  <!-- 对同一路径，启用多个装饰器 -->
+  <mapping>
+    <path>/articles/*</path>
+    <decorator>/decorators/article.html</decorator>
+    <decorator>/decorators/two-page-layout.html</decorator>
+    <decorator>/decorators/common.html</decorator>
+  </mapping>
+  <!-- 自定义 tag 规则 -->
+  <content-processor>
+  	
+  </content-processor>
+  
+</sitemesh>

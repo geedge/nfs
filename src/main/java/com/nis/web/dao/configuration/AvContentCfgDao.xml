@@ -1,0 +1,2098 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.configuration.AvContentCfgDao" >
+ 
+ <resultMap id="CfgIndexInfoMap" type="com.nis.domain.configuration.CfgIndexInfo" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="AvVoipIpCfgMap" type="com.nis.domain.configuration.AvVoipIpCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="ip_type" property="ipType" jdbcType="INTEGER" />
+    <result column="ip_pattern" property="ipPattern" jdbcType="INTEGER" />
+    <result column="dest_ip_address" property="destIpAddress" jdbcType="VARCHAR" />
+    <result column="src_ip_address" property="srcIpAddress" jdbcType="VARCHAR" />
+    <result column="dest_port" property="destPort" jdbcType="VARCHAR" />
+    <result column="src_port" property="srcPort" jdbcType="VARCHAR" />
+    <result column="port_pattern" property="portPattern" jdbcType="INTEGER" />
+    <result column="direction" property="direction" jdbcType="INTEGER" />
+    <result column="protocol" property="protocol" jdbcType="INTEGER" />
+    <result column="protocol_id" property="protocolId" jdbcType="INTEGER" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="AvVoipAccountCfgMap" type="com.nis.domain.configuration.AvVoipAccountCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="cfg_keywords" property="cfgKeywords" jdbcType="VARCHAR" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="expr_type " property="exprType" jdbcType="INTEGER" />
+    <result column="match_method" property="matchMethod" jdbcType="INTEGER" />
+    <result column="is_hexbin" property="isHexbin" jdbcType="INTEGER" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="AvContIpCfgMap" type="com.nis.domain.configuration.AvContIpCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="ip_type" property="ipType" jdbcType="INTEGER" />
+    <result column="ip_pattern" property="ipPattern" jdbcType="INTEGER" />
+    <result column="dest_ip_address" property="destIpAddress" jdbcType="VARCHAR" />
+    <result column="src_ip_address" property="srcIpAddress" jdbcType="VARCHAR" />
+    <result column="dest_port" property="destPort" jdbcType="VARCHAR" />
+    <result column="src_port" property="srcPort" jdbcType="VARCHAR" />
+    <result column="port_pattern" property="portPattern" jdbcType="INTEGER" />
+    <result column="direction" property="direction" jdbcType="INTEGER" />
+    <result column="protocol" property="protocol" jdbcType="INTEGER" />
+    <result column="protocol_id" property="protocolId" jdbcType="INTEGER" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap id="BaseStringCfgMap" type="com.nis.domain.configuration.BaseStringCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="cfg_keywords" property="cfgKeywords" jdbcType="VARCHAR" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="expr_type " property="exprType" jdbcType="INTEGER" />
+    <result column="match_method" property="matchMethod" jdbcType="INTEGER" />
+    <result column="is_hexbin" property="isHexbin" jdbcType="INTEGER" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+  </resultMap>
+  
+  
+    <resultMap id="AvContUrlCfgMap" type="com.nis.domain.configuration.AvContUrlCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="cfg_keywords" property="cfgKeywords" jdbcType="VARCHAR" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="expr_type " property="exprType" jdbcType="INTEGER" />
+    <result column="match_method" property="matchMethod" jdbcType="INTEGER" />
+    <result column="is_hexbin" property="isHexbin" jdbcType="INTEGER" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+  </resultMap>
+  
+   <resultMap id="ipPortMap" type="com.nis.domain.configuration.IpPortCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="ip_type" property="ipType" jdbcType="INTEGER" />
+    <result column="ip_pattern" property="ipPattern" jdbcType="INTEGER" />
+    <result column="dest_ip_address" property="destIpAddress" jdbcType="VARCHAR" />
+    <result column="src_ip_address" property="srcIpAddress" jdbcType="VARCHAR" />
+    <result column="dest_port" property="destPort" jdbcType="VARCHAR" />
+    <result column="src_port" property="srcPort" jdbcType="VARCHAR" />
+    <result column="port_pattern" property="portPattern" jdbcType="INTEGER" />
+    <result column="direction" property="direction" jdbcType="INTEGER" />
+    <result column="protocol" property="protocol" jdbcType="INTEGER" />
+    <result column="protocol_id" property="protocolId" jdbcType="INTEGER" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+  </resultMap> 
+  <sql id="IpCfg_Column" >
+    a.cfg_id,a.cfg_desc,a.ip_type,a.src_ip_address,a.ip_pattern,a.port_pattern,a.src_port
+    ,a.protocol,a.protocol_id,a.direction,a.cfg_type,a.action,a.dest_port,a.dest_ip_address
+	,a.is_valid,a.is_audit,a.creator_id,a.create_time,a.editor_id
+	,a.edit_time,a.auditor_id,a.audit_time,a.service_id,a.request_id,
+	a.compile_id,a.is_area_effective,a.classify,a.attribute,a.lable
+	,a.area_effective_ids,a.function_id,a.cfg_region_code
+  </sql>
+  <sql id="AvVoip_Column" >
+    r.CFG_ID,r.CFG_DESC,r.ACTION,r.IS_VALID,r.IS_AUDIT,
+    r.CREATOR_ID,r.CREATE_TIME,r.EDITOR_ID,r.EDIT_TIME,r.AUDITOR_ID,r.AUDIT_TIME,
+    r.SERVICE_ID,r.REQUEST_ID,r.COMPILE_ID,r.IS_AREA_EFFECTIVE,r.CLASSIFY,
+    r.ATTRIBUTE,r.LABLE,r.AREA_EFFECTIVE_IDS,r.function_id,r.do_log
+  </sql>
+  <sql id="AvVoipIp_Column" >
+    r.cfg_id,r.cfg_desc,r.ip_type,r.src_ip_address,r.ip_pattern,r.port_pattern,r.src_port
+    ,r.protocol,r.protocol_id,r.direction,r.cfg_type,r.action,r.dest_port,r.dest_ip_address
+	,r.is_valid,r.is_audit,r.creator_id,r.create_time,r.editor_id
+	,r.edit_time,r.auditor_id,r.audit_time,r.service_id,r.request_id,
+	r.compile_id,r.is_area_effective,r.classify,r.attribute,r.lable
+	,r.area_effective_ids,r.function_id,r.cfg_region_code
+  </sql>
+  <sql id="AvVoipAccount_Column" >
+  r.cfg_id,r.cfg_desc,r.cfg_keywords,r.cfg_type,
+  r.action,r.is_valid,r.is_audit,r.creator_id,r.create_time,r.editor_id,r.edit_time, r.auditor_id,
+  r.audit_time,r.service_id,r.request_id,r.compile_id,r.is_area_effective,r.classify,r.attribute,r.lable,
+  r.expr_type,r.match_method,r.is_hexbin,r.area_effective_ids,r.function_id,r.cfg_region_code
+  </sql>
+  <sql id="AvContIp_Column" >
+    r.cfg_id,r.cfg_desc,r.ip_type,r.src_ip_address,r.ip_pattern,r.port_pattern,r.src_port
+    ,r.protocol,r.protocol_id,r.direction,r.cfg_type,r.action,r.dest_port,r.dest_ip_address
+	,r.is_valid,r.is_audit,r.creator_id,r.create_time,r.editor_id
+	,r.edit_time,r.auditor_id,r.audit_time,r.service_id,r.request_id,
+	r.compile_id,r.is_area_effective,r.classify,r.attribute,r.lable
+	,r.area_effective_ids,r.function_id,r.cfg_region_code,r.do_log
+  </sql>
+     <sql id="BaseStringCfg_Column" >
+     r.cfg_id,r.cfg_desc,r.cfg_keywords,r.cfg_type,
+  r.action,r.is_valid,r.is_audit,r.creator_id,r.create_time,r.editor_id,r.edit_time, r.auditor_id,
+  r.audit_time,r.service_id,r.request_id,r.compile_id,r.is_area_effective,r.classify,r.attribute,r.lable,
+  r.expr_type,r.match_method,r.is_hexbin,r.area_effective_ids,r.function_id,r.cfg_region_code,r.do_log
+  </sql>
+    <select id="getIpPortList" resultMap="ipPortMap" parameterType="com.nis.domain.configuration.CfgIndexInfo">
+		 SELECT 
+	     <include refid="IpCfg_Column" />
+	    FROM ip_port_cfg a where compile_id=#{compileId}  and function_id=#{functionId}
+  </select>
+  
+   <select id="getAvContUrlList" resultMap="AvContUrlCfgMap" parameterType="com.nis.domain.configuration.CfgIndexInfo">
+		 SELECT 
+	     <include refid="BaseStringCfg_Column" />
+	    FROM av_cont_url_cfg r where compile_id=#{compileId} and function_id=#{functionId}
+  </select>
+  
+  <!-- voip IP条件查询列表信息 -->
+  <select id="findVoipList" resultMap="CfgIndexInfoMap" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+		SELECT 
+	    <include refid="AvVoip_Column" />
+	    <trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,e.name as editor_name,u.name as auditor_name
+			,ri.request_title as requestName
+		</trim>
+	    FROM cfg_index_info r
+	    left join sys_user s on r.creator_id=s.id
+		left join sys_user e on r.editor_id=e.id
+		left join sys_user u on r.auditor_id=u.id
+		left join request_info ri on r.request_id=ri.id
+		
+	    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="page !=null and page.where != null and page.where != ''">
+				 AND ${page.where}
+			</if>
+	 		<if test="cfgId != null">
+	   			AND r.CFG_ID=#{cfgId,jdbcType=BIGINT}
+	   		</if>
+	 		<if test="compileId != null">
+	   			AND r.compile_id=#{compileId,jdbcType=BIGINT}
+	   		</if>
+	    	<if test="cfgDesc != null and cfgDesc != ''">
+	    		AND r.CFG_DESC like concat(concat('%',#{cfgDesc,jdbcType=VARCHAR}),'%') 
+	    	</if>
+	    	<if test="action != null">
+	    		AND r.ACTION=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid != null">
+	    		AND r.IS_VALID=#{isValid,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid == null">
+	    		AND r.IS_VALID != -1
+	    	</if>
+	    	<if test="isAudit != null">
+	    		AND r.IS_AUDIT=#{isAudit,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="creatorName != null and creatorName != ''">
+	    		AND CREATOR_NAME like concat(concat('%',#{creatorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<!-- <if test="search_create_time_start != null and search_create_time_start != ''">
+	    		<![CDATA[AND r.CREATE_TIME >= #{search_create_time_start,jdbcType=TIMESTAMP}]]>
+	    	</if>
+	    	<if test="search_create_time_end != null and search_create_time_end != ''">
+	    		<![CDATA[AND r.CREATE_TIME <= #{search_create_time_end,jdbcType=TIMESTAMP}]]>
+	    	</if> -->
+	    	<if test="editorName != null and editorName != ''">
+	    		AND r.EDITOR_NAME like concat(concat('%',#{editorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<!-- <if test="search_edit_time_start != null and search_edit_time_start != ''">
+	    		<![CDATA[AND r.EDIT_TIME >= #{search_edit_time_start,jdbcType=TIMESTAMP}]]>
+	    	</if>
+	    	<if test="search_edit_time_end != null and search_edit_time_end != ''">
+	    		<![CDATA[AND r.EDIT_TIME <= #{search_edit_time_end,jdbcType=TIMESTAMP}]]>
+	    	</if> -->
+	    	<if test="auditorName != null and auditorName != ''">
+	    		AND AUDITOR_NAME like concat(concat('%',#{auditorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<!-- <if test="search_audit_time_start != null and search_audit_time_start != ''">
+	    		<![CDATA[AND r.AUDIT_TIME >= #{search_audit_time_start,jdbcType=TIMESTAMP}]]>
+	    	</if>
+	    	<if test="search_audit_time_end != null and search_audit_time_end != ''">
+	    		<![CDATA[AND r.AUDIT_TIME <= #{search_audit_time_end,jdbcType=TIMESTAMP}]]>
+	    	</if> -->
+	    	<if test="serviceId != null">
+	    		AND r.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="requestId != null">
+	    		AND r.REQUEST_ID=#{requestId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="compileId != null">
+	    		AND r.COMPILE_ID=#{compileId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isAreaEffective != null">
+	    		AND r.IS_AREA_EFFECTIVE=#{isAreaEffective,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="classify != null and classify != ''">
+	    		AND r.classify like concat(concat('%',#{classify,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="attribute != null and attribute != ''">
+	    		AND r.attribute like concat(concat('%',#{attribute,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="lable != null and lable != ''">
+	    		AND r.lable like concat(concat('%',#{lable,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="areaEffectiveIds != null and areaEffectiveIds != ''">
+	    		AND r.AREA_EFFECTIVE_IDS like concat(concat('%',#{areaEffectiveIds,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND r.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="ipPort != null">
+	    		AND r.compile_id in (select t.compile_id from ip_port_cfg t 
+	    		<where>
+	    			<if test="ipPort.srcIpAddress != null and ipPort.srcIpAddress != ''">
+	    				and  t.src_ip_address =#{ipPort.srcIpAddress,jdbcType=VARCHAR}
+		    		</if>
+		    		<if test="ipPort.srcPort != null  and ipPort.srcPort != ''">
+		    			and  t.src_port =#{ipPort.srcPort,jdbcType=VARCHAR}
+		    		</if>
+		    		<if test="ipPort.destIpAddress != null and ipPort.destIpAddress != ''">
+	    				and  t.dest_ip_address =#{ipPort.destIpAddress,jdbcType=VARCHAR}
+		    		</if>
+		    		<if test="ipPort.destPort != null  and ipPort.destPort != ''">
+		    			and  t.dest_port =#{ipPort.destPort,jdbcType=VARCHAR}
+		    		</if>
+	    		</where>
+	    		 )
+	    	</if>
+	    	<if test="avContUrlCfg != null">
+	    		AND r.compile_id in (SELECT s.compile_id FROM av_cont_url_cfg s
+	    		<where>
+	    			<if test="avContUrlCfg.cfgKeywords != null and avContUrlCfg.cfgKeywords != ''">
+	    				REPLACE(s.cfg_keywords,'***and***','|') LIKE concat(concat('%',#{avContUrlCfg.cfgKeywords,jdbcType=VARCHAR}),'%')
+		    		</if>
+				</where>
+				)
+	    	</if>
+	    	<if test="voipAccount != null">
+	    		AND r.compile_id in (SELECT s.compile_id FROM av_voip_account_cfg s
+	    		<where>
+	    			<if test="voipAccount.cfgKeywords != null and voipAccount.cfgKeywords != ''">
+	    				REPLACE(s.cfg_keywords,'***and***','|') LIKE concat(concat('%',#{voipAccount.cfgKeywords,jdbcType=VARCHAR}),'%')
+		    		</if>
+				</where>
+				)
+	    	</if>
+	  		<!-- 数据范围过滤 -->
+			${sqlMap.dsf}
+	    </trim>
+	    <choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY r.CFG_ID desc
+			</otherwise>
+		</choose>
+  </select>
+  <!-- voip Account条件查询列表信息 -->
+  <select id="findAccountList" resultMap="CfgIndexInfoMap" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+		SELECT 
+	    <include refid="AvVoip_Column" />
+	    <trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,e.name as editor_name,u.name as auditor_name
+			,ri.request_title as requestName
+		</trim>
+	    FROM cfg_index_info r
+	    left join sys_user s on r.creator_id=s.id
+		left join sys_user e on r.editor_id=e.id
+		left join sys_user u on r.auditor_id=u.id
+		left join request_info ri on r.request_id=ri.id
+		
+	    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="page !=null and page.where != null and page.where != ''">
+				 AND ${page.where}
+			</if>
+	 		<if test="cfgId != null">
+	   			AND r.CFG_ID=#{cfgId,jdbcType=BIGINT}
+	   		</if>
+	    	<if test="cfgDesc != null and cfgDesc != ''">
+	    		AND r.CFG_DESC like concat(concat('%',#{cfgDesc,jdbcType=VARCHAR}),'%') 
+	    	</if>
+	    	<if test="action != null">
+	    		AND r.ACTION=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid != null">
+	    		AND r.IS_VALID=#{isValid,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid == null">
+	    		AND r.IS_VALID != -1
+	    	</if>
+	    	<if test="isAudit != null">
+	    		AND r.IS_AUDIT=#{isAudit,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="creatorName != null and creatorName != ''">
+	    		AND CREATOR_NAME like concat(concat('%',#{creatorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<!-- <if test="search_create_time_start != null and search_create_time_start != ''">
+	    		<![CDATA[AND r.CREATE_TIME >= #{search_create_time_start,jdbcType=TIMESTAMP}]]>
+	    	</if>
+	    	<if test="search_create_time_end != null and search_create_time_end != ''">
+	    		<![CDATA[AND r.CREATE_TIME <= #{search_create_time_end,jdbcType=TIMESTAMP}]]>
+	    	</if> -->
+	    	<if test="editorName != null and editorName != ''">
+	    		AND r.EDITOR_NAME like concat(concat('%',#{editorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<!-- <if test="search_edit_time_start != null and search_edit_time_start != ''">
+	    		<![CDATA[AND r.EDIT_TIME >= #{search_edit_time_start,jdbcType=TIMESTAMP}]]>
+	    	</if>
+	    	<if test="search_edit_time_end != null and search_edit_time_end != ''">
+	    		<![CDATA[AND r.EDIT_TIME <= #{search_edit_time_end,jdbcType=TIMESTAMP}]]>
+	    	</if> -->
+	    	<if test="auditorName != null and auditorName != ''">
+	    		AND AUDITOR_NAME like concat(concat('%',#{auditorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<!-- <if test="search_audit_time_start != null and search_audit_time_start != ''">
+	    		<![CDATA[AND r.AUDIT_TIME >= #{search_audit_time_start,jdbcType=TIMESTAMP}]]>
+	    	</if>
+	    	<if test="search_audit_time_end != null and search_audit_time_end != ''">
+	    		<![CDATA[AND r.AUDIT_TIME <= #{search_audit_time_end,jdbcType=TIMESTAMP}]]>
+	    	</if> -->
+	    	<if test="serviceId != null">
+	    		AND r.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="requestId != null">
+	    		AND r.REQUEST_ID=#{requestId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="compileId != null">
+	    		AND r.COMPILE_ID=#{compileId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isAreaEffective != null">
+	    		AND r.IS_AREA_EFFECTIVE=#{isAreaEffective,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="classify != null and classify != ''">
+	    		AND r.classify like concat(concat('%',#{classify,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="attribute != null and attribute != ''">
+	    		AND r.attribute like concat(concat('%',#{attribute,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="lable != null and lable != ''">
+	    		AND r.lable like concat(concat('%',#{lable,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="areaEffectiveIds != null and areaEffectiveIds != ''">
+	    		AND r.AREA_EFFECTIVE_IDS like concat(concat('%',#{areaEffectiveIds,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND r.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="(voipAccount.cfgKeywords != null and voipAccount.cfgKeywords != '') ">
+	    		AND r.compile_id in (select f.compile_id from av_voip_account_cfg f
+	    		<where>
+	    			<if test="voipAccount.cfgKeywords != null and voipAccount.cfgKeywords != ''">
+	    				and  f.cfg_keywords  like concat(concat('%',#{voipAccount.cfgKeywords,jdbcType=VARCHAR}),'%')
+		    		</if>
+		    		<if test="compileId != null">
+		    			and  f.compile_id =#{compileId,jdbcType=INTEGER}
+		    		</if>
+	    		</where>
+	    		 )
+	    	</if>
+	    	<if test="(ntcSubscribeIdCfg.cfgKeywords != null and ntcSubscribeIdCfg.cfgKeywords != '') ">
+	    		AND r.compile_id in (select f.compile_id from ntc_subscribe_id_cfg f
+	    		<where>
+	    			<if test="ntcSubscribeIdCfg.cfgKeywords != null and ntcSubscribeIdCfg.cfgKeywords != ''">
+	    				and  f.cfg_keywords  like concat(concat('%',#{ntcSubscribeIdCfg.cfgKeywords,jdbcType=VARCHAR}),'%')
+		    		</if>
+		    		<if test="compileId != null">
+		    			and  f.compile_id =#{compileId,jdbcType=INTEGER}
+		    		</if>
+	    		</where>
+	    		 )
+	    	</if>
+	    	
+	    	<!-- 数据范围过滤 -->
+			${sqlMap.dsf}
+	    </trim>
+	    <choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY r.CFG_ID desc
+			</otherwise>
+		</choose>
+  </select>
+  <!-- 根据compileId获取avVoipIpCfg信息 -->
+  <select id="findVoipIpCfgList" resultMap="AvVoipIpCfgMap" parameterType="com.nis.domain.configuration.CfgIndexInfo">
+		select 
+			<include refid="AvVoipIp_Column" />
+		from av_voip_ip_cfg r
+		<where>
+  			<if test="compileId != null">
+  				and r.COMPILE_ID=#{compileId,jdbcType=INTEGER}
+	   		</if>
+	   		<choose>
+				<when test="isValid != null">
+					and r.is_valid=#{isValid,jdbcType=INTEGER}
+				</when>
+				<otherwise>
+					and r.is_valid != -1
+				</otherwise>
+			</choose>
+  		</where>
+  </select>
+   <!-- 根据compileId获取avVoipAccountCfg信息 -->
+  <select id="findVoipAccountCfgList" resultMap="AvVoipAccountCfgMap" parameterType="com.nis.domain.configuration.CfgIndexInfo">
+		select 
+			<include refid="AvVoipAccount_Column" />
+		from av_voip_account_cfg r
+		<where>
+  			<if test="compileId != null">
+  				and r.COMPILE_ID=#{compileId,jdbcType=INTEGER}
+	   		</if>
+	   		<choose>
+				<when test="isValid != null">
+					and r.is_valid=#{isValid,jdbcType=INTEGER}
+				</when>
+				<otherwise>
+					and r.is_valid != -1
+				</otherwise>
+			</choose>
+  		</where>
+		
+  </select>
+  
+  <!-- 根据Id获取cfgIndexInfo信息 -->
+  <select id="getCfgIndexInfo" resultMap="CfgIndexInfoMap" parameterType="com.nis.domain.configuration.CfgIndexInfo">
+		 SELECT 
+	    *
+	    FROM cfg_index_info a
+	    <where>
+  			<if test="cfgId != null">
+  				a.CFG_ID=#{cfgId,jdbcType=INTEGER}
+	   		</if>
+  			<if test="compileId != null">
+  				and a.compile_Id=#{compileId,jdbcType=INTEGER}
+	   		</if>
+  		</where>
+  </select>
+  
+   <!-- insert av_cont_url_cfg表信息 -->
+  <insert id="saveAvContUrlCfg" parameterType="com.nis.domain.configuration.AvContUrlCfg" >
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="cfgId">
+    	SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into av_cont_url_cfg (
+     CFG_DESC,
+     ACTION,
+     IS_VALID,
+     IS_AUDIT,
+     CREATOR_ID,
+    CREATE_TIME,
+    EDITOR_ID,
+    EDIT_TIME,
+    AUDITOR_ID,
+    AUDIT_TIME,
+   	SERVICE_ID,
+   	REQUEST_ID,
+   	COMPILE_ID,
+   	IS_AREA_EFFECTIVE,
+   	CLASSIFY,
+    ATTRIBUTE,
+    LABLE,
+    AREA_EFFECTIVE_IDS,
+    function_id,
+    cfg_keywords,
+    cfg_type,
+  	cfg_region_code,
+  	expr_type,
+  	match_method,
+  	is_hexbin,
+  	do_log
+    )values (
+   		#{cfgDesc,jdbcType=VARCHAR},
+   		#{action,jdbcType=INTEGER}, 
+    	0,
+    	0,
+    	#{creatorId,jdbcType=INTEGER}, 
+   		#{createTime,jdbcType=TIMESTAMP},
+   		#{editorId,jdbcType=INTEGER},
+   		#{editTime,jdbcType=TIMESTAMP}, 
+   	 	#{auditorId,jdbcType=INTEGER},
+    	#{auditTime,jdbcType=TIMESTAMP},
+    	#{serviceId,jdbcType=INTEGER}, 
+    	#{requestId,jdbcType=INTEGER},
+    	#{compileId,jdbcType=INTEGER},
+    	#{isAreaEffective,jdbcType=INTEGER},
+    	#{classify,jdbcType=VARCHAR},
+    	#{attribute,jdbcType=VARCHAR},
+    	#{lable,jdbcType=VARCHAR},    
+   	 	#{areaEffectiveIds,jdbcType=VARCHAR},
+    	#{functionId,jdbcType=INTEGER},
+    	#{avContUrlCfg.cfgKeywords,jdbcType=VARCHAR},
+    	#{avContUrlCfg.cfgType,jdbcType=VARCHAR},
+    	#{avContUrlCfg.cfgRegionCode,jdbcType=INTEGER},
+    	#{avContUrlCfg.exprType,jdbcType=INTEGER},
+    	#{avContUrlCfg.matchMethod,jdbcType=INTEGER},
+    	#{avContUrlCfg.isHexbin,jdbcType=INTEGER},
+    	#{doLog,jdbcType=INTEGER}
+    )
+  </insert>
+  <insert id="saveAvContUrlCfgNew" parameterType="com.nis.domain.configuration.AvContUrlCfg" >
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="cfgId">
+    	SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into av_cont_url_cfg (
+     CFG_DESC,
+     ACTION,
+     IS_VALID,
+     IS_AUDIT,
+     CREATOR_ID,
+    CREATE_TIME,
+    EDITOR_ID,
+    EDIT_TIME,
+    AUDITOR_ID,
+    AUDIT_TIME,
+   	SERVICE_ID,
+   	REQUEST_ID,
+   	COMPILE_ID,
+   	IS_AREA_EFFECTIVE,
+   	CLASSIFY,
+    ATTRIBUTE,
+    LABLE,
+    AREA_EFFECTIVE_IDS,
+    function_id,
+    cfg_keywords,
+    cfg_type,
+  	cfg_region_code,
+  	expr_type,
+  	match_method,
+  	is_hexbin,
+  	do_log
+    )values (
+   		#{cfgDesc,jdbcType=VARCHAR},
+   		#{action,jdbcType=INTEGER}, 
+    	0,
+    	0,
+    	#{creatorId,jdbcType=INTEGER}, 
+   		#{createTime,jdbcType=TIMESTAMP},
+   		#{editorId,jdbcType=INTEGER},
+   		#{editTime,jdbcType=TIMESTAMP}, 
+   	 	#{auditorId,jdbcType=INTEGER},
+    	#{auditTime,jdbcType=TIMESTAMP},
+    	#{serviceId,jdbcType=INTEGER}, 
+    	#{requestId,jdbcType=INTEGER},
+    	#{compileId,jdbcType=INTEGER},
+    	#{isAreaEffective,jdbcType=INTEGER},
+    	#{classify,jdbcType=VARCHAR},
+    	#{attribute,jdbcType=VARCHAR},
+    	#{lable,jdbcType=VARCHAR},    
+   	 	#{areaEffectiveIds,jdbcType=VARCHAR},
+    	#{functionId,jdbcType=INTEGER},
+    	#{cfgKeywords,jdbcType=VARCHAR},
+    	#{cfgType,jdbcType=VARCHAR},
+    	#{cfgRegionCode,jdbcType=INTEGER},
+    	#{exprType,jdbcType=INTEGER},
+    	#{matchMethod,jdbcType=INTEGER},
+    	#{isHexbin,jdbcType=INTEGER},
+    	#{doLog,jdbcType=INTEGER}
+    )
+  </insert>
+  
+  <!-- insert cfgIndexInfox -->
+  <insert id="insertCfgIndexInfo" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+    insert into cfg_index_info(
+     CFG_DESC,
+     ACTION,
+     IS_VALID,
+     IS_AUDIT,
+     CREATOR_ID,
+    CREATE_TIME,
+    EDITOR_ID,
+    EDIT_TIME,
+    AUDITOR_ID,
+    AUDIT_TIME,
+   	SERVICE_ID,
+   	REQUEST_ID,
+   	COMPILE_ID,
+   	IS_AREA_EFFECTIVE,
+   	CLASSIFY,
+    ATTRIBUTE,
+    LABLE,
+    AREA_EFFECTIVE_IDS,
+    function_id,
+    do_log
+    )values (
+   		#{cfgDesc,jdbcType=VARCHAR},
+   		#{action,jdbcType=INTEGER}, 
+    	0,
+    	0,
+    	#{creatorId,jdbcType=INTEGER}, 
+   		#{createTime,jdbcType=TIMESTAMP},
+   		#{editorId,jdbcType=INTEGER},
+   		#{editTime,jdbcType=TIMESTAMP}, 
+   	 	#{auditorId,jdbcType=INTEGER},
+    	#{auditTime,jdbcType=TIMESTAMP},
+    	#{serviceId,jdbcType=INTEGER}, 
+    	#{requestId,jdbcType=INTEGER},
+    	#{compileId,jdbcType=INTEGER},
+    	#{isAreaEffective,jdbcType=INTEGER},
+    	#{classify,jdbcType=VARCHAR},
+    	#{attribute,jdbcType=VARCHAR},
+    	#{lable,jdbcType=VARCHAR},    
+   	 	#{areaEffectiveIds,jdbcType=VARCHAR},
+    	#{functionId,jdbcType=INTEGER},
+    	#{doLog,jdbcType=INTEGER}
+    )
+  </insert>
+  <!-- insert AV_VOIP_IP_CFG表信息 -->
+  <insert id="insertAvVoipIp" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+    insert into av_voip_ip_cfg (
+     CFG_DESC,
+     ACTION,
+     IS_VALID,
+     IS_AUDIT,
+     CREATOR_ID,
+    CREATE_TIME,
+    EDITOR_ID,
+    EDIT_TIME,
+    AUDITOR_ID,
+    AUDIT_TIME,
+   	SERVICE_ID,
+   	REQUEST_ID,
+   	COMPILE_ID,
+   	IS_AREA_EFFECTIVE,
+   	CLASSIFY,
+    ATTRIBUTE,
+    LABLE,
+    AREA_EFFECTIVE_IDS,
+    function_id,
+    ip_type,
+    src_ip_address,
+    ip_pattern,
+    port_pattern,
+    src_port,
+    protocol,
+    protocol_id,
+    direction,
+    dest_port,
+    dest_ip_address,
+    cfg_type,
+    cfg_region_code
+    )values (
+   		#{cfgDesc,jdbcType=VARCHAR},
+   		#{action,jdbcType=INTEGER}, 
+    	0,
+    	0,
+    	#{creatorId,jdbcType=INTEGER}, 
+   		#{createTime,jdbcType=TIMESTAMP},
+   		#{editorId,jdbcType=INTEGER},
+   		#{editTime,jdbcType=TIMESTAMP}, 
+   	 	#{auditorId,jdbcType=INTEGER},
+    	#{auditTime,jdbcType=TIMESTAMP},
+    	#{serviceId,jdbcType=INTEGER}, 
+    	#{requestId,jdbcType=INTEGER},
+    	#{compileId,jdbcType=INTEGER},
+    	#{isAreaEffective,jdbcType=INTEGER},
+    	#{classify,jdbcType=VARCHAR},
+    	#{attribute,jdbcType=VARCHAR},
+    	#{lable,jdbcType=VARCHAR},    
+   	 	#{areaEffectiveIds,jdbcType=VARCHAR},
+    	#{functionId,jdbcType=INTEGER},
+    	#{voipIp.ipType,jdbcType=INTEGER},
+    	#{voipIp.srcIpAddress,jdbcType=VARCHAR},
+    	#{voipIp.ipPattern,jdbcType=INTEGER},
+    	#{voipIp.portPattern,jdbcType=INTEGER},
+    	#{voipIp.srcPort,jdbcType=VARCHAR},
+    	#{voipIp.protocol,jdbcType=INTEGER},
+    	#{voipIp.protocolId,jdbcType=INTEGER},
+    	#{voipIp.direction,jdbcType=INTEGER},
+    	#{voipIp.destPort,jdbcType=VARCHAR},
+    	#{voipIp.destIpAddress,jdbcType=VARCHAR},
+    	#{voipIp.cfgType,jdbcType=VARCHAR},
+    	#{voipIp.cfgRegionCode,jdbcType=INTEGER}
+    )
+  </insert>
+  <!-- insert AV_VOIP_ACCOUNT_CFG表信息 -->
+  <insert id="insertAvVoipAccountCfg" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+    insert into av_voip_account_cfg (
+     CFG_DESC,
+     ACTION,
+     IS_VALID,
+     IS_AUDIT,
+     CREATOR_ID,
+    CREATE_TIME,
+    EDITOR_ID,
+    EDIT_TIME,
+    AUDITOR_ID,
+    AUDIT_TIME,
+   	SERVICE_ID,
+   	REQUEST_ID,
+   	COMPILE_ID,
+   	IS_AREA_EFFECTIVE,
+   	CLASSIFY,
+    ATTRIBUTE,
+    LABLE,
+    AREA_EFFECTIVE_IDS,
+    function_id,
+    cfg_keywords,
+    cfg_type,
+  	cfg_region_code,
+  	expr_type,
+  	match_method,
+  	is_hexbin
+    )values (
+   		#{cfgDesc,jdbcType=VARCHAR},
+   		#{action,jdbcType=INTEGER}, 
+    	0,
+    	0,
+    	#{creatorId,jdbcType=INTEGER}, 
+   		#{createTime,jdbcType=TIMESTAMP},
+   		#{editorId,jdbcType=INTEGER},
+   		#{editTime,jdbcType=TIMESTAMP}, 
+   	 	#{auditorId,jdbcType=INTEGER},
+    	#{auditTime,jdbcType=TIMESTAMP},
+    	#{serviceId,jdbcType=INTEGER}, 
+    	#{requestId,jdbcType=INTEGER},
+    	#{compileId,jdbcType=INTEGER},
+    	#{isAreaEffective,jdbcType=INTEGER},
+    	#{classify,jdbcType=VARCHAR},
+    	#{attribute,jdbcType=VARCHAR},
+    	#{lable,jdbcType=VARCHAR},    
+   	 	#{areaEffectiveIds,jdbcType=VARCHAR},
+    	#{functionId,jdbcType=INTEGER},
+    	#{voipAccount.cfgKeywords,jdbcType=VARCHAR},
+    	#{voipAccount.cfgType,jdbcType=VARCHAR},
+    	#{voipAccount.cfgRegionCode,jdbcType=INTEGER},
+    	#{voipAccount.exprType,jdbcType=INTEGER},
+    	#{voipAccount.matchMethod,jdbcType=INTEGER},
+    	#{voipAccount.isHexbin,jdbcType=INTEGER}
+    )
+  </insert>
+  <insert id="saveAvVoipAccountCfg" parameterType="com.nis.domain.configuration.AvVoipAccountCfg" >
+    insert into av_voip_account_cfg (
+     CFG_DESC,
+     ACTION,
+     IS_VALID,
+     IS_AUDIT,
+     CREATOR_ID,
+    CREATE_TIME,
+    EDITOR_ID,
+    EDIT_TIME,
+    AUDITOR_ID,
+    AUDIT_TIME,
+   	SERVICE_ID,
+   	REQUEST_ID,
+   	COMPILE_ID,
+   	IS_AREA_EFFECTIVE,
+   	CLASSIFY,
+    ATTRIBUTE,
+    LABLE,
+    AREA_EFFECTIVE_IDS,
+    function_id,
+    cfg_keywords,
+    cfg_type,
+  	cfg_region_code,
+  	expr_type,
+  	match_method,
+  	is_hexbin
+    )values (
+   		#{cfgDesc,jdbcType=VARCHAR},
+   		#{action,jdbcType=INTEGER}, 
+    	0,
+    	0,
+    	#{creatorId,jdbcType=INTEGER}, 
+   		#{createTime,jdbcType=TIMESTAMP},
+   		#{editorId,jdbcType=INTEGER},
+   		#{editTime,jdbcType=TIMESTAMP}, 
+   	 	#{auditorId,jdbcType=INTEGER},
+    	#{auditTime,jdbcType=TIMESTAMP},
+    	#{serviceId,jdbcType=INTEGER}, 
+    	#{requestId,jdbcType=INTEGER},
+    	#{compileId,jdbcType=INTEGER},
+    	#{isAreaEffective,jdbcType=INTEGER},
+    	#{classify,jdbcType=VARCHAR},
+    	#{attribute,jdbcType=VARCHAR},
+    	#{lable,jdbcType=VARCHAR},    
+   	 	#{areaEffectiveIds,jdbcType=VARCHAR},
+    	#{functionId,jdbcType=INTEGER},
+    	#{cfgKeywords,jdbcType=VARCHAR},
+    	#{cfgType,jdbcType=VARCHAR},
+    	#{cfgRegionCode,jdbcType=INTEGER},
+    	#{exprType,jdbcType=INTEGER},
+    	#{matchMethod,jdbcType=INTEGER},
+    	#{isHexbin,jdbcType=INTEGER}
+    )
+  </insert>
+  <!-- insert ntc_subscribe_id_cfg表信息 -->
+  <insert id="insertAvVoipKeywordCfg" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+    insert into ntc_subscribe_id_cfg (
+     CFG_DESC,
+     ACTION,
+     IS_VALID,
+     IS_AUDIT,
+     CREATOR_ID,
+    CREATE_TIME,
+    EDITOR_ID,
+    EDIT_TIME,
+    AUDITOR_ID,
+    AUDIT_TIME,
+   	SERVICE_ID,
+   	REQUEST_ID,
+   	COMPILE_ID,
+   	IS_AREA_EFFECTIVE,
+   	CLASSIFY,
+    ATTRIBUTE,
+    LABLE,
+    AREA_EFFECTIVE_IDS,
+    function_id,
+    cfg_keywords,
+    cfg_type,
+  	cfg_region_code,
+  	expr_type,
+  	match_method,
+  	is_hexbin
+    )values (
+   		#{cfgDesc,jdbcType=VARCHAR},
+   		#{action,jdbcType=INTEGER}, 
+    	0,
+    	0,
+    	#{creatorId,jdbcType=INTEGER}, 
+   		#{createTime,jdbcType=TIMESTAMP},
+   		#{editorId,jdbcType=INTEGER},
+   		#{editTime,jdbcType=TIMESTAMP}, 
+   	 	#{auditorId,jdbcType=INTEGER},
+    	#{auditTime,jdbcType=TIMESTAMP},
+    	#{serviceId,jdbcType=INTEGER}, 
+    	#{requestId,jdbcType=INTEGER},
+    	#{compileId,jdbcType=INTEGER},
+    	#{isAreaEffective,jdbcType=INTEGER},
+    	#{classify,jdbcType=VARCHAR},
+    	#{attribute,jdbcType=VARCHAR},
+    	#{lable,jdbcType=VARCHAR},    
+   	 	#{areaEffectiveIds,jdbcType=VARCHAR},
+    	#{functionId,jdbcType=INTEGER},
+    	#{ntcSubscribeIdCfg.cfgKeywords,jdbcType=VARCHAR},
+    	#{ntcSubscribeIdCfg.cfgType,jdbcType=VARCHAR},
+    	#{ntcSubscribeIdCfg.cfgRegionCode,jdbcType=INTEGER},
+    	#{ntcSubscribeIdCfg.exprType,jdbcType=INTEGER},
+    	#{ntcSubscribeIdCfg.matchMethod,jdbcType=INTEGER},
+    	#{ntcSubscribeIdCfg.isHexbin,jdbcType=INTEGER}
+    )
+  </insert>
+  
+   <insert id="saveIpPortCfg" parameterType="com.nis.domain.configuration.IpPortCfg" >
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="cfgId">
+    	SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ip_port_cfg (
+     CFG_DESC,
+     ACTION,
+     IS_VALID,
+     IS_AUDIT,
+     CREATOR_ID,
+    CREATE_TIME,
+    EDITOR_ID,
+    EDIT_TIME,
+    AUDITOR_ID,
+    AUDIT_TIME,
+   	SERVICE_ID,
+   	REQUEST_ID,
+   	COMPILE_ID,
+   	IS_AREA_EFFECTIVE,
+   	CLASSIFY,
+    ATTRIBUTE,
+    LABLE,
+    AREA_EFFECTIVE_IDS,
+    function_id,
+    ip_type,
+    src_ip_address,
+    ip_pattern,
+    port_pattern,
+    src_port,
+    protocol,
+    protocol_id,
+    direction,
+    dest_port,
+    dest_ip_address,
+    cfg_type,
+    cfg_region_code
+    )values (
+   		#{cfgDesc,jdbcType=VARCHAR},
+   		#{action,jdbcType=INTEGER}, 
+    	0,
+    	0,
+    	#{creatorId,jdbcType=INTEGER}, 
+   		#{createTime,jdbcType=TIMESTAMP},
+   		#{editorId,jdbcType=INTEGER},
+   		#{editTime,jdbcType=TIMESTAMP}, 
+   	 	#{auditorId,jdbcType=INTEGER},
+    	#{auditTime,jdbcType=TIMESTAMP},
+    	#{serviceId,jdbcType=INTEGER}, 
+    	#{requestId,jdbcType=INTEGER},
+    	#{compileId,jdbcType=INTEGER},
+    	#{isAreaEffective,jdbcType=INTEGER},
+    	#{classify,jdbcType=VARCHAR},
+    	#{attribute,jdbcType=VARCHAR},
+    	#{lable,jdbcType=VARCHAR},    
+   	 	#{areaEffectiveIds,jdbcType=VARCHAR},
+    	#{functionId,jdbcType=INTEGER},
+    	#{ipType,jdbcType=INTEGER},
+    	#{srcIpAddress,jdbcType=VARCHAR},
+    	#{ipPattern,jdbcType=INTEGER},
+    	#{portPattern,jdbcType=INTEGER},
+    	#{srcPort,jdbcType=VARCHAR},
+    	#{protocol,jdbcType=INTEGER},
+    	#{protocolId,jdbcType=INTEGER}, 
+    	#{direction,jdbcType=INTEGER},
+    	#{destPort,jdbcType=VARCHAR},
+    	#{destIpAddress,jdbcType=VARCHAR},
+    	#{cfgType,jdbcType=VARCHAR},
+    	#{cfgRegionCode,jdbcType=INTEGER}
+    )
+  </insert>
+  
+  <!-- update cfg_index_info表信息 -->
+  <update id="updateCfgIndexInfo" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+    update cfg_index_info
+    <set >
+      <trim suffixOverrides=",">
+      <if test="cfgDesc != null and cfgDesc != ''" >
+        cfg_desc = #{cfgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="isAudit != null" >
+        is_audit = #{isAudit,jdbcType=INTEGER},
+      </if>
+      <if test="editorId != null" >
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+       <if test="editTime != null  and editTime != ''" >
+      	edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorId != null" >
+        AUDITOR_ID = #{auditorId,jdbcType=INTEGER},
+      </if>
+       <if test="auditTime != null  and auditTime != ''" >
+     	AUDIT_TIME = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+       <if test="compileId != null" >
+     	COMPILE_ID = #{compileId,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestId != null" >
+        request_id = #{requestId,jdbcType=INTEGER},
+      </if>
+      <if test="isAreaEffective != null" >
+        is_area_effective = #{isAreaEffective,jdbcType=INTEGER},
+      </if>
+      <if test="classify != null and classify != ''" >
+        classify = #{classify,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null and attribute != ''" >
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="lable != null and lable != ''" >
+        lable = #{lable,jdbcType=VARCHAR},
+      </if>
+      <if test="areaEffectiveIds != null" >
+        area_effective_ids =  #{areaEffectiveIds,jdbcType=VARCHAR},
+      </if>
+      <if test="functionId != null" >
+        function_id =  #{functionId,jdbcType=INTEGER},
+      </if>
+      <if test="serviceId != null" >
+        service_id =  #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="doLog != null" >
+        do_log =  #{doLog,jdbcType=INTEGER},
+      </if>
+      </trim>
+    </set>
+    <where>
+    	<if test="cfgId != null" >
+        	and cfg_id =  #{cfgId,jdbcType=INTEGER}
+      	</if>
+    	<if test="compileId != null" >
+        	and compile_id =  #{compileId,jdbcType=INTEGER}
+      	</if>
+    	<if test="functionId != null" >
+        	and function_id =  #{functionId,jdbcType=INTEGER}
+      	</if>
+    </where>
+  </update>
+  <!-- update av_voip_ip_cfg表信息 -->
+  <update id="updateAvVoipIp" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+    update ip_port_cfg
+    <set >
+      <trim suffixOverrides=",">
+      <if test="cfgDesc != null and cfgDesc != ''" >
+        cfg_desc = #{cfgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="isAudit != null" >
+        is_audit = #{isAudit,jdbcType=INTEGER},
+      </if>
+      <if test="editorId != null" >
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+       <if test="editTime != null  and editTime != ''" >
+      	edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorId != null" >
+        AUDITOR_ID = #{auditorId,jdbcType=INTEGER},
+      </if>
+       <if test="auditTime != null  and auditTime != ''" >
+     	AUDIT_TIME = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+       <if test="compileId != null" >
+     	COMPILE_ID = #{compileId,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestId != null" >
+        request_id = #{requestId,jdbcType=INTEGER},
+      </if>
+      <if test="isAreaEffective != null" >
+        is_area_effective = #{isAreaEffective,jdbcType=INTEGER},
+      </if>
+      <if test="classify != null and classify != ''" >
+        classify = #{classify,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null and attribute != ''" >
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="lable != null and lable != ''" >
+        lable = #{lable,jdbcType=VARCHAR},
+      </if>
+      <if test="areaEffectiveIds != null" >
+        area_effective_ids =  #{areaEffectiveIds,jdbcType=VARCHAR},
+      </if>
+      <if test="functionId != null" >
+        function_id =  #{functionId,jdbcType=INTEGER},
+      </if>
+      <if test="serviceId != null" >
+        service_id =  #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="voipIp != null and voipIp.ipType != null" >
+        ip_type = #{voipIp.ipType,jdbcType=INTEGER},
+      </if>
+      <if test="voipIp != null and voipIp.srcIpAddress != null and voipIp.srcIpAddress != ''" >
+        src_ip_address = #{voipIp.srcIpAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="voipIp != null and voipIp.ipPattern != null" >
+        ip_pattern = #{voipIp.ipPattern,jdbcType=INTEGER},
+      </if>
+      <if test="voipIp != null and voipIp.portPattern != null" >
+        port_pattern = #{voipIp.portPattern,jdbcType=INTEGER},
+      </if>
+      <if test="voipIp != null and voipIp.srcPort != null and voipIp.srcPort != ''" >
+        src_port = #{voipIp.srcPort,jdbcType=VARCHAR},
+      </if>
+      <if test="voipIp != null and voipIp.protocol != null" >
+        protocol = #{voipIp.protocol,jdbcType=INTEGER},
+      </if>
+      <if test="voipIp != null and voipIp.protocolId != null" >
+        protocol_id = #{voipIp.protocolId,jdbcType=INTEGER},
+      </if>
+      <if test="voipIp != null and voipIp.direction != null" >
+        direction = #{voipIp.direction,jdbcType=INTEGER},
+      </if>
+      <if test="voipIp != null and voipIp.destPort != null and voipIp.destPort != ''" >
+        dest_port = #{voipIp.destPort,jdbcType=VARCHAR},
+      </if>
+       <if test="voipIp != null and voipIp.destIpAddress != null and voipIp.destIpAddress != ''" >
+        dest_ip_address = #{voipIp.destIpAddress,jdbcType=VARCHAR},
+      </if>
+       <if test="voipIp != null and voipIp.cfgType != null and voipIp.cfgType != ''" >
+        cfg_type = #{voipIp.cfgType,jdbcType=VARCHAR},
+      </if>
+       <if test="voipIp != null and voipIp.cfgRegionCode != null " >
+        cfg_region_code = #{voipIp.cfgRegionCode,jdbcType=INTEGER},
+      </if>
+      </trim>
+    </set>
+    <where>
+    	<if test="voipIp != null and voipIp.cfgId != null" >
+        	and cfg_id =  #{voipIp.cfgId,jdbcType=INTEGER}
+      	</if>
+    	<if test="compileId != null" >
+        	and compile_id =  #{compileId,jdbcType=INTEGER}
+      	</if>
+    	<if test="functionId != null" >
+        	and function_id =  #{functionId,jdbcType=INTEGER}
+      	</if>
+    </where>
+  </update>
+  <!-- update ntc_subscribe_id_cfg表信息 -->
+  <update id="updateAvVoipKeywordCfgt" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+    update ntc_subscribe_id_cfg
+    <set >
+      <trim suffixOverrides=",">
+      <if test="cfgDesc != null and cfgDesc != ''" >
+        cfg_desc = #{cfgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="isAudit != null" >
+        is_audit = #{isAudit,jdbcType=INTEGER},
+      </if>
+      <if test="editorId != null" >
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+       <if test="editTime != null  and editTime != ''" >
+      	edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorId != null" >
+        AUDITOR_ID = #{auditorId,jdbcType=INTEGER},
+      </if>
+       <if test="auditTime != null  and auditTime != ''" >
+     	AUDIT_TIME = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+       <if test="compileId != null" >
+     	COMPILE_ID = #{compileId,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestId != null" >
+        request_id = #{requestId,jdbcType=INTEGER},
+      </if>
+      <if test="isAreaEffective != null" >
+        is_area_effective = #{isAreaEffective,jdbcType=INTEGER},
+      </if>
+      <if test="classify != null and classify != ''" >
+        classify = #{classify,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null and attribute != ''" >
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="lable != null and lable != ''" >
+        lable = #{lable,jdbcType=VARCHAR},
+      </if>
+      <if test="areaEffectiveIds != null" >
+        area_effective_ids =  #{areaEffectiveIds,jdbcType=VARCHAR},
+      </if>
+      <if test="functionId != null" >
+        function_id =  #{functionId,jdbcType=INTEGER},
+      </if>
+      <if test="serviceId != null" >
+        service_id =  #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="ntcSubscribeIdCfg != null and ntcSubscribeIdCfg.cfgKeywords != null and ntcSubscribeIdCfg.cfgKeywords != ''" >
+        cfg_keywords = #{ntcSubscribeIdCfg.cfgKeywords,jdbcType=VARCHAR},
+      </if>
+       <if test="ntcSubscribeIdCfg != null and ntcSubscribeIdCfg.cfgType != null and ntcSubscribeIdCfg.cfgType != ''" >
+        cfg_type = #{ntcSubscribeIdCfg.cfgType,jdbcType=VARCHAR},
+      </if>
+       <if test="ntcSubscribeIdCfg != null and ntcSubscribeIdCfg.cfgRegionCode != null " >
+        cfg_region_code = #{ntcSubscribeIdCfg.cfgRegionCode,jdbcType=INTEGER},
+      </if>
+       <if test="ntcSubscribeIdCfg != null and ntcSubscribeIdCfg.exprType != null " >
+        expr_type = #{ntcSubscribeIdCfg.exprType,jdbcType=INTEGER},
+      </if>
+       <if test="ntcSubscribeIdCfg != null and ntcSubscribeIdCfg.matchMethod != null " >
+        match_method = #{ntcSubscribeIdCfg.matchMethod,jdbcType=INTEGER},
+      </if>
+       <if test="ntcSubscribeIdCfg != null and ntcSubscribeIdCfg.isHexbin != null " >
+        is_hexbin = #{ntcSubscribeIdCfg.isHexbin,jdbcType=INTEGER},
+      </if>
+      </trim>
+    </set>
+    <where>
+    	<if test="ntcSubscribeIdCfg != null and ntcSubscribeIdCfg.cfgId != null" >
+        	and cfg_id =  #{ntcSubscribeIdCfg.cfgId,jdbcType=INTEGER}
+      	</if>
+    	<if test="compileId != null" >
+        	and compile_id =  #{compileId,jdbcType=INTEGER}
+      	</if>
+    	<if test="functionId != null" >
+        	and function_id =  #{functionId,jdbcType=INTEGER}
+      	</if>
+    </where>
+  </update>
+  <!-- update av_voip_account_cfg表信息 -->
+  <update id="updateAvVoipAccount" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+    update av_voip_account_cfg
+    <set >
+      <trim suffixOverrides=",">
+      <if test="cfgDesc != null and cfgDesc != ''" >
+        cfg_desc = #{cfgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="isAudit != null" >
+        is_audit = #{isAudit,jdbcType=INTEGER},
+      </if>
+      <if test="editorId != null" >
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+       <if test="editTime != null  and editTime != ''" >
+      	edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorId != null" >
+        AUDITOR_ID = #{auditorId,jdbcType=INTEGER},
+      </if>
+       <if test="auditTime != null  and auditTime != ''" >
+     	AUDIT_TIME = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+       <if test="compileId != null" >
+     	COMPILE_ID = #{compileId,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestId != null" >
+        request_id = #{requestId,jdbcType=INTEGER},
+      </if>
+      <if test="isAreaEffective != null" >
+        is_area_effective = #{isAreaEffective,jdbcType=INTEGER},
+      </if>
+      <if test="classify != null and classify != ''" >
+        classify = #{classify,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null and attribute != ''" >
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="lable != null and lable != ''" >
+        lable = #{lable,jdbcType=VARCHAR},
+      </if>
+      <if test="areaEffectiveIds != null" >
+        area_effective_ids =  #{areaEffectiveIds,jdbcType=VARCHAR},
+      </if>
+      <if test="functionId != null" >
+        function_id =  #{functionId,jdbcType=INTEGER},
+      </if>
+      <if test="serviceId != null" >
+        service_id =  #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="voipAccount != null and voipAccount.cfgKeywords != null and voipAccount.cfgKeywords != ''" >
+        cfg_keywords = #{voipAccount.cfgKeywords,jdbcType=VARCHAR},
+      </if>
+       <if test="voipAccount != null and voipAccount.cfgType != null and voipAccount.cfgType != ''" >
+        cfg_type = #{voipAccount.cfgType,jdbcType=VARCHAR},
+      </if>
+       <if test="voipAccount != null and voipAccount.cfgRegionCode != null " >
+        cfg_region_code = #{voipAccount.cfgRegionCode,jdbcType=INTEGER},
+      </if>
+       <if test="voipAccount != null and voipAccount.exprType != null " >
+        expr_type = #{voipAccount.exprType,jdbcType=INTEGER},
+      </if>
+       <if test="voipAccount != null and voipAccount.matchMethod != null " >
+        match_method = #{voipAccount.matchMethod,jdbcType=INTEGER},
+      </if>
+       <if test="voipAccount != null and voipAccount.isHexbin != null " >
+        is_hexbin = #{voipAccount.isHexbin,jdbcType=INTEGER},
+      </if>
+      </trim>
+    </set>
+    <where>
+    	<if test="voipAccount != null and voipAccount.cfgId != null" >
+        	and cfg_id =  #{voipAccount.cfgId,jdbcType=INTEGER}
+      	</if>
+    	<if test="compileId != null" >
+        	and compile_id =  #{compileId,jdbcType=INTEGER}
+      	</if>
+    	<if test="functionId != null" >
+        	and function_id =  #{functionId,jdbcType=INTEGER}
+      	</if>
+    </where>
+  </update>
+  <!-- 删除voipIp信息 -->
+  <delete id="deleteAvVoipIp" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+    delete from av_voip_ip_cfg
+    <where>
+    	<if test="voipIp != null and voipIp.cfgId != null" >
+        	and cfg_id =  #{voipAccount.cfgId,jdbcType=INTEGER}
+      	</if>
+    	<if test="compileId != null" >
+        	and compile_id =  #{compileId,jdbcType=INTEGER}
+      	</if>
+    	<if test="functionId != null" >
+        	and function_id =  #{functionId,jdbcType=INTEGER}
+      	</if>
+    </where>
+  </delete>
+  <!-- 删除voipIp信息 -->
+  <delete id="deleteAvVoipAccountCfg" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+    delete from av_voip_account_cfg
+    <where>
+    	<if test="voipAccount != null and voipAccount.cfgId != null" >
+        	and cfg_id =  #{voipAccount.cfgId,jdbcType=INTEGER}
+      	</if>
+    	<if test="compileId != null" >
+        	and compile_id =  #{compileId,jdbcType=INTEGER}
+      	</if>
+    	<if test="functionId != null" >
+        	and function_id =  #{functionId,jdbcType=INTEGER}
+      	</if>
+    </where>
+  </delete>
+  
+   <delete id="deleteAvContUrlCfg">
+  	delete from av_cont_url_cfg where compile_id=#{compileId} and function_id=#{functionId}
+  </delete>
+  
+  
+ <!-- 删除http子配置 -->
+  <delete id="deleteIpCfg" >
+  	delete from ip_port_cfg where compile_id=#{compileId} and function_id=#{functionId}
+  </delete>
+<!--**********************************BaseIpCfg*******************************************************-->
+<!-- avContIp条件查询列表信息 -->
+  <select id="findIpList" resultMap="AvContIpCfgMap" parameterType="com.nis.domain.configuration.BaseIpCfg" >
+		SELECT 
+	    <include refid="AvContIp_Column" />
+	    <trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,e.name as editor_name,u.name as auditor_name
+			,ri.request_title as requestName
+		</trim>
+	    FROM ${tableName} r
+	    left join sys_user s on r.creator_id=s.id
+		left join sys_user e on r.editor_id=e.id
+		left join sys_user u on r.auditor_id=u.id
+		left join request_info ri on r.request_id=ri.id
+		
+	    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="page !=null and page.where != null and page.where != ''">
+				 AND ${page.where}
+			</if>
+	 		<if test="cfgId != null">
+	   			AND r.CFG_ID=#{cfgId,jdbcType=BIGINT}
+	   		</if>
+	    	<if test="cfgDesc != null and cfgDesc != ''">
+	    		AND r.CFG_DESC like concat(concat('%',#{cfgDesc,jdbcType=VARCHAR}),'%') 
+	    	</if>
+	    	<if test="action != null">
+	    		AND r.ACTION=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid != null">
+	    		AND r.IS_VALID=#{isValid,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid == null">
+	    		AND r.IS_VALID != -1
+	    	</if>
+	    	<if test="isAudit != null">
+	    		AND r.IS_AUDIT=#{isAudit,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="creatorName != null and creatorName != ''">
+	    		AND CREATOR_NAME like concat(concat('%',#{creatorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<!-- <if test="search_create_time_start != null and search_create_time_start != ''">
+	    		<![CDATA[AND r.CREATE_TIME >= #{search_create_time_start,jdbcType=TIMESTAMP}]]>
+	    	</if>
+	    	<if test="search_create_time_end != null and search_create_time_end != ''">
+	    		<![CDATA[AND r.CREATE_TIME <= #{search_create_time_end,jdbcType=TIMESTAMP}]]>
+	    	</if> -->
+	    	<if test="editorName != null and editorName != ''">
+	    		AND r.EDITOR_NAME like concat(concat('%',#{editorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<!-- <if test="search_edit_time_start != null and search_edit_time_start != ''">
+	    		<![CDATA[AND r.EDIT_TIME >= #{search_edit_time_start,jdbcType=TIMESTAMP}]]>
+	    	</if>
+	    	<if test="search_edit_time_end != null and search_edit_time_end != ''">
+	    		<![CDATA[AND r.EDIT_TIME <= #{search_edit_time_end,jdbcType=TIMESTAMP}]]>
+	    	</if> -->
+	    	<if test="auditorName != null and auditorName != ''">
+	    		AND AUDITOR_NAME like concat(concat('%',#{auditorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<!-- <if test="search_audit_time_start != null and search_audit_time_start != ''">
+	    		<![CDATA[AND r.AUDIT_TIME >= #{search_audit_time_start,jdbcType=TIMESTAMP}]]>
+	    	</if>
+	    	<if test="search_audit_time_end != null and search_audit_time_end != ''">
+	    		<![CDATA[AND r.AUDIT_TIME <= #{search_audit_time_end,jdbcType=TIMESTAMP}]]>
+	    	</if> -->
+	    	<if test="serviceId != null">
+	    		AND r.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="requestId != null">
+	    		AND r.REQUEST_ID=#{requestId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="compileId != null">
+	    		AND r.COMPILE_ID=#{compileId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isAreaEffective != null">
+	    		AND r.IS_AREA_EFFECTIVE=#{isAreaEffective,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="classify != null and classify != ''">
+	    		AND r.classify like concat(concat('%',#{classify,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="attribute != null and attribute != ''">
+	    		AND r.attribute like concat(concat('%',#{attribute,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="lable != null and lable != ''">
+	    		AND r.lable like concat(concat('%',#{lable,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="areaEffectiveIds != null and areaEffectiveIds != ''">
+	    		AND r.AREA_EFFECTIVE_IDS like concat(concat('%',#{areaEffectiveIds,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND r.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="srcIpAddress != null and srcIpAddress != ''">
+   				and r.src_ip_address =#{srcIpAddress,jdbcType=VARCHAR}
+    		</if>
+    		<if test="srcPort != null  and srcPort != ''">
+    			and r.src_port =#{srcPort,jdbcType=VARCHAR}
+    		</if>
+	    	<!-- 数据范围过滤 -->
+			${sqlMap.dsf}
+	    </trim>
+	    <choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY r.CFG_ID desc
+			</otherwise>
+		</choose>
+  </select>
+     <!-- 根据cfg_id获取avContIpCfg信息 -->
+  <select id="findIpCfgById" resultMap="AvContIpCfgMap" parameterType="com.nis.domain.configuration.BaseIpCfg">
+		select 
+			<include refid="AvContIp_Column" />
+		from ${tableName} r
+		<where>
+  			<if test="cfgId != null">
+  				and r.cfg_id=#{cfgId,jdbcType=INTEGER}
+	   		</if>
+  			<if test="compileId != null">
+  				and r.compile_id=#{compileId,jdbcType=INTEGER}
+	   		</if>
+	   		<choose>
+				<when test="isValid != null">
+					and r.is_valid=#{isValid,jdbcType=INTEGER}
+				</when>
+				<otherwise>
+					and r.is_valid != -1
+				</otherwise>
+			</choose>
+  		</where>
+		
+  </select>
+  <!-- insert AV_cont_IP_CFG表信息 -->
+  <insert id="insertIp" parameterType="com.nis.domain.configuration.BaseIpCfg" >
+    insert into ${tableName} (
+     CFG_DESC,
+     ACTION,
+     IS_VALID,
+     IS_AUDIT,
+     CREATOR_ID,
+    CREATE_TIME,
+    EDITOR_ID,
+    EDIT_TIME,
+    AUDITOR_ID,
+    AUDIT_TIME,
+   	SERVICE_ID,
+   	REQUEST_ID,
+   	COMPILE_ID,
+   	IS_AREA_EFFECTIVE,
+   	CLASSIFY,
+    ATTRIBUTE,
+    LABLE,
+    AREA_EFFECTIVE_IDS,
+    function_id,
+    ip_type,
+    src_ip_address,
+    ip_pattern,
+    port_pattern,
+    src_port,
+    protocol,
+    protocol_id,
+    direction,
+    dest_port,
+    dest_ip_address,
+    cfg_type,
+    cfg_region_code,
+    do_log
+    )values (
+   		#{cfgDesc,jdbcType=VARCHAR},
+   		#{action,jdbcType=INTEGER}, 
+    	0,
+    	0,
+    	#{creatorId,jdbcType=INTEGER}, 
+   		#{createTime,jdbcType=TIMESTAMP},
+   		#{editorId,jdbcType=INTEGER},
+   		#{editTime,jdbcType=TIMESTAMP}, 
+   	 	#{auditorId,jdbcType=INTEGER},
+    	#{auditTime,jdbcType=TIMESTAMP},
+    	#{serviceId,jdbcType=INTEGER}, 
+    	#{requestId,jdbcType=INTEGER},
+    	#{compileId,jdbcType=INTEGER},
+    	#{isAreaEffective,jdbcType=INTEGER},
+    	#{classify,jdbcType=VARCHAR},
+    	#{attribute,jdbcType=VARCHAR},
+    	#{lable,jdbcType=VARCHAR},    
+   	 	#{areaEffectiveIds,jdbcType=VARCHAR},
+    	#{functionId,jdbcType=INTEGER},
+    	#{ipType,jdbcType=INTEGER},
+    	#{srcIpAddress,jdbcType=VARCHAR},
+    	#{ipPattern,jdbcType=INTEGER},
+    	#{portPattern,jdbcType=INTEGER},
+    	#{srcPort,jdbcType=VARCHAR},
+    	#{protocol,jdbcType=INTEGER},
+    	#{protocolId,jdbcType=INTEGER},
+    	#{direction,jdbcType=INTEGER},
+    	#{destPort,jdbcType=VARCHAR},
+    	#{destIpAddress,jdbcType=VARCHAR},
+    	#{cfgType,jdbcType=VARCHAR},
+    	#{cfgRegionCode,jdbcType=INTEGER},
+    	#{doLog,jdbcType=INTEGER}
+    	
+    )
+  </insert>
+  <!-- update av_cont_ip_cfg表信息 -->
+  <update id="updateIp" parameterType="com.nis.domain.configuration.BaseIpCfg" >
+    update ${tableName}
+    <set >
+      <trim suffixOverrides=",">
+      <if test="cfgDesc != null and cfgDesc != ''" >
+        cfg_desc = #{cfgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="isAudit != null" >
+        is_audit = #{isAudit,jdbcType=INTEGER},
+      </if>
+      <if test="editorId != null" >
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+       <if test="editTime != null  and editTime != ''" >
+      	edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorId != null" >
+        AUDITOR_ID = #{auditorId,jdbcType=INTEGER},
+      </if>
+       <if test="auditTime != null  and auditTime != ''" >
+     	AUDIT_TIME = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+       <if test="compileId != null" >
+     	COMPILE_ID = #{compileId,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestId != null" >
+        request_id = #{requestId,jdbcType=INTEGER},
+      </if>
+      <if test="isAreaEffective != null" >
+        is_area_effective = #{isAreaEffective,jdbcType=INTEGER},
+      </if>
+      <if test="classify != null and classify != ''" >
+        classify = #{classify,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null and attribute != ''" >
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="lable != null and lable != ''" >
+        lable = #{lable,jdbcType=VARCHAR},
+      </if>
+      <if test="areaEffectiveIds != null" >
+        area_effective_ids =  #{areaEffectiveIds,jdbcType=VARCHAR},
+      </if>
+      <if test="functionId != null" >
+        function_id =  #{functionId,jdbcType=INTEGER},
+      </if>
+      <if test="serviceId != null" >
+        service_id =  #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="ipType != null" >
+        ip_type = #{ipType,jdbcType=INTEGER},
+      </if>
+      <if test="srcIpAddress != null and srcIpAddress != ''" >
+        src_ip_address = #{srcIpAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ipPattern != null" >
+        ip_pattern = #{ipPattern,jdbcType=INTEGER},
+      </if>
+      <if test="portPattern != null" >
+        port_pattern = #{portPattern,jdbcType=INTEGER},
+      </if>
+      <if test="srcPort != null and srcPort != ''" >
+        src_port = #{srcPort,jdbcType=VARCHAR},
+      </if>
+      <if test="protocol != null" >
+        protocol = #{protocol,jdbcType=INTEGER},
+      </if>
+      <if test="protocolId != null" >
+        protocol_id = #{protocolId,jdbcType=INTEGER},
+      </if>
+      <if test="direction != null" >
+        direction = #{direction,jdbcType=INTEGER},
+      </if>
+      <if test="destPort != null and destPort != ''" >
+        dest_port = #{destPort,jdbcType=VARCHAR},
+      </if>
+       <if test="destIpAddress != null and destIpAddress != ''" >
+        dest_ip_address = #{destIpAddress,jdbcType=VARCHAR},
+      </if>
+       <if test="cfgType != null and cfgType != ''" >
+        cfg_type = #{cfgType,jdbcType=VARCHAR},
+      </if>
+       <if test="cfgRegionCode != null " >
+        cfg_region_code = #{cfgRegionCode,jdbcType=INTEGER},
+      </if>
+       <if test="doLog != null " >
+        do_log = #{doLog,jdbcType=INTEGER},
+      </if>
+      </trim>
+    </set>
+    <where>
+    	<if test="cfgId != null" >
+        	and cfg_id =  #{cfgId,jdbcType=INTEGER}
+      	</if>
+    	<if test="compileId != null" >
+        	and compile_id =  #{compileId,jdbcType=INTEGER}
+      	</if>
+    	<if test="functionId != null" >
+        	and function_id =  #{functionId,jdbcType=INTEGER}
+      	</if>
+    </where>
+  </update>
+  <select id="getIpList" resultMap="AvVoipIpCfgMap" parameterType="com.nis.domain.configuration.BaseIpCfg">
+		select 
+			<include refid="AvVoipIp_Column" />
+		from ${tableName} r
+		<where>
+  			<if test="cfgId != null">
+  				and r.cfg_id=#{cfgId,jdbcType=INTEGER}
+	   		</if>
+	   		<choose>
+				<when test="isValid != null">
+					and r.is_valid=#{isValid,jdbcType=INTEGER}
+				</when>
+				<otherwise>
+					and r.is_valid != -1
+				</otherwise>
+			</choose>
+  		</where>
+  </select>
+  
+<!--**********************************BaseStringCfg*******************************************************-->
+<!-- avContIp条件查询列表信息 -->
+   <select id="findStringList" resultMap="BaseStringCfgMap" parameterType="com.nis.domain.configuration.BaseStringCfg" >
+		SELECT 
+	    <include refid="BaseStringCfg_Column" />
+	    <trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,e.name as editor_name,u.name as auditor_name
+			,ri.request_title as requestName
+		</trim>
+	    FROM ${tableName} r
+	    left join sys_user s on r.creator_id=s.id
+		left join sys_user e on r.editor_id=e.id
+		left join sys_user u on r.auditor_id=u.id
+		left join request_info ri on r.request_id=ri.id
+		
+	    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="page !=null and page.where != null and page.where != ''">
+				 AND ${page.where}
+			</if>
+	 		<if test="cfgId != null">
+	   			AND r.CFG_ID=#{cfgId,jdbcType=BIGINT}
+	   		</if>
+	    	<if test="cfgDesc != null and cfgDesc != ''">
+	    		AND r.CFG_DESC like concat(concat('%',#{cfgDesc,jdbcType=VARCHAR}),'%') 
+	    	</if>
+	    	<if test="action != null">
+	    		AND r.ACTION=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid != null">
+	    		AND r.IS_VALID=#{isValid,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid == null">
+	    		AND r.IS_VALID != -1
+	    	</if>
+	    	<if test="isAudit != null">
+	    		AND r.IS_AUDIT=#{isAudit,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="creatorName != null and creatorName != ''">
+	    		AND CREATOR_NAME like concat(concat('%',#{creatorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="editorName != null and editorName != ''">
+	    		AND r.EDITOR_NAME like concat(concat('%',#{editorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="auditorName != null and auditorName != ''">
+	    		AND AUDITOR_NAME like concat(concat('%',#{auditorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="serviceId != null">
+	    		AND r.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="requestId != null">
+	    		AND r.REQUEST_ID=#{requestId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="compileId != null">
+	    		AND r.COMPILE_ID=#{compileId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isAreaEffective != null">
+	    		AND r.IS_AREA_EFFECTIVE=#{isAreaEffective,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="classify != null and classify != ''">
+	    		AND r.classify like concat(concat('%',#{classify,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="attribute != null and attribute != ''">
+	    		AND r.attribute like concat(concat('%',#{attribute,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="lable != null and lable != ''">
+	    		AND r.lable like concat(concat('%',#{lable,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="areaEffectiveIds != null and areaEffectiveIds != ''">
+	    		AND r.AREA_EFFECTIVE_IDS like concat(concat('%',#{areaEffectiveIds,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND r.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+    		<if test="cfgKeywords != null  and cfgKeywords != ''">
+    			and r.cfg_keywords like concat(concat('%',#{cfgKeywords,jdbcType=VARCHAR}),'%')
+    		</if>
+			${sqlMap.dsf}
+	    </trim>
+	    <choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY r.CFG_ID desc
+			</otherwise>
+		</choose>
+  </select>
+  
+  <!--    根据cfg_id获取avContUrlCfg信息-->
+  <select id="findStringCfgById" resultMap="BaseStringCfgMap" parameterType="com.nis.domain.configuration.BaseStringCfg">
+		select 
+			<include refid="BaseStringCfg_Column" />
+		from ${tableName} r
+		<where>
+  			<if test="cfgId != null">
+  				and r.cfg_id=#{cfgId,jdbcType=INTEGER}
+	   		</if>
+	   		<if test="compileId != null">
+  				and r.compile_id=#{compileId,jdbcType=INTEGER}
+	   		</if>
+	   		<choose>
+				<when test="isValid != null">
+					and r.is_valid=#{isValid,jdbcType=INTEGER}
+				</when>
+				<otherwise>
+					and r.is_valid != -1
+				</otherwise>
+			</choose>
+  		</where>
+		
+  </select>
+  
+  
+ <!-- insert AV_cont_IP_CFG表信息-->
+  <insert id="insertString" parameterType="com.nis.domain.configuration.BaseStringCfg" >
+    insert into ${tableName} (
+     CFG_DESC,
+     ACTION,
+     IS_VALID,
+     IS_AUDIT,
+     CREATOR_ID,
+    CREATE_TIME,
+    EDITOR_ID,
+    EDIT_TIME,
+    AUDITOR_ID,
+    AUDIT_TIME,
+   	SERVICE_ID,
+   	REQUEST_ID,
+   	COMPILE_ID,
+   	IS_AREA_EFFECTIVE,
+   	CLASSIFY,
+    ATTRIBUTE,
+    LABLE,
+    AREA_EFFECTIVE_IDS,
+    function_id,
+    cfg_keywords,
+    expr_type,
+	match_method,
+	is_hexbin,
+    cfg_type,
+    cfg_region_code,
+    do_log
+    )values (
+   		#{cfgDesc,jdbcType=VARCHAR},
+   		#{action,jdbcType=INTEGER}, 
+    	0,
+    	0,
+    	#{creatorId,jdbcType=INTEGER}, 
+   		#{createTime,jdbcType=TIMESTAMP},
+   		#{editorId,jdbcType=INTEGER},
+   		#{editTime,jdbcType=TIMESTAMP}, 
+   	 	#{auditorId,jdbcType=INTEGER},
+    	#{auditTime,jdbcType=TIMESTAMP},
+    	#{serviceId,jdbcType=INTEGER}, 
+    	#{requestId,jdbcType=INTEGER},
+    	#{compileId,jdbcType=INTEGER},
+    	#{isAreaEffective,jdbcType=INTEGER},
+    	#{classify,jdbcType=VARCHAR},
+    	#{attribute,jdbcType=VARCHAR},
+    	#{lable,jdbcType=VARCHAR},    
+   	 	#{areaEffectiveIds,jdbcType=VARCHAR},
+    	#{functionId,jdbcType=INTEGER},
+   	 	#{cfgKeywords,jdbcType=VARCHAR},
+    	#{exprType,jdbcType=INTEGER},
+    	#{matchMethod,jdbcType=INTEGER},
+    	#{isHexbin,jdbcType=INTEGER},
+    	#{cfgType,jdbcType=VARCHAR},
+    	#{cfgRegionCode,jdbcType=INTEGER},
+    	#{doLog,jdbcType=INTEGER}
+    )
+  </insert>
+  
+  <!--update av_cont_ip_cfg表信息-->
+  <update id="updateString" parameterType="com.nis.domain.configuration.BaseStringCfg" >
+    update ${tableName}
+    <set >
+      <trim suffixOverrides=",">
+      <if test="cfgDesc != null and cfgDesc != ''" >
+        cfg_desc = #{cfgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="isAudit != null" >
+        is_audit = #{isAudit,jdbcType=INTEGER},
+      </if>
+      <if test="editorId != null" >
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+       <if test="editTime != null  and editTime != ''" >
+      	edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorId != null" >
+        AUDITOR_ID = #{auditorId,jdbcType=INTEGER},
+      </if>
+       <if test="auditTime != null  and auditTime != ''" >
+     	AUDIT_TIME = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+       <if test="compileId != null" >
+     	COMPILE_ID = #{compileId,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestId != null" >
+        request_id = #{requestId,jdbcType=INTEGER},
+      </if>
+      <if test="isAreaEffective != null" >
+        is_area_effective = #{isAreaEffective,jdbcType=INTEGER},
+      </if>
+      <if test="classify != null and classify != ''" >
+        classify = #{classify,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null and attribute != ''" >
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="lable != null and lable != ''" >
+        lable = #{lable,jdbcType=VARCHAR},
+      </if>
+      <if test="areaEffectiveIds != null" >
+        area_effective_ids =  #{areaEffectiveIds,jdbcType=VARCHAR},
+      </if>
+      <if test="functionId != null" >
+        function_id =  #{functionId,jdbcType=INTEGER},
+      </if>
+      <if test="serviceId != null" >
+        service_id =  #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="cfgKeywords != null and cfgKeywords != ''" >
+        cfg_keywords = #{cfgKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="exprType != null" >
+        expr_type = #{exprType,jdbcType=INTEGER},
+      </if>
+      <if test="matchMethod != null" >
+        match_method = #{matchMethod,jdbcType=INTEGER},
+      </if>
+      <if test="isHexbin != null" >
+        is_hexbin = #{isHexbin,jdbcType=INTEGER},
+      </if>
+       <if test="cfgType != null and cfgType != ''" >
+        cfg_type = #{cfgType,jdbcType=VARCHAR},
+      </if>
+       <if test="cfgRegionCode != null " >
+        cfg_region_code = #{cfgRegionCode,jdbcType=INTEGER},
+      </if>
+       <if test="doLog != null " >
+        do_log = #{doLog,jdbcType=INTEGER},
+      </if>
+      </trim>
+    </set>
+    <where>
+    	<if test="cfgId != null" >
+        	and cfg_id =  #{cfgId,jdbcType=INTEGER}
+      	</if>
+      	<if test="compileId != null" >
+        	and compile_id =  #{compileId,jdbcType=INTEGER}
+      	</if>
+    	<if test="functionId != null" >
+        	and function_id =  #{functionId,jdbcType=INTEGER}
+      	</if>
+    </where>
+  </update>
+  <select id="getStringList" resultMap="BaseStringCfgMap" parameterType="com.nis.domain.configuration.BaseStringCfg">
+		select 
+			<include refid="BaseStringCfg_Column" />
+		from ${tableName} r
+		<where>
+  			<if test="cfgId != null">
+  				and r.cfg_id=#{cfgId,jdbcType=INTEGER}
+	   		</if>
+	   		<choose>
+				<when test="isValid != null">
+					and r.is_valid=#{isValid,jdbcType=INTEGER}
+				</when>
+				<otherwise>
+					and r.is_valid != -1
+				</otherwise>
+			</choose>
+  		</where>
+  </select>
+    <update id="updateCfgValid" parameterType="com.nis.domain.configuration.BaseCfg">
+    update ${tableName} set is_valid = #{isValid,jdbcType=INTEGER},
+    editor_id = #{editorId,jdbcType=INTEGER} , 
+    edit_time = #{editTime,jdbcType=TIMESTAMP} 
+    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+		<if test="cfgId !=null ">
+		AND cfg_id = #{cfgId,jdbcType=BIGINT}
+		</if>
+		<if test="compileId !=null ">
+		AND compile_id = #{compileId,jdbcType=INTEGER}
+		</if>
+		and function_id=#{functionId,jdbcType=INTEGER}
+	</trim>
+  </update>
+</mapper>

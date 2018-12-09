@@ -1,0 +1,1 @@
+update function_region_dict set config_expr_type='1' ,config_match_method='0' where dict_id='25';

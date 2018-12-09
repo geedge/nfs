@@ -1,0 +1,92 @@
+
+.page {
+margin-top: 20px;
+}
+.page ul {
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.page ul > li {
+  display: inline;
+}
+
+.page ul > li > a,
+.page ul > li > span {
+  float: left;
+  padding: 4px 12px;
+  line-height: 20px;
+  text-decoration: none;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-left-width: 0;
+}
+
+.page ul > li > a:hover,
+.page ul > li > a:focus,
+.page ul > .active > a,
+.page ul > .active > span {
+  background-color: #f5f5f5;
+}
+
+.page ul > .active > a,
+.page ul > .active > span {
+  color: #999999;
+  cursor: default;
+}
+
+.page ul > .disabled > span,
+.page ul > .disabled > a,
+.page ul > .disabled > a:hover,
+.page ul > .disabled > a:focus {
+  color: #999999;
+  cursor: default;
+  background-color: transparent;
+}
+
+.page ul > li:first-child > a,
+.page ul > li:first-child > span {
+  border-left-width: 1px;
+  -webkit-border-bottom-left-radius: 4px;
+          border-bottom-left-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+          border-top-left-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-topleft: 4px;
+}
+
+.page ul > li:last-child > a,
+.page ul > li:last-child > span {
+  -webkit-border-top-right-radius: 4px;
+          border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -moz-border-radius-bottomright: 4px;
+}
+
+.page-centered {
+  text-align: center;
+}
+
+.page-right {
+  text-align: right;
+}
+
+.page .controls a{border:0;}
+.page .controls input{
+	border: 1px solid #ddd;
+	color:#999;
+	width:10%;
+	padding:0;
+	margin:-3px 0 0 0;
+	text-align:center;
+}
+.keyword-disinline {
+	width: 1130px;
+	display: block;
+	word-break: break-all;
+	word-wrap: break-word;
+	white-space: normal;
+}

@@ -1,0 +1,1 @@
+UPDATE sys_data_dictionary_item SET item_value='all' WHERE dictionary_id=(SELECT id FROM sys_data_dictionary_name WHERE mark='protocol') AND item_code=0;

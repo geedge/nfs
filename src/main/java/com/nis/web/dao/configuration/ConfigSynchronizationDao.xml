@@ -1,0 +1,1679 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mappea.dtd" >
+<mapper namespace="com.nis.web.dao.configuration.ConfigSynchronizationDao" >
+
+	<resultMap id="AppPolicyCfgMap" type="com.nis.domain.configuration.AppPolicyCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="app_code" property="appCode" jdbcType="INTEGER" />
+    <result column="behav_code" property="behavCode" jdbcType="INTEGER" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="expr_type" property="exprType" jdbcType="INTEGER" />
+    <result column="match_method" property="matchMethod" jdbcType="INTEGER" />
+    <result column="is_hexbin" property="isHexbin" jdbcType="INTEGER" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="ratelimit" property="ratelimit" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="user_region1" property="userRegion1" jdbcType="VARCHAR" />
+    <result column="user_region2" property="userRegion2" jdbcType="VARCHAR" />
+    <result column="user_region3" property="userRegion3" jdbcType="VARCHAR" />
+    <result column="user_region4" property="userRegion4" jdbcType="VARCHAR" />
+    <result column="user_region5" property="userRegion5" jdbcType="VARCHAR" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="AppFeatureIndexMap" type="com.nis.domain.configuration.AppFeatureIndex" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+    <result column="user_region1" property="userRegion1" jdbcType="VARCHAR" />
+    <result column="user_region2" property="userRegion2" jdbcType="VARCHAR" />
+    <result column="user_region3" property="userRegion3" jdbcType="VARCHAR" />
+    <result column="user_region4" property="userRegion4" jdbcType="VARCHAR" />
+    <result column="user_region5" property="userRegion5" jdbcType="VARCHAR" />
+    <result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="app_code" property="appCode" jdbcType="INTEGER" />
+    <result column="behav_code" property="behavCode" jdbcType="INTEGER" />
+    <result column="cfg_region_type" property="cfgRegionType" jdbcType="VARCHAR" />
+    <result column="cfg_region_value" property="cfgRegionValue" jdbcType="VARCHAR" />
+    <result column="cfg_region_code" property="cfgRegionCode1" jdbcType="VARCHAR" />
+  </resultMap>
+  <!-- 
+  
+  <resultMap id="AppIpCfgMap" type="com.nis.domain.configuration.AppIpCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="app_code" property="appCode" jdbcType="INTEGER" />
+    <result column="behav_code" property="behavCode" jdbcType="INTEGER" />
+    <result column="ip_type" property="ipType" jdbcType="INTEGER" />
+    <result column="ip_pattern" property="ipPattern" jdbcType="INTEGER" />
+    <result column="src_ip_address" property="srcIpAddress" jdbcType="VARCHAR" />
+    <result column="dest_ip_address" property="destIpAddress" jdbcType="VARCHAR" />
+    <result column="port_pattern" property="portPattern" jdbcType="INTEGER" />
+    <result column="src_port" property="srcPort" jdbcType="VARCHAR" />
+    <result column="dest_port" property="destPort" jdbcType="VARCHAR" />
+    <result column="direction" property="direction" jdbcType="INTEGER" />
+    <result column="protocol" property="protocol" jdbcType="INTEGER" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="ratelimit" property="ratelimit" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap id="AppHttpCfgMap" type="com.nis.domain.configuration.AppHttpCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="app_code" property="appCode" jdbcType="INTEGER" />
+    <result column="behav_code" property="behavCode" jdbcType="INTEGER" />
+    <result column="district" property="district" jdbcType="VARCHAR" />
+    <result column="cfg_keywords" property="cfgKeywords" jdbcType="VARCHAR" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="expr_type" property="exprType" jdbcType="INTEGER" />
+    <result column="match_method" property="matchMethod" jdbcType="INTEGER" />
+    <result column="is_hexbin" property="isHexbin" jdbcType="INTEGER" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="ratelimit" property="ratelimit" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="AppDomainCfgMap" type="com.nis.domain.configuration.AppDomainCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="app_code" property="appCode" jdbcType="INTEGER" />
+    <result column="behav_code" property="behavCode" jdbcType="INTEGER" />
+    <result column="domain" property="domain" jdbcType="VARCHAR" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="expr_type" property="exprType" jdbcType="INTEGER" />
+    <result column="match_method" property="matchMethod" jdbcType="INTEGER" />
+    <result column="is_hexbin" property="isHexbin" jdbcType="INTEGER" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="ratelimit" property="ratelimit" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="AppTopicDomainCfgMap" type="com.nis.domain.configuration.AppTopicDomainCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="topic_id" property="topicId" jdbcType="BIGINT" />
+    <result column="website_service_id" property="websiteServiceId" jdbcType="BIGINT" />
+    <result column="domain" property="domain" jdbcType="VARCHAR" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="expr_type" property="exprType" jdbcType="INTEGER" />
+    <result column="match_method" property="matchMethod" jdbcType="INTEGER" />
+    <result column="is_hexbin" property="isHexbin" jdbcType="INTEGER" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="ratelimit" property="ratelimit" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="AppByteCfgMap" type="com.nis.domain.configuration.AppByteCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="app_code" property="appCode" jdbcType="INTEGER" />
+    <result column="behav_code" property="behavCode" jdbcType="INTEGER" />
+    <result column="bytes" property="bytes" jdbcType="VARCHAR" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="expr_type" property="exprType" jdbcType="INTEGER" />
+    <result column="match_method" property="matchMethod" jdbcType="INTEGER" />
+    <result column="is_hexbin" property="isHexbin" jdbcType="INTEGER" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="ratelimit" property="ratelimit" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ipPortMap" type="com.nis.domain.configuration.IpPortCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="ip_type" property="ipType" jdbcType="INTEGER" />
+    <result column="ip_pattern" property="ipPattern" jdbcType="INTEGER" />
+    <result column="dest_ip_address" property="destIpAddress" jdbcType="VARCHAR" />
+    <result column="src_ip_address" property="srcIpAddress" jdbcType="VARCHAR" />
+    <result column="dest_port" property="destPort" jdbcType="VARCHAR" />
+    <result column="src_port" property="srcPort" jdbcType="VARCHAR" />
+    <result column="port_pattern" property="portPattern" jdbcType="INTEGER" />
+    <result column="direction" property="direction" jdbcType="INTEGER" />
+    <result column="protocol" property="protocol" jdbcType="INTEGER" />
+    <result column="protocol_id" property="protocolId" jdbcType="INTEGER" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="AppSslCfgMap" type="com.nis.domain.configuration.AppSslCertCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="app_code" property="appCode" jdbcType="INTEGER" />
+    <result column="behav_code" property="behavCode" jdbcType="INTEGER" />
+    <result column="district" property="district" jdbcType="VARCHAR" />
+    <result column="cfg_keywords" property="cfgKeywords" jdbcType="VARCHAR" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="expr_type" property="exprType" jdbcType="INTEGER" />
+    <result column="match_method" property="matchMethod" jdbcType="INTEGER" />
+    <result column="is_hexbin" property="isHexbin" jdbcType="INTEGER" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="ratelimit" property="ratelimit" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="AppHeaderCfgMap" type="com.nis.domain.configuration.AppHeaderCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="app_code" property="appCode" jdbcType="INTEGER" />
+    <result column="behav_code" property="behavCode" jdbcType="INTEGER" />
+    <result column="district" property="district" jdbcType="VARCHAR" />
+    <result column="cfg_keywords" property="cfgKeywords" jdbcType="VARCHAR" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="expr_type" property="exprType" jdbcType="INTEGER" />
+    <result column="match_method" property="matchMethod" jdbcType="INTEGER" />
+    <result column="is_hexbin" property="isHexbin" jdbcType="INTEGER" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="ratelimit" property="ratelimit" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="WebsiteDomainTopicMap" type="com.nis.domain.configuration.WebsiteDomainTopic" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="website_service_id" property="websiteServiceId" jdbcType="BIGINT" />
+    <result column="domain" property="domain" jdbcType="VARCHAR" />
+    <result column="topic_id" property="topicId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+  </resultMap> -->
+  
+  <resultMap id="CfgIndexInfoMap" type="com.nis.domain.configuration.CfgIndexInfo" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="dns_strategy_id" property="dnsStrategyId" jdbcType="INTEGER" />
+    <result column="dns_strategy_name" property="dnsStrategyName" jdbcType="VARCHAR" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+    <result column="user_region1" property="userRegion1" jdbcType="VARCHAR" />
+    <result column="user_region2" property="userRegion2" jdbcType="VARCHAR" />
+    <result column="user_region3" property="userRegion3" jdbcType="VARCHAR" />
+    <result column="user_region4" property="userRegion4" jdbcType="VARCHAR" />
+    <result column="user_region5" property="userRegion5" jdbcType="VARCHAR" />
+    <result column="source_compile_id" property="sourceCompileId" jdbcType="INTEGER" />
+    <result column="cancel_request_id" property="cancelRequestId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ipPortMap" type="com.nis.domain.configuration.IpPortCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="ip_type" property="ipType" jdbcType="INTEGER" />
+    <result column="ip_pattern" property="ipPattern" jdbcType="INTEGER" />
+    <result column="dest_ip_address" property="destIpAddress" jdbcType="VARCHAR" />
+    <result column="src_ip_address" property="srcIpAddress" jdbcType="VARCHAR" />
+    <result column="dest_port" property="destPort" jdbcType="VARCHAR" />
+    <result column="src_port" property="srcPort" jdbcType="VARCHAR" />
+    <result column="port_pattern" property="portPattern" jdbcType="INTEGER" />
+    <result column="direction" property="direction" jdbcType="INTEGER" />
+    <result column="protocol" property="protocol" jdbcType="INTEGER" />
+    <result column="protocol_id" property="protocolId" jdbcType="INTEGER" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="stringCfgMap" type="com.nis.domain.configuration.BaseStringCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="cfg_keywords" property="cfgKeywords" jdbcType="VARCHAR" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="expr_type " property="exprType" jdbcType="INTEGER" />
+    <result column="match_method" property="matchMethod" jdbcType="INTEGER" />
+    <result column="is_hexbin" property="isHexbin" jdbcType="INTEGER" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="app_code" property="appCode" jdbcType="INTEGER" />
+    <result column="behav_code" property="behavCode" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="complexCfgMap" type="com.nis.domain.configuration.ComplexkeywordCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="cfg_keywords" property="cfgKeywords" jdbcType="VARCHAR" />
+    <result column="district" property="district" jdbcType="VARCHAR" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="expr_type " property="exprType" jdbcType="INTEGER" />
+    <result column="match_method" property="matchMethod" jdbcType="INTEGER" />
+    <result column="is_hexbin" property="isHexbin" jdbcType="INTEGER" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="app_code" property="appCode" jdbcType="INTEGER" />
+    <result column="behav_code" property="behavCode" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="digestCfgMap" type="com.nis.domain.configuration.FileDigestCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="raw_len" property="rawLen" jdbcType="BIGINT" />
+    <result column="digest" property="digest" jdbcType="VARCHAR" />
+    <result column="cfgds_level" property="cfgdsLevel" jdbcType="INTEGER" />
+    <result column="file_url" property="fileUrl" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="AvFileSampleMap" type="com.nis.domain.configuration.AvFileSampleCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="src_url" property="srcUrl" jdbcType="VARCHAR" />
+    <result column="sample_url" property="sampleUrl" jdbcType="VARCHAR" />
+    <result column="src_path" property="srcPath" jdbcType="VARCHAR" />
+    <result column="sample_path" property="samplePath" jdbcType="VARCHAR" />
+    <result column="src_md5" property="srcMd5" jdbcType="VARCHAR" />
+    <result column="sample_md5" property="sampleMd5" jdbcType="VARCHAR" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+    <result column="creator_name" property="creatorName" jdbcType="VARCHAR" />
+    <result column="auditor_name" property="auditorName" jdbcType="VARCHAR" />
+    <result column="editor_name" property="editorName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="PxyObjKeyringMap" type="com.nis.domain.configuration.PxyObjKeyring" >
+	    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+	    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+	    <result column="keyring_type" property="keyringType" jdbcType="VARCHAR" />
+	    <result column="private_key_file" property="privateKeyFile" jdbcType="VARCHAR" />
+	    <result column="public_key_file" property="publicKeyFile" jdbcType="VARCHAR" />
+	    <result column="expire_after" property="expireAfter" jdbcType="INTEGER" />
+	    <result column="public_key_algo" property="publicKeyAlgo" jdbcType="VARCHAR" />
+	    <result column="crl" property="crl" jdbcType="VARCHAR" />
+	    <result column="issuer" property="issuer" jdbcType="VARCHAR" />
+	    <result column="subject" property="subject" jdbcType="VARCHAR" />
+	    <result column="not_before_time" property="notBeforeTime" jdbcType="VARCHAR" />
+	    <result column="not_after_time" property="notAfterTime" jdbcType="VARCHAR" />
+	    <result column="cn" property="cn" jdbcType="VARCHAR" />
+	    <result column="alt_name" property="altName" jdbcType="VARCHAR" />
+	    <result column="action" property="action" jdbcType="INTEGER" />
+	    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+	    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+	    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+	    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+	    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+	    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+	    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+	    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+	    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+	    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+	    <result column="classify" property="classify" jdbcType="VARCHAR" />
+	    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+	    <result column="lable" property="lable" jdbcType="VARCHAR" />
+	    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+	    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+	    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+	    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+	    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+	  </resultMap>
+	  <resultMap id="PxyObjTrustedCaCertMap" type="com.nis.domain.configuration.PxyObjTrustedCaCert" >
+	    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+	    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+	    <result column="cert_file" property="certFile" jdbcType="VARCHAR" />
+	    <result column="issuer" property="issuer" jdbcType="VARCHAR" />
+	    <result column="action" property="action" jdbcType="INTEGER" />
+	    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+	    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+	    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+	    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+	    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+	    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+	    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+	    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+	    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+	    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+	    <result column="classify" property="classify" jdbcType="VARCHAR" />
+	    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+	    <result column="lable" property="lable" jdbcType="VARCHAR" />
+	    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+	    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+	    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+	    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+	    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+	    <result column="cancel_request_id" property="cancelRequestId" jdbcType="INTEGER" />
+	  </resultMap>
+	  <resultMap id="PxyObjTrustedCaCrlMap" type="com.nis.domain.configuration.PxyObjTrustedCaCrl" >
+	    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+	    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+	    <result column="crl_file" property="crlFile" jdbcType="VARCHAR" />
+	    <result column="cert_id" property="certId" jdbcType="BIGINT" />
+	    <result column="issuer" property="issuer" jdbcType="VARCHAR" />
+	    <result column="action" property="action" jdbcType="INTEGER" />
+	    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+	    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+	    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+	    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+	    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+	    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+	    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+	    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+	    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+	    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+	    <result column="classify" property="classify" jdbcType="VARCHAR" />
+	    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+	    <result column="lable" property="lable" jdbcType="VARCHAR" />
+	    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+	    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+	    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+	    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+	    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+	  </resultMap>
+	  <resultMap id="AvSignSampleMap" type="com.nis.domain.configuration.AvSignSampleCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+    <result column="creator_name" property="creatorName" jdbcType="VARCHAR" />
+    <result column="auditor_name" property="auditorName" jdbcType="VARCHAR" />
+    <result column="editor_name" property="editorName" jdbcType="VARCHAR" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+  </resultMap>
+   <resultMap id="DnsResStrategyMap" type="com.nis.domain.configuration.DnsResStrategy" >
+	    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+	    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+	    <result column="res_group_1_id" property="resGroup1Id" jdbcType="INTEGER" />
+	    <result column="res_group_1_num" property="resGroup1Num" jdbcType="INTEGER" />
+	    <result column="res_group_2_id" property="resGroup2Id" jdbcType="INTEGER" />
+	    <result column="res_group_2_num" property="resGroup2Num" jdbcType="INTEGER" />
+	    <result column="res_group_3_id" property="resGroup3Id" jdbcType="INTEGER" />
+	    <result column="res_group_3_num" property="resGroup3Num" jdbcType="INTEGER" />
+	    <result column="res_group_4_id" property="resGroup4Id" jdbcType="INTEGER" />
+	    <result column="res_group_4_num" property="resGroup4Num" jdbcType="INTEGER" />
+	    <result column="res_group_5_id" property="resGroup5Id" jdbcType="INTEGER" />
+	    <result column="res_group_5_num" property="resGroup5Num" jdbcType="INTEGER" />
+	    <result column="min_ttl" property="minTtl" jdbcType="INTEGER" />
+	    <result column="max_ttl" property="maxTtl" jdbcType="INTEGER" />
+	    <result column="action" property="action" jdbcType="INTEGER" />
+	    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+	    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+	    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+	    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+	    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+	    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+	    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+	    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+	    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+	    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+	    <result column="classify" property="classify" jdbcType="VARCHAR" />
+	    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+	    <result column="lable" property="lable" jdbcType="VARCHAR" />
+	    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+	    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+	    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+	    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+	    <result column="group_1_name" property="group1Name" jdbcType="VARCHAR" />
+	    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+	  </resultMap>
+	  <resultMap id="dnsIpCfgMap" type="com.nis.domain.configuration.DnsIpCfg">
+	    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+	    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+	    <result column="ip_type" property="ipType" jdbcType="INTEGER" />
+	    <result column="ip_pattern" property="ipPattern" jdbcType="INTEGER" />
+	    <result column="dest_ip_address" property="destIpAddress" jdbcType="VARCHAR" />
+	    <result column="src_ip_address" property="srcIpAddress" jdbcType="VARCHAR" />
+	    <result column="dest_port" property="destPort" jdbcType="VARCHAR" />
+	    <result column="src_port" property="srcPort" jdbcType="VARCHAR" />
+	    <result column="port_pattern" property="portPattern" jdbcType="INTEGER" />
+	    <result column="direction" property="direction" jdbcType="INTEGER" />
+	    <result column="protocol" property="protocol" jdbcType="INTEGER" />
+	    <result column="protocol_id" property="protocolId" jdbcType="INTEGER" />
+	    <result column="action" property="action" jdbcType="INTEGER" />
+	    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+	    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+	    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+	    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+	    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+	    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+	    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+	    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+	    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+	    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+	    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+	    <result column="classify" property="classify" jdbcType="VARCHAR" />
+	    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+	    <result column="lable" property="lable" jdbcType="VARCHAR" />
+	    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+	    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+	    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+	    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+	    <result column="dns_strategy_id" property="dnsStrategyId" jdbcType="INTEGER" />
+	    <result column="dns_strategy_name" property="dnsStrategyName" jdbcType="VARCHAR" />
+    </resultMap>
+  <sql id="BaseCfg_Column" >
+    a.cfg_id,a.cfg_desc,a.action,a.is_valid,a.is_audit,a.creator_id,a.audit_time,
+	a.service_id,a.request_id,a.compile_id,a.is_area_effective,a.classify,a.attribute,a.lable,
+	a.area_effective_ids,a.function_id,a.do_log,a.dns_strategy_id,a.user_region1,a.user_region2,
+	a.user_region3,a.user_region4,a.user_region5
+  </sql>
+  <sql id="DdosIpCfg_Column" >
+    a.cfg_id,a.cfg_desc,a.action,a.is_valid,a.is_audit,a.creator_id,a.audit_time,
+	a.service_id,a.request_id,a.compile_id,a.is_area_effective,a.classify,a.attribute,a.lable,
+	a.area_effective_ids,a.function_id,a.ip_type,a.src_ip_address,a.ip_pattern,a.port_pattern,a.src_port
+    ,a.protocol,a.protocol_id,a.direction,a.dest_port,a.dest_ip_address,a.cfg_type,a.pps_threadshold,
+    a.antiddos_protocol,a.bps_threadshold
+  </sql>
+  <sql id="IpCfg_Column" >
+    a.ip_type,a.src_ip_address,a.ip_pattern,a.port_pattern,a.src_port,
+    a.protocol,a.protocol_id,a.direction,a.dest_port,a.dest_ip_address,a.cfg_type,a.compile_id
+  </sql>
+  <sql id="IpCfg_AllColumn" >
+    a.cfg_id,a.cfg_desc,a.action,a.is_valid,a.is_audit,a.creator_id,a.audit_time,
+	a.service_id,a.request_id,a.compile_id,a.is_area_effective,a.classify,a.attribute,a.lable,
+	a.area_effective_ids,a.function_id,a.do_log,a.dns_strategy_id,a.user_region1,a.user_region2,
+	a.user_region3,a.user_region4,a.user_region5,
+	a.ip_type,a.src_ip_address,a.ip_pattern,a.port_pattern,a.src_port,
+    a.protocol,a.protocol_id,a.direction,a.dest_port,a.dest_ip_address,a.cfg_type
+  </sql>
+  <sql id="IpDropCfg_Column" >
+    a.cfg_id,a.cfg_desc,a.action,a.is_valid,a.is_audit,a.creator_id,a.audit_time,
+	a.service_id,a.request_id,a.compile_id,a.is_area_effective,a.classify,a.attribute,a.lable,
+	a.area_effective_ids,a.function_id,a.user_region1,a.user_region2,
+	a.user_region3,a.user_region4,a.user_region5,
+	a.ip_type,a.src_ip_address,a.ip_pattern,a.port_pattern,a.src_port,
+    a.protocol,a.protocol_id,a.direction,a.dest_port,a.dest_ip_address,a.cfg_type
+  </sql>
+  <sql id="AsnIpCfg_Column" >
+    a.ip_type,a.src_ip_address,a.ip_pattern,a.port_pattern,a.src_port
+    ,a.protocol,a.protocol_id,a.direction,a.dest_port,a.dest_ip_address,a.cfg_type,a.asn_ip_group,
+    a.user_region1,a.region_id
+  </sql>
+  <sql id="StrCfg_Column" >
+  a.cfg_keywords,a.cfg_type,
+  a.expr_type,a.match_method,a.is_hexbin,a.compile_id
+  </sql>
+  <sql id="ComplexCfg_Column" >
+  a.cfg_keywords,a.district,a.cfg_type,
+  a.expr_type,a.match_method,a.is_hexbin,a.compile_id
+  </sql>
+  <sql id="DigestCfg_Column" >
+  a.cfg_id,a.cfg_desc,a.action,a.is_valid,a.is_audit,a.creator_id,a.audit_time,
+	a.service_id,a.request_id,a.compile_id,a.is_area_effective,a.classify,a.attribute,a.lable,
+	a.area_effective_ids,a.function_id,a.do_log,a.user_region1,a.user_region2,
+	a.user_region3,a.user_region4,a.user_region5,a.raw_len,a.digest,a.cfds_level,a.file_url
+  </sql>
+  <sql id="PxyObjTrustedCaCertColumns">
+		 a.cfg_id,a.cfg_desc
+	    ,a.cert_file
+	   , a.issuer
+		,a.cfg_type,a.action
+		,a.is_valid,a.is_audit,a.creator_id,a.create_time,a.editor_id
+		,a.edit_time,a.auditor_id,a.audit_time,a.service_id,a.request_id
+		,a.is_area_effective,a.classify,a.attribute,a.lable
+		,a.area_effective_ids,a.function_id,a.cfg_region_code,a.compile_id
+	</sql>
+	<sql id="PxyObjTrustedCaCrlColumns">
+		 a.cfg_id,a.cfg_desc
+	    ,a.crl_file
+	    ,a.cert_id
+	   , a.issuer
+		,a.cfg_type,a.action
+		,a.is_valid,a.is_audit,a.creator_id,a.create_time,a.editor_id
+		,a.edit_time,a.auditor_id,a.audit_time,a.service_id,a.request_id
+		,a.is_area_effective,a.classify,a.attribute,a.lable
+		,a.area_effective_ids,a.function_id,a.cfg_region_code,a.compile_id
+	</sql>
+    <sql id="PxyObjKeyringColumns">
+		 a.cfg_id,a.cfg_desc
+		, a.keyring_type
+	    ,a.private_key_file
+	    ,a.public_key_file
+	    ,a.expire_after
+	   , a.public_key_algo
+	   , a.crl
+	   , a.issuer
+	    ,a.subject
+	    ,a.not_before_time
+	    ,a.not_after_time
+	    ,a.cn
+	    ,a.alt_name
+		,a.cfg_type,a.action
+		,a.is_valid,a.is_audit,a.creator_id,a.create_time,a.editor_id
+		,a.edit_time,a.auditor_id,a.audit_time,a.service_id,a.request_id
+		,a.is_area_effective,a.classify,a.attribute,a.lable
+		,a.area_effective_ids,a.function_id,a.cfg_region_code,a.compile_id
+	</sql>
+	<sql id="AvFileSample_Column" >
+    a.CFG_ID, a.SRC_URL,a.SAMPLE_URL, a.SRC_MD5,a.SAMPLE_MD5,a.CFG_DESC,a.ACTION,a.IS_VALID,a.IS_AUDIT,
+    a.CREATOR_ID,a.CREATE_TIME,a.EDITOR_ID,a.EDIT_TIME,a.AUDITOR_ID,a.AUDIT_TIME,
+    a.SERVICE_ID,a.REQUEST_ID,a.COMPILE_ID,a.IS_AREA_EFFECTIVE,a.CLASSIFY,
+    a.ATTRIBUTE,a.LABLE,a.AREA_EFFECTIVE_IDS,a.function_id,a.cfg_type,a.cfg_region_code,a.LEVEL,
+    a.src_path,a.sample_path
+  </sql>
+  <sql id="AvSignSample_Column" >
+    a.CFG_ID, a.description,a.CFG_DESC,a.ACTION,a.IS_VALID,a.IS_AUDIT,
+    a.CREATOR_ID,a.CREATE_TIME,a.EDITOR_ID,a.EDIT_TIME,a.AUDITOR_ID,a.AUDIT_TIME,
+    a.SERVICE_ID,a.REQUEST_ID,a.COMPILE_ID,a.IS_AREA_EFFECTIVE,a.CLASSIFY,
+    a.ATTRIBUTE,a.LABLE,a.AREA_EFFECTIVE_IDS,a.function_id,a.cfg_type,a.cfg_region_code,a.LEVEL,a.do_log
+  </sql>
+  <sql id="DnsResStrategyColumns">
+		 a.cfg_id,a.cfg_desc,a.res_group_1_id,
+		a.res_group_1_num,a.res_group_2_id,a.res_group_2_num,a.res_group_3_id
+		,a.res_group_3_num,a.res_group_4_id,a.res_group_4_num
+		,a.res_group_5_id,a.res_group_5_num,a.min_ttl
+		,a.max_ttl,a.cfg_type,a.action
+		,a.is_valid,a.is_audit,a.creator_id,a.create_time,a.editor_id
+		,a.edit_time,a.auditor_id,a.audit_time,a.service_id,a.request_id
+		,a.is_area_effective,a.classify,a.attribute,a.lable
+		,a.area_effective_ids,a.function_id,a.cfg_region_code,a.compile_id
+	</sql>
+	<sql id="DnsIpCfgColumns">
+	    a.cfg_id,a.cfg_desc,a.ip_type,a.src_ip_address,a.ip_pattern,a.port_pattern,a.src_port
+	    ,a.protocol,a.protocol_id,a.direction,a.cfg_type,a.action,a.dest_port,a.dest_ip_address
+		,a.is_valid,a.is_audit,a.creator_id,a.create_time,a.editor_id
+		,a.edit_time,a.auditor_id,a.audit_time,a.service_id,a.request_id,
+		a.compile_id,a.is_area_effective,a.classify,a.attribute,a.lable
+		,a.area_effective_ids,a.function_id,a.cfg_region_code,a.dns_strategy_id
+    </sql>
+    <sql id="AppPolicyCfg_Column" >
+    a.CFG_ID, a.APP_CODE,a.BEHAV_CODE,a.SPEC_SERVICE_ID,a.CFG_DESC,a.ACTION,a.IS_VALID,a.IS_AUDIT,
+    a.CREATOR_ID,a.CREATE_TIME,a.EDITOR_ID,a.EDIT_TIME,a.AUDITOR_ID,a.AUDIT_TIME,
+    a.SERVICE_ID,a.REQUEST_ID,a.COMPILE_ID,a.IS_AREA_EFFECTIVE,a.CLASSIFY,
+    a.ATTRIBUTE,a.LABLE,a.AREA_EFFECTIVE_IDS,a.RATELIMIT,a.FUNCTION_ID,
+    a.CFG_TYPE,a.CFG_REGION_CODE,a.EXPR_TYPE,a.MATCH_METHOD,a.IS_HEXBIN,a.USER_REGION1,a.USER_REGION2,
+    a.USER_REGION3,a.USER_REGION4,a.USER_REGION5,a.DO_LOG
+  </sql>
+   <sql id="AppFeatureIndex_Column" >
+	    a.CFG_ID,a.CFG_DESC,a.ACTION,a.IS_VALID,a.IS_AUDIT,
+	    a.CREATOR_ID,a.CREATE_TIME,a.EDITOR_ID,a.EDIT_TIME,a.AUDITOR_ID,a.AUDIT_TIME,
+	    a.SERVICE_ID,a.REQUEST_ID,a.COMPILE_ID,a.IS_AREA_EFFECTIVE,a.CLASSIFY,
+	    a.ATTRIBUTE,a.LABLE,a.AREA_EFFECTIVE_IDS,a.function_id,a.CFG_REGION_TYPE,a.CFG_REGION_VALUE,a.user_region1,
+	    a.user_region2,a.user_region3,a.user_region4,a.user_region5,a.do_log,a.feature_table,
+	    a.feature_table_type,a.app_code,a.spec_service_id,a.cfg_region_code
+   </sql>
+   <sql id="AppIpCfg_Column" >
+    a.ip_type,a.src_ip_address,a.ip_pattern,a.port_pattern,a.src_port
+    ,a.protocol,a.direction,a.dest_port,a.dest_ip_address,a.cfg_type,a.compile_id
+  </sql>
+  <!-- <sql id="WebsiteDomainTopic_Column">
+		id,website_service_id websiteServiceId,domain,topic_id topicId,create_time createTime,creator_id creatorId,is_valid isValid
+  </sql>
+  
+  
+  <sql id="AppIpCfg_Column" >
+    a.CFG_ID, a.APP_CODE,a.BEHAV_CODE,a.SPEC_SERVICE_ID, a.CFG_DESC,a.ACTION,a.IS_VALID,a.IS_AUDIT,
+    a.CREATOR_ID,a.CREATE_TIME,a.EDITOR_ID,a.EDIT_TIME,a.AUDITOR_ID,a.AUDIT_TIME,
+    a.SERVICE_ID,a.REQUEST_ID,a.COMPILE_ID,a.IS_AREA_EFFECTIVE,a.CLASSIFY,
+    a.ATTRIBUTE,a.LABLE,AREA_EFFECTIVE_IDS,a.RATELIMIT,a.FUNCTION_ID,a.CFG_TYPE,a.CFG_REGION_CODE,
+    a.IP_TYPE, a.IP_PATTERN, a.SRC_IP_ADDRESS,a.DEST_IP_ADDRESS, a.PORT_PATTERN,a.SRC_PORT,DEST_PORT,
+    a.DIRECTION,a.PROTOCOL,a.DO_LOG,a.USER_REGION1,a.USER_REGION2,a.USER_REGION3,a.USER_REGION4,a.USER_REGION5
+  </sql>
+  
+  <sql id="AppComplexStrCfg_Column" >
+    a.CFG_ID, a.APP_CODE,a.BEHAV_CODE,a.SPEC_SERVICE_ID,a.CFG_DESC,ACTION,a.IS_VALID,a.IS_AUDIT,
+    a.CREATOR_ID,a.CREATE_TIME,a.EDITOR_ID,a.EDIT_TIME,a.AUDITOR_ID,a.AUDIT_TIME,
+    a.SERVICE_ID,a.REQUEST_ID,a.COMPILE_ID,a.IS_AREA_EFFECTIVE,a.CLASSIFY,
+    a.ATTRIBUTE,a.LABLE,a.AREA_EFFECTIVE_IDS,a.RATELIMIT,a.FUNCTION_ID,a.CFG_TYPE,a.CFG_REGION_CODE,
+    a.DISTRICT,a.CFG_KEYWORDS,a.EXPR_TYPE,a.MATCH_METHOD,a.IS_HEXBIN,a.DO_LOG
+  </sql>
+  <sql id="AppDomainCfg_Column" >
+    a.CFG_ID, a.APP_CODE,a.BEHAV_CODE,a.SPEC_SERVICE_ID,a.CFG_DESC,a.ACTION,a.IS_VALID,a.IS_AUDIT,
+    a.CREATOR_ID,a.CREATE_TIME,a.EDITOR_ID,a.EDIT_TIME,a.AUDITOR_ID,a.AUDIT_TIME,
+    a.SERVICE_ID,a.REQUEST_ID,a.COMPILE_ID,a.IS_AREA_EFFECTIVE,a.CLASSIFY,
+    a.ATTRIBUTE,a.LABLE,a.AREA_EFFECTIVE_IDS,a.RATELIMIT,a.FUNCTION_ID,a.CFG_TYPE,a.CFG_REGION_CODE,
+    a.DOMAIN,a.EXPR_TYPE,a.MATCH_METHOD,a.IS_HEXBIN,a.DO_LOG
+  </sql>
+  <sql id="AppByteCfg_Column" >
+    a.CFG_ID, a.APP_CODE,a.BEHAV_CODE,a.SPEC_SERVICE_ID,a.CFG_DESC,a.ACTION,a.IS_VALID,a.IS_AUDIT,
+    a.CREATOR_ID,a.CREATE_TIME,a.EDITOR_ID,a.EDIT_TIME,a.AUDITOR_ID,a.AUDIT_TIME,
+    a.SERVICE_ID,a.REQUEST_ID,a.COMPILE_ID,a.IS_AREA_EFFECTIVE,a.CLASSIFY,
+    a.ATTRIBUTE,a.LABLE,a.AREA_EFFECTIVE_IDS,a.RATELIMIT,a.FUNCTION_ID,a.CFG_TYPE,a.CFG_REGION_CODE,
+    a.BYTES,a.EXPR_TYPE,a.MATCH_METHOD,a.IS_HEXBIN,a.DO_LOG
+  </sql> -->
+  <select id="getAppPolicyList" resultMap="AppPolicyCfgMap" parameterType="com.nis.domain.configuration.AppPolicyCfg" >
+		select 
+		<include refid="AppPolicyCfg_Column"/>	
+		<trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,u.name as auditor_name
+		</trim>
+		from app_policy_cfg a 
+		left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit} and a.is_valid!=-1
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="getAppFeatureIndexList" resultMap="AppFeatureIndexMap">
+		select 
+		<include refid="AppFeatureIndex_Column"/>	
+		<trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,u.name as auditor_name
+		</trim>
+		from app_feature_index a
+		left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit} and a.is_valid!=-1
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="getCfgIndexList" resultMap="CfgIndexInfoMap" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+		SELECT 
+	    <include refid="BaseCfg_Column" />
+	    <trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,u.name as auditor_name
+			<if test="serviceId !=null and serviceId == 18">
+		    	,dns.cfg_desc as dns_strategy_name
+		    </if>
+		</trim>
+	    FROM cfg_index_info a
+	    <if test="serviceId !=null and serviceId == 18">
+	    	left join dns_res_strategy dns on a.dns_strategy_id=dns.cfg_id
+	    </if>
+	    left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+		
+	    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    	and a.is_valid!=-1
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+   <select id="getFileDigestListByService" resultMap="digestCfgMap" parameterType="com.nis.domain.configuration.FileDigestCfg" >
+		SELECT 
+	    <include refid="DigestCfg_Column" />
+	    <trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,u.name as auditor_name
+		</trim>
+	    FROM file_digest_cfg a
+	    left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+		
+	    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    	and a.is_valid!=-1
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="getIpPortList" resultMap="ipPortMap" parameterType="com.nis.domain.configuration.CfgIndexInfo">
+		 SELECT 
+			 <include refid="IpCfg_Column" />
+	    FROM ${tableName} a 
+	    <where>
+	    	and a.compile_id in 	
+	    	<foreach collection="compileIds" index="index" item="compileId" open="(" separator="," close=")">
+                #{compileId}       
+        	</foreach>
+	    </where>
+  </select>
+  <select id="getIpDropList" resultMap="ipPortMap" parameterType="com.nis.domain.configuration.CfgIndexInfo">
+		 SELECT 
+			 <include refid="IpDropCfg_Column" />
+	    FROM ${tableName} a 
+	    <where>
+	    	and a.compile_id in 	
+	    	<foreach collection="compileIds" index="index" item="compileId" open="(" separator="," close=")">
+                #{compileId}       
+        	</foreach>
+	    </where>
+  </select>
+  <select id="getAppIpPortList" resultMap="ipPortMap" parameterType="com.nis.domain.configuration.CfgIndexInfo">
+		 SELECT 
+				<include refid="AppIpCfg_Column" />
+	    FROM ${tableName} a 
+	    <where>
+	    	and a.compile_id in 	
+	    	<foreach collection="compileIds" index="index" item="compileId" open="(" separator="," close=")">
+                #{compileId}       
+        	</foreach>
+	    </where>
+  </select>
+  <select id="getAsnIpList" resultType="com.nis.domain.basics.AsnIpCfg">
+		 SELECT 
+	     <include refid="AsnIpCfg_Column" />
+	    FROM asn_ip_cfg a 
+	    <where>
+	    	a.is_valid!=-1
+	    	<if test="isAudit != null">
+	    		AND a.is_audit=#{isAudit,jdbcType=INTEGER}
+	    	</if>
+	    	and a.asn_ip_group in 	
+	    	<foreach collection="asnGroupIds" index="index" item="groupId" open="(" separator="," close=")">
+                #{groupId}       
+        	</foreach>
+		    <!-- <if test="compileId != null">
+	    		AND a.compile_id =#{compileId}
+	    	</if>
+		    <if test="functionId != null">
+	    		AND a.function_id =#{functionId}
+	    	</if>
+	    	<if test="serviceId!= null">
+	    		AND a.service_id =#{serviceId}
+	    	</if> -->
+	    </where>
+  </select>
+  <select id="getStrList" resultMap="stringCfgMap" >
+		 SELECT 
+	     <include refid="StrCfg_Column" />
+	    FROM ${tableName} a 
+	    <where>
+	    	and a.compile_id in 	
+	    	<foreach collection="compileIds" index="index" item="compileId" open="(" separator="," close=")">
+                #{compileId}       
+        	</foreach>
+		    <!-- <if test="compileId != null">
+	    		AND a.compile_id =#{compileId}
+	    	</if>
+		    <if test="functionId != null">
+	    		AND a.function_id =#{functionId}
+	    	</if>
+		    <if test="serviceId!= null">
+	    		AND a.service_id =#{serviceId}
+	    	</if> -->
+	    </where>
+  </select>
+  <select id="getComplexStrList" resultMap="complexCfgMap" parameterType="com.nis.domain.configuration.CfgIndexInfo">
+		 SELECT 
+	     <include refid="ComplexCfg_Column" />
+	    FROM ${tableName} a 
+	    <where>
+	    	and a.compile_id in 	
+	    	<foreach collection="compileIds" index="index" item="compileId" open="(" separator="," close=")">
+                #{compileId}       
+        	</foreach>
+		   <!--  <if test="compileId != null">
+	    		AND a.compile_id =#{compileId}
+	    	</if>
+		    <if test="functionId != null">
+	    		AND a.function_id =#{functionId}
+	    	</if>
+		    <if test="serviceId!= null">
+	    		AND a.service_id =#{serviceId}
+	    	</if> -->
+	    </where>
+  </select>
+   <select id="getFileDigestList" resultMap="digestCfgMap" parameterType="com.nis.domain.configuration.CfgIndexInfo" >
+		SELECT 
+	    <include refid="DigestCfg_Column" />
+	    FROM ${tableName} a 
+	   <where>
+	    	and a.compile_id in 	
+	    	<foreach collection="compileIds" index="index" item="compileId" open="(" separator="," close=")">
+                #{compileId}       
+        	</foreach>
+	   </where>
+  </select>
+  <select id="getPxyObjTrustedCertCfgList"  resultMap="PxyObjTrustedCaCertMap" parameterType="com.nis.domain.configuration.BaseCfg" >
+		SELECT 
+	   		<include refid="PxyObjTrustedCaCertColumns"/>
+	    <trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,u.name as auditor_name
+		</trim>
+	    FROM pxy_obj_trusted_ca_cert a
+	    left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+	    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    	and a.is_valid!=-1
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="getPxyObjTrustedCrlCfgList"  resultMap="PxyObjTrustedCaCrlMap" parameterType="com.nis.domain.configuration.BaseCfg" >
+		SELECT 
+	   		<include refid="PxyObjTrustedCaCrlColumns"/>
+	    <trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,u.name as auditor_name
+		</trim>
+	    FROM pxy_obj_trusted_ca_crl a
+	    left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+	    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    	and a.is_valid!=-1
+	    	and (cert_id is null or cert_id == 0)
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="getPxyObjTrustedCrlCfgListByCertId"  resultMap="PxyObjTrustedCaCrlMap" >
+		SELECT 
+	   		<include refid="PxyObjTrustedCaCrlColumns"/>
+	    FROM pxy_obj_trusted_ca_crl a
+	    <where>
+		        and cert_id in 
+		        <foreach collection="certIds" index="index" item="certId" open="(" separator="," close=")">
+		               #{certId}       
+		       	</foreach>
+	    </where>
+  </select>
+  <select id="getPxyObjKeyringCfgList"  resultMap="PxyObjKeyringMap" parameterType="com.nis.domain.configuration.BaseCfg" >
+		SELECT 
+	   		<include refid="PxyObjKeyringColumns"/>
+	    <trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,u.name as auditor_name
+		</trim>
+	    FROM pxy_obj_keyring a
+	    left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+	    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    	and a.is_valid!=-1
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="getAvFileCfgList"  resultMap="AvFileSampleMap" parameterType="com.nis.domain.configuration.BaseCfg" >
+		SELECT 
+	   		<include refid="AvFileSample_Column"/>
+	    <trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,u.name as auditor_name
+		</trim>
+	    FROM av_file_sample_cfg a
+	    left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+	    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    	and a.is_valid!=-1
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+   <select id="getAvSignCfgList" resultMap="AvSignSampleMap" parameterType="com.nis.domain.configuration.BaseCfg" >
+    SELECT 
+    <include refid="AvSignSample_Column" />
+    FROM av_sign_sample_cfg a
+    left join sys_user s on a.creator_id=s.id
+	left join sys_user u on a.auditor_id=u.id
+    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+    	<if test="serviceId != null">
+    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+    	</if>
+    	<if test="functionId != null">
+    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+    	</if>
+    	<if test="action != null">
+    		AND a.action=#{action,jdbcType=INTEGER}
+    	</if>
+    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+    	and a.is_valid!=-1
+    </trim>
+	ORDER BY a.CFG_ID
+  </select>
+  <select id="getDnsStrategyList" resultMap="DnsResStrategyMap">
+		SELECT
+			<include refid="DnsResStrategyColumns"/>
+		<trim prefix="," prefixOverrides=",">
+			, g.group_name group_1_name,s.name as creator_name,u.name as auditor_name
+		</trim>
+	    FROM  dns_res_strategy a
+	    left join policy_group_info g on a.res_group_1_id=g.group_Id
+	    left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+	    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    	and a.is_valid!=-1
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="getDnsIpCfgList" resultMap="dnsIpCfgMap">
+    	select 
+    		<include refid="DnsIpCfgColumns"></include>
+    		 <trim prefix="," prefixOverrides=",">
+				,s.name as creator_name,u.name as auditor_name
+				,dns.group_name as dns_strategy_name
+			</trim>
+    	from dns_ip_cfg a
+    	left join policy_group_info dns on dns.group_id=a.dns_strategy_id
+    	left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+    	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    	and a.is_valid!=-1
+	    </trim>
+		ORDER BY a.CFG_ID
+    </select>
+    
+    <select id="getIpPortListByService" resultMap="ipPortMap" >
+    		<include refid="IpCfg_AllColumn"></include>
+    		 <trim prefix="," prefixOverrides=",">
+				,s.name as creator_name,u.name as auditor_name
+				<if test="serviceId==1028">
+	     		,a.app_code,a.spec_service_id,a.behav_code
+	     		</if>
+			</trim>
+    	from ${tableName} a
+    	left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+    	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    	and a.is_valid!=-1
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="getDdosIpCfgList" resultType="com.nis.domain.configuration.DdosIpCfg" >
+		 select 
+    		<include refid="DdosIpCfg_Column"></include>
+    		 <trim prefix="," prefixOverrides=",">
+				,s.name as creator_name,u.name as auditor_name
+			</trim>
+    	from ddos_ip_cfg a
+    	left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+    	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    	and a.is_valid!=-1
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="getStrListByService" resultMap="stringCfgMap" >
+		 select 
+		 	a.cfg_id,a.cfg_desc,a.action,a.is_valid,a.is_audit,a.creator_id,a.audit_time,
+	a.service_id,a.request_id,a.is_area_effective,a.classify,a.attribute,a.lable,
+	a.area_effective_ids,a.function_id,a.do_log,a.user_region1,a.user_region2,
+	a.user_region3,a.user_region4,a.user_region5,
+	<choose>
+		<when test="serviceId==1026 or serviceId==1152">
+			a.domain as cfg_keywords,
+		</when>
+		<otherwise>
+			a.cfg_keywords,
+		</otherwise>
+	</choose>   		
+    a.cfg_type, a.expr_type,a.match_method,a.is_hexbin,a.compile_id		
+    		 <trim prefix="," prefixOverrides=",">
+				,s.name as creator_name,u.name as auditor_name
+				<if test="serviceId==1024 or serviceId==1026 or serviceId==1029">
+	     		,a.app_code,a.spec_service_id,a.behav_code
+	     		</if>
+			</trim>
+    	from ${tableName} a
+    	left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+    	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    	and a.is_valid!=-1
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="getComplexStrListByService" resultMap="complexCfgMap" >
+		 select 
+		 	a.cfg_id,a.cfg_desc,a.action,a.is_valid,a.is_audit,a.creator_id,a.audit_time,
+	a.service_id,a.request_id,a.is_area_effective,a.classify,a.attribute,a.lable,
+	a.area_effective_ids,a.function_id,a.do_log,a.user_region1,a.user_region2,
+	a.user_region3,a.user_region4,a.user_region5,
+    		<include refid="ComplexCfg_Column"></include>
+    		 <trim prefix="," prefixOverrides=",">
+				,s.name as creator_name,u.name as auditor_name
+				<if test="serviceId==1024 or serviceId==1026 or serviceId==1029">
+	     			,a.app_code,a.spec_service_id,a.behav_code
+	     		</if>
+			</trim>
+    	from ${tableName} a
+    	left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+    	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    	and a.is_valid!=-1
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="getAppIpFeatureList" resultType="com.nis.domain.configuration.AppIpCfg" parameterType="com.nis.domain.configuration.CfgIndexInfo">
+		 select 
+		 	a.cfg_id,a.cfg_desc,a.action,a.is_valid,a.is_audit,a.creator_id,a.audit_time,
+	a.service_id,a.request_id,a.is_area_effective,a.classify,a.attribute,a.lable,
+	a.area_effective_ids,a.function_id,a.do_log,a.user_region1,a.user_region2,
+	a.user_region3,a.user_region4,a.user_region5,
+    		<include refid="AppIpCfg_Column"></include>
+    		 <trim prefix="," prefixOverrides=",">
+				,s.name as creator_name,u.name as auditor_name
+	     		,a.app_code,a.spec_service_id,a.behav_code
+			</trim>
+    	from ${tableName} a
+    	left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+    	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    	and a.is_valid!=-1
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <!-- <select id="findAppPolicyList" resultMap="AppPolicyCfgMap" parameterType="com.nis.domain.configuration.AppPolicyCfg" >
+		select 
+		<include refid="AppPolicyCfg_Column"/>	
+		<trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,u.name as auditor_name
+		</trim>
+		from app_policy_cfg r 
+		left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="findAppIpList" resultMap="AppIpCfgMap">
+		select 
+		<include refid="AppIpCfg_Column"/>	
+		<trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,e.name as editor_name,u.name as auditor_name
+		</trim>
+		from app_ip_cfg r 
+		left join sys_user s on a.creator_id=s.id
+		left join sys_user e on a.editor_id=e.id
+		left join sys_user u on a.auditor_id=u.id
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="findAppHttpList" resultMap="AppHttpCfgMap">
+		select 
+		<include refid="AppHttpCfg_Column"/>	
+		<trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,e.name as editor_name,u.name as auditor_name
+		</trim>
+		from app_http_cfg r 
+		left join sys_user s on a.creator_id=s.id
+		left join sys_user e on a.editor_id=e.id
+		left join sys_user u on a.auditor_id=u.id
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="findAppDomainList" resultMap="AppDomainCfgMap">
+		select 
+		<include refid="AppDomainCfg_Column"/>	
+		<trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,e.name as editor_name,u.name as auditor_name
+		</trim>
+		from app_domain_cfg r 
+		left join sys_user s on a.creator_id=s.id
+		left join sys_user e on a.editor_id=e.id
+		left join sys_user u on a.auditor_id=u.id
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  主题网站列表
+  <select id="findAppTopicDomainList" resultMap="AppTopicDomainCfgMap">
+		select 
+		<include refid="AppTopicDomainCfg_Column"/>	
+		<trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,e.name as editor_name,u.name as auditor_name
+		</trim>
+		from app_topic_domain_cfg r 
+		left join sys_user s on a.creator_id=s.id
+		left join sys_user e on a.editor_id=e.id
+		left join sys_user u on a.auditor_id=u.id
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="findAppByteList" resultMap="AppByteCfgMap">
+		select 
+		<include refid="AppByteCfg_Column"/>	
+		<trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,u.name as auditor_name
+		</trim>
+		from app_byte_cfg r 
+		left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+
+  <select id="findAppSslList" resultMap="AppSslCfgMap">
+		select 
+		<include refid="AppSslCfg_Column"/>	
+		<trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,u.name as auditor_name
+		</trim>
+		from app_ssl_cert_cfg r 
+		left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  <select id="findAppHeaderList" resultMap="AppHeaderCfgMap">
+		select 
+		<include refid="AppHeaderCfg_Column"/>	
+		<trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,u.name as auditor_name
+		</trim>
+		from app_layer_header_cfg r 
+		left join sys_user s on a.creator_id=s.id
+		left join sys_user u on a.auditor_id=u.id
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.action=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	and a.is_valid=#{isValid} and a.is_audit=#{isAudit}
+	    </trim>
+		ORDER BY a.CFG_ID
+  </select>
+  查询APP策略IP子配置
+  <select id="getAppPolicyIpList" resultMap="ipPortMap" parameterType="com.nis.domain.configuration.CfgIndexInfo">
+		 SELECT 
+	     <include refid="IpCfg_Column" />
+	    FROM ip_port_cfg a where compile_id=#{compileId}  and function_id=#{functionId}
+  </select>
+  
+  查询域名关联表
+   <select id="getDomainDict" resultMap="WebsiteDomainTopicMap" parameterType="com.nis.domain.configuration.WebsiteDomainTopic" >
+		select 
+		<include refid="WebsiteDomainTopic_Column"/>
+		from website_domain_topic r 
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+  			<if test="id != null">
+    			AND a.id=#{id,jdbcType=BIGINT}
+    		</if>
+  			<if test="websiteServiceId != null">
+    			AND a.website_service_id=#{websiteServiceId,jdbcType=BIGINT}
+    		</if>
+  			<if test="topicId != null">
+    			AND a.topic_id=#{topicId,jdbcType=BIGINT}
+    		</if>
+	    	<if test="domain != null and domain !=''">
+	    		AND a.domain=#{domain,jdbcType=VARCHAR}
+	    	</if>
+	    	<if test="isValid != null">
+	    		AND a.IS_VALID=#{isValid,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid == null">
+	    		AND a.IS_VALID != -1
+	    	</if>
+	    	<if test="createTime != null and createTime != ''">
+	    		AND a.CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}
+	    	</if>
+		</trim>
+  </select> -->
+</mapper>

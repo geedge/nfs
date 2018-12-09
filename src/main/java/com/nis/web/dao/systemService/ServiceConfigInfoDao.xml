@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.systemService.ServiceConfigInfoDao" >
+
+	<resultMap id="serviceConfigInfo" type="com.nis.domain.ServiceConfigInfo">
+		<id column="id" property="id"/>
+	    <result column="table_name" property="tableName"/>
+	    <result column="table_desc" property="tableDesc"/>
+	    <result column="table_type" property="tableType"/>
+	    <result column="maat_table" property="maatTable"/>
+	    <result column="service_id" property="serviceId"/>
+	    <result column="is_valid" property="isValid"/>
+	</resultMap>
+	
+	<select id="findSysServiceConfigInfo" resultType="serviceConfigInfo">
+		select
+			id,
+			table_name,
+			table_desc,
+			table_type,
+			maat_table,
+			service_id,
+			is_valid,
+			is_initianlize
+		from
+			service_config_info
+		where
+			service_id=#{service_id} and is_valid=1
+	</select>
+	<select id="findList" resultMap="serviceConfigInfo">
+		select
+			id,
+			table_name,
+			table_desc,
+			table_type,
+			maat_table,
+			service_id,
+			is_valid,
+			is_initianlize
+		from
+			service_config_info
+		where
+			service_id=#{service_id} and is_valid=1
+	</select>
+
+	<insert id="insert">
+		insert into service_config_info (
+			table_name, table_desc, table_type, maat_table, service_id, is_valid, is_initianlize
+		) values (
+			#{tableName}, #{tableDesc}, #{tableType}, #{maatTable}, #{serviceId}, #{isValid},
+			#{isInitianlize}
+		)
+	</insert>
+
+	<update id="update">
+		update
+			service_config_info
+		set
+			table_name=#{tableName},
+			table_desc=#{tableDesc},
+			table_type=#{tableType},
+			maat_table=#{maatTable},
+			service_id=#{serviceId},
+			is_valid=#{isValid}
+		where id=#{id}
+	</update>
+	
+</mapper>

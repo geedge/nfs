@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.configuration.DomainDao" >
+  <resultMap id="BaseStringMap" type="com.nis.domain.configuration.HttpUrlCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="cfg_keywords" property="cfgKeywords" jdbcType="VARCHAR" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="expr_type" property="exprType" jdbcType="INTEGER" />
+    <result column="match_method" property="matchMethod" jdbcType="INTEGER" />
+    <result column="is_hexbin" property="isHexbin" jdbcType="INTEGER" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="VARCHAR" />
+    <result column="ratelimit" property="ratelimit" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="BaseStringMapWithUser" type="com.nis.domain.configuration.HttpUrlCfg" extends="BaseStringMap">
+    <result column="creator_name" property="creatorName" jdbcType="VARCHAR" />
+    <result column="auditor_name" property="auditorName" jdbcType="VARCHAR" />
+    <result column="editor_name" property="editorName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="HttpUrlCfg_Column_List_with_id" >
+    CFG_ID, CFG_DESC, CFG_KEYWORDS,CFG_TYPE,ACTION,IS_VALID,IS_AUDIT,
+    CREATOR_ID,CREATE_TIME,EDITOR_ID,EDIT_TIME,AUDITOR_ID,AUDIT_TIME,
+    SERVICE_ID,REQUEST_ID,COMPILE_ID,IS_AREA_EFFECTIVE,CLASSIFY,
+    ATTRIBUTE,LABLE,AREA_EFFECTIVE_IDS,EXPR_TYPE,MATCH_METHOD,IS_HEXBIN,FUNCTION_ID,CFG_REGION_CODE,RATELIMIT
+  </sql>
+  <sql id="HttpUrlCfg_Column_List_with_id_alias" >
+  	<choose>
+  		<when test="page !=null and page.alias != null and page.alias != ''">
+  			${page.alias}.CFG_ID as cfgId, ${page.alias}.CFG_DESC as cfgDesc, ${page.alias}.CFG_KEYWORDS as cfgKeywords,${page.alias}.CFG_TYPE as cfgType,${page.alias}.ACTION as action,${page.alias}.IS_VALID as isValid,${page.alias}.IS_AUDIT as isAudit,
+    ${page.alias}.CREATOR_ID as creatorId,${page.alias}.CREATE_TIME AS createTime,${page.alias}.EDITOR_ID as editorId,${page.alias}.EDIT_TIME AS editTime,${page.alias}.AUDITOR_ID as auditorId,${page.alias}.AUDIT_TIME AS auditTime,
+    ${page.alias}.SERVICE_ID as serviceId,${page.alias}.REQUEST_ID AS requestId,${page.alias}.COMPILE_ID AS compileId,${page.alias}.IS_AREA_EFFECTIVE as isAreaEffective,${page.alias}.classify,
+    ${page.alias}.ATTRIBUTE AS attribute,${page.alias}.LABLE AS lable,${page.alias}.EXPR_TYPE as exprType,${page.alias}.MATCH_METHOD as matchMethod,${page.alias}.IS_HEXBIN as isHexbin,${page.alias}.AREA_EFFECTIVE_IDS AS areaEffectiveIds,${page.alias}.FUNCTION_ID AS functionId,${page.alias}.CFG_REGION_CODE as cfgRegionCode
+  		,${page.alias}.RATELIMIT as ratelimit
+  		</when>
+  		<otherwise>
+  			 r.CFG_ID as cfgId, r.CFG_DESC as cfgDesc, r.CFG_KEYWORDS as cfgKeywords,r.CFG_TYPE as cfgType, r.ACTION as action,r.IS_VALID as isValid,r.IS_AUDIT as isAudit,
+    r.CREATOR_ID as creatorId,r.CREATE_TIME AS createTime,r.EDITOR_ID as editorId,r.EDIT_TIME AS editTime,r.AUDITOR_ID as auditorId,r.AUDIT_TIME AS auditTime,
+    r.SERVICE_ID as serviceId,r.REQUEST_ID AS requestId,r.COMPILE_ID AS compileId,r.IS_AREA_EFFECTIVE as isAreaEffective,r.classify,
+    r.ATTRIBUTE AS attribute,r.LABLE AS lable,r.EXPR_TYPE as exprType,r.MATCH_METHOD as matchMethod,r.IS_HEXBIN as isHexbin,
+    r.AREA_EFFECTIVE_IDS AS areaEffectiveIds,r.FUNCTION_ID AS functionId,r.CFG_REGION_CODE as cfgRegionCode
+  		,r.RATELIMIT as ratelimit
+  		</otherwise>
+  	</choose>
+  </sql>
+  <sql id="HttpUrlCfg_Column_List" >
+    CFG_DESC, CFG_KEYWORDS,CFG_TYPE, ACTION,IS_VALID,IS_AUDIT,
+    CREATOR_ID,CREATE_TIME,EDITOR_ID,EDIT_TIME,AUDITOR_ID,AUDIT_TIME,
+    SERVICE_ID,REQUEST_ID,COMPILE_ID,IS_AREA_EFFECTIVE,CLASSIFY,
+    ATTRIBUTE,LABLE,EXPR_TYPE,MATCH_METHOD,IS_HEXBIN,AREA_EFFECTIVE_IDS,FUNCTION_ID,CFG_REGION_CODE,
+    RATELIMIT
+  </sql>
+  <sql id="HttpUrlCfg_Value_List" >
+    #{cfgDesc,jdbcType=VARCHAR},#{cfgKeywords,jdbcType=VARCHAR},#{cfgType,jdbcType=VARCHAR},#{action,jdbcType=INTEGER}, 
+    #{isValid,jdbcType=INTEGER},#{isAudit,jdbcType=INTEGER},#{creatorId,jdbcType=INTEGER}, 
+    #{createTime,jdbcType=TIMESTAMP},#{editorId,jdbcType=INTEGER},#{editTime,jdbcType=TIMESTAMP}, 
+    #{auditorId,jdbcType=INTEGER},#{auditTime,jdbcType=TIMESTAMP},#{serviceId,jdbcType=INTEGER}, 
+    #{requestId,jdbcType=INTEGER},#{compileId,jdbcType=INTEGER},#{isAreaEffective,jdbcType=INTEGER},
+    #{classify,jdbcType=VARCHAR},#{attribute,jdbcType=VARCHAR},#{lable,jdbcType=VARCHAR},    
+    #{exprType,jdbcType=INTEGER},#{matchMethod,jdbcType=INTEGER},#{isHexbin,jdbcType=INTEGER},
+    #{areaEffectiveIds,jdbcType=VARCHAR},#{functionId,jdbcType=INTEGER},#{cfgRegionCode,jdbcType=INTEGER}
+    ,#{ratelimit,jdbcType=VARCHAR}
+  </sql>
+  <select id="getById" resultMap="BaseStringMap" parameterType="java.lang.Long" >
+    SELECT 
+    <include refid="HttpUrlCfg_Column_List_with_id" />
+    FROM HTTP_URL_CFG
+    WHERE CFG_ID = #{cfgId,jdbcType=BIGINT}
+  </select>
+  <select id="get" resultMap="BaseStringMap" >
+    SELECT 
+    <include refid="HttpUrlCfg_Column_List_with_id" />
+    FROM HTTP_URL_CFG
+    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+    	<if test="cfgId != null">
+    		AND CFG_ID=#{cfgId,jdbcType=BIGINT}
+    	</if>
+    	<if test="compileId != null">
+    		AND COMPILE_ID=#{compileId,jdbcType=INTEGER}
+    	</if>
+    	AND IS_VALID!=-1
+    </trim>
+  </select>
+  <select id="getListByCompileId" resultMap="BaseStringMap">
+    SELECT 
+    <include refid="HttpUrlCfg_Column_List_with_id" />
+     FROM HTTP_URL_CFG WHERE IS_VALID!=-1 AND COMPILE_ID in (${ids})
+  </select>
+  <select id="getListByCfgId" resultMap="BaseStringMap">
+    SELECT 
+    <include refid="HttpUrlCfg_Column_List_with_id" />
+     FROM HTTP_URL_CFG WHERE IS_VALID!=-1 AND CFG_ID in (${ids})
+  </select>
+  
+  <select id="findList" resultMap="BaseStringMapWithUser">
+		select 
+		<include refid="HttpUrlCfg_Column_List_with_id_alias"/>	
+		<trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,e.name as editor_name,u.name as auditor_name
+			,ri.request_title as requestName
+		</trim>
+		from HTTP_URL_CFG r 
+		left join sys_user s on r.creator_id=s.id
+		left join sys_user e on r.editor_id=e.id
+		left join sys_user u on r.auditor_id=u.id
+		left join request_info ri on r.request_id=ri.id
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="page !=null and page.where != null and page.where != ''">
+			 AND ${page.where}
+			</if>
+			<choose>
+		  		<when test="page !=null and page.alias != null and page.alias != ''">
+		  			<if test="cfgId != null">
+		    			AND ${page.alias}.CFG_ID=#{cfgId,jdbcType=BIGINT}
+		    		</if>
+			    	<if test="cfgDesc != null and cfgDesc != ''">
+			    		AND ${page.alias}.CFG_DESC like concat(concat('%',#{cfgDesc,jdbcType=VARCHAR}),'%') 
+			    	</if>
+			    	<if test="cfgKeywords != null and cfgKeywords != ''">
+		    			AND ${page.alias}.CFG_KEYWORDS like concat(concat('%',#{cfgKeywords,jdbcType=VARCHAR}),'%')
+		    		</if>
+			    	<if test="cfgType != null and cfgType != ''">
+		    			AND ${page.alias}.CFG_TYPE=#{cfgType,jdbcType=VARCHAR}
+		    		</if>
+			    	<if test="action != null">
+			    		AND ${page.alias}.ACTION=#{action,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="isValid != null">
+			    		AND ${page.alias}.IS_VALID=#{isValid,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="isValid == null">
+			    		AND ${page.alias}.IS_VALID != -1
+			    	</if>
+			    	<if test="isAudit != null">
+			    		AND ${page.alias}.IS_AUDIT=#{isAudit,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="creatorName != null and creatorName != ''">
+			    		AND CREATOR_NAME like concat(concat('%',#{creatorName,jdbcType=VARCHAR}),'%')
+			    	</if>
+			    	<if test="createTime != null and createTime != ''">
+			    		AND ${page.alias}.CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}
+			    	</if>
+			    	<if test="editorName != null and editorName != ''">
+			    		AND EDITOR_NAME like concat(concat('%',#{editorName,jdbcType=VARCHAR}),'%')
+			    	</if>
+			    	<if test="editTime != null and editTime != ''">
+			    		AND ${page.alias}.EDIT_TIME=#{editTime,jdbcType=TIMESTAMP}
+			    	</if>
+			    	<if test="auditorName != null and auditorName != ''">
+			    		AND AUDITOR_NAME like concat(concat('%',#{auditorName,jdbcType=VARCHAR}),'%')
+			    	</if>
+			    	<if test="auditTime != null and auditTime != ''">
+			    		AND ${page.alias}.AUDIT_TIME=#{auditTime,jdbcType=TIMESTAMP}
+			    	</if>
+			    	<if test="serviceId != null">
+			    		AND ${page.alias}.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="requestId != null">
+			    		AND ${page.alias}.REQUEST_ID=#{requestId,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="compileId != null">
+			    		AND ${page.alias}.COMPILE_ID=#{compileId,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="isAreaEffective != null">
+			    		AND ${page.alias}.IS_AREA_EFFECTIVE=#{isAreaEffective,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="classify != null and classify != ''">
+			    		AND ${page.alias}.classify like concat(concat('%',#{classify,jdbcType=VARCHAR}),'%')
+			    	</if>
+			    	<if test="attribute != null and attribute != ''">
+			    		AND ${page.alias}.attribute like concat(concat('%',#{attribute,jdbcType=VARCHAR}),'%')
+			    	</if>
+			    	<if test="lable != null and lable != ''">
+			    		AND ${page.alias}.lable like concat(concat('%',#{lable,jdbcType=VARCHAR}),'%')
+			    	</if>
+			    	<if test="exprType != null">
+		    			AND ${page.alias}.EXPR_TYPE=#{exprType,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="matchMethod != null">
+			    		AND ${page.alias}.MATCH_METHOD=#{matchMethod,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="isHexbin != null">
+			    		AND ${page.alias}.IS_HEXBIN=#{isHexbin,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="areaEffectiveIds != null and areaEffectiveIds != ''">
+			    		AND ${page.alias}.AREA_EFFECTIVE_IDS like concat(concat('%',#{areaEffectiveIds,jdbcType=VARCHAR}),'%')
+			    	</if>
+			    	<if test="functionId != null">
+			    		AND ${page.alias}.FUNCTION_ID =#{functionId,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="cfgRegionCode != null">
+			    		AND ${page.alias}.CFG_REGION_CODE =#{cfgRegionCode,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="ratelimit != null">
+			    		AND ${page.alias}.RATELIMIT =#{ratelimit,jdbcType=VARCHAR}
+			    	</if>
+		  		</when>
+		  		<otherwise>
+		  			<if test="cfgId != null">
+		    			AND r.CFG_ID=#{cfgId,jdbcType=BIGINT}
+		    		</if>
+			    	<if test="cfgDesc != null and cfgDesc != ''">
+			    		AND r.CFG_DESC like concat(concat('%',#{cfgDesc,jdbcType=VARCHAR}),'%') 
+			    	</if>
+			    	<if test="cfgKeywords != null and cfgKeywords != ''">
+		    			AND r.CFG_KEYWORDS like concat(concat('%',#{cfgKeywords,jdbcType=VARCHAR}),'%')
+		    		</if>
+			    	<if test="cfgType != null and cfgType != ''">
+		    			AND r.CFG_TYPE =#{cfgType,jdbcType=VARCHAR}
+		    		</if>
+			    	<if test="action != null">
+			    		AND r.ACTION=#{action,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="isValid != null">
+			    		AND r.IS_VALID=#{isValid,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="isValid == null">
+			    		AND r.IS_VALID != -1
+			    	</if>
+			    	<if test="isAudit != null">
+			    		AND r.IS_AUDIT=#{isAudit,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="creatorName != null and creatorName != ''">
+			    		AND CREATOR_NAME like concat(concat('%',#{creatorName,jdbcType=VARCHAR}),'%')
+			    	</if>
+			    	<if test="createTime != null and createTime != ''">
+			    		AND r.CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}
+			    	</if>
+			    	<if test="editorName != null and editorName != ''">
+			    		AND EDITOR_NAME like concat(concat('%',#{editorName,jdbcType=VARCHAR}),'%')
+			    	</if>
+			    	<if test="editTime != null and editTime != ''">
+			    		AND r.EDIT_TIME=#{editTime,jdbcType=TIMESTAMP}
+			    	</if>
+			    	<if test="auditorName != null and auditorName != ''">
+			    		AND AUDITOR_NAME like concat(concat('%',#{auditorName,jdbcType=VARCHAR}),'%')
+			    	</if>
+			    	<if test="auditTime != null and auditTime != ''">
+			    		AND r.AUDIT_TIME=#{auditTime,jdbcType=TIMESTAMP}
+			    	</if>
+			    	<if test="serviceId != null">
+			    		AND r.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="requestId != null">
+			    		AND r.REQUEST_ID=#{requestId,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="compileId != null">
+			    		AND r.COMPILE_ID=#{compileId,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="isAreaEffective != null">
+			    		AND r.IS_AREA_EFFECTIVE=#{isAreaEffective,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="classify != null and classify != ''">
+			    		AND r.classify like concat(concat('%',#{classify,jdbcType=VARCHAR}),'%')
+			    	</if>
+			    	<if test="attribute != null and attribute != ''">
+			    		AND r.attribute like concat(concat('%',#{attribute,jdbcType=VARCHAR}),'%')
+			    	</if>
+			    	<if test="lable != null and lable != ''">
+			    		AND r.lable like concat(concat('%',#{lable,jdbcType=VARCHAR}),'%')
+			    	</if>
+			    	<if test="exprType != null">
+		    			AND r.EXPR_TYPE=#{exprType,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="matchMethod != null">
+			    		AND r.MATCH_METHOD=#{matchMethod,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="isHexbin != null">
+			    		AND r.IS_HEXBIN=#{isHexbin,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="areaEffectiveIds != null and areaEffectiveIds != ''">
+			    		AND r.AREA_EFFECTIVE_IDS like concat(concat('%',#{areaEffectiveIds,jdbcType=VARCHAR}),'%')
+			    	</if>
+			    	<if test="functionId != null">
+			    		AND r.FUNCTION_ID =#{functionId,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="cfgRegionCode != null">
+			    		AND r.CFG_REGION_CODE =#{cfgRegionCode,jdbcType=INTEGER}
+			    	</if>
+			    	<if test="ratelimit != null">
+			    		AND r.RATELIMIT =#{ratelimit,jdbcType=VARCHAR}
+			    	</if>
+		  		</otherwise>
+		  	</choose>
+		  	<!-- 数据范围过滤 -->
+			${sqlMap.dsf}
+		</trim>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY CFG_ID desc
+			</otherwise>
+		</choose>
+  </select>
+  <select id="findAllList" resultMap="BaseStringMap">
+		select 
+		<choose>
+			<when test="page !=null and page.fields != null and page.fields != ''">
+				 ${page.fields}
+			</when>
+			<otherwise>
+				<include refid="HttpUrlCfg_Column_List_with_id"/>	
+			</otherwise>
+		</choose>
+		from HTTP_URL_CFG
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="page !=null and page.where != null and page.where != ''">
+			AND ${page.where}
+			</if>
+		</trim>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY CFG_ID desc
+			</otherwise>
+		</choose>
+  </select>
+  <insert id="insert" parameterType="com.nis.domain.configuration.HttpUrlCfg" >
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="cfgId">
+    	SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into HTTP_URL_CFG (
+     <include refid="HttpUrlCfg_Column_List" />
+    )values (
+     <include refid="HttpUrlCfg_Value_List" />
+    )
+  </insert>
+  <update id="update" parameterType="com.nis.domain.configuration.HttpUrlCfg" >
+    update HTTP_URL_CFG
+    <set >
+      <trim suffixOverrides=",">
+      <if test="cfgDesc != null and cfgDesc != ''" >
+        cfg_desc = #{cfgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="cfgKeywords != null and cfgKeywords != ''">
+    	cfg_keywords = #{cfgKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="cfgType != null and cfgType != ''">
+  		CFG_TYPE=#{cfgType,jdbcType=VARCHAR},
+  	  </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="isAudit != null" >
+        is_audit = #{isAudit,jdbcType=INTEGER},
+      </if>
+      <if test="creatorId != null" >
+        creator_id = #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editorId != null" >
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null and editTime != ''" >
+        edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorId != null" >
+        auditor_id = #{auditorId,jdbcType=INTEGER},
+      </if>
+      <if test="auditTime != null and auditTime != ''" >
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serviceId != null" >
+        service_id = #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="requestId != null" >
+        request_id = #{requestId,jdbcType=INTEGER},
+      </if>
+      <if test="compileId != null" >
+        compile_id = #{compileId,jdbcType=INTEGER},
+      </if>
+      <if test="isAreaEffective != null" >
+        is_area_effective = #{isAreaEffective,jdbcType=INTEGER},
+      </if>
+      <if test="classify != null and classify != ''" >
+        classify = #{classify,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null and attribute != ''" >
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="lable != null and lable != ''" >
+        lable = #{lable,jdbcType=VARCHAR},
+      </if>
+      <if test="exprType != null">
+    	expr_type=#{exprType,jdbcType=INTEGER},
+      </if>
+      <if test="matchMethod != null">
+    	match_method=#{matchMethod,jdbcType=INTEGER},
+      </if>
+      <if test="isHexbin != null">
+    	is_hexbin=#{isHexbin,jdbcType=INTEGER},
+      </if>
+      <if test="areaEffectiveIds != null" >
+        area_effective_ids =  #{areaEffectiveIds,jdbcType=VARCHAR},
+      </if>
+      <if test="functionId != null" >
+        function_id =  #{functionId,jdbcType=INTEGER},
+      </if>
+      <if test="cfgRegionCode != null" >
+        cfg_region_code =  #{cfgRegionCode,jdbcType=INTEGER},
+      </if>
+      <if test="ratelimit != null" >
+        ratelimit =  #{ratelimit,jdbcType=VARCHAR},
+      </if>
+      </trim>
+    </set>
+    where cfg_id = #{cfgId,jdbcType=BIGINT}
+  </update>
+  
+  <update id="updateValid" parameterType="com.nis.domain.configuration.HttpUrlCfg" >
+    update HTTP_URL_CFG set is_valid = #{isValid,jdbcType=INTEGER}, editor_id = #{editorId,jdbcType=INTEGER} , edit_time = #{editTime,jdbcType=TIMESTAMP} where cfg_id = #{cfgId,jdbcType=BIGINT}
+  </update>
+  <update id="audit" parameterType="com.nis.domain.configuration.HttpUrlCfg" >
+    update HTTP_URL_CFG set is_audit = #{isAudit,jdbcType=INTEGER}, auditor_id = #{auditorId,jdbcType=INTEGER}, audit_time = #{auditTime,jdbcType=TIMESTAMP} 
+    <if test="isValid != null" >
+        ,is_valid = #{isValid,jdbcType=INTEGER}
+      </if>
+    where cfg_id = #{cfgId,jdbcType=BIGINT}
+  </update>
+  <select id="getIsValid" resultType="java.lang.Integer" parameterType="java.lang.Long" >
+    SELECT IS_VALID FROM HTTP_URL_CFG
+    WHERE CFG_ID = #{cfgId,jdbcType=BIGINT}
+  </select>
+  <select id="getIsAudit" resultType="java.lang.Integer" parameterType="java.lang.Long" >
+    SELECT IS_AUDIT FROM HTTP_URL_CFG
+    WHERE CFG_ID = #{cfgId,jdbcType=BIGINT}
+  </select>
+  <update id="deleteByCompileId" parameterType="com.nis.domain.configuration.HttpUrlCfg" >
+    update HTTP_URL_CFG set is_valid = -1, editor_id = #{editorId,jdbcType=INTEGER} , edit_time = #{editTime,jdbcType=TIMESTAMP} where compile_id = #{compileId,jdbcType=INTEGER}
+  </update>
+  <update id="delete" >
+    update HTTP_URL_CFG set is_valid = -1, editor_id = #{editorId,jdbcType=INTEGER} , edit_time = #{editTime,jdbcType=TIMESTAMP}
+  	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="cfgId !=null ">
+			AND cfg_id = #{cfgId,jdbcType=BIGINT}
+			</if>
+			<if test="compileId !=null ">
+			AND compile_id = #{compileId,jdbcType=INTEGER}
+			</if>
+	</trim>
+  </update>
+  <update id="deleteByCompileIds" parameterType="com.nis.domain.configuration.HttpUrlCfg" >
+    update HTTP_URL_CFG set is_valid = -1, editor_id = #{user,jdbcType=INTEGER} , edit_time = NOW() where compile_id in (${compileIds})
+  </update>
+</mapper>

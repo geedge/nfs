@@ -1,0 +1,7 @@
+alter table cfg_index_info add do_log int(11)  COMMENT 'do_log:0不需要1记录所有日志2只记录结构化日志。默认是2'
+alter table app_policy_cfg add do_log int(11)  COMMENT 'do_log:0不需要1记录所有日志2只记录结构化日志。默认是2'
+alter table av_cont_ip_cfg add do_log int(11)  COMMENT 'do_log:0不需要1记录所有日志2只记录结构化日志。默认是2'
+alter table av_cont_url_cfg add do_log int(11)  COMMENT 'do_log:0不需要1记录所有日志2只记录结构化日志。默认是2'
+alter table av_pic_ip_cfg add do_log int(11)  COMMENT 'do_log:0不需要1记录所有日志2只记录结构化日志。默认是2'
+alter table av_pic_url_cfg add do_log int(11)  COMMENT 'do_log:0不需要1记录所有日志2只记录结构化日志。默认是2'
+alter table av_sign_sample_cfg add do_log int(11)  COMMENT 'do_log:0不需要1记录所有日志2只记录结构化日志。默认是2'

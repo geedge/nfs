@@ -1,0 +1,1 @@
+ALTER TABLE ip_reuse_policy_cfg CHANGE user_id user_name VARCHAR(255) NOT NULL COMMENT '用户标识';

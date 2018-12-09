@@ -1,0 +1,2 @@
+ALTER TABLE function_region_dict MODIFY COLUMN region_type INT(1) NOT NULL COMMENT '1IP类，2字符串类，3增强字符串类，4数值类，5摘要类，6回调类,7 ASN';
+UPDATE function_region_dict SET region_type=7 WHERE config_region_value='NTC_ASN_IP' AND function_id=5;

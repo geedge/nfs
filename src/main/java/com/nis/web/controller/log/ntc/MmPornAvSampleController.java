@@ -1,0 +1,118 @@
+package com.nis.web.controller.log.ntc;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.nis.domain.FunctionServiceDict;
+import com.nis.domain.Page;
+import com.nis.domain.PageLog;
+import com.nis.domain.log.MmAvIpLog;
+import com.nis.domain.log.MmPicUrlLog;
+import com.nis.domain.maat.LogRecvData;
+import com.nis.util.Constants;
+import com.nis.util.DictUtils;
+import com.nis.util.httpclient.HttpClientUtil;
+import com.nis.web.controller.BaseController;
+
+@Controller
+@RequestMapping(value = "${adminPath}/log/ntc")
+public class MmPornAvSampleController extends BaseController {
+
+	@RequestMapping(value = {"mmSampleAudioLevelLogs", "mmSampleAudioLevelLogs/list"})
+	public String audioList(Model model, @ModelAttribute("log") MmAvIpLog entry, HttpServletRequest request, HttpServletResponse response) {
+
+		try {
+			PageLog<MmAvIpLog> page = new PageLog<MmAvIpLog>(request, response);
+			Map<String, Object> params=new HashMap<>();
+			params.put("pageSize", page.getPageSize());
+			params.put("pageNo", page.getPageNo());
+			//查询值判断
+			initLogSearchValue(entry, params);
+			
+			List<FunctionServiceDict> serviceList = DictUtils.getFunctionServiceDictList(entry.getFunctionId());
+			model.addAttribute("serviceList", serviceList);
+			
+			String url = "";
+			url = Constants.LOG_BASE_URL + Constants.NTC_MMPORNAUDIOSAMPLE_LOG;
+			String jsonString = HttpClientUtil.getMsg(url, params, request);
+			
+			Gson gson = new GsonBuilder().create();
+			//gson泛型支持
+			LogRecvData<MmAvIpLog> fromJson = gson.fromJson(jsonString, new TypeToken<LogRecvData<MmAvIpLog>>(){}.getType());
+			
+			if (fromJson.getStatus().intValue() == 200) {
+				Page<MmAvIpLog> data = fromJson.getData();
+				page.setCount(data.getCount());
+				page.setLast(data.getLast());
+				page.setList(data.getList());
+				List<MmAvIpLog> list = page.getList();
+				for (MmAvIpLog l : list) {
+					l.setFunctionId(entry.getFunctionId());
+					setLogAction(l,serviceList);
+				}
+				model.addAttribute("page", page);
+				logger.info("查询音频色情样例日志成功");
+			}
+		} catch (Exception e) {
+			logger.error("查询音频色情样例日志失败", e);
+			addMessageLog(model, e.getMessage());
+		}
+		return "/log/ntc/mmPornAudioSampleList";
+	}
+	
+	@RequestMapping(value = {"mmSampleVideoLevelLogs", "mmSampleVideoLevelLogs/list"})
+	public String videoList(Model model, @ModelAttribute("log") MmAvIpLog entry, HttpServletRequest request, HttpServletResponse response) {
+		
+		try {
+			
+			PageLog<MmAvIpLog> page = new PageLog<MmAvIpLog>(request, response);
+			Map<String, Object> params=new HashMap<>();
+			params.put("pageSize", page.getPageSize());
+			params.put("pageNo", page.getPageNo());
+			//查询值判断
+			initLogSearchValue(entry, params);
+			
+			List<FunctionServiceDict> serviceList = DictUtils.getFunctionServiceDictList(entry.getFunctionId());
+			model.addAttribute("serviceList", serviceList);
+			
+			String url = "";
+			url = Constants.LOG_BASE_URL + Constants.NTC_MMPORNVIDEOSAMPLE_LOG;
+			String jsonString = HttpClientUtil.getMsg(url,params,request);
+			
+			Gson gson = new GsonBuilder().create();
+			//gson泛型支持
+			LogRecvData<MmAvIpLog> fromJson = gson.fromJson(jsonString, new TypeToken<LogRecvData<MmAvIpLog>>(){}.getType());
+			
+			if (fromJson.getStatus().intValue() == 200) {
+				Page<MmAvIpLog> data = fromJson.getData();
+				page.setCount(data.getCount());
+				page.setList(data.getList());
+				page.setLast(data.getLast());
+				List<MmAvIpLog> list = page.getList();
+				for (MmAvIpLog l : list) {
+					l.setFunctionId(entry.getFunctionId());
+					setLogAction(l,serviceList);
+				}
+				model.addAttribute("page", page);
+				logger.info("查询视频色情样例日志成功");
+			}
+		} catch (Exception e) {
+			logger.error("查询视频色情样例日志失败", e);
+			addMessageLog(model, e.getMessage());
+		}
+		return "/log/ntc/mmPornVideoSampleList";
+	}
+}

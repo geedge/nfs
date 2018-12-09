@@ -1,0 +1,18 @@
+/* here you can put your own css to customize and override the theme */
+.step-intro .tag {
+
+	border-radius: 4px;
+	line-height: 32px;
+	height: 32px;
+	color: #337ab7;
+	display: inline-block;
+	font-size: 13px;
+	padding: 0 18px;
+	border: 1px solid #337AB7;
+}
+
+.step-intro .glyphicon {
+
+	color: #337ab7;
+
+}

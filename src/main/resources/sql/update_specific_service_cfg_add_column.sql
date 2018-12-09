@@ -1,0 +1,1 @@
+ALTER TABLE specific_service_cfg ADD COLUMN business_type VARCHAR(10) NULL COMMENT '业务分类'; 

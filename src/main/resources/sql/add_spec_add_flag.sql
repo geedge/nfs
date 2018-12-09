@@ -1,0 +1,1 @@
+ALTER TABLE specific_service_cfg ADD  add_flag INT(11) NULL COMMENT '添加标记，APP特征界面上添加的为用户自己添加的';

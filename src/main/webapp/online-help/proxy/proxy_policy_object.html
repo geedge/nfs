@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.0
+Version: 3.5
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="utf-8"/>
+<title>online help</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+<link href="../../static/global/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="../../static/global/plugins/simple-line-icons/simple-line-icons.css" rel="stylesheet" type="text/css" />
+<link href="../../static/global/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<!-- <link href="../../static/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/> -->
+<link href="../../static/global/plugins/bootstrap-switch/css/bootstrap-switch.css" rel="stylesheet" type="text/css" />
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN THEME STYLES -->
+<link href="../../static/global/css/components.css" rel="stylesheet" id="style_components" type="text/css" />
+<link href="../../static/global/css/plugins.css" rel="stylesheet" type="text/css" />
+<link href="../../static/layouts/layout/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="../../static/layouts/layout/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
+<link href="../../static/layouts/layout/css/custom.css" rel="stylesheet" type="text/css" />
+<!-- END THEME STYLES -->
+<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
+<!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
+<!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
+<!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
+<!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
+<!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
+<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+<body class="page-header-fixed page-quick-sidebar-over-content ">
+<div class="page-content" style="margin:15px 20px 0 15px">
+	<div class="row">
+				<div id="accordion1" class="panel-group">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_1">
+							1.功能简介</a>
+							</h4>
+						</div>
+						<div id="accordion1_1" class="panel-collapse collapse in">
+							<div class="panel-body">
+								A policy object is a single object or a collective unit that groups discrete identities such as IP addresses, URLs, applications, or users. With policy objects that are a collective unit, you can reference the object in policy instead of manually selecting multiple objects one at a time. Typically, when creating a policy object, you group objects that require similar permissions in policy.
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">
+							2.Key Ring </a>
+							</h4>
+						</div>
+						<div id="accordion1_2" class="panel-collapse collapse">
+							<div class="panel-body">
+								On National Proxy System, Key Ring is a pair of private key and public certificate. You can also import a certificate chain containing multiple certificates. Key Ring is a policy object, you can reference it in Intercept Policy.
+There are three Certificate Type:
+								<ul>
+								 	<li>End-entity Certificate:
+								 		is used for web servers to identify themselves. The Public Key File MUST be .p12 format that contains entire certificate chain. The Private Key File could be .pem, .key or .p12 format. This certificate type is not applicable to Domain Intercept for it cannot be used to sign other certificates. Expire After parameter is also not applicable to end-entity certificate for the same reason.
+								 	</li>
+								 	<li>Intermedia Certificate:
+								 		is used to sign other certificates. An intermediate certificate must be signed by another intermediate certificate, or a root certificate. The Public Key File MUST be .p12 format that contains entire certificate chain. The Expire After parameter indicates the expiration of the substitute certificate that was issued by this intermedia certificate.
+								 	</li>
+								 	<li>Root Certificate:
+								 	is used to sign other certificates. The Public Key File could be .der, .cer, .crt or .pem format. The Expire After parameter has the same meaning as Intermedia Certificate.
+Specification of certificate formats:
+										<ul>
+											<li>
+												.pem- (Privacy-enhanced Electronic Mail) Base64 encoded DER certificate, enclosed between "-----BEGIN CERTIFICATE-----" and "-----END CERTIFICATE-----"
+											</li>
+											<li>
+												.cer, .crt, .der – usually in binary DER form, but Base64-encoded certificates are common too (see .pem above)
+											</li>
+											<li>
+												.p12 – PKCS#12, may contain certificate(s) (public) and private keys (without password protected)
+											</li>
+										</ul>
+										
+									</li>
+								 </ul>
+																
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_3">
+							3.Trusted Certificate </a>
+							</h4>
+						</div>
+						<div id="accordion1_3" class="panel-collapse collapse">
+							<div class="panel-body">
+								National Proxy System has a build-in trusted certificate authorities list. When the original certificate is issued by a certificate authority that not in the list, the proxy will issued the substitute certificate with an untrusted root certificate, and so consequently, the browser could identify unsecure connections.
+								<p>
+								You can add a custom certificate authority to the trusted certificate authorities of the system.
+								<p>
+								The certificate MUST be PEM format.
+								<p>
+								Following are the National Proxy System’s default trusted certificate authorities:
+								<ul>
+								 	<li>ACCVRAIZ1</li>
+								 	<li>Actalis Authentication Root CA</li>
+								 	<li>AddTrust External CA Root</li>
+								 	<li>AffirmTrust Commercial</li>
+								 	<li>AffirmTrust Networking</li>		
+								 	<li>AffirmTrust Premium</li>
+								 	<li>AffirmTrust Premium ECC</li>
+								 	<li>Amazon Root CA 1</li>
+									<li>Amazon Root CA 2</li>
+									<li>Amazon Root CA 3</li>
+									<li>Amazon Root CA 4</li>
+									<li>Atos TrustedRoot 2011</li>
+									<li>Autoridad de Certificacion Firmaprofesional CIF A62634068</li>
+									<li>Baltimore CyberTrust Root</li>
+									<li>Buypass Class 2 Root CA</li>
+									<li>Buypass Class 3 Root CA</li>
+									<li>CA Disig Root R2</li>
+									<li>CFCA EV ROOT</li>
+									<li>COMODO Certification Authority</li>
+									<li>COMODO ECC Certification Authority</li>
+									<li>COMODO RSA Certification Authority</li>
+									<li>Certigna</li>
+									<li>Certinomis - Root CA</li>
+									<li>Class 2 Primary CA</li>
+									<li>Certplus Root CA G1</li>
+									<li>Certplus Root CA G2</li>
+									<li>Certum Trusted Network CA</li>
+									<li>Certum Trusted Network CA 2</li>
+									<li>Chambers of Commerce Root - 2008</li>
+									<li>AAA Certificate Services</li>
+									<li>Cybertrust Global Root</li>
+									<li>D-TRUST Root Class 3 CA 2 2009</li>
+									<li>D-TRUST Root Class 3 CA 2 EV 2009</li>
+									<li>DST Root CA X3</li>
+									<li>Deutsche Telekom Root CA 2</li>
+									<li>DigiCert Assured ID Root CA</li>
+									<li>DigiCert Assured ID Root G2</li>
+									<li>DigiCert Assured ID Root G3</li>
+									<li>DigiCert Global Root CA</li>
+									<li>DigiCert Global Root G2</li>
+									<li>DigiCert Global Root G3</li>
+									<li>DigiCert High Assurance EV Root CA</li>
+									<li>DigiCert Trusted Root G4</li>
+									<li>E-Tugra Certification Authority</li>
+									<li>EC-ACC</li>
+									<li>EE Certification Centre Root CA</li>
+									<li>Entrust.net Certification Authority (2048)</li>
+									<li>Entrust Root Certification Authority</li>
+									<li>Entrust Root Certification Authority - EC1</li>
+									<li>Entrust Root Certification Authority - G2</li>
+									<li>GDCA TrustAUTH R5 ROOT</li>
+									<li>GeoTrust Global CA</li>
+									<li>GeoTrust Primary Certification Authority</li>
+									<li>GeoTrust Primary Certification Authority - G2</li>
+									<li>GeoTrust Primary Certification Authority - G3</li>
+									<li>GeoTrust Universal CA</li>
+									<li>GeoTrust Universal CA 2</li>
+									<li>GlobalSign</li>
+									<li>GlobalSign</li>
+									<li>GlobalSign Root CA</li>
+									<li>GlobalSign</li>
+									<li>GlobalSign</li>
+									<li>Global Chambersign Root - 2008</li>
+									<li>Go Daddy Root Certificate Authority - G2</li>
+									<li>Hellenic Academic and Research Institutions ECC RootCA 2015</li>
+									<li>Hellenic Academic and Research Institutions RootCA 2011</li>
+									<li>Hellenic Academic and Research Institutions RootCA 2015</li>
+									<li>Hongkong Post Root CA 1</li>
+									<li>ISRG Root X1</li>
+									<li>IdenTrust Commercial Root CA 1</li>
+									<li>IdenTrust Public Sector Root CA 1</li>
+									<li>Izenpe.com</li>
+									<li>LuxTrust Global Root 2</li>
+									<li>Microsec e-Szigno Root CA 2009</li>
+									<li>NetLock Arany (Class Gold) Főtanúsítvány</li>
+									<li>Network Solutions Certificate Authority</li>
+									<li>OISTE WISeKey Global Root GA CA</li>
+									<li>OISTE WISeKey Global Root GB CA</li>
+									<li>OpenTrust Root CA G1</li>
+									<li>OpenTrust Root CA G2</li>
+									<li>OpenTrust Root CA G3</li>
+									<li>QuoVadis Root Certification Authority</li>
+									<li>QuoVadis Root CA 1 G3</li>
+									<li>QuoVadis Root CA 2</li>
+									<li>QuoVadis Root CA 2 G3</li>
+									<li>QuoVadis Root CA 3</li>
+									<li>QuoVadis Root CA 3 G3</li>
+									<li>SSL.com EV Root Certification Authority ECC</li>
+									<li>SSL.com EV Root Certification Authority RSA R2</li>
+									<li>SSL.com Root Certification Authority ECC</li>
+									<li>SSL.com Root Certification Authority RSA</li>
+									<li>SZAFIR ROOT CA2</li>
+									<li>SecureSign RootCA11</li>
+									<li>SecureTrust CA</li>
+									<li>Secure Global CA</li>
+									<li>Sonera Class2 CA</li>
+									<li>Staat der Nederlanden EV Root CA</li>
+									<li>Staat der Nederlanden Root CA - G2</li>
+									<li>Staat der Nederlanden Root CA - G3</li>
+									<li>Starfield Root Certificate Authority - G2</li>
+									<li>Starfield Services Root Certificate Authority - G2</li>
+									<li>SwissSign Gold CA - G2</li>
+									<li>SwissSign Silver CA - G2</li>
+									<li>T-TeleSec GlobalRoot Class 2</li>
+									<li>T-TeleSec GlobalRoot Class 3</li>
+									<li>TUBITAK Kamu SM SSL Kok Sertifikasi - Surum 1</li>
+									<li>TWCA Global Root CA</li>
+									<li>TWCA Root Certification Authority</li>
+									<li>TeliaSonera Root CA v1</li>
+									<li>TrustCor ECA-1</li>
+									<li>TrustCor RootCert CA-1</li>
+									<li>TrustCor RootCert CA-2</li>
+									<li>TÜRKTRUST Elektronik Sertifika Hizmet Sağlayıcısı H5</li>
+									<li>USERTrust ECC Certification Authority</li>
+									<li>USERTrust RSA Certification Authority</li>
+									<li>VeriSign Class 3 Public Primary Certification Authority - G4</li>
+									<li>VeriSign Class 3 Public Primary Certification Authority - G5</li>
+									<li>VeriSign Universal Root Certification Authority</li>
+									<li>VeriSign Class 3 Public Primary Certification Authority - G3</li>
+									<li>Visa eCommerce Root</li>
+									<li>XRamp Global Certification Authority</li>
+									<li>thawte Primary Root CA</li>
+									<li>thawte Primary Root CA - G2</li>
+									<li>thawte Primary Root CA - G3</li>
+									<li>Microsoft Root Authority</li>
+									<li>Microsoft Root Certificate Authority</li>
+									<li>Microsoft Root Certificate Authority 2010</li>
+									<li>Microsoft Root Certificate Authority 2011</li>
+									<li>Baltimore CyberTrust Root</li>
+								 </ul>
+																
+							</div>
+						</div>
+					</div>
+					<!-- <div class="panel panel-danger">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_4">
+							4.配置约束条件 </a>
+							</h4>
+						</div>
+						<div id="accordion1_4" class="panel-collapse collapse">
+							<div class="panel-body">
+								 <ul>
+								 	<li>IP：同“IP拦截”</li>
+									<li>URL：同“域名拦截”</li>
+									<li>HTTP 请求头：同“HTTP(s)监测”</li>	
+									<li>HTTP 应答头：同“HTTP(s)监测”</li>		
+									<li>HTTP 请求内容：同“HTTP(s)监测”</li>
+									<li>HTTP 应答内容：同“HTTP(s)监测”</li>
+									<li>账号：同“HTTP(s)监测”</li>
+								 </ul>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_5">
+							5.预期效果 </a>
+							</h4>
+						</div>
+						<div id="accordion1_5" class="panel-collapse collapse">
+							<div class="panel-body">
+								 <ul>
+								 	<li>阻断效果：浏览器无法访问页面</li>
+									<li>日志检查：生成日志</li>
+								 </ul>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_6">
+							6.配置生效区域 </a>
+							</h4>
+						</div>
+						<div id="accordion1_6" class="panel-collapse collapse">
+							<div class="panel-body">
+								配置的生效区域，生效区域包括地区，以及ISP，地区和ISP可组合，即某个地区的某个运营商流量生效，
+								或者某个地区的所有流量生效，或者某个运营商的所有流量生效，也可全域生效
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_7">
+							7.配置标签 </a>
+							</h4>
+						</div>
+						<div id="accordion1_7" class="panel-collapse collapse">
+							<div class="panel-body">
+								 <ul>
+								 	<li>来函：必选项，官方或其他组织下达的配置流量管控依据。</li>
+									<li>分类：非必选项，配置分类，例如内容安全、网络攻击等。</li>
+									<li>性质：非必选项，配置性质，例如政治、暴力、宗教等。</li>
+									<li>标签：非必选项，自定义标签。</li>			
+								 </ul>
+							</div>
+						</div>
+					</div> -->
+				<!--	<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_7">
+							7.其他</a>
+							</h4>
+						</div>
+						<div id="accordion1_7" class="panel-collapse collapse">
+							<div class="panel-body">
+								 
+							</div>
+						</div>
+					</div>-->
+				</div>
+</div>
+</div>
+
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="../../static/global/plugins/respond.min.js"></script>
+<script src="../../static/global/plugins/excanvas.min.js"></script> 
+<![endif]-->
+<script src="../../static/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../../static/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script>
+jQuery(document).ready(function() {    
+   
+});
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

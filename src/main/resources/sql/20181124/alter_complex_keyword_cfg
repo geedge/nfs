@@ -1,0 +1,1 @@
+ALTER TABLE complex_keyword_cfg CHANGE  COLUMN keywords cfg_keywords VARCHAR(2048) NOT NULL;

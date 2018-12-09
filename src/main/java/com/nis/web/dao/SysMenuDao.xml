@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.SysMenuDao" >
+  
+  <sql id="menuColumns">
+		a.id,
+		a.parent_id AS "parent.id",
+		a.parent_ids,
+		a.code,
+		a.name,
+		a.href,
+		a.target,
+		a.icon,
+		a.sort,
+		a.is_show,
+		a.permission,
+		a.remarks,
+		a.create_by AS "createBy.id",
+		a.create_date,
+		a.update_by AS "updateBy.id",
+		a.update_date,
+		a.del_flag,
+		a.quick_action,
+		a.menu_bg,
+		p.name AS "parent.name",
+		a.is_top,
+		a.function_id
+		
+	</sql>
+  <sql id="menuCfgColumns">
+		a.id,
+		a.parent_id AS "parent.id",
+		a.parent_ids,
+		a.code,
+		a.name,
+		a.href,
+		a.target,
+		a.icon,
+		a.sort,
+		a.is_show,
+		a.permission,
+		a.remarks,
+		a.create_by AS "createBy.id",
+		a.create_date,
+		a.update_by AS "updateBy.id",
+		a.update_date,
+		a.del_flag,
+		a.quick_action,
+		a.menu_bg,
+		a.is_top,
+		a.function_id
+		
+	</sql>
+	
+	<sql id="menuJoins">
+		LEFT JOIN sys_menu p ON p.id = a.parent_id
+    </sql>
+    
+    <select id="get" resultType="sysMenu">
+		SELECT
+			<include refid="menuColumns"/>
+		FROM sys_menu a
+		<include refid="menuJoins"/>
+		WHERE a.id = #{id}
+	</select>
+    
+    <select id="findAllList" resultType="sysMenu">
+		SELECT
+			<include refid="menuColumns"/>
+		FROM sys_menu a
+		<include refid="menuJoins"/>
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} 
+		ORDER BY a.sort
+	</select>
+	<!-- 查询所有业务配置菜单 -->
+    <select id="findAllCfgList" resultType="sysMenu" parameterType="java.lang.String">
+		SELECT
+			<include refid="menuCfgColumns"/>
+		FROM sys_menu a
+		WHERE a.del_flag = 1
+		and a.is_show=1
+		and function_id is not null
+		<![CDATA[ and function_id <> 0 ]]>
+		<![CDATA[ and function_id <> '' ]]>
+		and a.parent_Ids like CONCAT('%,', #{policiesMenuId}, ',%')
+	</select>
+	
+	<select id="findSysMenuByUserId" resultType="sysMenu">
+		SELECT DISTINCT
+			<include refid="menuColumns"/>
+		FROM sys_menu a
+		LEFT JOIN sys_menu p ON p.id = a.parent_id  
+		RIGHT JOIN (SELECT l.privilege_access_value  
+					FROM sys_privilege l 
+					RIGHT JOIN (SELECT DISTINCT(r.id) 
+								FROM sys_role r,sys_inter_user_role ur 
+								WHERE r.id = ur.role_id AND r.status=1 AND ur.user_id=${userId}) r
+					ON r.id=l.privilege_master_value
+					WHERE l.privilege_master='ROLE' AND l.privilege_access='1000' AND l.privilege_operation=1) pav 
+		ON pav.privilege_access_value = a.id
+		WHERE a.del_flag = 1 
+		ORDER BY a.sort
+		
+	</select>
+	
+	
+	
+	
+	
+	<insert id="insert" parameterType="sysMenu" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO sys_menu(
+			parent_id, 
+			parent_ids, 
+			code,
+			name, 
+			href, 
+			target, 
+			icon, 
+			sort, 
+			is_show, 
+			permission, 
+			create_by, 
+			create_date, 
+			update_by, 
+			update_date, 
+			remarks, 
+			del_flag,
+			is_top,
+			function_id
+		) VALUES (
+			#{parent.id}, 
+			#{parentIds}, 
+			#{code},
+			#{name}, 
+			#{href}, 
+			#{target}, 
+			#{icon}, 
+			#{sort}, 
+			#{isShow}, 
+			#{permission}, 
+			#{createBy.id}, 
+			#{createDate}, 
+			#{updateBy.id}, 
+			#{updateDate}, 
+			#{remarks}, 
+			#{delFlag},
+			#{isTop},
+			#{functionId}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sys_menu SET 
+			parent_id = #{parent.id}, 
+			parent_ids = #{parentIds}, 
+			code=#{code},
+			name = #{name}, 
+			href = #{href}, 
+			target = #{target}, 
+			icon = #{icon}, 
+			sort = #{sort}, 
+			is_show = #{isShow}, 
+			permission = #{permission}, 
+			update_by = #{updateBy.id}, 
+			update_date = #{updateDate}, 
+			remarks = #{remarks},
+			is_top = #{isTop},
+			function_id=#{functionId}
+		WHERE id = #{id}
+	</update>
+  
+ 	 <select id="findByParentIdsLike" resultType="sysMenu">
+		SELECT
+			a.id,a.function_id,
+			a.parent_id AS "parent.id",
+			a.parent_ids
+		FROM sys_menu a
+		WHERE a.del_flag = #{DEL_FLAG_NORMAL} AND a.parent_ids LIKE #{parentIds}
+		ORDER BY a.sort
+	</select>
+	
+	<update id="updateParentIds">
+		UPDATE sys_menu SET 
+			parent_id = #{parent.id}, 
+			parent_ids = #{parentIds}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="updateSort">
+		UPDATE sys_menu SET 
+			sort = #{sort}
+		WHERE id = #{id}
+	</update>
+  
+  	<update id="delete">
+		UPDATE sys_menu SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id} OR parent_ids LIKE 
+					<if test="dbName == 'oracle'">'%,'||#{id}||',%'</if>
+					<if test="dbName == 'mssql'">'%,'+#{id}+',%'</if>
+					<if test="dbName == 'mysql'">CONCAT('%,', #{id}, ',%')</if>
+	</update>
+  
+  	<select id="getLogUrl" resultType="String">
+		SELECT
+			m.href
+		FROM 
+			sys_menu m
+		WHERE 
+			m.function_id = #{functionId} AND m.parent_ids LIKE '%${logSearchId}%' AND del_flag = 1
+	</select>
+  	
+  	<select id="getServiceId" resultType="Integer">
+		SELECT
+			s.service_id
+		FROM 
+			function_service_dict s
+		WHERE 
+			s.function_id = #{functionId} AND s.action = #{action} AND s.is_valid = 1
+	</select>
+</mapper>

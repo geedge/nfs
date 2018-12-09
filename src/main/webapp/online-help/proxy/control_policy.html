@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.0
+Version: 3.5
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="utf-8"/>
+<title>online help</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+<link href="../../static/global/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="../../static/global/plugins/simple-line-icons/simple-line-icons.css" rel="stylesheet" type="text/css" />
+<link href="../../static/global/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<!-- <link href="../../static/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/> -->
+<link href="../../static/global/plugins/bootstrap-switch/css/bootstrap-switch.css" rel="stylesheet" type="text/css" />
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN THEME STYLES -->
+<link href="../../static/global/css/components.css" rel="stylesheet" id="style_components" type="text/css" />
+<link href="../../static/global/css/plugins.css" rel="stylesheet" type="text/css" />
+<link href="../../static/layouts/layout/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="../../static/layouts/layout/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
+<link href="../../static/layouts/layout/css/custom.css" rel="stylesheet" type="text/css" />
+<!-- END THEME STYLES -->
+<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
+<!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
+<!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
+<!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
+<!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
+<!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
+<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+<body class="page-header-fixed page-quick-sidebar-over-content ">
+<div class="page-content" style="margin:15px 20px 0 15px">
+	<div class="row">
+				<div id="accordion1" class="panel-group">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_1">
+							1.Function Introduction</a>
+							</h4>
+						</div>
+						<div id="accordion1_1" class="panel-collapse collapse in">
+							<div class="panel-body">
+								On National Proxy System, Individual Control policy rules determine whether to allow, 
+								block, redirect or replace a session based on traffic attributes, such as URL, request header fields, 
+								request body keywords, response header fields, response body keywords, IP address, Subscribe ID and 
+								their combination. You could specify these attributes in the submenu of Control Policy.
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">
+							2.Action </a>
+							</h4>
+						</div>
+						<div id="accordion1_2" class="panel-collapse collapse">
+							<div class="panel-body">
+								You could select one of the five actions for above attributes, as known as:
+								<ul>
+								 	<li>
+								 		Monitor：the Proxy produce a log to record matched HTTP session information.
+									</li>
+								 	<li>
+								 		Block:the Proxy terminate matched HTTP session with an error page and produce a log. You MUST specify a Response Code and a Response Content to generate an error page.
+								 	</li>
+								 	<li>
+								 		Redirect: the Proxy redirect matched HTTP session to a predefined URL. Since redirection need to be performed before delivering response to client, condition of response body is not applicable in this action. You MUST configure the redirect response via Response Code and Response URL. The Response URL MUST start with a scheme (http:// or https://). You SHOULD NOT select 301 as Response Code unless you exactly know what you are doing. This action produces a log.
+								 	</li>
+								 	<li>
+								 		Replace:the Proxy Searches in a given HTTP part to Find a given string, and Replace any matches with another given string. If no match was found, the session remained untouched. For performance concerns, condition of request body and response body is not available in this action. For example, you can configure the Proxy to search in the response body of URL “www.example.com/index.html”, find every “string1” and replace with “string2”. This action produces a log.
+								 	</li>
+								 	<li>
+								 		Whitelist:the Proxy pass-through the matched sessions and produce no log.
+								 	</li>	
+								 	<li>
+								 		In case of HTTP session matches one more policies, the priority order is Whitelist > Reject > Redirect > Replace > Monitor, action with higher priority overrides others.
+								 	</li>	
+								 </ul>
+																
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_3">
+							3.Attibutes </a>
+							</h4>
+						</div>
+						<div id="accordion1_3" class="panel-collapse collapse">
+							<div class="panel-body">
+								The attributes are detailed in following context:
+								<ul>
+								 	<li>URL：From proxy’s perspective, a HTTP URL consists of a hierarchical sequence of three components: 
+								 	URL = hostname/path[?query] . The URL path name can also be specified by the user in the local writing system.
+								 	 If not already encoded, it is converted to UTF-8, and any characters not part of the basic URL character set are
+								 	  escaped as hexadecimal using percent-encoding; for example, search keywords “русский” 
+								 	  in Google produces URL：
+										https://www.google.com/search?q=%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9 
+										To perform policy action on above URL, you could input the whole URL in the input box. Or,
+										 you could input original keywords and let the Proxy do the decoding, e.g. 
+										 “google.com/search” & “русский”. Note that the scheme string MUST be excluded from the URL,
+										  it’s “https://” in this case.
+									</li>
+								 	<li>
+								 		Request Header: is used to set conditions on request header fields. Header fields are colon-separated key-value pairs in clear-text string format, terminated by a carriage return (CR) and line feed (LF) character sequence. For example, “user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)“ is a header filed in request header. The Matching District is used to configure the field’s key, if the key was presented, the Proxy will search in the value for Keywords.
+								 	</li>
+								 	<li>
+								 		Response Header： is used to set conditions on response header fields. Its configuration is similar to Request Header.
+								 	</li>
+								 	<li>
+								 		Request Body：is used to set conditions on request’s body message. The Proxy searches the pre-configured Keywords in it. You can configure non-ASCII or non-utf8 keywords by turn on HEX.
+								 	</li>
+								 	<li>
+								 		Response Body：is used to set conditions on response’s body message. Its configuration is similar to Request Body.
+								 	</li>		
+								 </ul>
+																
+							</div>
+						</div>
+					</div>
+					<!-- <div class="panel panel-danger">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_4">
+							4.配置约束条件 </a>
+							</h4>
+						</div>
+						<div id="accordion1_4" class="panel-collapse collapse">
+							<div class="panel-body">
+								 <ul>
+								 	<li>IP：同“IP拦截”</li>
+									<li>URL：同“域名拦截”</li>
+									<li>HTTP 请求头：同“HTTP(s)监测”</li>	
+									<li>HTTP 应答头：同“HTTP(s)监测”</li>		
+									<li>HTTP 请求内容：同“HTTP(s)监测”</li>
+									<li>HTTP 应答内容：同“HTTP(s)监测”</li>
+									<li>账号：同“HTTP(s)监测”</li>
+								 </ul>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_5">
+							5.预期效果 </a>
+							</h4>
+						</div>
+						<div id="accordion1_5" class="panel-collapse collapse">
+							<div class="panel-body">
+								 <ul>
+								 	<li>阻断效果：浏览器无法访问页面</li>
+									<li>日志检查：生成日志</li>
+								 </ul>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_6">
+							6.配置生效区域 </a>
+							</h4>
+						</div>
+						<div id="accordion1_6" class="panel-collapse collapse">
+							<div class="panel-body">
+								配置的生效区域，生效区域包括地区，以及ISP，地区和ISP可组合，即某个地区的某个运营商流量生效，
+								或者某个地区的所有流量生效，或者某个运营商的所有流量生效，也可全域生效
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_7">
+							7.配置标签 </a>
+							</h4>
+						</div>
+						<div id="accordion1_7" class="panel-collapse collapse">
+							<div class="panel-body">
+								 <ul>
+								 	<li>来函：必选项，官方或其他组织下达的配置流量管控依据。</li>
+									<li>分类：非必选项，配置分类，例如内容安全、网络攻击等。</li>
+									<li>性质：非必选项，配置性质，例如政治、暴力、宗教等。</li>
+									<li>标签：非必选项，自定义标签。</li>			
+								 </ul>
+							</div>
+						</div>
+					</div> -->
+				<!--	<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_7">
+							7.其他</a>
+							</h4>
+						</div>
+						<div id="accordion1_7" class="panel-collapse collapse">
+							<div class="panel-body">
+								 
+							</div>
+						</div>
+					</div>-->
+				</div>
+</div>
+</div>
+
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="../../static/global/plugins/respond.min.js"></script>
+<script src="../../static/global/plugins/excanvas.min.js"></script> 
+<![endif]-->
+<script src="../../static/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../../static/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script>
+jQuery(document).ready(function() {    
+   
+});
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

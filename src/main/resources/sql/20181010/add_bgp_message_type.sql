@@ -1,0 +1,2 @@
+INSERT INTO sys_data_dictionary_name (`id`,`module_name`,`mark`,`remark`,`revision`,`create_time`,`modify_time`,`status`) VALUES(115,'BGP消息类型','BGP_MESSAGE_TYPE','','','2018-10-10 16:28:05','2018-10-10 16:28:05',1);
+insert into sys_data_dictionary_item (`id`,`item_code`,`item_value`,`item_desc`,`item_sort`,`status`,`type`,`dictionary_id`) values (2602,1,'open','',0,1,1,115),(2603,2,'keepalive','',0,1,1,115),(2604,3,'update','',0,1,1,115),(2605,4,'notification','',0,1,1,115)

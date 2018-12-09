@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.basics.ServiceDictInfoDao" >
+  
+  <resultMap id="dictResultMap" type="com.nis.domain.basics.ServiceDictInfo" >
+    <id column="service_dict_id" property="serviceDictId" jdbcType="INTEGER" />
+    <result column="item_type" property="itemType" jdbcType="INTEGER" />
+    <result column="item_code" property="itemCode" jdbcType="VARCHAR" />
+    <result column="item_value" property="itemValue" jdbcType="VARCHAR" />
+    <result column="item_desc" property="itemDesc" jdbcType="VARCHAR" />
+    <result column="is_leaf" property="isLeaf" jdbcType="INTEGER" />
+    <result column="level_no" property="levelNo" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+     <!-- 父id -->
+	    <association property="parent" javaType="com.nis.domain.basics.ServiceDictInfo">
+	     <id column="parent_id" property="serviceDictId" jdbcType="INTEGER" />
+	    </association>
+	 <!-- 创建人员 -->
+        <association property="serviceDictCreator" javaType="com.nis.domain.SysUser">
+	     <id property="id" column="creator_id"/>
+		<result property="loginId" column="login_id"/>
+		<result property="name" column="name"/>
+	    </association>
+	 <!-- 修改人员 -->
+        <association property="serviceDictEditor" javaType="com.nis.domain.SysUser">
+	     <id property="id" column="editor_id"/>
+		<result property="loginId" column="login_id"/>
+		<result property="name" column="name"/>
+	    </association>
+	    <!-- 子集合 -->
+	    <collection property="childrenList" javaType="com.nis.domain.basics.ServiceDictInfo">
+	     <id column="service_dict_id" property="serviceDictId" jdbcType="INTEGER" />
+         <result column="item_type" property="itemType" jdbcType="INTEGER" />
+	    </collection>
+  </resultMap>
+  <resultMap id="dictResultSimpleMap" type="com.nis.domain.basics.ServiceDictInfo" >
+    <id column="service_dict_id" property="serviceDictId" jdbcType="INTEGER" />
+    <result column="item_type" property="itemType" jdbcType="INTEGER" />
+    <result column="item_code" property="itemCode" jdbcType="INTEGER" />
+    <result column="item_value" property="itemValue" jdbcType="VARCHAR" />
+    <result column="item_desc" property="itemDesc" jdbcType="VARCHAR" />
+    <result column="is_leaf" property="isLeaf" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+  </resultMap>
+    <sql id="serviceDictInfoColumns">
+		s.service_dict_id AS serviceDictId,
+		s.item_type AS itemType,
+		s.item_code AS itemCode,
+		s.item_value AS itemValue,
+		s.item_desc AS itemDesc,
+		s.parent_id AS "parent.serviceDictId",
+		s.is_leaf AS isLeaf,
+		s.level_no AS levelNo,
+		s.is_valid AS isValid,
+		s.creator_id AS "serviceDictCreator.id",
+		s.create_time AS createTime,
+		s.editor_id AS "serviceDictEditor.id",
+		s.edit_time AS editTime
+	</sql>
+    <sql id="serviceDictInfoColumnsSimple">
+		s.service_dict_id AS serviceDictId,
+		s.item_type AS itemType,
+		s.item_code AS itemCode,
+		s.item_value AS itemValue,
+		s.item_desc AS itemDesc,
+		s.parent_id AS "parent.serviceDictId",
+		s.is_leaf AS isLeaf,
+		s.is_valid AS isValid
+	</sql>
+  
+  
+  
+  <!-- 查询顶层分页列表-->
+ <select id="findTopDictList" resultMap="dictResultMap" parameterType="com.nis.domain.basics.ServiceDictInfo">
+	SELECT * FROM service_dict_info s WHERE  s.is_valid=1  
+	<if test="conditionType != null and conditionType.size()>0 " >
+		AND s.item_type in 
+		<foreach collection="conditionType" item="singleType" index="index" 
+		 open="(" close=")" separator=",">
+		 #{singleType}
+		</foreach>
+	</if>
+    <if test="itemCode != null and itemCode != '' " >
+      AND s.item_code like '%${itemCode}%'
+    </if>
+    <if test="itemValue!= null and itemValue != '' " >
+      AND s.item_value like '%${itemValue}%'
+    </if>
+    <if test="itemType != null and itemType != '' " >
+      AND s.item_type = ${itemType}
+    </if>
+    <if test="beginDate !=null" >
+      AND s.create_time &gt;= #{beginDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endDate !=null" >
+       AND s.create_time &lt;= #{endDate,jdbcType=TIMESTAMP}
+    </if> 
+    <if test="editBeginDate !=null" >
+      AND edit_time &gt;= #{editBeginDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="editEndDate !=null" >
+       AND edit_time &lt;= #{editEndDate,jdbcType=TIMESTAMP}
+    </if> 
+    AND s.parent_id not in (
+			    SELECT s2.service_dict_id FROM service_dict_info s2 WHERE  s2.is_valid=1  
+			    <if test="conditionType != null and conditionType.size()>0 " >
+				AND s2.item_type in 
+				<foreach collection="conditionType" item="singleType" index="index" 
+				 open="(" close=")" separator=",">
+				 #{singleType}
+				</foreach>
+				</if>
+			    <if test="itemCode != null and itemCode != '' " >
+			      AND s2.item_code like '%${itemCode}%'
+			    </if>
+			    <if test="itemValue!= null and itemValue != '' " >
+			      AND s2.item_value like '%${itemValue}%'
+			    </if>
+			    <if test="itemType != null and itemType != '' " >
+			      AND s2.item_type = ${itemType}
+			    </if>
+			    <if test="beginDate !=null" >
+			      AND s2.create_time &gt;= #{beginDate,jdbcType=TIMESTAMP}
+			    </if>
+			    <if test="endDate !=null" >
+			       AND s2.create_time &lt;= #{endDate,jdbcType=TIMESTAMP}
+			    </if> 
+			    <if test="editBeginDate !=null" >
+			      AND edit_time &gt;= #{editBeginDate,jdbcType=TIMESTAMP}
+			    </if>
+			    <if test="editEndDate !=null" >
+			       AND edit_time &lt;= #{editEndDate,jdbcType=TIMESTAMP}
+			    </if> 
+                )
+     <choose>
+		<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+			ORDER BY s.${page.orderBy}
+		</when>
+		<otherwise>
+			ORDER BY s.create_time desc
+		</otherwise>
+	</choose> 
+    
+  </select>
+   
+      <!-- 查询所有符合条件列表-->
+    <select id="findAllServiceDictInfo" resultMap="dictResultMap">
+	SELECT * FROM service_dict_info WHERE  is_valid=1 
+	
+	<if test="serviceDictInfo.conditionType != null and serviceDictInfo.conditionType.size()>0 " >
+		AND item_type in 
+		<foreach collection="serviceDictInfo.conditionType" item="singleType" index="index" 
+		 open="(" close=")" separator=",">
+		 #{singleType}
+		</foreach>
+	</if>
+	
+	<if test="serviceDictInfo.itemValue != null and serviceDictInfo.itemValue != '' " >
+      AND item_value like '%${serviceDictInfo.itemValue}%'
+    </if>
+    <if test="serviceDictInfo.itemCode != null and serviceDictInfo.itemCode != '' " >
+      AND item_code like '%${serviceDictInfo.itemCode}%'
+    </if>
+    <if test="serviceDictInfo.itemType != null and serviceDictInfo.itemType != '' " >
+      AND item_type = #{serviceDictInfo.itemType}
+    </if>
+    <if test="serviceDictInfo.beginDate !=null" >
+      AND create_time &gt;= #{serviceDictInfo.beginDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="serviceDictInfo.endDate !=null" >
+       AND create_time &lt;= #{serviceDictInfo.endDate,jdbcType=TIMESTAMP}
+    </if> 
+    <if test="serviceDictInfo.editBeginDate !=null" >
+      AND edit_time &gt;= #{serviceDictInfo.editBeginDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="serviceDictInfo.editEndDate !=null" >
+       AND edit_time &lt;= #{serviceDictInfo.editEndDate,jdbcType=TIMESTAMP}
+    </if> 
+      <choose>
+		<when test="orderBy != null and orderBy != ''">
+			ORDER BY ${orderBy}
+		</when>
+		<otherwise>
+			ORDER BY create_time desc
+		</otherwise>
+	</choose> 
+  </select>
+  
+  <!-- 查出所有有效(父级(!=0))字典信息 -->
+      <select id="findAllDictList" resultType="serviceDictInfo">
+		SELECT
+			<include refid="serviceDictInfoColumns"/>
+		FROM service_dict_info s
+		<include refid="menuJoins"/>
+		WHERE s.is_valid =1 AND s.parent_id != 0
+	</select>
+
+	<!-- 查询所有非叶子配置 -->
+	<select id="findAllNoLeafDictList" resultType="com.nis.domain.basics.ServiceDictInfo" parameterType="java.lang.Integer">
+	SELECT 
+	<include refid="serviceDictInfoColumns"/>
+	FROM service_dict_info s
+	WHERE s.is_valid = 1 AND s.is_leaf = 0 AND item_type = #{itemType}
+	ORDER BY s.create_time desc
+	</select>
+
+  
+
+  
+   
+  
+      
+
+  
+  <!-- 根据主键查询字典详细信息 -->
+  
+  <select id="getDictById" resultType="com.nis.domain.basics.ServiceDictInfo">
+  select 
+  <include refid="serviceDictInfoColumns"/>
+  from service_dict_info s where s.service_dict_id = #{serviceDictId}
+  </select>
+  
+    <!-- 根据上级id选出所有下级 -->
+  
+  <select id="getDictByParentId" resultMap="dictResultMap">
+  select *
+  from service_dict_info s where parent_id = #{parentId} and is_valid = 1
+  </select>
+  
+  
+    <!-- 根据itemCode查询字典对象列表 -->
+  
+  <select id="findByItemCode" resultType="com.nis.domain.basics.ServiceDictInfo">
+  select 
+  <include refid="serviceDictInfoColumns"/>
+  from service_dict_info s where s.item_code = #{itemCode}
+  </select>
+  
+  <!-- 查出最大的itemCode值 -->
+  <select id="findMaxItemCode" resultType="java.lang.Integer">
+  select max(s.item_code) from service_dict_info s 
+  </select>
+  
+  <!-- 新增字典信息 -->
+  
+   <insert id="insertDict" parameterType="com.nis.domain.basics.ServiceDictInfo" useGeneratedKeys="true" keyProperty="id" >
+    insert into service_dict_info (item_type, item_code, item_value, item_desc, parent_id, is_leaf, level_no, is_valid, creator_id, create_time, editor_id, edit_time)
+    values ( #{itemType,jdbcType=INTEGER}, #{itemCode,jdbcType=INTEGER}, 
+             #{itemValue,jdbcType=VARCHAR}, #{itemDesc,jdbcType=VARCHAR}, 
+             #{parent.serviceDictId,jdbcType=INTEGER}, #{isLeaf,jdbcType=INTEGER},#{levelNo,jdbcType=VARCHAR}, #{isValid,jdbcType=INTEGER}, 
+             #{serviceDictCreator.id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+             #{serviceDictEditor.id,jdbcType=INTEGER}, #{editTime,jdbcType=TIMESTAMP})
+  </insert>
+  
+
+  
+  <!-- 修改 -->
+  	<update id="update">
+		UPDATE service_dict_info s SET 
+	    s.service_dict_id = #{serviceDictId},
+		s.item_type = #{itemType},
+		s.item_code = #{itemCode},
+		s.item_value = #{itemValue},
+		s.item_desc = #{itemDesc},
+		s.parent_id = #{parent.serviceDictId},
+		s.is_leaf = #{isLeaf},
+		s.level_no = #{levelNo},
+		s.creator_id = #{serviceDictCreator.id},
+		s.editor_id = #{serviceDictEditor.id},
+		s.edit_time = #{editTime}
+		WHERE s.service_dict_id = #{serviceDictId}
+	</update>
+	
+	<!-- 保存层级 -->
+	<update id="updateLevelNo">
+		UPDATE service_dict_info s SET 
+		s.level_no = #{levelNo}
+		WHERE s.service_dict_id = #{serviceDictId}
+	</update>
+  
+  <!-- 删除 -->
+  
+  <update id="delete">
+  UPDATE service_dict_info s set s.is_valid = #{isValid} where s.service_dict_id = #{serviceDictId}
+  </update>
+  
+  <select id="findItemDict" resultMap="dictResultSimpleMap">
+   select 
+   <include refid="serviceDictInfoColumnsSimple" />
+   from service_dict_info s where   s.item_type=#{itemType} and s.is_valid=#{isValid}
+   <if test="isLeaf != null" >
+      and s.is_leaf = #{isLeaf,jdbcType=INTEGER},
+   </if>
+   </select>
+  <select id="findAllItemDictByItemType" resultMap="dictResultSimpleMap">
+   select 
+   <include refid="serviceDictInfoColumnsSimple" />
+   from service_dict_info s where   s.item_type=#{itemType}
+    <if test="isLeaf != null" >
+     and s.is_leaf = #{isLeaf,jdbcType=INTEGER},
+   </if>
+   </select>
+   
+   	<sql id="menuJoins">
+		LEFT JOIN service_dict_info p ON p.service_dict_id = s.parent_id
+    </sql>
+   
+	<update id="auditCancleRequestInfo">
+		UPDATE ${indexTable} SET cancel_request_id = #{cancelRequestId} WHERE cfg_id = #{id}
+	</update>
+   <select id="requestCancleInfoNumber" resultType="Integer">
+   		select cancel_request_id cancelRequestId from ${indexTable} where cfg_id = #{id}
+   </select>
+   <select id="getByItemValue" resultType="com.nis.domain.basics.ServiceDictInfo">
+  	select 
+  		<include refid="serviceDictInfoColumns"/>
+  	from 
+  		service_dict_info s 
+  	where 
+  		s.is_valid = 1 AND s.item_value = #{itemValue}
+      	AND s.item_type = #{itemType}
+  </select>
+</mapper>

@@ -1,0 +1,1 @@
+UPDATE sys_data_dictionary_name SET module_name='是否叶子节点',remark='是否叶子节点' WHERE mark='INT_YES_NO'

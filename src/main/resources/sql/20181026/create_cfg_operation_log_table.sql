@@ -1,0 +1,31 @@
+CREATE TABLE `sys_cfg_operation_log` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `type` int(2) NOT NULL DEFAULT 1 COMMENT '日志类型',
+  `title` varchar(255) NOT NULL COMMENT '日志标题',
+  `create_by` varchar(64) NOT NULL COMMENT '创建者',
+  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `remote_addr` varchar(255) NOT NULL COMMENT '操作IP地址',
+  `user_agent` varchar(255) DEFAULT NULL COMMENT '用户代理',
+  `request_uri` varchar(255) NOT NULL COMMENT '请求URI',
+  `method` varchar(5) NOT NULL COMMENT '操作方式',
+  `state` int(2) NOT NULL DEFAULT 1 COMMENT '行为状态：1-成功 2-失败',
+  `consumer_time` int(11) DEFAULT 0 COMMENT '消费时间',
+  `params` text DEFAULT NULL COMMENT '操作提交的数据',
+  `exception` text DEFAULT NULL COMMENT '异常信息',
+  `compile_id` int(11) DEFAULT NULL,
+  `cfg_id` bigint(20) DEFAULT NULL,
+  `function_id` int(11) NOT NULL DEFAULT 0,
+  `method_name` varchar(128) DEFAULT NULL,
+  `audit_state` int(11) DEFAULT NULL,
+  `action` varchar(255) DEFAULT NULL,
+  `operation` varchar(64) DEFAULT NULL,
+  `function_name` varchar(255) DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `sys_log_create_by` (`create_by`) USING BTREE,
+  KEY `sys_log_request_uri` (`request_uri`) USING BTREE,
+  KEY `sys_log_type` (`type`) USING BTREE,
+  KEY `sys_log_create_date` (`create_date`) USING BTREE,
+  KEY `sys_log_function_id` (`function_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='业务配置操作行为日志';
+#增加配置操作行为日志菜单
+INSERT INTO `sys_menu` (`id`, `parent_id`, `parent_ids`, `code`, `name`, `sort`, `href`, `target`, `icon`, `is_show`, `permission`, `create_by`, `create_date`, `update_by`, `update_date`, `remarks`, `del_flag`, `menu_bg`, `quick_action`, `is_top`, `function_id`) VALUES ('1150', '42', '0,1,2,42,', 'cfg_operation_log', '配置审计日志', '4431', '/sys/log/cfgOperationLogList', '', '', '1', 'sys:cfgOperationLog:view', '1', '2018-10-24 18:57:00', '1', '2018-10-24 18:57:00', '', '1', NULL, '0', '0', NULL);

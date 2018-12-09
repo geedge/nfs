@@ -1,0 +1,12 @@
+UPDATE sys_data_dictionary_name SET REMARK='ddos 攻击类型' WHERE mark='ATTACK_TYPE';
+DELETE	FROM sys_data_dictionary_item WHERE dictionary_id=99;
+INSERT INTO sys_data_dictionary_item (item_code,item_value,item_desc,item_sort,STATUS,TYPE,dictionary_id) VALUES(200594,'ICMP_Flood','',0,1,1,99);
+INSERT INTO sys_data_dictionary_item (item_code,item_value,item_desc,item_sort,STATUS,TYPE,dictionary_id) VALUES(200595,'IPFRAG_Flood','',0,1,1,99);
+INSERT INTO sys_data_dictionary_item (item_code,item_value,item_desc,item_sort,STATUS,TYPE,dictionary_id) VALUES(200596,'SYN_Flood','',0,1,1,99);
+INSERT INTO sys_data_dictionary_item (item_code,item_value,item_desc,item_sort,STATUS,TYPE,dictionary_id) VALUES(200597,'ACK_Flood','',0,1,1,99);
+INSERT INTO sys_data_dictionary_item (item_code,item_value,item_desc,item_sort,STATUS,TYPE,dictionary_id) VALUES(200598,'RST_Flood','',0,1,1,99);
+INSERT INTO sys_data_dictionary_item (item_code,item_value,item_desc,item_sort,STATUS,TYPE,dictionary_id) VALUES(200599,'DNS_Flood','',0,1,1,99);
+INSERT INTO sys_data_dictionary_item (item_code,item_value,item_desc,item_sort,STATUS,TYPE,dictionary_id) VALUES(200600,'NTP_Flood','',0,1,1,99);
+INSERT INTO sys_data_dictionary_item (item_code,item_value,item_desc,item_sort,STATUS,TYPE,dictionary_id) VALUES(200601,'UDP_Flood','',0,1,1,99);
+INSERT INTO sys_data_dictionary_item (item_code,item_value,item_desc,item_sort,STATUS,TYPE,dictionary_id) VALUES(200602,'HTTP_Flood','',0,1,1,99);
+INSERT INTO sys_data_dictionary_item (item_code,item_value,item_desc,item_sort,STATUS,TYPE,dictionary_id) VALUES(200603,'SSDP_Flood','',0,1,1,99);

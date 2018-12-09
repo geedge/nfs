@@ -1,0 +1,2 @@
+UPDATE function_region_dict SET config_ip_port_show = '1' WHERE function_id = 300 AND dict_id = 68;
+UPDATE function_region_dict SET config_ip_port_show = '3,4' WHERE function_id = 304 AND dict_id = 232;

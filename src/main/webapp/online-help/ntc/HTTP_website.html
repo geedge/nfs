@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.0
+Version: 3.5
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="utf-8"/>
+<title>online help</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+<link href="../../static/global/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="../../static/global/plugins/simple-line-icons/simple-line-icons.css" rel="stylesheet" type="text/css" />
+<link href="../../static/global/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<!-- <link href="../../static/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/> -->
+<link href="../../static/global/plugins/bootstrap-switch/css/bootstrap-switch.css" rel="stylesheet" type="text/css" />
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN THEME STYLES -->
+<link href="../../static/global/css/components.css" rel="stylesheet" id="style_components" type="text/css" />
+<link href="../../static/global/css/plugins.css" rel="stylesheet" type="text/css" />
+<link href="../../static/layouts/layout/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="../../static/layouts/layout/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
+<link href="../../static/layouts/layout/css/custom.css" rel="stylesheet" type="text/css" />
+<!-- END THEME STYLES -->
+<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
+<!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
+<!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
+<!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
+<!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
+<!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
+<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+<body class="page-header-fixed page-quick-sidebar-over-content ">
+<div class="page-content" style="margin:15px 20px 0 15px">
+	<div class="row">
+				<div id="accordion1" class="panel-group">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_0">
+							0.功能简介</a>
+							</h4>
+						</div>
+						<div id="accordion1_0" class="panel-collapse collapse in">
+							<div class="panel-body">
+								 本页面完成针对HTTP流量的配置，从而对包含特定网站关键词特征的HTTP流量进行监测或阻断。
+							</div>
+						</div>
+					</div>
+				<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_1">
+							1.配置基础信息</a>
+							</h4>
+						</div>
+						<div id="accordion1_1" class="panel-collapse collapse in">
+							<div class="panel-body">
+								 配置基础信息包括：规则名称，执行动作，是否记录管控日志。
+								 <ul>
+								 	<li>规则名称：用户自定义的该条配置的描述信息。</li>
+									<li>执行动作：配置施加于网络传输单元时，对网络流量施加什么样的动作，此处为阻断、监测二选一。</li>
+									<li>是否记录日志：对网络流量施加执行动作时，是否记录命中配置的HTTP流量信息，包括发现时间、IP、URL、请求头、请求体、响应头、响应体等。</li>
+								 </ul>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">
+							2.业务配置属性 </a>
+							</h4>
+						</div>
+						<div id="accordion1_2" class="panel-collapse collapse">
+							<div class="panel-body">
+								HTTP协议网站管控的流量属性信息，分为请求侧与响应侧：
+								<ul>
+									<li>请求侧消息体关键词：关键字填写；匹配方式选择，例如子串匹配、前缀匹配、后缀匹配与精确匹配；是否二进制选择（此处是指关键字内容是否为二进制原始码流，选择是，则关键字处填写十六进制数）；是否大小写敏感选择。</li>
+									<li>响应侧消息体关键词：关键字填写；匹配方式选择，例如子串匹配、前缀匹配、后缀匹配与精确匹配；是否二进制选择（此处是指关键字内容是否为二进制原始码流，选择是，则关键字处填写十六进制数）；是否大小写敏感选择。</li>	
+								 </ul>
+																
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_3">
+							3.配置约束条件 </a>
+							</h4>
+						</div>
+						<div id="accordion1_3" class="panel-collapse collapse">
+							<div class="panel-body">
+							
+							</div>
+						</div>
+					</div>
+					
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_5">
+							4.配置生效区域 </a>
+							</h4>
+						</div>
+						<div id="accordion1_5" class="panel-collapse collapse">
+							<div class="panel-body">
+								配置的生效区域，生效区域包括地区，以及ISP，地区和ISP可组合，即某个地区的某个运营商流量生效，
+								或者某个地区的所有流量生效，或者某个运营商的所有流量生效，也可全域生效。
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_6">
+							5.配置标签 </a>
+							</h4>
+						</div>
+						<div id="accordion1_6" class="panel-collapse collapse">
+							<div class="panel-body">
+								 <ul>
+								 	<li>来函：必选项，官方或其他组织下达的配置流量管控依据</li>
+									<li>分类：非必选项，配置分类，例如内容安全、网络攻击等。</li>
+									<li>性质：非必选项，配置性质，例如政治、暴力、宗教等。</li>
+									<li>标签：非必选项，自定义标签。</li>				
+								 </ul>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_7">
+							6.预期效果 </a>
+							</h4>
+						</div>
+						<div id="accordion1_7" class="panel-collapse collapse">
+							<div class="panel-body">
+								<ul>
+									<li>监测预期效果：记录符合配置条件的HTTP流量监测日志。
+									<li>阻断预期效果：阻断符合配置条件的HTTP访问，即访问页面无响应，并记录阻断日志。
+								</ul>
+							</div>
+						</div>
+					</div>					
+				</div>
+</div>
+</div>
+
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="../../static/global/plugins/respond.min.js"></script>
+<script src="../../static/global/plugins/excanvas.min.js"></script> 
+<![endif]-->
+<script src="../../static/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../../static/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script>
+jQuery(document).ready(function() {    
+   
+});
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

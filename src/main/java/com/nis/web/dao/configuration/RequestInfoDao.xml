@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nis.web.dao.configuration.RequestInfoDao">
+  <resultMap id="BaseResultMap" type="com.nis.domain.configuration.RequestInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="request_number" jdbcType="VARCHAR" property="requestNumber" />
+    <result column="request_org" jdbcType="VARCHAR" property="requestOrg" />
+    <result column="request_time" jdbcType="DATE" property="requestTime" />
+    <result column="request_title" jdbcType="VARCHAR" property="requestTitle" />
+    <result column="request_content" jdbcType="VARCHAR" property="requestContent" />
+    <result column="is_valid" jdbcType="INTEGER" property="isValid" />
+    <result column="is_audit" jdbcType="INTEGER" property="isAudit" />
+    <result column="creator_id" jdbcType="INTEGER" property="creatorId" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="editor_id" jdbcType="INTEGER" property="editorId" />
+    <result column="edit_time" jdbcType="DATE" property="editTime" />
+    <result column="auditor_id" jdbcType="INTEGER" property="auditorId" />
+    <result column="audit_time" jdbcType="DATE" property="auditTime" />
+    <result column="task_id" jdbcType="BIGINT" property="taskId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, request_number, request_org, request_time, request_title, request_content, is_valid, 
+    is_audit, creator_id, create_time, editor_id, edit_time, auditor_id, audit_time
+  </sql>
+  <!-- 查询列表 -->
+  <select id="findRequestInfo" resultMap="BaseResultMap">
+	select
+		r.id AS id,
+		r.task_id AS taskId,
+		r.request_number AS requestNumber,
+		r.request_org AS requestOrg,
+		r.request_time AS requestTime,
+		r.request_title AS requestTitle,
+		r.request_content AS requestContent,
+		r.is_valid AS isValid,
+		r.is_audit AS isAudit,
+		s.name AS creatorName,
+		r.create_time AS createTime,
+		u.name AS editorName,
+		r.edit_time AS editTime,
+		e.name AS currentName,
+		e.name AS auditorName,
+		r.audit_time AS auditTime,
+		t.task_name AS taskName
+	from request_info r
+	left join sys_user s on r.creator_id=s.id
+	left join sys_user u on r.editor_id=u.id
+	left join sys_user e on r.auditor_id=e.id
+	left join task_info t on r.task_id=t.id
+	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+    	<if test="requestTitle != null and requestTitle != ''">
+			AND r.request_title like 
+			<if test="dbName == 'mysql'">CONCAT('%',#{requestTitle}, '%')</if>
+		</if>
+		<if test="requestContent != null and requestContent != ''">
+				AND r.request_content like 
+					<if test="dbName == 'mysql'">CONCAT('%',#{requestContent},'%')</if>
+		</if>
+		<if test="requestNumber != null and requestNumber != ''">
+				AND r.request_number like
+				<if test="dbName == 'mysql'">CONCAT('%',#{requestNumber},'%')</if>
+		</if>
+		<if test="isAudit != null">
+				AND r.is_audit=${isAudit}
+		</if>
+		<if test="isValid != null">
+				AND r.is_valid=${isValid}
+		</if>
+		<if test="isValid == null">
+	    		AND r.IS_VALID != -1
+	    	</if>
+		<if test="beginDate!=null and beginDate!=''">
+				AND r.request_time &gt;= #{beginDate} 
+		</if>
+		<if test="endDate!=null and endDate!=''">
+				AND r.request_time &lt;=  #{endDate}
+		</if>
+		<if test="dobeginDate!=null and dobeginDate!='' ">
+				AND r.edit_time &gt;= #{dobeginDate}
+		</if>
+		<if test="doendDate!=null and doendDate!=''">
+				AND r.edit_time &lt;=  #{doendDate}
+		</if>
+		<!-- 数据范围过滤 -->
+				${sqlMap.dsf}
+    </trim>
+	<choose>
+		<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+			ORDER BY ${page.orderBy}
+		</when>
+		<otherwise>
+			ORDER BY r.create_time desc
+		</otherwise>
+	</choose>
+	
+  </select>
+  <!-- 根据来函号查询 -->
+  <select id="getRequestInfoByRequestNumber" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from request_info
+    where request_number = #{requestNumber,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据来id查询 -->
+  <select id="getRequestInfoById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    	select
+		r.id AS id,
+		r.task_id AS taskId,
+		r.request_number AS requestNumber,
+		r.request_org AS requestOrg,
+		r.request_time AS requestTime,
+		r.request_title AS requestTitle,
+		r.request_content AS requestContent,
+		r.is_valid AS isValid,
+		r.is_audit AS isAudit,
+		s.name AS creatorName,
+		r.create_time AS createTime,
+		u.name AS editorName,
+		r.edit_time AS editTime,
+		e.name AS currentName,
+		e.name AS auditorName,
+		r.audit_time AS auditTime,
+		t.task_name AS taskName
+	from request_info r
+	left join sys_user s on r.creator_id=s.id
+	left join sys_user u on r.editor_id=u.id
+	left join sys_user e on r.auditor_id=e.id
+	left join task_info t on r.task_id=t.id
+	where r.is_valid!=-1 and r.is_audit !=3
+    and r.id = #{id,jdbcType=BIGINT}
+  </select>
+  <!-- 新增 -->
+  <insert id="insert" parameterType="com.nis.domain.configuration.RequestInfo">
+    insert into request_info (
+	    request_number, 
+	    request_org, 
+		request_time,
+		request_title,
+		request_content, 
+		is_valid, 
+		is_audit, 
+		creator_id, 
+		create_time, 
+		editor_id, 
+		edit_time, 
+		auditor_id,
+		audit_time,
+		task_id
+	)
+    values (#{requestNumber,jdbcType=VARCHAR}, #{requestOrg,jdbcType=VARCHAR}, 
+      #{requestTime,jdbcType=DATE}, #{requestTitle,jdbcType=VARCHAR}, #{requestContent,jdbcType=VARCHAR}, 
+      #{isValid,jdbcType=INTEGER}, #{isAudit,jdbcType=INTEGER}, #{creatorId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=DATE}, #{editorId,jdbcType=INTEGER}, #{editTime,jdbcType=DATE}, 
+      #{auditorId,jdbcType=INTEGER}, #{auditTime,jdbcType=DATE}, #{taskId,jdbcType=BIGINT})
+  </insert>
+   <!--修改  -->
+  <update id="update" parameterType="com.nis.domain.configuration.RequestInfo">
+    update request_info
+    <set>
+      <if test="requestNumber != null and requestNumber!=''" >
+        request_number = #{requestNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="requestOrg != null and requestOrg!=''">
+        request_org = #{requestOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="requestTime != null">
+        request_time = #{requestTime,jdbcType=DATE},
+      </if>
+      <if test="requestTitle != null and requestTitle!=''">
+        request_title = #{requestTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="requestContent != null and requestContent!=''">
+        request_content = #{requestContent,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null">
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="isAudit != null">
+        is_audit = #{isAudit,jdbcType=INTEGER},
+      </if>
+      <if test="creatorId != null">
+        creator_id = #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="editorId != null">
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null">
+        edit_time = #{editTime,jdbcType=DATE},
+      </if>
+      <if test="auditorId != null">
+        auditor_id = #{auditorId,jdbcType=INTEGER},
+      </if>
+      <if test="auditTime != null">
+        audit_time = #{auditTime,jdbcType=DATE},
+      </if>
+      <if test="taskId != null">
+        task_id = #{taskId},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!--删除  -->
+  <update id="delete" parameterType="long">
+     update request_info
+    <set>
+	    <if test="id != null and id != ''">
+	    	is_valid=-1
+	    </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT} and is_audit !=1
+  </update>
+  <select id="findAllList" resultMap="BaseResultMap">
+	select
+		<include refid="Base_Column_List" />
+	from request_info
+  </select>
+  
+    <select id="findAllLwhhList" resultMap="BaseResultMap">
+	select
+		<include refid="Base_Column_List" />
+	from request_info
+	where  is_audit =1 or is_audit=3 
+  </select>
+  
+  <select id="getRequestTitleById" resultType="string">
+  	select request_title requestTitle from request_info where id=#{id}
+  </select>
+</mapper>

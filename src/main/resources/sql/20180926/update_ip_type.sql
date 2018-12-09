@@ -1,0 +1,2 @@
+UPDATE function_region_dict SET config_ip_type='4,6' WHERE config_ip_type='4,6,46,64,10';
+DELETE FROM sys_data_dictionary_item WHERE dictionary_id=(SELECT ID FROM sys_data_dictionary_name WHERE mark='IP_TYPE') AND item_code IN (46,64,10);

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.basics.PolicyGroupInfoDao" >
+  
+  <resultMap id="PolicyGroupInfoMap" type="com.nis.domain.basics.PolicyGroupInfo" >
+    <id column="group_id" property="groupId" jdbcType="INTEGER" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="group_type" property="groupType" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="service_group_id" property="serviceGroupId" jdbcType="INTEGER" />
+    <result column="asn_no" property="asnNo" jdbcType="BIGINT" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+    <sql id="PolicyGroupInfoColumns">
+		r.group_id,r.group_name,r.group_type,r.is_valid,r.create_time,r.edit_time,
+		r.creator_id,r.editor_id,r.service_group_id,r.asn_no,r.description
+	</sql>
+  
+   <!-- 查出所有 有效数据-->
+      <select id="findPolicyGroupInfoList" resultMap="PolicyGroupInfoMap">
+		SELECT
+			<include refid="PolicyGroupInfoColumns"/>
+		<trim prefix="," prefixOverrides=",">
+			, s.name as creator_name
+			,e.name as editor_name
+		</trim>
+	    FROM policy_group_info r
+	    left join sys_user s on r.creator_id=s.id
+		left join sys_user e on r.editor_id=e.id
+		
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="page !=null and page.where != null and page.where != ''">
+				 AND ${page.where}
+			</if>
+	    	<if test="groupName != null and groupName != ''">
+	    		AND r.group_name like concat(concat('%',#{groupName,jdbcType=VARCHAR}),'%') 
+	    	</if>
+	    	<if test="groupType != null">
+	    		AND r.group_type =#{groupType }
+	    	</if>
+	    	<if test="groupType == null">
+	    		AND r.group_type != 2
+	    		AND r.group_type != 3
+	    	</if>
+	    	<if test="asnNo != null">
+	    		AND r.asn_no =#{asnNo }
+	    	</if>
+    		AND r.IS_VALID =1
+	    	<if test="creatorName != null and creatorName != ''">
+	    		AND CREATOR_NAME like concat(concat('%',#{creatorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="editorName != null and editorName != ''">
+	    		AND r.EDITOR_NAME like concat(concat('%',#{editorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<!-- 数据范围过滤 -->
+			<!-- ${sqlMap.dsf} -->
+	    </trim>
+	    <choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY r.group_id desc
+			</otherwise>
+		</choose>
+		
+	</select>
+   <!-- 查出所有 有效数据-->
+      <select id="findPolicyGroupInfos" resultMap="PolicyGroupInfoMap">
+		SELECT
+			<include refid="PolicyGroupInfoColumns"/>
+	    FROM policy_group_info r
+	    where r.is_valid=1
+	</select>
+      <select id="findNatPolicyGroups" resultMap="PolicyGroupInfoMap">
+		SELECT
+			<include refid="PolicyGroupInfoColumns"/>
+	    FROM policy_group_info r
+	    where r.is_valid=1 AND r.group_type = 2 OR r.group_type = 3
+	</select>
+      <select id="findPolicyGroupInfosByType" resultMap="PolicyGroupInfoMap">
+		SELECT
+			<include refid="PolicyGroupInfoColumns"/>
+	    FROM policy_group_info r
+	    where r.is_valid=1 and r.group_type=#{groupType,jdbcType=INTEGER}
+	</select>
+      <select id="findHasIPPolicyGroupInfosByType" resultMap="PolicyGroupInfoMap">
+		SELECT
+			<include refid="PolicyGroupInfoColumns"/>
+	    FROM (
+	    SELECT DISTINCT dns_strategy_id FROM dns_ip_cfg WHERE is_valid=1 AND is_audit=1
+		) a
+		LEFT JOIN policy_group_info r ON a.dns_strategy_id=r.group_id
+	    where r.is_valid=1 and r.group_type=#{groupType,jdbcType=INTEGER}
+	</select>
+	<insert id="insert" parameterType="com.nis.domain.basics.PolicyGroupInfo" >
+    insert into policy_group_info(
+     IS_VALID,
+     CREATOR_ID,
+    CREATE_TIME,
+    GROUP_NAME,
+    GROUP_TYPE,
+    SERVICE_GROUP_ID,
+    ASN_NO,
+    DESCRIPTION
+    )values (
+    	1,
+    	#{creatorId,jdbcType=INTEGER}, 
+   		#{createTime,jdbcType=TIMESTAMP},
+    	#{groupName,jdbcType=VARCHAR}, 
+    	#{groupType,jdbcType=INTEGER},
+    	#{serviceGroupId,jdbcType=INTEGER},
+    	#{asnNo,jdbcType=INTEGER},
+    	#{description,jdbcType=VARCHAR}
+    )
+  </insert>
+	<insert id="insertBatch">
+    insert into policy_group_info(
+     IS_VALID,
+     CREATOR_ID,
+    CREATE_TIME,
+    GROUP_NAME,
+    GROUP_TYPE,
+    SERVICE_GROUP_ID,
+    ASN_NO,
+    DESCRIPTION
+    )values 
+    <foreach collection ="list" item="info" separator =",">
+    (
+    	1,
+    	#{info.creatorId,jdbcType=INTEGER}, 
+   		#{info.createTime,jdbcType=TIMESTAMP},
+    	#{info.groupName,jdbcType=VARCHAR}, 
+    	#{info.groupType,jdbcType=INTEGER},
+    	#{info.serviceGroupId,jdbcType=INTEGER},
+    	#{info.asnNo,jdbcType=INTEGER},
+    	#{info.description,jdbcType=VARCHAR}
+    )
+    </foreach>
+  </insert>
+  <update id="update" parameterType="com.nis.domain.basics.PolicyGroupInfo" >
+    update policy_group_info
+    <set >
+      <trim suffixOverrides=",">
+      <if test="groupName != null and groupName != ''" >
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupType != null" >
+        group_type = #{groupType,jdbcType=INTEGER},
+      </if>
+      <if test="asnNo != null" >
+        asn_no = #{asnNo,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="editorId != null" >
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+       <if test="editTime != null  and editTime != ''" >
+      	edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      </trim>
+    </set>
+    <where>
+    	<if test="groupId != null" >
+        	and group_id =  #{groupId,jdbcType=INTEGER}
+      	</if>
+    	<if test="serviceGroupId != null" >
+        	and service_group_id =  #{serviceGroupId,jdbcType=INTEGER}
+      	</if>
+    </where>
+  </update>
+  
+  <select id="getById" resultType="com.nis.domain.basics.PolicyGroupInfo">
+  	select <include refid="PolicyGroupInfoColumns"/> 
+  	from policy_group_info r
+  	where r.group_id =#{groupId}
+  </select>
+  <select id="getInfoByAsnNo" resultType="com.nis.domain.basics.PolicyGroupInfo">
+  	SELECT 
+  		<include refid="PolicyGroupInfoColumns"/> 
+  	FROM 
+  		policy_group_info r
+  	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+    	<if test="groupId != null" >
+        	AND group_id =  #{groupId,jdbcType=INTEGER}
+      	</if>
+    	<if test="asnNo != null" >
+        	AND asn_no = #{asnNo,jdbcType=INTEGER}
+      	</if>
+      	<if test="isValid != null" >
+	        AND is_valid = #{isValid,jdbcType=INTEGER}
+	    </if>
+      	<if test="isValid == null" >
+	        AND is_valid != -1
+	    </if>
+    </trim>
+  </select>
+  
+  <select id="getHasAreaPolicyGroups" resultType="com.nis.domain.basics.PolicyGroupInfo">
+  	SELECT
+		<include refid="PolicyGroupInfoColumns"/> 
+	FROM
+		policy_group_info r
+	WHERE
+		r.is_valid = 1 AND
+		r.group_type = #{groupType,jdbcType=INTEGER} AND 
+		r.group_id IN (
+			SELECT ga.group_id FROM group_area_info ga WHERE ga.is_valid != -1
+		)
+  </select>
+  
+  <select id="getGroupIdByGroupName" resultType="java.lang.Integer">
+  	SELECT 
+  		r.group_id 
+  	FROM 
+  		policy_group_info r
+  	WHERE 
+  		r.group_name = #{groupName}
+  </select>
+  
+  <select id="getGroupInfo" resultType="com.nis.domain.basics.PolicyGroupInfo">
+  	SELECT 
+  		<include refid="PolicyGroupInfoColumns"/> 
+  	FROM 
+  		policy_group_info r
+  	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+    	<if test="groupName != null and groupName != ''" >
+        	AND group_name = #{groupName,jdbcType=VARCHAR}
+      	</if>
+      	<if test="groupType != null" >
+        	AND group_type = #{groupType,jdbcType=INTEGER}
+      	</if>
+    	<if test="asnNo != null" >
+        	AND asn_no = #{asnNo,jdbcType=INTEGER}
+      	</if>
+      	<if test="isValid != null" >
+	        AND is_valid = #{isValid,jdbcType=INTEGER}
+	    </if>
+      	<if test="isValid == null" >
+	        AND is_valid != -1
+	    </if>
+    </trim>
+  </select>
+</mapper>

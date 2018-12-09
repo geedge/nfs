@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.0
+Version: 3.5
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8"/>
+    <title>online help</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
+          type="text/css"/>
+    <link href="../../static/global/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/global/plugins/simple-line-icons/simple-line-icons.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/global/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <!-- <link href="../../static/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/> -->
+    <link href="../../static/global/plugins/bootstrap-switch/css/bootstrap-switch.css" rel="stylesheet" type="text/css"/>
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="../../static/global/css/components.css" rel="stylesheet" id="style_components" type="text/css"/>
+    <link href="../../static/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/layouts/layout/css/layout.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/layouts/layout/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="../../static/layouts/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
+<!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
+<!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
+<!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
+<!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
+<!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
+<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+<body class="page-header-fixed page-quick-sidebar-over-content ">
+<div class="page-content" style="margin:15px 20px 0 15px">
+    <div class="row">
+        <div id="accordion1" class="panel-group">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1"
+                           href="#accordion1_1">
+                            1.功能简介
+                        </a>
+                    </h4>
+                </div>
+                <div id="accordion1_1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        用户自定义HTTP协议特征，为特定应用添加HTTP协议的特征。
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1"
+                           href="#accordion1_2">
+                            2.基础配置信息</a>
+                    </h4>
+                </div>
+                <div id="accordion1_2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <ul>
+                            <li>社交应用：用户选择APP。</li>
+                            <li>配置描述：用户自定义该条配置的描述信息。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1"
+                           href="#accordion1_3">
+                            3.配置约束条件 </a>
+                    </h4>
+                </div>
+                <div id="accordion1_3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        APP HTTP特征限制条件：
+                        <ul>
+
+                            <li>匹配区域：选择具体的HTTP特征，包括请求包的特征和应答包的特征。</li>
+                            <li>关键字：可填多个关键字，最长1024个字符，用回车键分割。</li>
+                            <li>匹配方式：包含子串匹配、左匹配、有匹配和完全匹配。</li>
+                            <li>表达式类型：分为“无表达式”和“与表达式”，“无表达式”可以和任意一种匹配方式组合使用，“与表达式”只能和子串匹配组合使用。</li>
+                            <li>是否十六进制：若关键字填写十六进制格式的特征，选择十六进制，否则为非十六进制。</li>
+
+
+                        </ul>
+                        IP范围特征限制条件：
+                        <ul>
+
+                            <li>IP类型：可选IPV4或IPV6。</li>
+                            <li>IP格式：可选IP、IP范围和IP/子网掩码。</li>
+                            <li>
+                                目的IP：IP格式选择“IP”，该文本框填合法的单个IP;IP格式选择“IP范围”，IP段只能配置x.x.x.0-x.x.x.255;IP/子网掩码中子网掩码值限制为16-32。
+                            </li>
+                            <li>目的端口：端口与端口掩码范围是0-65535。</li>
+                            <li>协议：可选TCP、UDP、全部。全部表示TCP或UDP。</li>
+                            <li>可为一个应用添加最多3个APP HTTP特征和1个IP范围特征。当同时满足APP HTTP特征和IP范围特征时，该配置才生效。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1"
+                           href="#accordion1_4">
+                            4.预期效果 </a>
+                    </h4>
+                </div>
+                <div id="accordion1_4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <ul>
+                            将该HTTP特征添加给了指定的APP，如用户产生具有该特征的数据，会有如下效果。
+                            <li>若用户下发该APP阻断配置，请求该HTTP请求被阻断，若用户选择生成日志，会有该APP的阻断日志。</li>
+                            <li>若用户下发该APP监视配置，HTTP请求正常工作，若用户选择生成日志，会有该APP的监视日志。</li>
+                            <li>若用户下发该APP限速配置，户会感知HTTP响应变差，若用户选择生成日志，会有该APP的限速日志。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="../../static/global/plugins/respond.min.js"></script>
+<script src="../../static/global/plugins/excanvas.min.js"></script>
+<![endif]-->
+<script src="../../static/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../../static/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script>
+    jQuery(document).ready(function () {
+
+    });
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

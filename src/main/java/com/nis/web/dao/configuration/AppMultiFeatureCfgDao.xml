@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.configuration.AppMultiFeatureCfgDao" >
+  <resultMap id="AppFeatureIndexMap" type="com.nis.domain.configuration.AppFeatureIndex" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+    <result column="user_region1" property="userRegion1" jdbcType="VARCHAR" />
+    <result column="user_region2" property="userRegion2" jdbcType="VARCHAR" />
+    <result column="user_region3" property="userRegion3" jdbcType="VARCHAR" />
+    <result column="user_region4" property="userRegion4" jdbcType="VARCHAR" />
+    <result column="user_region5" property="userRegion5" jdbcType="VARCHAR" />
+    <result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="app_code" property="appCode" jdbcType="INTEGER" />
+    <result column="behav_code" property="behavCode" jdbcType="INTEGER" />
+    <result column="cfg_region_type" property="cfgRegionType" jdbcType="VARCHAR" />
+    <result column="cfg_region_value" property="cfgRegionValue" jdbcType="VARCHAR" />
+    <result column="cfg_region_code" property="cfgRegionCode1" jdbcType="VARCHAR" />
+  </resultMap>
+  <!-- APP IP类配置映射 -->
+  <resultMap id="AppIpCfgMap" type="com.nis.domain.configuration.AppIpCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="app_code" property="appCode" jdbcType="INTEGER" />
+    <result column="behav_code" property="behavCode" jdbcType="INTEGER" />
+    <result column="ip_type" property="ipType" jdbcType="INTEGER" />
+    <result column="ip_pattern" property="ipPattern" jdbcType="INTEGER" />
+    <result column="src_ip_address" property="srcIpAddress" jdbcType="VARCHAR" />
+    <result column="dest_ip_address" property="destIpAddress" jdbcType="VARCHAR" />
+    <result column="port_pattern" property="portPattern" jdbcType="INTEGER" />
+    <result column="src_port" property="srcPort" jdbcType="VARCHAR" />
+    <result column="dest_port" property="destPort" jdbcType="VARCHAR" />
+    <result column="direction" property="direction" jdbcType="INTEGER" />
+    <result column="protocol" property="protocol" jdbcType="INTEGER" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+  </resultMap>
+  <!-- APP 增强字符串类的配置映射 -->
+  <resultMap id="AppComplexFeatureCfgMap" type="com.nis.domain.configuration.AppComplexFeatureCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="app_code" property="appCode" jdbcType="INTEGER" />
+    <result column="behav_code" property="behavCode" jdbcType="INTEGER" />
+    <result column="district" property="district" jdbcType="VARCHAR" />
+    <result column="cfg_keywords" property="cfgKeywords" jdbcType="VARCHAR" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="expr_type" property="exprType" jdbcType="INTEGER" />
+    <result column="match_method" property="matchMethod" jdbcType="INTEGER" />
+    <result column="is_hexbin" property="isHexbin" jdbcType="INTEGER" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+  </resultMap>
+  <!-- APP字符串类配置映射 -->
+  <resultMap id="AppStringFeatureCfgMap" type="com.nis.domain.configuration.AppStringFeatureCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    <result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="app_code" property="appCode" jdbcType="INTEGER" />
+    <result column="behav_code" property="behavCode" jdbcType="INTEGER" />
+    <result column="cfg_keywords" property="cfgKeywords" jdbcType="VARCHAR" />
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="expr_type" property="exprType" jdbcType="INTEGER" />
+    <result column="match_method" property="matchMethod" jdbcType="INTEGER" />
+    <result column="is_hexbin" property="isHexbin" jdbcType="INTEGER" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="do_log" property="doLog" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+  </resultMap>
+ 
+   <sql id="AppFeatureIndex_Column" >
+	    r.CFG_ID,r.CFG_DESC,r.ACTION,r.IS_VALID,r.IS_AUDIT,
+	    r.CREATOR_ID,r.CREATE_TIME,r.EDITOR_ID,r.EDIT_TIME,r.AUDITOR_ID,r.AUDIT_TIME,
+	    r.SERVICE_ID,r.REQUEST_ID,r.COMPILE_ID,r.IS_AREA_EFFECTIVE,r.CLASSIFY,
+	    r.ATTRIBUTE,r.LABLE,r.AREA_EFFECTIVE_IDS,r.function_id,r.CFG_REGION_TYPE,r.CFG_REGION_VALUE,r.user_region1,
+	    r.user_region2,r.user_region3,r.user_region4,r.user_region5,r.do_log,r.feature_table,
+	    r.feature_table_type,r.app_code,r.spec_service_id,r.cfg_region_code
+   </sql>
+	  
+  <sql id="AppIpCfg_Column" >
+    r.CFG_ID, r.APP_CODE,r.BEHAV_CODE,r.SPEC_SERVICE_ID, r.CFG_DESC,r.ACTION,r.IS_VALID,r.IS_AUDIT,
+    r.CREATOR_ID,r.CREATE_TIME,r.EDITOR_ID,r.EDIT_TIME,r.AUDITOR_ID,r.AUDIT_TIME,
+    r.SERVICE_ID,r.REQUEST_ID,r.COMPILE_ID,r.IS_AREA_EFFECTIVE,r.CLASSIFY,
+    r.ATTRIBUTE,r.LABLE,AREA_EFFECTIVE_IDS,r.FUNCTION_ID,r.CFG_TYPE,r.CFG_REGION_CODE,
+    r.IP_TYPE, r.IP_PATTERN, r.SRC_IP_ADDRESS,r.DEST_IP_ADDRESS, r.PORT_PATTERN,r.SRC_PORT,DEST_PORT,
+    r.DIRECTION,r.PROTOCOL,r.DO_LOG,r.USER_REGION1,r.USER_REGION2,r.USER_REGION3,r.USER_REGION4,r.USER_REGION5
+  </sql>
+  
+  <sql id="AppComplexFeatureCfg_Column" >
+    r.CFG_ID, r.APP_CODE,r.BEHAV_CODE,r.SPEC_SERVICE_ID,r.CFG_DESC,ACTION,r.IS_VALID,r.IS_AUDIT,
+    r.CREATOR_ID,r.CREATE_TIME,r.EDITOR_ID,r.EDIT_TIME,r.AUDITOR_ID,r.AUDIT_TIME,
+    r.SERVICE_ID,r.REQUEST_ID,r.COMPILE_ID,r.IS_AREA_EFFECTIVE,r.CLASSIFY,
+    r.ATTRIBUTE,r.LABLE,r.AREA_EFFECTIVE_IDS,r.FUNCTION_ID,r.CFG_TYPE,r.CFG_REGION_CODE,
+    r.DISTRICT,r.CFG_KEYWORDS,r.EXPR_TYPE,r.MATCH_METHOD,r.IS_HEXBIN,r.DO_LOG
+  </sql>
+  
+  <sql id="AppStringFeatureCfg_Column" >
+    r.CFG_ID, r.APP_CODE,r.BEHAV_CODE,r.SPEC_SERVICE_ID,r.CFG_DESC,r.ACTION,r.IS_VALID,r.IS_AUDIT,
+    r.CREATOR_ID,r.CREATE_TIME,r.EDITOR_ID,r.EDIT_TIME,r.AUDITOR_ID,r.AUDIT_TIME,
+    r.SERVICE_ID,r.REQUEST_ID,r.COMPILE_ID,r.IS_AREA_EFFECTIVE,r.CLASSIFY,
+    r.ATTRIBUTE,r.LABLE,r.AREA_EFFECTIVE_IDS,r.FUNCTION_ID,r.CFG_TYPE,r.CFG_REGION_CODE,
+    r.CFG_KEYWORDS,r.EXPR_TYPE,r.MATCH_METHOD,r.IS_HEXBIN,r.DO_LOG
+  </sql>
+  <sql id="AppCommonCfg_Value_List" >
+    #{appCode,jdbcType=INTEGER},#{behavCode,jdbcType=INTEGER},#{specServiceId,jdbcType=INTEGER},
+    #{cfgDesc,jdbcType=VARCHAR},#{action,jdbcType=INTEGER}, 
+    #{isValid,jdbcType=INTEGER},#{isAudit,jdbcType=INTEGER},#{creatorId,jdbcType=INTEGER}, 
+    #{createTime,jdbcType=TIMESTAMP},#{editorId,jdbcType=INTEGER},#{editTime,jdbcType=TIMESTAMP}, 
+    #{auditorId,jdbcType=INTEGER},#{auditTime,jdbcType=TIMESTAMP},#{serviceId,jdbcType=INTEGER}, 
+    #{requestId,jdbcType=INTEGER},#{compileId,jdbcType=INTEGER},#{isAreaEffective,jdbcType=INTEGER},
+    #{classify,jdbcType=VARCHAR},#{attribute,jdbcType=VARCHAR},#{lable,jdbcType=VARCHAR},    
+    #{areaEffectiveIds,jdbcType=VARCHAR},#{functionId,jdbcType=INTEGER}
+  </sql>
+  <select id="getAppFeatureIndex" resultMap="AppFeatureIndexMap" parameterType="java.lang.Long" >
+    SELECT 
+    <include refid="AppFeatureIndex_Column" />
+    FROM app_feature_index r
+    WHERE CFG_ID = #{cfgId,jdbcType=BIGINT}
+  </select>
+
+  <select id="findAppFeatureIndexList" resultMap="AppFeatureIndexMap">
+		select 
+		<include refid="AppFeatureIndex_Column"/>	
+		<trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,e.name as editor_name,u.name as auditor_name
+			,ri.request_title as requestName
+		</trim>
+		from app_feature_index r 
+		left join sys_user s on r.creator_id=s.id
+		left join sys_user e on r.editor_id=e.id
+		left join sys_user u on r.auditor_id=u.id
+		left join request_info ri on r.request_id=ri.id
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="page !=null and page.where != null and page.where != ''">
+				 AND ${page.where}
+			</if>
+  			<if test="functionId != null">
+	    		AND r.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+  			<if test="cfgId != null">
+    			AND r.CFG_ID=#{cfgId,jdbcType=BIGINT}
+    		</if>
+	    	<if test="cfgDesc != null and cfgDesc != ''">
+	    		AND r.CFG_DESC like concat(concat('%',#{cfgDesc,jdbcType=VARCHAR}),'%') 
+	    	</if>
+	    	<if test="specServiceId != null">
+    			AND r.spec_service_id=#{specServiceId,jdbcType=INTEGER}
+    		</if>
+	    	<if test="action != null">
+	    		AND r.ACTION=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid != null">
+	    		AND r.IS_VALID=#{isValid,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid == null">
+	    		AND r.IS_VALID != -1
+	    	</if>
+	    	<if test="isAudit != null">
+	    		AND r.IS_AUDIT=#{isAudit,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="creatorName != null and creatorName != ''">
+	    		AND CREATOR_NAME like concat(concat('%',#{creatorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="createTime != null and createTime != ''">
+	    		AND r.CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}
+	    	</if>
+	    	<if test="editorName != null and editorName != ''">
+	    		AND EDITOR_NAME like concat(concat('%',#{editorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="editTime != null and editTime != ''">
+	    		AND r.EDIT_TIME=#{editTime,jdbcType=TIMESTAMP}
+	    	</if>
+	    	<if test="auditorName != null and auditorName != ''">
+	    		AND AUDITOR_NAME like concat(concat('%',#{auditorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="auditTime != null and auditTime != ''">
+	    		AND r.AUDIT_TIME=#{auditTime,jdbcType=TIMESTAMP}
+	    	</if>
+	    	<if test="serviceId != null">
+	    		AND r.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="requestId != null">
+	    		AND r.REQUEST_ID=#{requestId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="compileId != null">
+	    		AND r.COMPILE_ID=#{compileId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isAreaEffective != null">
+	    		AND r.IS_AREA_EFFECTIVE=#{isAreaEffective,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="classify != null and classify != ''">
+	    		AND r.classify like concat(concat('%',#{classify,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="attribute != null and attribute != ''">
+	    		AND r.attribute like concat(concat('%',#{attribute,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="lable != null and lable != ''">
+	    		AND r.lable like concat(concat('%',#{lable,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="areaEffectiveIds != null and areaEffectiveIds != ''">
+	    		AND r.AREA_EFFECTIVE_IDS like concat(concat('%',#{areaEffectiveIds,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="complexStrCfg!=null">
+	    		AND r.compile_id in (select f.compile_id from app_complex_feature_cfg f
+	    		<where>
+	    			<if test="complexStrCfg.cfgKeywords != null and complexStrCfg.cfgKeywords != ''">
+	    				REPLACE(f.cfg_keywords ,'***and***','|') like concat(concat('%',#{complexStrCfg.cfgKeywords,jdbcType=VARCHAR}),'%')
+		    		</if>
+				</where>
+	    		 )
+	    	</if>
+	    	<if test="strCfg!=null">
+	    		AND r.compile_id in (select f.compile_id from app_string_feature_cfg f
+	    		<where>
+	    			<if test="strCfg.cfgKeywords != null and strCfg.cfgKeywords != ''">
+	    				REPLACE(f.cfg_keywords ,'***and***','|') like concat(concat('%',#{strCfg.cfgKeywords,jdbcType=VARCHAR}),'%')
+		    		</if>
+				</where>
+	    		 )
+	    	</if>
+	    	<if test="ipCfg!=null">
+	    		AND r.compile_id in (select f.compile_id from app_ip_range_cfg f
+	    		<where>
+	    			<if test="ipCfg.destIpAddress != null and ipCfg.destIpAddress != ''">
+	    				f.dest_ip_address = #{ipCfg.destIpAddress,jdbcType=VARCHAR}
+		    		</if>
+				</where>
+	    		 )
+	    	</if>
+		  	<!-- 数据范围过滤 -->
+			${sqlMap.dsf}	
+		</trim>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY CFG_ID desc
+			</otherwise>
+		</choose>
+  </select>
+  
+  <!-- insert cfgIndexInfox -->
+  <insert id="insertAppFeatureIndex" parameterType="com.nis.domain.configuration.AppFeatureIndex" >
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="cfgId">
+    	SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into app_feature_index(
+     APP_CODE,BEHAV_CODE,SPEC_SERVICE_ID, CFG_DESC,ACTION,IS_VALID,IS_AUDIT,
+    CREATOR_ID,CREATE_TIME,EDITOR_ID,EDIT_TIME,AUDITOR_ID,AUDIT_TIME,
+    SERVICE_ID,REQUEST_ID,COMPILE_ID,IS_AREA_EFFECTIVE,CLASSIFY,
+    ATTRIBUTE,LABLE,AREA_EFFECTIVE_IDS,FUNCTION_ID,CFG_REGION_TYPE,CFG_REGION_VALUE,DO_LOG,
+    user_region1,user_region2,user_region3,user_region4,user_region5,cfg_region_code
+    )values (
+   		<include refid="AppCommonCfg_Value_List" />,
+   		#{cfgRegionType,jdbcType=VARCHAR},#{cfgRegionValue,jdbcType=VARCHAR},#{doLog,jdbcType=INTEGER},#{userRegion1,jdbcType=VARCHAR},#{userRegion2,jdbcType=VARCHAR}
+    	,#{userRegion3,jdbcType=VARCHAR},#{userRegion4,jdbcType=VARCHAR},#{userRegion5,jdbcType=VARCHAR},#{cfgRegionCode1,jdbcType=VARCHAR}
+    )
+  </insert>
+   <update id="updateAppFeatureIndex" parameterType="com.nis.domain.configuration.AppFeatureIndex" >
+    update app_feature_index
+    <set >
+      <trim suffixOverrides=",">
+        cfg_desc = #{cfgDesc,jdbcType=VARCHAR},
+    	APP_CODE = #{appCode,jdbcType=INTEGER},
+    	BEHAV_CODE = #{behavCode,jdbcType=INTEGER},
+    	SPEC_SERVICE_ID = #{specServiceId,jdbcType=INTEGER},
+        action = #{action,jdbcType=INTEGER},
+        is_valid = #{isValid,jdbcType=INTEGER},
+        is_audit = #{isAudit,jdbcType=INTEGER},
+      <if test="creatorId != null" >
+        creator_id = #{creatorId,jdbcType=INTEGER},
+     </if>
+      <if test="createTime != null and createTime != ''" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+     </if>
+      <if test="editorId != null" >
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null and editTime != ''" >
+        edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditorId != null" >
+        auditor_id = #{auditorId,jdbcType=INTEGER},
+     </if>
+      <if test="auditTime != null and auditTime != ''" > 
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+        service_id = #{serviceId,jdbcType=INTEGER},
+        request_id = #{requestId,jdbcType=INTEGER},
+        compile_id = #{compileId,jdbcType=INTEGER},
+        is_area_effective = #{isAreaEffective,jdbcType=INTEGER},
+        classify = #{classify,jdbcType=VARCHAR},
+        attribute = #{attribute,jdbcType=VARCHAR},
+        lable = #{lable,jdbcType=VARCHAR},
+        area_effective_ids =  #{areaEffectiveIds,jdbcType=VARCHAR},
+        function_id =  #{functionId,jdbcType=INTEGER},
+   		CFG_REGION_TYPE=#{cfgRegionType,jdbcType=VARCHAR},
+   		CFG_REGION_VALUE =#{cfgRegionValue,jdbcType=VARCHAR},
+   		cfg_region_code=#{cfgRegionCode1,jdbcType=VARCHAR},
+   		USER_REGION1 =#{userRegion1,jdbcType=VARCHAR},
+   		USER_REGION2 =#{userRegion2,jdbcType=VARCHAR},
+   		USER_REGION1 =#{userRegion3,jdbcType=VARCHAR},
+   		USER_REGION1 =#{userRegion4,jdbcType=VARCHAR},
+   		USER_REGION1 =#{userRegion5,jdbcType=VARCHAR},
+      	DO_LOG=#{doLog,jdbcType=INTEGER},
+      <if test="exprType != null">
+    	expr_type=#{exprType,jdbcType=INTEGER},
+      </if>
+      <if test="matchMethod != null">
+    	match_method=#{matchMethod,jdbcType=INTEGER},
+      </if>
+      <if test="isHexbin != null">
+    	is_hexbin=#{isHexbin,jdbcType=INTEGER},
+      </if>
+      </trim>
+    </set>
+    where cfg_id = #{cfgId,jdbcType=BIGINT}
+  </update>
+  <!-- 配置删除--> 
+  <update id="updateCfgValid" parameterType="com.nis.domain.configuration.BaseCfg">
+    update ${tableName} set is_valid = #{isValid,jdbcType=INTEGER},
+    editor_id = #{editorId,jdbcType=INTEGER} , 
+    edit_time = #{editTime,jdbcType=TIMESTAMP} 
+    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+		<if test="cfgId !=null ">
+		AND cfg_id = #{cfgId,jdbcType=BIGINT}
+		</if>
+		<if test="compileId !=null ">
+		AND compile_id = #{compileId,jdbcType=INTEGER}
+		</if>
+		and function_id=#{functionId,jdbcType=INTEGER}
+	</trim>
+  </update>
+  <!-- 审核通过或取消 -->
+  <update id="auditCfg" parameterType="com.nis.domain.configuration.BaseCfg">
+    update ${tableName} set is_audit = #{isAudit,jdbcType=INTEGER},
+    auditor_id = #{auditorId,jdbcType=INTEGER}, 
+    audit_time = #{auditTime,jdbcType=TIMESTAMP} 
+    <if test="isValid != null" >
+        ,is_valid = #{isValid,jdbcType=INTEGER}
+      </if>
+    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="cfgId !=null ">
+			AND cfg_id = #{cfgId,jdbcType=BIGINT}
+			</if>
+			<if test="compileId !=null ">
+			AND compile_id = #{compileId,jdbcType=INTEGER}
+			</if>
+			and function_id=#{functionId,jdbcType=INTEGER}
+	</trim>
+    
+  </update>
+  <!-- 查询app_ip_range子配置列表 -->
+  <select id="getAppIpRangeCfg" resultMap="AppIpCfgMap">
+    SELECT 
+    <include refid="AppIpCfg_Column" />
+    FROM app_ip_range_cfg r
+    WHERE r.compile_id=#{compileId}  and r.function_id=#{functionId}
+  </select>
+  <!-- 查询字符串类特征子配置列表 -->
+  <select id="getAppStringFeatureCfg" resultMap="AppStringFeatureCfgMap">
+    SELECT 
+    <include refid="AppStringFeatureCfg_Column" />
+    FROM app_string_feature_cfg r
+    WHERE r.compile_id=#{compileId}  and r.function_id=#{functionId}
+    <if test="cfgRegionCode !=null ">
+		AND r.cfg_region_code = #{cfgRegionCode,jdbcType=BIGINT}
+	</if>
+  </select>
+  <!-- 查询增强字符串类特征子配置列表 -->
+  <select id="getAppComplexFeatureCfg" resultMap="AppComplexFeatureCfgMap">
+    SELECT 
+    <include refid="AppComplexFeatureCfg_Column" />
+    FROM app_complex_feature_cfg r
+    WHERE r.compile_id=#{compileId}  and r.function_id=#{functionId}
+    <if test="cfgRegionCode !=null ">
+		AND r.cfg_region_code = #{cfgRegionCode,jdbcType=BIGINT}
+	</if>
+  </select>
+ <!-- 新增app_ip_range子配置 -->
+  <insert id="insertAppIpRangeCfg" parameterType="com.nis.domain.configuration.AppIpCfg" >
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="cfgId">
+    	SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into app_ip_range_cfg (
+    APP_CODE,BEHAV_CODE,SPEC_SERVICE_ID, CFG_DESC,ACTION,IS_VALID,IS_AUDIT,
+    CREATOR_ID,CREATE_TIME,EDITOR_ID,EDIT_TIME,AUDITOR_ID,AUDIT_TIME,
+    SERVICE_ID,REQUEST_ID,COMPILE_ID,IS_AREA_EFFECTIVE,CLASSIFY,
+    ATTRIBUTE,LABLE,AREA_EFFECTIVE_IDS,FUNCTION_ID,CFG_TYPE,CFG_REGION_CODE,
+    IP_TYPE, IP_PATTERN, SRC_IP_ADDRESS,DEST_IP_ADDRESS, PORT_PATTERN,SRC_PORT,DEST_PORT,
+    DIRECTION,PROTOCOL,DO_LOG,user_region1,user_region2,user_region3,user_region4,user_region5
+    )values (
+     <include refid="AppCommonCfg_Value_List" />,
+     #{cfgType,jdbcType=VARCHAR},#{cfgRegionCode,jdbcType=INTEGER},
+     #{ipType,jdbcType=INTEGER}, #{ipPattern,jdbcType=INTEGER},#{srcIpAddress,jdbcType=VARCHAR},#{destIpAddress,jdbcType=VARCHAR},
+    #{portPattern,jdbcType=INTEGER},#{srcPort,jdbcType=VARCHAR},#{destPort,jdbcType=VARCHAR},#{direction,jdbcType=INTEGER}, 
+    #{protocol,jdbcType=INTEGER},#{doLog,jdbcType=INTEGER},#{userRegion1,jdbcType=VARCHAR},#{userRegion2,jdbcType=VARCHAR}
+    ,#{userRegion3,jdbcType=VARCHAR},#{userRegion4,jdbcType=VARCHAR},#{userRegion5,jdbcType=VARCHAR}
+    )
+  </insert>
+  <!-- 新增APP增强字符串类特征子配置 -->
+  <insert id="insertAppComplexFeatureCfg" parameterType="com.nis.domain.configuration.AppComplexFeatureCfg" >
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="cfgId">
+    	SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into app_complex_feature_cfg (
+     APP_CODE,BEHAV_CODE,SPEC_SERVICE_ID,CFG_DESC,ACTION,IS_VALID,IS_AUDIT,
+    CREATOR_ID,CREATE_TIME,EDITOR_ID,EDIT_TIME,AUDITOR_ID,AUDIT_TIME,
+    SERVICE_ID,REQUEST_ID,COMPILE_ID,IS_AREA_EFFECTIVE,CLASSIFY,
+    ATTRIBUTE,LABLE,AREA_EFFECTIVE_IDS,FUNCTION_ID,CFG_TYPE,CFG_REGION_CODE,
+    DISTRICT,CFG_KEYWORDS,EXPR_TYPE,MATCH_METHOD,IS_HEXBIN,DO_LOG,user_region1,user_region2,user_region3,user_region4,user_region5
+    )values (
+     <include refid="AppCommonCfg_Value_List" />,
+     #{cfgType,jdbcType=VARCHAR},#{cfgRegionCode,jdbcType=INTEGER},
+    #{district,jdbcType=VARCHAR},#{cfgKeywords,jdbcType=VARCHAR},
+    #{exprType,jdbcType=INTEGER},#{matchMethod,jdbcType=INTEGER},#{isHexbin,jdbcType=INTEGER},
+    #{doLog,jdbcType=INTEGER},#{userRegion1,jdbcType=VARCHAR},#{userRegion2,jdbcType=VARCHAR},
+    #{userRegion3,jdbcType=VARCHAR},#{userRegion4,jdbcType=VARCHAR},#{userRegion5,jdbcType=VARCHAR}
+    )
+  </insert>
+  <!-- 新增APP字符串类特征子配置 -->
+  <insert id="insertAppStringFeatureCfg" parameterType="com.nis.domain.configuration.AppStringFeatureCfg" >
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="cfgId">
+    	SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into app_string_feature_cfg (
+     APP_CODE,BEHAV_CODE,SPEC_SERVICE_ID,CFG_DESC,ACTION,IS_VALID,IS_AUDIT,
+    CREATOR_ID,CREATE_TIME,EDITOR_ID,EDIT_TIME,AUDITOR_ID,AUDIT_TIME,
+    SERVICE_ID,REQUEST_ID,COMPILE_ID,IS_AREA_EFFECTIVE,CLASSIFY,
+    ATTRIBUTE,LABLE,AREA_EFFECTIVE_IDS,FUNCTION_ID,CFG_TYPE,CFG_REGION_CODE,
+    CFG_KEYWORDS,EXPR_TYPE,MATCH_METHOD,IS_HEXBIN,DO_LOG,user_region1,user_region2,user_region3,user_region4,user_region5
+    )values (
+     <include refid="AppCommonCfg_Value_List" />,
+    #{cfgType,jdbcType=VARCHAR},#{cfgRegionCode,jdbcType=INTEGER},
+    #{cfgKeywords,jdbcType=VARCHAR},#{exprType,jdbcType=INTEGER},#{matchMethod,jdbcType=INTEGER},
+   	#{isHexbin,jdbcType=INTEGER},#{doLog,jdbcType=INTEGER},
+    #{userRegion1,jdbcType=VARCHAR},#{userRegion2,jdbcType=VARCHAR},
+    #{userRegion3,jdbcType=VARCHAR},#{userRegion4,jdbcType=VARCHAR},#{userRegion5,jdbcType=VARCHAR}
+    )
+  </insert>
+  <!-- 删除app_ip_range子配置 -->
+  <delete id="deleteAppIpRangeCfg" >
+  	delete from app_ip_range_cfg where compile_id=#{compileId} and function_id=#{functionId}
+  </delete>
+  <!-- 删除字符串类特征子配置 -->
+  <delete id="deleteAppStringFeatureCfg" >
+  	delete from app_string_feature_cfg where compile_id=#{compileId} and function_id=#{functionId}
+  </delete>
+  <!-- 删除增强字符串类特征子配置 -->
+  <delete id="deleteAppComplexFeatureCfg" >
+  	delete from app_complex_feature_cfg where compile_id=#{compileId} and function_id=#{functionId}
+  </delete>
+</mapper>

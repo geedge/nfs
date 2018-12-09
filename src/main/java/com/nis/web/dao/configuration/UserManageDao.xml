@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.configuration.UserManageDao">
+
+	<resultMap id="userManageMap" type="com.nis.domain.configuration.UserManage" >
+		<id column="id" property="id" jdbcType="INTEGER"/>
+		<result column="user_name" property="userName" jdbcType="VARCHAR"/>
+		<result column="user_pwd" property="userPwd" jdbcType="VARCHAR"/>
+		<result column="server_ip" property="serverIp" jdbcType="VARCHAR"/>
+		<result column="user_type" property="userType" jdbcType="VARCHAR"/>
+		<result column="is_valid" property="isValid" jdbcType="INTEGER"/>
+		<result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+		<result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+	    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+	    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+	    <result column="remarks" property="remarks" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<sql id="Columns">
+		a.ID,a.USER_NAME,a.USER_PWD,a.SERVER_IP,a.user_type,a.is_audit,
+		a.IS_VALID,a.CREATOR_ID,a.CREATE_TIME,a.EDITOR_ID,a.EDIT_TIME,a.remarks
+	</sql>
+	
+	<select id="findList" parameterType="com.nis.domain.configuration.UserManage" resultMap="userManageMap">
+		SELECT
+			<include refid="Columns"/>
+			<trim prefix="," prefixOverrides=",">
+				,s.name as creator_name ,e.name as editor_name
+			</trim>
+	    FROM user_manage a
+	    left join sys_user s on a.creator_id=s.id
+		left join sys_user e on a.editor_id=e.id
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="page !=null and page.where != null and page.where != ''">
+				AND ${page.where}
+			</if>
+    		<if test="isValid != null">
+	    		AND a.is_valid=#{isValid,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid == null">
+	    		AND a.is_valid != -1
+	    	</if>
+	    	<if test="userName != null and userName != ''">
+	    		AND a.user_name like concat(concat('%',#{userName,jdbcType=VARCHAR}),'%') 
+	    	</if>
+	    	<if test="serverIp != null and serverIp != ''">
+	    		AND a.server_ip like concat(concat('%',#{serverIp,jdbcType=VARCHAR}),'%') 
+	    	</if>
+	    	<if test="userType != null and userType != ''">
+	    		AND a.user_type =#{userType,jdbcType=VARCHAR}
+	    	</if>
+	    	<if test="remarks != null and remarks != ''">
+	    		AND a.remarks like concat(concat('%',#{remarks,jdbcType=VARCHAR}),'%') 
+	    	</if>
+	    <!-- 	<if test="creatorName != null and creatorName != ''">
+	    		AND r.CREATOR_NAME like concat(concat('%',#{creatorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="editorName != null and editorName != ''">
+	    		AND r.EDITOR_NAME like concat(concat('%',#{editorName,jdbcType=VARCHAR}),'%')
+	    	</if> -->
+	    	<!-- 数据范围过滤 -->
+			${sqlMap.dsf}
+	    </trim>
+	    <choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.id desc
+			</otherwise>
+		</choose>
+			
+	</select>
+	
+	<insert id="insert" parameterType="com.nis.domain.configuration.UserManage">
+		insert into user_manage(
+			USER_NAME,
+			USER_PWD,
+			SERVER_IP,
+			user_type,
+			IS_VALID,
+			is_audit,
+			CREATOR_ID,
+		    CREATE_TIME,
+		    EDITOR_ID,
+		    EDIT_TIME,
+		    remarks
+		)values (
+			#{userName,jdbcType=VARCHAR},
+			#{userPwd,jdbcType=VARCHAR},
+			#{serverIp,jdbcType=VARCHAR},
+			#{userType,jdbcType=VARCHAR},
+   			#{isValid,jdbcType=INTEGER},
+   			1,
+   			#{creatorId,jdbcType=INTEGER}, 
+	   		#{createTime,jdbcType=TIMESTAMP},
+	   		#{editorId,jdbcType=INTEGER},
+	   		#{editTime,jdbcType=TIMESTAMP},
+	   		#{remarks,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<update id="update" parameterType="com.nis.domain.configuration.UserManage">
+		update user_manage
+	    <set>
+	   	  <trim  suffixOverrides=",">
+		      <if test="userName != null and userName != ''" >
+		        user_name = #{userName,jdbcType=VARCHAR},
+		      </if>
+		      <if test="userPwd != null and userPwd != ''">
+	    		user_pwd=#{userPwd,jdbcType=VARCHAR},
+	    	  </if>
+	    	  <if test="isValid != null" >
+		        is_valid = #{isValid,jdbcType=INTEGER},
+		      </if>
+		      <if test="serverIp != null and serverIp != ''" >
+		        server_ip = #{serverIp,jdbcType=VARCHAR},
+		      </if>
+		      <if test="userType != null and userType != ''">
+	    		user_type =#{userType,jdbcType=VARCHAR},
+	    	  </if>
+		      <if test="creatorId != null" >
+		        creator_id = #{creatorId,jdbcType=INTEGER},
+		      </if>
+		      <if test="createTime != null and createTime != ''" >
+		        create_time = #{createTime,jdbcType=TIMESTAMP},
+		      </if>
+		      <if test="editorId != null" >
+		        editor_id = #{editorId,jdbcType=INTEGER},
+		      </if>
+		      <if test="editTime != null" >
+		        edit_time = #{editTime,jdbcType=TIMESTAMP},
+		      </if>
+		      <if test="remarks != null and remarks != ''" >
+		        remarks = #{remarks,jdbcType=VARCHAR},
+		      </if>
+		  </trim>
+	    </set>
+	    where id = #{id,jdbcType=BIGINT}
+	</update>
+	
+	
+	<select id="getUserByLoginName"  resultMap="userManageMap">
+		select 
+			<include refid="Columns"/>
+		from user_manage a where  is_valid !=-1  and  a.user_name=#{userName}
+	</select>
+	<select id="getUserById"  resultMap="userManageMap">
+		select 
+			<include refid="Columns"/>
+		from user_manage a where   a.is_valid !=-1  and a.id=#{id}
+	</select>
+	
+	<select id="findUsers" resultMap="userManageMap">
+		select 
+			<include refid="Columns"/>
+		from user_manage a where a.is_valid !=-1
+	</select>
+</mapper>

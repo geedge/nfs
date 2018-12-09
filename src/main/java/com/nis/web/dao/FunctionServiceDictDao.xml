@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.FunctionServiceDictDao" >
+  <resultMap id="BaseResultMap" type="com.nis.domain.FunctionServiceDict" >
+    <id column="dict_id" property="dictId" jdbcType="INTEGER" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="protocol_id" property="protocolId" jdbcType="INTEGER" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="action_code" property="actionCode" jdbcType="VARCHAR" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="service_name" property="serviceName" jdbcType="VARCHAR" />
+    <result column="service_desc" property="serviceDesc" jdbcType="VARCHAR" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="region_code" property="regionCode" jdbcType="VARCHAR" />
+    <result column="is_import" property="isImport" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    dict_id, function_id, protocol_id, action,action_code, service_id, service_name,service_desc,is_valid,region_code,is_import
+  </sql>
+  <select id="getList" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from function_service_dict
+    where is_valid=1
+    <if test="functionId != null">
+     AND function_id = #{functionId,jdbcType=INTEGER}
+    </if>
+    <if test="protocolId != null">
+   		AND (protocol_id=#{protocolId,jdbcType=INTEGER} or protocol_id=0)
+   	</if>
+   	<if test="action != null">
+   		AND action=#{action,jdbcType=INTEGER}
+   	</if>
+  </select>
+ 
+</mapper>

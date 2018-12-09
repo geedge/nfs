@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.configuration.ProxyFileStrategyDao" >
+ 
+<resultMap id="ProxyFileStrategyCfg" type="com.nis.domain.callback.ProxyFileStrategyCfg" >
+    <id column="cfg_id" property="cfgId" jdbcType="BIGINT" />
+    
+    <result column="file_desc" property="fileDesc" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="content_type" property="contentType" jdbcType="VARCHAR" />
+    <result column="content_length" property="contentLength" jdbcType="VARCHAR" />
+    <result column="md5" property="md5" jdbcType="VARCHAR" />
+    
+    <result column="cfg_desc" property="cfgDesc" jdbcType="VARCHAR" />
+    <result column="cfg_type" property="cfgType" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor_id" property="editorId" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="auditor_id" property="auditorId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="service_id" property="serviceId" jdbcType="INTEGER" />
+    <result column="request_id" property="requestId" jdbcType="INTEGER" />
+    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+    <result column="is_area_effective" property="isAreaEffective" jdbcType="INTEGER" />
+    <result column="classify" property="classify" jdbcType="VARCHAR" />
+    <result column="attribute" property="attribute" jdbcType="VARCHAR" />
+    <result column="lable" property="lable" jdbcType="VARCHAR" />
+    <result column="area_effective_ids" property="areaEffectiveIds" jdbcType="VARCHAR" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="cfg_region_code" property="cfgRegionCode" jdbcType="INTEGER" />
+    <result column="creator_name" property="creatorName" jdbcType="VARCHAR" />
+    <result column="auditor_name" property="auditorName" jdbcType="VARCHAR" />
+    <result column="editor_name" property="editorName" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="ProxyFileStrategyCfgColumn" >
+    a.CFG_ID,a.CFG_DESC,a.ACTION,a.IS_VALID,a.IS_AUDIT,
+    a.CREATOR_ID,a.CREATE_TIME,a.EDITOR_ID,a.EDIT_TIME,a.AUDITOR_ID,a.AUDIT_TIME,
+    a.SERVICE_ID,a.REQUEST_ID,a.COMPILE_ID,a.IS_AREA_EFFECTIVE,a.CLASSIFY,
+    a.ATTRIBUTE,a.LABLE,a.AREA_EFFECTIVE_IDS,a.function_id,a.cfg_type,a.cfg_region_code,
+    a.FILE_DESC,a.URL,a.CONTENT_TYPE,a.CONTENT_LENGTH,a.MD5
+  </sql>
+  
+  
+  <!-- voip条件查询列表信息 -->
+  <select id="findPage" resultMap="ProxyFileStrategyCfg" parameterType="com.nis.domain.callback.ProxyFileStrategyCfg" >
+		SELECT 
+	    <include refid="ProxyFileStrategyCfgColumn" />
+	    <trim prefix="," prefixOverrides=",">
+			, s.name as creator_name,e.name as editor_name,u.name as auditor_name
+			,ri.request_title as requestName
+		</trim>
+	    FROM proxy_file_strategy_cfg a
+	    left join sys_user s on a.creator_id=s.id
+		left join sys_user e on a.editor_id=e.id
+		left join sys_user u on a.auditor_id=u.id
+		left join request_info ri on a.request_id=ri.id
+		
+	    <trim prefix="WHERE" prefixOverrides="AND |OR ">
+	    	<if test="page !=null and page.where != null and page.where != ''">
+				 AND ${page.where}
+			</if>
+	 		<if test="cfgId != null">
+	   			AND a.CFG_ID=#{cfgId,jdbcType=BIGINT}
+	   		</if>
+	    	<if test="cfgDesc != null and cfgDesc != ''">
+	    		AND a.CFG_DESC like concat(concat('%',#{cfgDesc,jdbcType=VARCHAR}),'%') 
+	    	</if>
+	    	<if test="action != null">
+	    		AND a.ACTION=#{action,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid != null">
+	    		AND a.IS_VALID=#{isValid,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isValid == null">
+	    		AND a.IS_VALID != -1
+	    	</if>
+	    	<if test="isAudit != null">
+	    		AND a.IS_AUDIT=#{isAudit,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="creatorName != null and creatorName != ''">
+	    		AND a.CREATOR_NAME like concat(concat('%',#{creatorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="editorName != null and editorName != ''">
+	    		AND a.EDITOR_NAME like concat(concat('%',#{editorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="auditorName != null and auditorName != ''">
+	    		AND a.AUDITOR_NAME like concat(concat('%',#{auditorName,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="serviceId != null">
+	    		AND a.SERVICE_ID=#{serviceId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="requestId != null">
+	    		AND a.REQUEST_ID=#{requestId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="compileId != null">
+	    		AND a.COMPILE_ID=#{compileId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="isAreaEffective != null">
+	    		AND a.IS_AREA_EFFECTIVE=#{isAreaEffective,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="classify != null and classify != ''">
+	    		AND a.classify like concat(concat('%',#{classify,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="attribute != null and attribute != ''">
+	    		AND a.attribute like concat(concat('%',#{attribute,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="lable != null and lable != ''">
+	    		AND a.lable like concat(concat('%',#{lable,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="areaEffectiveIds != null and areaEffectiveIds != ''">
+	    		AND a.AREA_EFFECTIVE_IDS like concat(concat('%',#{areaEffectiveIds,jdbcType=VARCHAR}),'%')
+	    	</if>
+	    	<if test="functionId != null">
+	    		AND a.function_id=#{functionId,jdbcType=INTEGER}
+	    	</if>
+	    	<if test="fileDesc != null and fileDesc != ''">
+	    		AND a.file_desc like concat(concat('%',#{fileDesc,jdbcType=VARCHAR}),'%') 
+	    	</if>
+	    	<!-- 数据范围过滤 -->
+			${sqlMap.dsf}
+	    </trim>
+	    <choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.CFG_ID desc
+			</otherwise>
+		</choose>
+  </select>
+  
+  <!-- 根据Id获取ProxyFileStrategyCfg信息 -->
+  <select id="getCfgById" resultMap="ProxyFileStrategyCfg">
+		 SELECT 
+	     <include refid="ProxyFileStrategyCfgColumn" />
+	    FROM proxy_file_strategy_cfg a
+	    <where>
+  			<if test="cfgId != null">
+  				and a.CFG_ID=#{cfgId,jdbcType=INTEGER}
+	   		</if>
+  		</where>
+  </select>
+  
+  <insert id="insert" parameterType="com.nis.domain.callback.ProxyFileStrategyCfg" >
+    insert into proxy_file_strategy_cfg (
+		CFG_DESC,
+		ACTION,
+		IS_VALID,
+		IS_AUDIT,
+		CREATOR_ID,
+		CREATE_TIME,
+		EDITOR_ID,
+		EDIT_TIME,
+		AUDITOR_ID,
+		AUDIT_TIME,
+		SERVICE_ID,
+		REQUEST_ID,
+		COMPILE_ID,
+		IS_AREA_EFFECTIVE,
+		CLASSIFY,
+		ATTRIBUTE,
+		LABLE,
+		AREA_EFFECTIVE_IDS,
+		function_id,
+		cfg_type,
+		cfg_region_code,
+
+		file_desc,
+		url,
+		content_type,
+		content_length,
+		md5
+    )values (
+   		#{cfgDesc,jdbcType=VARCHAR},
+   		#{action,jdbcType=INTEGER}, 
+    	0,
+    	0,
+    	#{creatorId,jdbcType=INTEGER}, 
+   		#{createTime,jdbcType=TIMESTAMP},
+   		#{editorId,jdbcType=INTEGER},
+   		#{editTime,jdbcType=TIMESTAMP}, 
+   	 	#{auditorId,jdbcType=INTEGER},
+    	#{auditTime,jdbcType=TIMESTAMP},
+    	#{serviceId,jdbcType=INTEGER}, 
+    	#{requestId,jdbcType=INTEGER},
+    	#{compileId,jdbcType=INTEGER},
+    	#{isAreaEffective,jdbcType=INTEGER},
+    	#{classify,jdbcType=VARCHAR},
+    	#{attribute,jdbcType=VARCHAR},
+    	#{lable,jdbcType=VARCHAR},    
+   	 	#{areaEffectiveIds,jdbcType=VARCHAR},
+    	#{functionId,jdbcType=INTEGER},
+    	#{cfgType,jdbcType=VARCHAR},
+    	#{cfgRegionCode,jdbcType=INTEGER},
+    	
+    	#{fileDesc,jdbcType=VARCHAR},
+    	#{url,jdbcType=VARCHAR},
+    	#{contentType,jdbcType=VARCHAR},
+    	#{contentLength,jdbcType=INTEGER},
+    	#{md5,jdbcType=VARCHAR}
+    )
+  </insert>
+  
+  
+  <update id="update" parameterType="com.nis.domain.callback.ProxyFileStrategyCfg" >
+    update proxy_file_strategy_cfg
+    <set>
+      <if test="cfgDesc != null and cfgDesc != ''" >
+        cfg_desc = #{cfgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=INTEGER},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="isAudit != null" >
+        is_audit = #{isAudit,jdbcType=INTEGER},
+      </if>
+      <if test="creatorId != null" >
+        creator_id = #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null and createTime != ''" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editorId != null" >
+        editor_id = #{editorId,jdbcType=INTEGER},
+      </if>
+      	edit_time = #{editTime,jdbcType=TIMESTAMP},
+      <if test="auditorId != null" >
+         auditor_id = #{auditorId,jdbcType=INTEGER},
+      </if>
+      <if test="auditTime != null and auditTime != ''" >
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serviceId != null" >
+        service_id = #{serviceId,jdbcType=INTEGER},
+      </if>
+      <if test="requestId != null" >
+        request_id = #{requestId,jdbcType=INTEGER},
+      </if>
+      <if test="isAreaEffective != null" >
+        is_area_effective = #{isAreaEffective,jdbcType=INTEGER},
+      </if>
+      <if test="classify != null and classify != ''" >
+        classify = #{classify,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null and attribute != ''" >
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="lable != null and lable != ''" >
+        lable = #{lable,jdbcType=VARCHAR},
+      </if>
+      <if test="areaEffectiveIds != null" >
+        area_effective_ids =  #{areaEffectiveIds,jdbcType=VARCHAR},
+      </if>
+      <if test="functionId != null" >
+        function_id =  #{functionId,jdbcType=INTEGER},
+      </if>
+      <if test="cfgRegionCode != null" >
+        cfg_region_code =  #{cfgRegionCode,jdbcType=INTEGER},
+      </if>
+      <if test="cfgType != null" >
+        cfg_type =  #{cfgType,jdbcType=VARCHAR},
+      </if>
+
+      <if test="fileDesc != null" >
+        file_desc  =  #{fileDesc ,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url  =  #{url ,jdbcType=VARCHAR},
+      </if>
+      <if test="contentType != null" >
+        content_type = #{contentType ,jdbcType=VARCHAR},
+      </if>
+      <if test="contentLength != null" >
+        content_length =  #{contentLength ,jdbcType=BIGINT},
+      </if>
+      <if test="md5 != null" >
+        md5 =  #{md5 ,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cfg_id = #{cfgId,jdbcType=BIGINT}
+  </update>
+  
+  
+  
+</mapper>

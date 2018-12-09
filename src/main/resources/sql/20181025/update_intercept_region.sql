@@ -1,0 +1,1 @@
+update function_region_dict  set is_valid=0 where dict_id in(94,95);

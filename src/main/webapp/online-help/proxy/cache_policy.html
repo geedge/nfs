@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.0
+Version: 3.5
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="utf-8"/>
+<title>online help</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+<link href="../../static/global/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="../../static/global/plugins/simple-line-icons/simple-line-icons.css" rel="stylesheet" type="text/css" />
+<link href="../../static/global/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<!-- <link href="../../static/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/> -->
+<link href="../../static/global/plugins/bootstrap-switch/css/bootstrap-switch.css" rel="stylesheet" type="text/css" />
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN THEME STYLES -->
+<link href="../../static/global/css/components.css" rel="stylesheet" id="style_components" type="text/css" />
+<link href="../../static/global/css/plugins.css" rel="stylesheet" type="text/css" />
+<link href="../../static/layouts/layout/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="../../static/layouts/layout/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
+<link href="../../static/layouts/layout/css/custom.css" rel="stylesheet" type="text/css" />
+<!-- END THEME STYLES -->
+<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
+<!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
+<!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
+<!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
+<!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
+<!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
+<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+<body class="page-header-fixed page-quick-sidebar-over-content ">
+<div class="page-content" style="margin:15px 20px 0 15px">
+	<div class="row">
+				<div id="accordion1" class="panel-group">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_1">
+							1.Function Introduction</a>
+							</h4>
+						</div>
+						<div id="accordion1_1" class="panel-collapse collapse in">
+							<div class="panel-body">
+								On National Proxy System, Individual Cache policy rules determine whether to cache or not based on traffic attributes, such as URL and Cookies. 
+							</div>
+						</div>
+					</div>
+					<!-- <div class="panel panel-warning">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">
+							2.基础配置信息 </a>
+							</h4>
+						</div>
+						<div id="accordion1_2" class="panel-collapse collapse">
+							<div class="panel-body">
+								<ul>
+								 	<li>IP：同“IP拦截”</li>
+								 	<li>HTTP URL:“同域名拦截”</li>
+								 	<li>HTTP 请求头域：同“HTTP(s)监测”</li>
+								 	<li>HTTP 应答头域：同“HTTP(s)监测”</li>
+								 	<li>HTTP 请求内容：同“HTTP(s)监测”</li>		
+								 	<li>HTTP 应答内容：同“HTTP(s)监测”</li>
+								 	<li>账号：同“HTTP(s)监测”</li>
+								 </ul>
+																
+							</div>
+						</div>
+					</div> -->
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">
+							2.Action</a>
+							</h4>
+						</div>
+						<div id="accordion1_2" class="panel-collapse collapse">
+							<div class="panel-body">
+								For cache action, the optimization parameters are:
+								<ul>
+								 	<li>
+								 		A Cache key:is a unique string that lets the National Proxy System look for web content when requests hit them. It’s made up of a hostname, path, and cookie parts. By default, the Proxy use the entire URL as the cache key. Selecting the correct cache key will ensure maximum cache footprint and increase cache hits.</li>
+								 	<li>
+								 		Ignore Query String in URL:in case the query strings doesn’t actually indicate that the object need to be different then you could EXCLUDE them from the cache key. For example, after ignoring “sqp” and “rs” of URL: “https://example.com/pic.jpg?sqp=UAAI&rs=AOn4”.
+								 	</li>
+								 	<li>
+								 		Include Cookie Values:in case the server send different content for the same URL based on the cookie value, you can include that cookie value as a part of cache key. For example, the server may set a cookie at the client called "prefLang=ru" to record user preferred language, you could add "prefLang" to distinguish different web content.
+								 	</li>
+								 	<li>
+								 		Disable Revalidate:is an ON-OFF switch. The pragma-no-cache header in a client’s request causes the proxy to re-fetch the entire object from the original server, even if the cached copy of the object is fresh. By default this option is switch OFF, which means a client’s non-conditional request results in a conditional GET request sent to the original server if the object is already in cache. The conditional request allows the original server to return the 304 Not Modified response, if the content in cache is still fresh. Thereby, the server-side bandwidth and latency consumed are lesser as the full content is not retrieved again from the original server.
+								 	</li>
+								 	<li>
+								 		Cache Dynamic Content:is an ON-OFF switch. A URL is considered dynamic if it ends in “.asp(x)” or contains a question mark (?), a semicolon (;), or “cgi”. Ignore Query String overrides this option (switch on).
+								 	</li>		
+								 	<li>
+								 		Cache Cookied Content:is an ON-OFF switch. By default, the Proxy does NOT cache cookied content of any type. If this option is switch on, the system cache all Cookeid content except HTML.
+								 	</li>
+								 	<li>
+								 		Ignore Request no-cache Headers:is an ON-OFF switch. By default, the proxy strictly observes client Cache-Control: no-cache directives. As known as:
+								 			<ul>
+								 				<li>
+								 					i.	Authorization
+								 				</li>
+								 				<li>
+								 					ii.	WWW-Authenticate
+								 				</li>
+								 				<li>
+								 					iii.	Cache-Control: no-store
+								 				</li>
+								 				<li>
+								 					iv.	Cache-Control: no-cache
+								 				</li>
+								 			</ul>
+								 	</li>
+								 	<li>
+								 		If a requested object contains a no-cache header, then proxy forwards the request to the origin server even if it has a fresh copy in cache. You can configure proxy to ignore client no-cache directives such that it ignores no-cache headers from client requests and serves the object from its cache.
+Ignore Response no-cache Headers — is an ON-OFF switch. By default, a response from an origin server with a no-cache header is not stored in the cache. As known as:
+										<ul>
+											<li>
+								 				i.	Cache-Control: no-store
+							 				</li>
+							 				<li>
+							 					ii.	Cache-Control: private
+							 				</li>
+							 				<li>
+							 					iii.	Set-Cookie
+							 				</li>
+							 				<li>
+							 					iv.	Cache-Control: no-cache
+							 				</li>
+							 				<li>
+							 					v.	WWW-Authenticate
+							 				</li>
+							 				<li>
+							 					vi.	Expires header with a value of 0 (zero) or a past date.
+							 				</li>
+										</ul>
+										If you configure proxy to ignore no-cache headers, then proxy also ignores no-store headers. The default behavior of observing no-cache directives is appropriate in most cases.
+								 	</li>
+								 	<li>
+								 		Forcing Object Caching:
+								 		is an ON-OFF switch. You can force Proxy to cache specific URLs (including dynamic URLs) for a specified duration, regardless of Cache-Control response headers.
+								 	</li>
+								 	<li>
+								 		Minimum Use:
+								 		sets the number of times an item must be requested by clients before Proxy caches it. This is useful if the cache is constantly filling up, as it ensures that only the most frequently accessed items are added to the cache. By default, Proxy cache object at its first appearance. The Counter resets in every 30 minutes. Note that the requests is counted in computing unit independently.
+								 	</li>
+								 	<li>
+								 		Max Cache Object Size:
+								 		sets the upper limit of an object size, larger object will not be cached. By default, Proxy does not cache object larger than 1 GB.
+								 	</li>
+								 	<li>
+								 		Cache Pinning Time:
+								 		configures Proxy to keep certain objects in the cache for a specified time. You can use this option to ensure that the most popular objects are in cache when needed and to prevent cache manager from deleting important objects. Proxy observes Cache-Control headers and pins an object in the cache only if it is indeed cacheable.
+								 	</li>
+								 	<li>
+								 		Max Cache Size:
+								 		sets the upper limit of the size of storage for a policy. By default, Proxy uses all available disk space. When the cache size reaches the limit, the cache manager removes the files that were least recently used to bring the cache size back under the limit.
+								 	</li>
+								 	<li>
+								 		Inactive Time:
+								 		specifies how long an item can remain in the cache without being accessed. A file that has not been requested for this time is automatically deleted from the cache by the cache manager, regardless of whether or not it has expired.
+								 	</li>
+								 </ul>
+																
+							</div>
+						</div>
+					</div>
+					<!-- <div class="panel panel-danger">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_4">
+							4.配置约束条件 </a>
+							</h4>
+						</div>
+						<div id="accordion1_4" class="panel-collapse collapse">
+							<div class="panel-body">
+								 <ul>
+								 	<li>IP：同“IP拦截”</li>
+									<li>URL：同“域名拦截”</li>
+									<li>HTTP 请求头：同“HTTP(s)监测”</li>	
+									<li>HTTP 应答头：同“HTTP(s)监测”</li>		
+									<li>HTTP 请求内容：同“HTTP(s)监测”</li>
+									<li>HTTP 应答内容：同“HTTP(s)监测”</li>
+									<li>账号：同“HTTP(s)监测”</li>
+								 </ul>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_5">
+							5.预期效果 </a>
+							</h4>
+						</div>
+						<div id="accordion1_5" class="panel-collapse collapse">
+							<div class="panel-body">
+								 <ul>
+								 	<li>阻断效果：浏览器无法访问页面</li>
+									<li>日志检查：生成日志</li>
+								 </ul>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_6">
+							6.配置生效区域 </a>
+							</h4>
+						</div>
+						<div id="accordion1_6" class="panel-collapse collapse">
+							<div class="panel-body">
+								配置的生效区域，生效区域包括地区，以及ISP，地区和ISP可组合，即某个地区的某个运营商流量生效，
+								或者某个地区的所有流量生效，或者某个运营商的所有流量生效，也可全域生效
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_7">
+							7.配置标签 </a>
+							</h4>
+						</div>
+						<div id="accordion1_7" class="panel-collapse collapse">
+							<div class="panel-body">
+								 <ul>
+								 	<li>来函：必选项，官方或其他组织下达的配置流量管控依据。</li>
+									<li>分类：非必选项，配置分类，例如内容安全、网络攻击等。</li>
+									<li>性质：非必选项，配置性质，例如政治、暴力、宗教等。</li>
+									<li>标签：非必选项，自定义标签。</li>			
+								 </ul>
+							</div>
+						</div>
+					</div> -->
+				<!--	<div class="panel panel-success">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_7">
+							7.其他</a>
+							</h4>
+						</div>
+						<div id="accordion1_7" class="panel-collapse collapse">
+							<div class="panel-body">
+								 
+							</div>
+						</div>
+					</div>-->
+				</div>
+</div>
+</div>
+
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="../../static/global/plugins/respond.min.js"></script>
+<script src="../../static/global/plugins/excanvas.min.js"></script> 
+<![endif]-->
+<script src="../../static/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../../static/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script>
+jQuery(document).ready(function() {    
+   
+});
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

@@ -1,0 +1,59 @@
+/* global */
+select, input {
+	border: 1px solid #c2cad8;
+}
+
+/* list */
+.search-table {
+	margin-bottom: 10px;
+	height: 30px;
+}
+.search-item {
+	margin-right: 10px;
+}
+.search-item input, .search-item select {
+	height: 30px !important;
+}
+.search-item button {
+	margin-bottom:4px;
+}
+
+/* form */
+.child-input {
+	width: 50% !important;
+	display: inline !important;
+	margin: 6px 5px 6px 5px;
+}
+.child-label {
+	text-align: right;
+	padding-top: 7px;
+	margin: 6px 5px 6px 5px;
+}
+.child-required {
+	color: #e02222;
+	font-size: 12px;
+	padding-left: 6px;
+}
+.child-required2 {
+	color: #e02222;
+	font-size: 12px;
+}
+.del-button {
+	float: right;
+}
+.table-list {
+	margin-top: 15px;
+	margin-bottom: 15px; 
+	background-color: #F8F8FF;
+}
+.table-item {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.btn-group.bootstrap-select.child-required2.select2 {
+	height: 34px;
+	width: 50% !important;
+	margin-left: 5px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+}

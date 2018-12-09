@@ -1,0 +1,255 @@
+/*数字滚动插件的CSS可调整样式*/
+.mt-number-animate{ font-family: 'Microsoft YaHei'; line-height:20px; height: 20px;/*设置数字显示高度*/; /*设置数字大小*/ overflow: hidden; display: inline-block; position: relative; }
+.mt-number-animate .mt-number-animate-dot{ width: 10px;/*设置分割符宽度*/ line-height: 20px; float: left; text-align: center;}
+.mt-number-animate .mt-number-animate-dom{ width: 10px;/*设置单个数字宽度*/ text-align: center; float: left; position: relative; top: 3px;}
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span{ width: 100%; float: left;}
+
+
+/* protocolType */
+.box-1 {
+	background: #fff;
+	border: 1px solid #e3e6e9;
+	border-radius: 5px;
+	padding: 20px
+}
+
+.box-1 .btn-download {
+	color: #666
+}
+
+.box-1 .btn-download .iconfont {
+	margin-right: 5px
+}
+
+.box-1 .btn-download:hover {
+	color: #999
+}
+
+
+.c-table-responsive {
+	width: 100%;
+	overflow-x: auto
+}
+
+.c-table-responsive table {
+	border: 1px solid #e3e6e9;
+	border-radius: 2px;
+	width: 100%;
+	max-width: 100%;
+	border-collapse: collapse
+}
+
+.c-table-responsive table thead th {
+	background-color: #f2f2f2;
+	font-weight: 700;
+	vertical-align: baseline;
+	word-break: break-all
+}
+
+.c-table-responsive table td, .c-table-responsive table th {
+	border-bottom: 1px solid #e3e6e9;
+	padding: 10px;
+	line-height: 1.4;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	color: #666;
+	word-break: break-all
+}
+
+.c-table {
+	border: 1px solid #e3e6e9;
+	border-radius: 2px;
+	width: 100%;
+	max-width: 100%;
+	border-collapse: collapse;
+	font-size: 14px
+}
+
+.c-table thead th {
+	background-color: #f2f2f2;
+	font-weight: 700;
+	vertical-align: baseline;
+	word-break: break-all
+}
+
+.c-table td, .c-table th {
+	border-bottom: 1px solid #e3e6e9;
+	padding: 5px;
+	line-height: 1.4;
+	color: #333;
+	word-break: break-all
+}
+
+.c-table td.text-up, .c-table th.text-up {
+	color: #fe5a5a
+}
+
+.c-table td.text-down, .c-table th.text-down {
+	color: #0fc725
+}
+
+.c-table td.active, .c-table th.active {
+	color: #4aa6fc
+}
+
+.c-table td.tl, .c-table th.tl {
+	text-align: center
+}
+
+.c-table td.tr, .c-table th.tr {
+	text-align: right
+}
+
+.c-table td.tc, .c-table th.tc {
+	text-align: center
+}
+
+.c-table tr:nth-child(2n) {
+	background-color: #fafafa
+}
+
+.c-table tbody .nozebra {
+	background-color: #fff
+}
+
+.c-table tr.fixed {
+	visibility: hidden
+}
+
+.c-table tbody tr:nth-child(2n):hover, .c-table tr:hover {
+	background: rgb(210, 232, 251, 0.8);
+}
+
+.c-table tr.fixed+tr {
+	position: fixed;
+	display: block;
+	visibility: visible;
+	z-index: 1000;
+	top: 0
+}
+
+.c-table.c-table-bordered td, .c-table.c-table-bordered th {
+	border: 1px solid #e3e6e9
+}
+
+.c-table.c-table-nested .btn-expand {
+	color: #999
+}
+
+.c-table.c-table-nested .btn-expand .iconfont {
+	font-size: 12px
+}
+
+.c-table.c-table-nested .tr-nested {
+	display: none
+}
+
+.c-table.c-table-nested .tr-nested>td {
+	padding-top: 6px;
+	padding-bottom: 6px;
+	background-color: #f9f9f9
+}
+
+.c-table .c-table-btn-sort {
+	color: #333;
+	position: relative;
+	margin-right: 15px
+}
+
+.c-table .c-table-btn-sort.desc:after {
+	border-top-color: #108ee9
+}
+
+.c-table .c-table-btn-sort.asc:before {
+	border-bottom-color: #108ee9
+}
+
+.c-table .c-table-btn-sort:before {
+	top: 2px;
+	border-bottom: 5px solid #ccc
+}
+
+.c-table .c-table-btn-sort:after, .c-table .c-table-btn-sort:before {
+	content: " ";
+	position: absolute;
+	right: -15px;
+	height: 0;
+	width: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent
+}
+
+.c-table .c-table-btn-sort:after {
+	top: 10px;
+	border-top: 5px solid #ccc
+}
+
+.c-table .c-table-btn-sort-2 {
+	color: #666;
+	cursor: pointer
+}
+
+.c-table .c-table-btn-sort-2.sorted, .c-table .c-table-btn-sort-2.sorted:after,
+	.c-table .c-table-btn-sort-2:hover {
+	background: rgb(210, 232, 251, 0.8);
+	color: #73bffd
+}
+
+.c-table .c-table-btn-sort-2:after {
+	content: "\E67C";
+	font-family: iconfont;
+	-webkit-text-size-adjust: none;
+	font-size: 10px;
+	color: #999;
+	display: block;
+	margin-top: 2px
+}
+
+.c-table .c-table-btn-sort-2:after:hover {
+	background: rgb(210, 232, 251, 0.8);
+	color: #73bffd
+}
+
+.c-table.table-bordered td, .c-table.table-bordered th {
+	border: 1px solid #dedede
+}
+
+.c-progress {
+	background: #dcdcdc;
+	height: 5px;
+	font-size: 0;
+	line-height: 0
+}
+
+.c-progress-bar {
+	background: #4aa6fc;
+	height: 5px;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px
+}
+
+.c-progress-inline {
+	width: 45%
+}
+
+.c-progress-inline, .c-progress-inline-2 {
+	display: inline-block;
+	vertical-align: middle
+}
+
+.c-progress-inline-2 {
+	width: 100%
+}
+.tc {
+	text-align: center
+}
+
+
+/* protocolType end */
+
+/* 端口 port */
+.data_content #tbodyDataPort tr td{
+	color:#fff;
+}
+/* 端口 port  end  */

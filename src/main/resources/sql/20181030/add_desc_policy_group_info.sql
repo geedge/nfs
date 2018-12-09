@@ -1,0 +1,1 @@
+ALTER TABLE policy_group_info ADD COLUMN description varchar(200) DEFAULT ''

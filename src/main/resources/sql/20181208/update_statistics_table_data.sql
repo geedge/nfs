@@ -1,0 +1,1 @@
+update statistics_tables set is_valid=0 where id in(4,7);

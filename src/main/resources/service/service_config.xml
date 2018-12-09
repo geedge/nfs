@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviceList>
+	<!-- NTC或PROXY MAAT类配置开始 -->
+	 <service id="1" functionId="3" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo"  desc="IP白名单">
+	    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+	</service>
+	<service id="16" functionId="5" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="IP地址封堵">
+	    <serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+	</service>
+	<service id="128" functionId="5" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="IP地址监测">
+	    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+	</service>
+	<service id="37" functionId="5" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="ASN封堵">
+	    <serviceCfg cfgType="1" tableName="asn_ip_cfg"  groupReuse="true" groupId="userRegion4"></serviceCfg>
+	    <userRegion regionKey="ASN_ID" regionColumn="userRegion5"  userRegionPosition="0"></userRegion>
+	</service>
+	<service id="149" functionId="5" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="ASN监测">
+	    	<serviceCfg cfgType="1" tableName="asn_ip_cfg"  groupReuse="true" groupId="userRegion4"></serviceCfg>
+	    	<userRegion regionKey="ASN_ID" regionColumn="userRegion5" userRegionPosition="0"  ></userRegion>
+	</service>
+	<service id="3" functionId="5" serviceType="2" tableName="cfg_index_info" className="CfgIndexInfo" desc="IP丢弃">
+	    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+	</service>
+	<service id="514" functionId="5" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="IP限速">
+	    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+	    	<userRegion regionKey="Droprate" regionColumn="userRegion2"  userRegionPosition="0"></userRegion>
+	</service>
+	<service id="517" functionId="212" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="IP Payload">
+	    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+	    	<serviceCfg cfgType="2" tableName="intercept_pkt_bin" ></serviceCfg>
+	    	<userRegion regionKey="zone" regionColumn="userRegion1"  userRegionPosition="0"></userRegion>
+	    	<userRegion regionKey="substitute" regionColumn="userRegion2,userRegion3"  userRegionPosition="0"></userRegion>
+	</service>
+	<service id="2" functionId="6" serviceType="1" tableName="cfg_index_info"  className="CfgIndexInfo" desc="URL表名单">
+    	<serviceCfg cfgType="2" tableName="http_url_cfg" ></serviceCfg>
+	</service>
+    <!-- <service id="129" functionId="6" serviceType="1" tableName="cfg_index_info"  className="CfgIndexInfo">
+    	<serviceCfg cfgType="2" tableName="http_url_cfg" ></serviceCfg>
+	</service>
+	<service id="17" functionId="6" serviceType="1" tableName="cfg_index_info"  className="CfgIndexInfo">
+    	<serviceCfg cfgType="2" tableName="http_url_cfg" ></serviceCfg>
+	</service> -->
+	<service id="152" functionId="635" serviceType="1" tableName="cfg_index_info"  className="CfgIndexInfo" desc="HTTP关键字监测">
+    	<serviceCfg cfgType="2" tableName="http_body_cfg" ></serviceCfg>
+	</service>
+	<service id="40" functionId="635" serviceType="1" tableName="cfg_index_info"  className="CfgIndexInfo" desc="HTTP关键字封堵">
+    	<serviceCfg cfgType="2" tableName="http_body_cfg" ></serviceCfg>
+	</service>
+   <service id="129" functionId="8" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo"  desc="HTTP高级配置监测">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="http_url_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="http_body_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="http_req_head_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="http_res_head_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+    	<userRegion regionKey="HTTP_HEADER" regionColumn="district" userRegionPosition="2"></userRegion>
+	</service>
+	<service id="17" functionId="8" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="HTTP高级配置封堵">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="http_url_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="http_body_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="http_req_head_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="http_res_head_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+	<service id="18" functionId="7" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="DNS封堵">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="dns_domain_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+    	<userRegion regionKey="DNS_STRATEGY" regionColumn="dnsStrategyId"   userRegionPosition="1"></userRegion>
+	</service>
+	<service id="130" functionId="7" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo"  desc="DNS监测">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="dns_domain_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+	<service id="131" functionId="34" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo"  desc="SSL监测">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ssl_keyword_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+	<service id="19" functionId="34" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="SSL封堵">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ssl_keyword_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+	<service id="66" functionId="37" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo"  desc="邮件地址白名单">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="mail_keyword_cfg" ></serviceCfg>
+	</service>
+	<!--<service id="132" functionId="34" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="邮件地址监测">
+    	<serviceCfg cfgType="2" tableName="mail_keyword_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+	<service id="20" functionId="34" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="邮件地址封堵">
+    	<serviceCfg cfgType="2" tableName="mail_keyword_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>-->
+	<service id="132" functionId="35" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo"  desc="邮件地址监测">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="mail_keyword_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+    <service id="20" functionId="35" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="邮件地址封堵">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="mail_keyword_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+	
+	<service id="133" functionId="51" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="FTP监测">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ftp_keyword_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+    <service id="21" functionId="51" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo"  desc="FTP封堵">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ftp_keyword_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+    <service id="34" functionId="510" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="P2P封堵">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg"></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="p2p_hash_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="p2p_keyword_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	    <userRegion regionKey="P2P_IP_TYPE" regionColumn="userRegion2" userRegionPosition="0"></userRegion>
+	    <userRegion regionKey="HASH_TYPE" regionColumn="userRegion1"  userRegionPosition="0"></userRegion>
+	</service>
+	<service id="146" functionId="510" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="P2P监测">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg"></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="p2p_hash_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="p2p_keyword_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	    <userRegion regionKey="P2P_IP_TYPE" regionColumn="userRegion2"  userRegionPosition="0"></userRegion>
+	    <userRegion regionKey="HASH_TYPE" regionColumn="userRegion1"  userRegionPosition="0"></userRegion>
+	</service>
+	<service id="39" functionId="22" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="流媒体封堵">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="av_cont_url_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+    <service id="151" functionId="22" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="流媒体监测">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="av_cont_url_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+	<service id="38" functionId="24" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="VOIP封堵">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="av_voip_account_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+    <service id="150" functionId="24" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="VOIP监测">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="av_voip_account_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+	<service id="31" functionId="61" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="BGP封堵">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_bgp_as_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+    <service id="143" functionId="61" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="BGP监测">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_bgp_as_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+	<service id="399" functionId="52" serviceType="1" tableName="file_digest_cfg" className="FileDigestCfg" desc="文件摘要监测">
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+    <service id="273" functionId="52" serviceType="1" tableName="file_digest_cfg" className="FileDigestCfg" desc="文件摘要封堵">
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+	<service id="5" functionId="301" serviceType="1"  cfgType="1" tableName="ddos_ip_cfg" className="DdosIpCfg" desc="ANTI-DDOS">
+    	<userRegion regionKey="protocol" regionColumn="antiddosProtocol"  userRegionPosition="1"></userRegion>
+    	<userRegion regionKey="bps_threadshold" regionColumn="bpsThreadshold"  userRegionPosition="1"></userRegion>
+    	<userRegion regionKey="pps_threadshold" regionColumn="ppsThreadshold"  userRegionPosition="1"></userRegion>
+	</service>
+	<service id="512" functionId="200" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="IP拦截监测">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<userRegion regionKey="keyring_id" regionColumn="userRegion1" userRegionPosition="0" ></userRegion>
+	</service>
+	<!-- <service id="521" functionId="200" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="IP拦截白名单">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+	</service> -->
+	<service id="513" functionId="201" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="域名拦截监测">
+    	<serviceCfg cfgType="2" tableName=" http_url_cfg" ></serviceCfg>
+    	<userRegion regionKey="DOMAIN_ID" regionColumn="compileId"   userRegionPosition="0"></userRegion>
+    	<userRegion regionKey="DOMAIN_STR" regionColumn="cfgKeywords"  userRegionPosition="2"></userRegion>
+    	<userRegion regionKey="keyring_id" regionColumn="userRegion1"  userRegionPosition="0"></userRegion>
+    	<userRegion regionKey="intensity" regionColumn="userRegion5" userRegionPosition="0"></userRegion>
+	</service>
+	<service id="521" functionId="200" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="IP或域名拦截白名单">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="http_url_cfg" ></serviceCfg>
+	</service>
+	<service id="515" functionId="201" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo"  desc="域名拦截限速">
+    	<serviceCfg cfgType="2" tableName=" http_url_cfg" ></serviceCfg>
+    	<userRegion regionKey="DOMAIN_ID" regionColumn="compileId"  userRegionPosition="0"></userRegion>
+    	<userRegion regionKey="DOMAIN_STR" regionColumn="cfgKeywords"  userRegionPosition="2"></userRegion>
+    	<userRegion regionKey="Droprate" regionColumn="userRegion2"  userRegionPosition="0"></userRegion>
+	</service>
+	<service id="592" functionId="210" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo"  desc="代理控制策略监测">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="http_url_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="http_body_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="http_req_head_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="http_res_head_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+	<service id="576" functionId="207" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="代理控制策略封堵">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="http_url_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="http_body_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="http_req_head_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="http_res_head_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+    	<userRegion regionKey="code" regionColumn="userRegion1"  userRegionPosition="0"></userRegion>
+    	<userRegion regionKey="content" regionColumn="userRegion2"  userRegionPosition="0"></userRegion>
+    	<userRegion regionKey="content_file_id" regionColumn="userRegion3"  userRegionPosition="0"></userRegion>
+	</service>
+	<service id="528" functionId="208" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="代理控制策略重定向">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="http_url_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="http_body_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="http_req_head_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="http_res_head_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+    	<userRegion regionKey="code" regionColumn="userRegion1"  userRegionPosition="0"></userRegion>
+    	<userRegion regionKey="ur" regionColumn="userRegion2"  userRegionPosition="0"></userRegion>
+    	<userRegion regionKey="content_file_id" regionColumn="userRegion3" userRegionPosition="0"></userRegion>
+	</service>
+	<service id="560" functionId="209" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="代理控制策略替换">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="http_url_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="http_body_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="http_req_head_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="http_res_head_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+    	<userRegion regionKey="zone" regionColumn="userRegion1"  userRegionPosition="0"></userRegion>
+    	<userRegion regionKey="substitute" regionColumn="userRegion2,userRegion3"  userRegionPosition="0"></userRegion>
+	</service>
+	<service id="750" functionId="211" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="代理控制策略白名单">
+    	<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="http_url_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="3" tableName="http_req_head_cfg" ></serviceCfg>
+    	<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+	</service>
+	<service id="625" functionId="213" serviceType="1" tableName="cfg_index_info" className="CfgIndexInfo" desc="缓存策略">
+    	<serviceCfg cfgType="2" tableName="common_keyword_cfg" ></serviceCfg>
+    	<userRegion regionKey="" regionColumn="userRegion1"  userRegionPosition="0"></userRegion>
+	</service>
+	<!-- NTC或PROXY MAAT类配置结束 -->
+	
+	<!-- APP、基础协议、 加密协议行为配置开始-->
+	<service id="35" functionId="407" serviceType="1" tableName="app_policy_cfg" className="AppPolicyCfg"  desc="基础协议封堵">
+		<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+		<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+    	<userRegion regionKey="PROTO_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+	</service>
+	<service id="147" functionId="407" serviceType="1" tableName="app_policy_cfg" className="AppPolicyCfg"  desc="基础协议监测">
+		<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+		<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+    	<userRegion regionKey="PROTO_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+	</service>
+	<service id="1059" functionId="407" serviceType="1" tableName="app_policy_cfg" className="AppPolicyCfg"  desc="基础协议限速">
+		<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+		<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+    	<userRegion regionKey="PROTO_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+		<userRegion regionKey="Droprate" regionColumn="userRegion2"  userRegionPosition="1"></userRegion>
+	</service>
+	<service id="33" functionId="63" serviceType="1" tableName="app_policy_cfg" className="AppPolicyCfg"  desc="APP封堵">
+		<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+		<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+    	<userRegion regionKey="APP_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+    	<userRegion regionKey="BEHAV_ID" regionColumn="behavCode"  userRegionPosition="1"></userRegion>
+	</service>
+	<service id="145" functionId="63" serviceType="1" tableName="app_policy_cfg" className="AppPolicyCfg"  desc="APP监测">
+		<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+		<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+    	<userRegion regionKey="APP_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+    	<userRegion regionKey="BEHAV_ID" regionColumn="behavCode"  userRegionPosition="1"></userRegion>
+	</service>
+	<service id="1056" functionId="63" serviceType="1" tableName="app_policy_cfg" className="AppPolicyCfg"  desc="APP限速">
+		<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+		<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+    	<userRegion regionKey="APP_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+    	<userRegion regionKey="BEHAV_ID" regionColumn="behavCode"  userRegionPosition="1"></userRegion>
+    	<userRegion regionKey="Droprate" regionColumn="userRegion2"  userRegionPosition="1"></userRegion>
+	</service>
+	<service id="36" functionId="408" serviceType="1" tableName="app_policy_cfg" className="AppPolicyCfg"  desc="隧道协议行为封堵">
+		<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+		<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+    	<userRegion regionKey="APP_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+    	<userRegion regionKey="BEHAV_ID" regionColumn="behavCode"  userRegionPosition="1"></userRegion>
+	</service>
+	<service id="148" functionId="408" serviceType="1" tableName="app_policy_cfg" className="AppPolicyCfg"  desc="隧道协议行为监测">
+		<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+		<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+    	<userRegion regionKey="APP_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+    	<userRegion regionKey="BEHAV_ID" regionColumn="behavCode"  userRegionPosition="1"></userRegion>
+	</service>
+	<service id="1060" functionId="408" serviceType="1" tableName="app_policy_cfg" className="AppPolicyCfg"  desc="隧道协议行为限速">
+		<serviceCfg cfgType="1" tableName="ip_port_cfg" ></serviceCfg>
+		<serviceCfg cfgType="2" tableName="ntc_subscribe_id_cfg" ></serviceCfg>
+    	<userRegion regionKey="APP_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+    	<userRegion regionKey="BEHAV_ID" regionColumn="behavCode"  userRegionPosition="1"></userRegion>
+    	<userRegion regionKey="Droprate" regionColumn="userRegion2"  userRegionPosition="1"></userRegion>
+	</service>
+	<service id="1028" functionId="405" serviceType="1" cfgType="1" tableName="app_ip_cfg" className="AppIpCfg"  desc="APP IP特征">
+    	<userRegion regionKey="APP_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+	</service>
+	<!--  20181208 App_advance表中要求删除,删除后不再进行全量下发
+	<service id="1024" functionId="402" serviceType="1" cfgType="3" tableName="app_http_cfg" className="AppHttpCfg"  desc="APP HTTP单特征">
+    	<userRegion regionKey="APP_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+	</service> 
+	-->
+	<service id="1024" functionId="565" serviceType="1" tableName="app_feature_index" className="AppFeatureIndex"  desc="APP HTTP组合特征">
+		<serviceCfg cfgType="1" tableName="app_ip_range_cfg" ></serviceCfg>
+		<serviceCfg cfgType="2" tableName="app_string_feature_cfg" ></serviceCfg>
+		<serviceCfg cfgType="3" tableName="app_complex_feature_cfg" ></serviceCfg>
+    	<userRegion regionKey="APP_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+    	<userRegion regionKey="" regionColumn="userRegion1"  userRegionPosition="0"></userRegion>
+	</service>
+	<service id="1026" functionId="403" serviceType="1" cfgType="2" tableName="app_domain_cfg" className="AppDomainCfg"  desc="APP 域名特征">
+    	<userRegion regionKey="APP_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+    	<userRegion regionKey="DOMAIN_ID" regionColumn="compileId"  userRegionPosition="0"></userRegion>
+    	<userRegion regionKey="DOMAIN_STR" regionColumn="cfgKeywords"  userRegionPosition="1"></userRegion>
+	</service>
+	<!--  20181208 App_advance表中要求删除,删除后不再进行全量下发 
+		<service id="1029" functionId="402" serviceType="1" cfgType="3" tableName="app_ssl_cert_cfg" className="AppSslCertCfg"  desc="APP SSL单特征">
+    		<userRegion regionKey="APP_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+		</service> 
+	-->
+	<service id="1029" functionId="565" serviceType="1" tableName="app_feature_index" className="AppFeatureIndex"  desc="APP SSL组合特征">
+		<serviceCfg cfgType="1" tableName="app_ip_range_cfg" ></serviceCfg>
+		<serviceCfg cfgType="2" tableName="app_string_feature_cfg" ></serviceCfg>
+		<serviceCfg cfgType="3" tableName="app_complex_feature_cfg" ></serviceCfg>
+    	<userRegion regionKey="APP_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+    	<userRegion regionKey="" regionColumn="userRegion1"  userRegionPosition="0"></userRegion>
+	</service>
+	<service id="1025" functionId="563" serviceType="1" tableName="app_feature_index" className="AppFeatureIndex"  desc="APP Payload组合特征">
+		<serviceCfg cfgType="1" tableName="app_ip_range_cfg" ></serviceCfg>
+		<serviceCfg cfgType="2" tableName="app_string_feature_cfg" ></serviceCfg>
+		<serviceCfg cfgType="3" tableName="app_complex_feature_cfg" ></serviceCfg>
+    	<userRegion regionKey="APP_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+    	<userRegion regionKey="" regionColumn="userRegion1"  userRegionPosition="0"></userRegion>
+	</service>
+	<service id="1027" functionId="563" serviceType="1" tableName="app_feature_index" className="AppFeatureIndex"  desc="APP DNS组合特征">
+		<serviceCfg cfgType="1" tableName="app_ip_range_cfg" ></serviceCfg>
+		<serviceCfg cfgType="2" tableName="app_string_feature_cfg" ></serviceCfg>
+		<serviceCfg cfgType="3" tableName="app_complex_feature_cfg" ></serviceCfg>
+    	<userRegion regionKey="APP_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+    	<userRegion regionKey="" regionColumn="userRegion1"  userRegionPosition="0"></userRegion>
+	</service>
+	<!--  20181208 App_advance表中要求删除,删除后不再进行全量下发  
+		<service id="1030" functionId="567" serviceType="1" tableName="app_feature_index" className="AppFeatureIndex"  desc="APP DK组合特征">
+			<serviceCfg cfgType="1" tableName="app_ip_range_cfg" ></serviceCfg>
+			<serviceCfg cfgType="2" tableName="app_string_feature_cfg" ></serviceCfg>
+			<serviceCfg cfgType="3" tableName="app_complex_feature_cfg" ></serviceCfg>
+	    	<userRegion regionKey="APP_ID" regionColumn="appCode"  userRegionPosition="1"></userRegion>
+	    	<userRegion regionKey="" regionColumn="userRegion1"  userRegionPosition="0"></userRegion>
+		</service> 
+	-->
+	<service id="1152" functionId="560" serviceType="1" cfgType="2" tableName="app_topic_domain_cfg" className="AppTopicDomainCfg"  desc="关注话题域名">
+    	<userRegion regionKey="WEB_ID" regionColumn=""  userRegionPosition="-1"></userRegion>
+	</service>
+	<!-- APP、基础协议、 加密协议行为配置结束-->
+	
+	<!-- 回调类配置开始 -->
+	 <service id="261" functionId="28" serviceType="2" tableName="av_file_sample_cfg" className="AvFileSampleCfg"  desc="音频样例封堵"></service>
+	 <service id="389" functionId="28" serviceType="2" tableName="av_file_sample_cfg" className="AvFileSampleCfg"  desc="音频样例监测"></service>
+	 <service id="262" functionId="29" serviceType="2" tableName="av_file_sample_cfg" className="AvFileSampleCfg"  desc="视频样例封堵"></service>
+	 <service id="390" functionId="29" serviceType="2" tableName="av_file_sample_cfg" className="AvFileSampleCfg"  desc="视频样例监测"></service>
+	 <service id="263" functionId="30" serviceType="2" tableName="av_file_sample_cfg" className="AvFileSampleCfg"  desc="图片样例封堵"></service>
+	 <service id="391" functionId="30" serviceType="2" tableName="av_file_sample_cfg" className="AvFileSampleCfg"  desc="图片样例监测"></service>
+	 <service id="264" functionId="31" serviceType="2" tableName="av_file_sample_cfg" className="AvFileSampleCfg"  desc="VOIP样例封堵"></service>
+	 <service id="392" functionId="31" serviceType="2" tableName="av_file_sample_cfg" className="AvFileSampleCfg"  desc="VOIP样例监测"></service>
+	 <service id="520" functionId="570" serviceType="2" tableName="pxy_obj_keyring" className="PxyObjKeyring"  desc="证书管理"></service>
+	 <service id="640" functionId="571" serviceType="2" tableName="pxy_obj_trusted_ca_cert" className="PxyObjTrustedCaCert"  desc="可信证书颁发机构"></service>
+	 <service id="641" functionId="571" serviceType="2" tableName="pxy_obj_trusted_ca_crl" className="PxyObjTrustedCaCrl"  desc="证书吊销列表"></service>
+	 
+	 <service id="65" functionId="400" serviceType="2" tableName="dns_res_strategy" className="DnsResStrategy"  desc="DNS响应策略"/>
+	 <service id="64" functionId="400" serviceType="2" tableName="dns_ip_cfg" className="DnsIpCfg"  desc="DNS欺骗IP"/>
+	 <service id="266" functionId="33" serviceType="2" tableName="av_sign_sample_cfg" className="AvSignSampleCfg"  desc="色情场景封堵"></service>
+	 <service id="394" functionId="33" serviceType="2" tableName="av_sign_sample_cfg" className="AvSignSampleCfg"  desc="色情场景监测"></service>
+	<!-- 回调类配置结束-->
+    
+</serviceList>

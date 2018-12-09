@@ -1,0 +1,121 @@
+drop table  IF EXISTS `common_keyword_cfg` ;
+CREATE TABLE `common_keyword_cfg` (
+  `cfg_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+  `cfg_desc` varchar(128) DEFAULT NULL,
+  `replace_content` varchar(500) DEFAULT NULL COMMENT '替换内容, action为replace时填写',
+  `cfg_keywords` varchar(2048) NOT NULL COMMENT '对应maat规范的字符串表keywords字段',
+  `action` int(11) NOT NULL COMMENT '1:阻断，2：监测， 5： FD 白名单，6：监测白名单，7: FD 监测都白名单，应与业务ID所代表的逻辑相匹配，8-灰名单',
+  `is_valid` int(11) NOT NULL COMMENT '0无效，1有效，-1删除;1）	未审核时配置可删除;2）	审核通过，此字段置1;3）	取消审核通过，此字段置0',
+  `is_audit` int(11) NOT NULL COMMENT '0未审核，1审核通过，2审核未通过，3取消审核通过;1）	审核未通过，配置可修改;2）	审核通过，配置不可删除，只能取消审核通过',
+  `creator_id` int(11) NOT NULL COMMENT '取自sys_user.id',
+  `create_time` datetime NOT NULL,
+  `editor_id` int(11) DEFAULT NULL COMMENT '取自sys_user.id',
+  `edit_time` datetime DEFAULT NULL,
+  `auditor_id` int(11) DEFAULT NULL COMMENT '取自sys_user.id',
+  `audit_time` datetime DEFAULT NULL,
+  `service_id` int(11) NOT NULL COMMENT '参考系统业务类型管理表',
+  `request_id` int(11) NOT NULL COMMENT '取自request_info.id',
+  `compile_id` int(11) NOT NULL COMMENT '取自服务接口返回的maat配置的编译id，配置初始入库时获取。',
+  `is_area_effective` int(11) NOT NULL COMMENT '0否，1是',
+  `classify` varchar(128) DEFAULT NULL COMMENT '分类id，多个用英文逗号分隔',
+  `attribute` varchar(128) DEFAULT NULL COMMENT '性质id，多个用英文逗号分隔',
+  `lable` varchar(128) DEFAULT NULL COMMENT '标签id,多个用英文逗号分隔',
+  `expr_type` int(11) NOT NULL COMMENT '0：无表达式，1：与表达式',
+  `match_method` int(11) NOT NULL COMMENT 'expr_type:0时有意义，其它情况必须置0。0：子串匹配；1：右匹配；2：左匹配；3：完全匹配',
+  `is_hexbin` int(11) NOT NULL COMMENT '默认为0:大小写不敏感，且非HEX;1:HEX格式二进制;2:大小写敏感，且非HEX',
+  `area_effective_ids` varchar(1024) DEFAULT NULL COMMENT '多个英文逗号分隔',
+  `function_id` int(11) DEFAULT NULL,
+  `cfg_region_code` int(11) DEFAULT NULL,
+  `cfg_type` varchar(64) DEFAULT NULL,
+  `user_region1` varchar(1024) DEFAULT NULL COMMENT '预留自定义域1',
+  `user_region2` varchar(1024) DEFAULT NULL COMMENT '预留自定义域2',
+  `user_region3` varchar(1024) DEFAULT NULL COMMENT '预留自定义域3',
+  `user_region4` varchar(1024) DEFAULT NULL COMMENT '预留自定义域4',
+  `user_region5` varchar(1024) DEFAULT NULL COMMENT '预留自定义域5',
+  PRIMARY KEY (`cfg_id`),
+  UNIQUE KEY `pk_cfg_index_id` (`cfg_id`) USING BTREE,
+  KEY `cfg_index_compileId` (`compile_id`) USING BTREE,
+  KEY `cfg_index_functionId` (`function_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COMMENT='通用字符串类配置';
+drop table  IF EXISTS `complex_keyword_cfg`;
+CREATE TABLE `complex_keyword_cfg` (
+  `cfg_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+  `cfg_desc` varchar(128) DEFAULT NULL,
+  `district` varchar(128) DEFAULT NULL,
+  `keywords` varchar(2048) NOT NULL,
+  `action` int(11) NOT NULL COMMENT '1:阻断，2：监测， 5： FD 白名单，6：监测白名单，7: FD 监测都白名单，应与业务ID所代表的逻辑相匹配，8-灰名单',
+  `is_valid` int(11) NOT NULL COMMENT '0无效，1有效，-1删除;1）	未审核时配置可删除;2）	审核通过，此字段置1;3）	取消审核通过，此字段置0',
+  `is_audit` int(11) NOT NULL COMMENT '0未审核，1审核通过，2审核未通过，3取消审核通过;1）	审核未通过，配置可修改;2）	审核通过，配置不可删除，只能取消审核通过',
+  `creator_id` int(11) NOT NULL COMMENT '取自sys_user.id',
+  `create_time` datetime NOT NULL,
+  `editor_id` int(11) DEFAULT NULL COMMENT '取自sys_user.id',
+  `edit_time` datetime DEFAULT NULL,
+  `auditor_id` int(11) DEFAULT NULL COMMENT '取自sys_user.id',
+  `audit_time` datetime DEFAULT NULL,
+  `service_id` int(11) NOT NULL COMMENT '参考系统业务类型管理表',
+  `request_id` int(11) NOT NULL COMMENT '取自request_info.id',
+  `compile_id` int(11) NOT NULL COMMENT '取自服务接口返回的maat配置的编译id，配置初始入库时获取。',
+  `is_area_effective` int(11) NOT NULL COMMENT '0否，1是',
+  `classify` varchar(128) DEFAULT NULL COMMENT '分类id，多个用英文逗号分隔',
+  `attribute` varchar(128) DEFAULT NULL COMMENT '性质id，多个用英文逗号分隔',
+  `lable` varchar(128) DEFAULT NULL COMMENT '标签id,多个用英文逗号分隔',
+  `expr_type` int(11) NOT NULL COMMENT '0：无表达式，1：与表达式',
+  `match_method` int(11) NOT NULL COMMENT 'expr_type:0时有意义，其它情况必须置0。0：子串匹配；1：右匹配；2：左匹配；3：完全匹配',
+  `is_hexbin` int(11) NOT NULL COMMENT '默认为0:大小写不敏感，且非HEX;1:HEX格式二进制;2:大小写敏感，且非HEX',
+  `area_effective_ids` varchar(1024) DEFAULT NULL COMMENT '多个英文逗号分隔',
+  `cfg_type` varbinary(64) DEFAULT NULL COMMENT '内容类型',
+  `function_id` int(11) NOT NULL COMMENT '菜单ID',
+  `cfg_region_code` int(11) DEFAULT NULL,
+  `user_region1` varchar(1024) DEFAULT '' COMMENT '预留自定义域1',
+  `user_region2` varchar(1024) DEFAULT '' COMMENT '预留自定义域2',
+  `user_region3` varchar(1024) DEFAULT '' COMMENT '预留自定义域3',
+  `user_region4` varchar(1024) DEFAULT '' COMMENT '预留自定义域4',
+  `user_region5` varchar(1024) DEFAULT '' COMMENT '预留自定义域5',
+  PRIMARY KEY (`cfg_id`),
+  UNIQUE KEY `pk_cfg_index_id` (`cfg_id`) USING BTREE,
+  KEY `cfg_index_compileId` (`compile_id`) USING BTREE,
+  KEY `cfg_index_functionId` (`function_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='通用增强字符串配置';
+
+#增加缓存相关字典
+INSERT INTO `sys_data_dictionary_name` (`id`, `module_name`, `mark`, `remark`, `revision`, `create_time`, `modify_time`, `status`) VALUES ('130', '缓存算法', 'CACHE_KEY', '', '', '2018-11-12 10:25:57', '2018-11-12 10:25:57', '1');
+INSERT INTO `sys_data_dictionary_name` (`id`, `module_name`, `mark`, `remark`, `revision`, `create_time`, `modify_time`, `status`) VALUES ('131', '缓存验证', 'CACHE_NO_REVALIDATE', '', '', '2018-11-12 11:12:55', '2018-11-12 11:12:55', '1');
+INSERT INTO `sys_data_dictionary_name` (`id`, `module_name`, `mark`, `remark`, `revision`, `create_time`, `modify_time`, `status`) VALUES ('132', '缓存动态URL', 'CACHE_DYN_URL', '', '', '2018-11-12 11:14:35', '2018-11-12 11:14:35', '1');
+INSERT INTO `sys_data_dictionary_name` (`id`, `module_name`, `mark`, `remark`, `revision`, `create_time`, `modify_time`, `status`) VALUES ('133', '缓存cookie内容', 'CACHE_COOKIED_CONT', '', 'user:管理员,2018-11-12 11:16:04edit', '2018-11-12 11:15:46', '2018-11-12 11:16:04', '1');
+INSERT INTO `sys_data_dictionary_name` (`id`, `module_name`, `mark`, `remark`, `revision`, `create_time`, `modify_time`, `status`) VALUES ('134', '忽略请求头不缓存', 'IGNORE_REQ_NOCACHE', '', '', '2018-11-12 11:18:09', '2018-11-12 11:18:09', '1');
+INSERT INTO `sys_data_dictionary_name` (`id`, `module_name`, `mark`, `remark`, `revision`, `create_time`, `modify_time`, `status`) VALUES ('135', '忽略响应头不缓存', 'IGNORE_RES_NOCACHE', '', '', '2018-11-12 11:22:42', '2018-11-12 11:22:42', '1');
+INSERT INTO `sys_data_dictionary_name` (`id`, `module_name`, `mark`, `remark`, `revision`, `create_time`, `modify_time`, `status`) VALUES ('136', '强制缓存', 'FORCE_CACHING', '', '', '2018-11-12 11:23:51', '2018-11-12 11:23:51', '1');
+
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('2992', 'ignore_query_string', 'ignore_query_string', '', '0', '1', '1', '130');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('2993', 'include_cookie', 'include_cookie', '', '0', '1', '1', '130');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('2994', '0', 'no', '', '0', '1', '1', '131');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('2995', '1', 'yes', '', '0', '1', '1', '131');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('2996', '0', 'no', '', '0', '1', '1', '132');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('2997', '1', 'yes', '', '0', '1', '1', '132');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3000', '0', 'no', '', '0', '1', '1', '133');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3001', '1', 'yes', '', '0', '1', '1', '133');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3002', '0', 'no', '', '0', '1', '1', '134');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3003', '1', 'yes', '', '0', '1', '1', '134');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3004', '0', 'no', '', '0', '1', '1', '135');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3005', '1', 'yes', '', '0', '1', '1', '135');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3006', '0', 'no', '', '0', '1', '1', '136');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3007', '1', 'yes', '', '0', '1', '1', '136');
+
+#增加缓存功能业务字典
+INSERT INTO `function_service_dict` (`dict_id`, `function_id`, `protocol_id`, `action`, `action_code`, `service_id`, `service_name`, `service_desc`, `is_valid`, `creator_id`, `create_time`, `editor_id`, `edit_time`, `region_code`, `is_import`) VALUES ('154', '213', '0', '48', 'cache', '625', 'proxy_cache_policy_redirect', NULL, '1', NULL, '2018-11-08 11:14:30', NULL, '2018-11-08 11:14:33', '2', '0');
+INSERT INTO `function_service_dict` (`dict_id`, `function_id`, `protocol_id`, `action`, `action_code`, `service_id`, `service_name`, `service_desc`, `is_valid`, `creator_id`, `create_time`, `editor_id`, `edit_time`, `region_code`, `is_import`) VALUES ('155', '213', '0', '128', 'cache_whitelist', '624', 'proxy_cache_policy_whitelist', NULL, '1', NULL, '2018-11-08 11:16:18', NULL, '2018-11-08 11:16:23', NULL, '0');
+INSERT INTO `function_region_dict` (`dict_id`, `function_id`, `config_district`, `config_region_code`, `config_region_value`, `config_desc`, `is_valid`, `is_maat`, `region_type`, `creator_id`, `create_time`, `editor_id`, `edit_time`, `config_service_type`, `config_expr_type`, `config_match_method`, `config_ip_type`, `config_hex`, `config_multi_keywords`, `config_ip_pattern`, `config_port_pattern`, `config_direction`, `config_protocol`, `config_ip_port_show`, `config_region_sort`, `is_import`) VALUES ('604', '213', NULL, '1', 'PXY_CACHE_HTTP_URL', '代理缓存URL配置', '1', '1', '2', NULL, '2018-11-08 11:20:31', NULL, '2018-11-08 11:20:33', '', '0,1', '0,1,2,3', NULL, '0,1,2', '1', NULL, NULL, NULL, NULL, NULL, '1', '0');
+INSERT INTO `function_region_dict` (`dict_id`, `function_id`, `config_district`, `config_region_code`, `config_region_value`, `config_desc`, `is_valid`, `is_maat`, `region_type`, `creator_id`, `create_time`, `editor_id`, `edit_time`, `config_service_type`, `config_expr_type`, `config_match_method`, `config_ip_type`, `config_hex`, `config_multi_keywords`, `config_ip_pattern`, `config_port_pattern`, `config_direction`, `config_protocol`, `config_ip_port_show`, `config_region_sort`, `is_import`) VALUES ('605', '213', NULL, '2', 'PXY_CACHE_HTTP_COOKIE', '代理缓存cookie配置', '1', '1', '2', NULL, '2018-11-08 11:22:00', NULL, '2018-11-08 11:22:04', '', '0,1', '0,1,2,3', NULL, '0,1,2', '1', NULL, NULL, NULL, NULL, NULL, '2', '0');
+#增加缓存功能菜单
+INSERT INTO `sys_menu` (`id`, `parent_id`, `parent_ids`, `code`, `name`, `sort`, `href`, `target`, `icon`, `is_show`, `permission`, `create_by`, `create_date`, `update_by`, `update_date`, `remarks`, `del_flag`, `menu_bg`, `quick_action`, `is_top`, `function_id`) VALUES ('1161', '719', '0,1,86,719,', 'cache_policy', '缓存策略', '90', '/proxy/cache/list', '', '', '1', 'cache:policy:config', '1', '2018-11-08 11:27:45', '1', '2018-11-08 11:27:45', '', '1', NULL, '0', '0', '213');
+INSERT INTO `sys_menu` (`id`, `parent_id`, `parent_ids`, `code`, `name`, `sort`, `href`, `target`, `icon`, `is_show`, `permission`, `create_by`, `create_date`, `update_by`, `update_date`, `remarks`, `del_flag`, `menu_bg`, `quick_action`, `is_top`, `function_id`) VALUES ('1162', '748', '0,1,150,748,', 'cache_policy', '缓存策略', '90', '/proxy/cache/list', '', '', '1', 'cache:policy:confirm', '1', '2018-11-08 11:28:43', '1', '2018-11-08 11:28:43', '', '1', NULL, '0', '0', '213');
+INSERT INTO `sys_menu` (`id`, `parent_id`, `parent_ids`, `code`, `name`, `sort`, `href`, `target`, `icon`, `is_show`, `permission`, `create_by`, `create_date`, `update_by`, `update_date`, `remarks`, `del_flag`, `menu_bg`, `quick_action`, `is_top`, `function_id`) VALUES ('1163', '850', '0,1,151,850,', 'cache_policy', '缓存策略', '90', '/proxy/cache/list', '', '', '1', '', '1', '2018-11-08 11:29:26', '1', '2018-11-08 11:29:26', '', '1', NULL, '0', '0', '213');
+
+INSERT INTO `sys_data_dictionary_name` (`id`, `module_name`, `mark`, `remark`, `revision`, `create_time`, `modify_time`, `status`) VALUES ('137', '缓存时间单位', 'CACHE_TIME_UNIT', '', '', '2018-11-12 19:29:17', '2018-11-12 19:29:17', '1');
+INSERT INTO `sys_data_dictionary_name` (`id`, `module_name`, `mark`, `remark`, `revision`, `create_time`, `modify_time`, `status`) VALUES ('138', '缓存文件大小', 'CACHE_SIZE_UNIT', '', '', '2018-11-12 19:30:07', '2018-11-12 19:30:07', '1');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3008', 'h', 'Hour', '', '0', '1', '1', '137');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3009', 'm', 'Minute', '', '0', '1', '1', '137');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3010', 's', 'Seconde', '', '0', '1', '1', '137');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3011', 'm', 'MB', '', '0', '1', '1', '138');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3012', 'g', 'GB', '', '0', '1', '1', '138');
+INSERT INTO `sys_data_dictionary_item` (`id`, `item_code`, `item_value`, `item_desc`, `item_sort`, `status`, `type`, `dictionary_id`) VALUES ('3013', 't', 'TB', '', '0', '1', '1', '138');

@@ -1,0 +1,1 @@
+INSERT INTO function_region_dict (function_id,config_region_code,config_region_value,config_desc,is_valid,is_maat,region_type) VALUES(303,1,'LIMIT_DOMAIN','域名限速',1,1,2)

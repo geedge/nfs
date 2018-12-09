@@ -1,0 +1,3 @@
+UPDATE function_region_dict SET CONFIG_DIRECTION='0',config_protocol='0' WHERE function_id=300;
+UPDATE function_region_dict SET config_ip_type='4,6',config_port_pattern='1',config_direction='0',config_protocol='0',config_ip_port_show='2' WHERE function_id=401;
+UPDATE function_region_dict SET region_type=1, config_ip_type='4,6',config_port_pattern='1',config_direction='0',config_protocol='0',config_ip_port_show='1' WHERE function_id=406;

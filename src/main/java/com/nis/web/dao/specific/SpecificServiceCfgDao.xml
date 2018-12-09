@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.specific.SpecificServiceCfgDao" >
+  
+  <resultMap id="CFGResultMap" type="com.nis.domain.specific.SpecificServiceCfg" >
+    <id column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+    <result column="spec_service_code" property="specServiceCode" jdbcType="INTEGER" />
+    <result column="spec_service_name" property="specServiceName" jdbcType="VARCHAR" />
+    <result column="spec_service_desc" property="specServiceDesc" jdbcType="VARCHAR" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="op_time" property="opTime" jdbcType="TIMESTAMP" />
+    <result column="is_leaf" property="isLeaf" jdbcType="INTEGER" />
+    <result column="group_id" property="groupId" jdbcType="INTEGER" />
+    <result column="cfg_type" property="cfgType" jdbcType="INTEGER" />
+    <result column="add_flag" property="addFlag" jdbcType="INTEGER" />
+    <result column="business_type" property="businessType" jdbcType="VARCHAR" />
+     <!-- 父id -->
+	    <association property="parent" javaType="com.nis.domain.specific.SpecificServiceCfg">
+	     <id column="parent_id" property="specServiceId" jdbcType="INTEGER" />
+	    </association>
+  </resultMap>
+
+    <sql id="specificServiceCfgColumns">
+		s.spec_service_id AS specServiceId,
+		s.spec_service_code AS specServiceCode,
+		s.spec_service_name AS specServiceName,
+		s.spec_service_desc AS specServiceDesc,
+		s.is_valid AS isValid,
+		s.op_time AS opTime,
+		s.parent_id AS "parent.specServiceId",
+		s.is_leaf AS isLeaf,
+		s.group_id AS groupId,
+		s.cfg_type AS cfgType,
+		s.business_type AS businessType,
+		s.add_flag AS addFlag
+	</sql>
+  
+  
+  <!-- 根据id查出对象 -->
+  <select id="getBySpecServiceId" resultType="com.nis.domain.specific.SpecificServiceCfg" parameterType="java.lang.Integer">
+  select <include refid="specificServiceCfgColumns" />
+  from specific_service_cfg s where s.spec_service_id = #{specServiceId}
+  </select>
+  <select id="getBySpecServiceCodes" resultType="com.nis.domain.specific.SpecificServiceCfg" parameterType="java.lang.String">
+  select <include refid="specificServiceCfgColumns" />
+  from specific_service_cfg s where s.spec_service_code in(${ids})
+  </select>
+  <select id="getRepeat" resultType="com.nis.domain.specific.SpecificServiceCfg" >
+  select <include refid="specificServiceCfgColumns" />
+  from specific_service_cfg s where s.spec_service_code = #{specServiceCode} and s.cfg_type=#{cfgType} and s.is_valid=1
+  <if test="parentId != null and parentId !=''">
+  and parent_id= #{parentId}
+  </if>
+  </select>
+  <select id="getParentType" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+  select cfg_type
+  from specific_service_cfg s where s.spec_service_id = #{specServiceId}
+  </select>
+  <select id="getParentCode" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+  select spec_service_code
+  from specific_service_cfg s where s.spec_service_id = #{specServiceId}
+  </select>
+  
+  <!-- 查出所有符合条件的顶层数据 -->
+  
+    <select id="findTopPage" resultMap="CFGResultMap" parameterType="com.nis.domain.specific.SpecificServiceCfg">
+	SELECT * FROM specific_service_cfg s WHERE  s.is_valid=1
+	
+	<if test="specServiceId != null">
+	AND s.spec_service_id like concat(concat('%',#{specServiceId,jdbcType=INTEGER}),'%')
+	</if>
+	<if test="specServiceName != null and specServiceName != '' ">
+	AND s.spec_service_name like concat(concat('%',#{specServiceName,jdbcType=VARCHAR}),'%')
+	</if>
+	<if test="specServiceDesc != null and specServiceDesc != '' ">
+	AND s.spec_service_desc like concat(concat('%',#{specServiceDesc,jdbcType=VARCHAR}),'%')
+	</if>
+	<if test="groupId != null and groupId != '' ">
+	AND group_id like concat(concat('%',#{groupId,jdbcType=INTEGER}),'%')
+	</if>
+	<if test="cfgType != null and cfgType != '' ">
+	AND cfg_type =#{cfgType,jdbcType=INTEGER}
+	</if>
+	<if test="businessType != null and businessType != '' ">
+	AND business_type =#{businessType,jdbcType=VARCHAR}
+	</if>
+    <if test="beginDate != null" >
+    AND s.op_time &gt;= #{beginDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endDate != null" >
+    AND s.op_time &lt;= #{endDate,jdbcType=TIMESTAMP}
+    </if> 
+    AND s.parent_id not in (
+		     SELECT s2.spec_service_id FROM specific_service_cfg s2 WHERE  s2.is_valid=1
+		        <if test="specServiceId != null">
+				AND s2.spec_service_id like concat(concat('%',#{specServiceId,jdbcType=INTEGER}),'%')
+				</if>
+				<if test="specServiceCode != null">
+				AND spec_service_code = #{specServiceCode}
+				</if>
+			    <if test="specServiceName != null and specServiceName != '' ">
+				AND s2.spec_service_name like concat(concat('%',#{specServiceName,jdbcType=VARCHAR}),'%')
+				</if>
+				<if test="specServiceDesc != null and specServiceDesc != '' ">
+				AND s2.spec_service_desc like concat(concat('%',#{specServiceDesc,jdbcType=VARCHAR}),'%')
+				</if>
+				<if test="groupId != null and groupId != '' ">
+				AND group_id like concat(concat('%',#{groupId,jdbcType=INTEGER}),'%')
+				</if>
+			    <if test="beginDate != null" >
+			    AND s2.op_time &gt;= #{beginDate,jdbcType=TIMESTAMP}
+			    </if>
+			    <if test="endDate != null" >
+			    AND s2.op_time &lt;= #{endDate,jdbcType=TIMESTAMP}
+			    </if> 
+		    )
+    <choose>
+		<when test="page != null and page.orderBy != null and page.orderBy != ''">
+			ORDER BY s.${page.orderBy}
+		</when>
+		<otherwise>
+			ORDER BY s.op_time desc
+		</otherwise>
+	</choose>
+    
+  </select>
+  
+  <!-- 查询符合条件的所有数据 -->
+  <select id="findAllSpecificServiceCfg" resultMap="CFGResultMap" >
+  SELECT * from specific_service_cfg where is_valid = 1
+  <if test="specificServiceCfg.specServiceId != null">
+  AND spec_service_id =#{specificServiceCfg.specServiceId}
+  </if>
+   <if test="specificServiceCfg.specServiceCode != null">
+  AND spec_service_code =#{specificServiceCfg.specServiceCode}
+  </if>
+  <if test="specificServiceCfg.specServiceName != null and specificServiceCfg.specServiceName != '' ">
+  AND spec_service_name like concat(concat('%',#{specificServiceCfg.specServiceName,jdbcType=VARCHAR}),'%')
+  </if>
+  <if test="specificServiceCfg.specServiceDesc != null and specificServiceCfg.specServiceDesc != '' ">
+  AND spec_service_desc like concat(concat('%',#{specificServiceCfg.specServiceDesc,jdbcType=VARCHAR}),'%')
+  </if>
+  <if test="specificServiceCfg.groupId != null and specificServiceCfg.groupId != '' ">
+  AND group_id like concat(concat('%',#{specificServiceCfg.groupId,jdbcType=INTEGER}),'%')
+  </if>
+  <if test="specificServiceCfg.cfgType != null and specificServiceCfg.cfgType != '' ">
+  AND cfg_type = #{specificServiceCfg.cfgType}
+  </if>
+  <if test="specificServiceCfg.isLeaf != null and specificServiceCfg.isLeaf != '' ">
+  AND is_leaf = #{specificServiceCfg.isLeaf}
+  </if>
+  <if test="specificServiceCfg.businessType != null and specificServiceCfg.businessType != '' ">
+	AND business_type =#{specificServiceCfg.businessType}
+  </if>
+  <if test="specificServiceCfg.beginDate != null">
+  AND op_time &gt; #{specificServiceCfg.beginDate}
+  </if>
+  <if test="specificServiceCfg.endDate != null" >
+  AND op_time &lt; #{specificServiceCfg.endDate}
+  </if>
+  <if test="specificServiceCfg.addFlag != null and specificServiceCfg.addFlag != '' ">
+  	AND add_flag = #{specificServiceCfg.addFlag}
+  </if>
+  <choose>
+	  <when test="orderBy != null and orderBy != '' ">
+	  ORDER BY ${orderBy}
+	  </when>
+	  <otherwise>
+	  ORDER BY op_time desc
+	  </otherwise>
+  </choose>
+  </select>
+  <select id="getMaxServiceCode" resultType="java.lang.Integer" >
+  SELECT MAX(spec_service_code) FROM specific_service_cfg WHERE is_valid=1 AND spec_service_code &lt; #{maxCode}
+  <if test="cfgType != null and cfgType != '' ">
+  	AND cfg_type = #{cfgType}
+  </if>
+  <if test="addFlag != null and addFlag != '' ">
+  	AND add_flag = #{addFlag}
+  </if>
+  </select>
+  <!-- 新增 -->
+ <insert id="insert" parameterType="com.nis.domain.specific.SpecificServiceCfg" useGeneratedKeys="true">
+ <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="specServiceId">
+    	SELECT LAST_INSERT_ID()
+    </selectKey>
+ insert into specific_service_cfg (spec_service_code,spec_service_name,spec_service_desc,is_valid, op_time, parent_id,is_leaf,group_id,cfg_type,business_type,add_flag)
+                            values(#{specServiceCode},#{specServiceName},#{specServiceDesc},#{isValid},#{opTime},#{parent.specServiceId},#{isLeaf},#{groupId},#{cfgType},
+                            #{businessType},#{addFlag}) 
+ </insert>
+ 
+ <!-- 修改 -->
+ <update id="update" parameterType="com.nis.domain.specific.SpecificServiceCfg">
+		UPDATE specific_service_cfg s SET 
+		s.spec_service_code = #{specServiceCode},
+		s.spec_service_name = #{specServiceName},
+		s.spec_service_desc = #{specServiceDesc},
+		s.is_valid = #{isValid},
+		s.op_time = #{opTime},
+		s.parent_id = #{parent.specServiceId},
+		s.is_leaf = #{isLeaf},
+		s.group_id = #{groupId},
+		s.cfg_type = #{cfgType},
+		s.business_type = #{businessType}
+		WHERE s.spec_service_id = #{specServiceId}
+</update>
+	
+	<!-- 删除 -->
+	<update id="delete" parameterType="com.nis.domain.specific.SpecificServiceCfg">
+	UPDATE specific_service_cfg s set s.is_valid = #{isValid} where s.spec_service_id = #{specServiceId}
+	</update>
+	<!-- getChildrenById -->
+	<select id="getChildrenById" resultMap="CFGResultMap" parameterType="java.lang.Integer">
+	 SELECT * FROM specific_service_cfg s WHERE  s.is_valid = 1 and s.parent_id = #{specServiceId}
+	</select>
+</mapper>

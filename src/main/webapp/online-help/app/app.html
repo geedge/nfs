@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.0
+Version: 3.5
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8"/>
+    <title>online help</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
+          type="text/css"/>
+    <link href="../../static/global/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/global/plugins/simple-line-icons/simple-line-icons.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/global/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <!-- <link href="../../static/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/> -->
+    <link href="../../static/global/plugins/bootstrap-switch/css/bootstrap-switch.css" rel="stylesheet" type="text/css"/>
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="../../static/global/css/components.css" rel="stylesheet" id="style_components" type="text/css"/>
+    <link href="../../static/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/layouts/layout/css/layout.css" rel="stylesheet" type="text/css"/>
+    <link href="../../static/layouts/layout/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="../../static/layouts/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
+<!-- DOC: Apply "page-sidebar-closed" class to the body and "page-sidebar-menu-closed" class to the sidebar menu element to hide the sidebar by default -->
+<!-- DOC: Apply "page-sidebar-hide" class to the body to make the sidebar completely hidden on toggle -->
+<!-- DOC: Apply "page-sidebar-closed-hide-logo" class to the body element to make the logo hidden on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-hide" class to body element to completely hide the sidebar on sidebar toggle -->
+<!-- DOC: Apply "page-sidebar-fixed" class to have fixed sidebar -->
+<!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
+<!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
+<!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
+<body class="page-header-fixed page-quick-sidebar-over-content ">
+<div class="page-content" style="margin:15px 20px 0 15px">
+    <div class="row">
+        <div id="accordion1" class="panel-group">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1"
+                           href="#accordion1_1">
+                            1.功能简介
+                        </a>
+                    </h4>
+                </div>
+                <div id="accordion1_1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        APP的识别和管控，配置指定APP的封堵、监视、限速功能界面。
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1"
+                           href="#accordion1_2">
+                            2.基础配置信息</a>
+                    </h4>
+                </div>
+                <div id="accordion1_2" class="panel-collapse collapse">
+                    <div class="panel-body">
+
+                        <ul>
+                            <li>配置描述：用户自定义该条配置的描述信息。</li>
+                            <li>是否记录日志：是否生成日志信息。</li>
+                            <li>社交应用：选择管控的应用。</li>
+                            <li>行为类型：选择管控具体行为类型。可选项，不选则对该应用的所有行为进行管控。</li>
+                            <li>执行动作：APP有3种管控动作：阻断、监视和限速。若选择监视，用户需指定客户端IP。若选择限速，用户需指定限速比例。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1"
+                           href="#accordion1_3">
+                            3.配置约束条件 </a>
+                    </h4>
+                </div>
+                <div id="accordion1_3" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        IP类配置，当执行动作选择“监视”，必须填写对应的IP配置。
+                        <ul>
+                            <li>IP类型：IPV4或IPV6。</li>
+                            <li>协议：可选TCP、UDP和全部。</li>
+                            <li>IP格式：可选IP、IP范围和IP/子网掩码。</li>
+                            <li>
+                                源IP：IP格式选择“IP”，该文本框填合法的单IP;IP格式选择“IP范围”,IP段只能配置x.x.x.0-x.x.x.255;IP/子网掩码中子网掩码值限制为16-32。
+                            </li>
+                            <li>源端口：端口与端口掩码范围是0-65535。</li>
+                            <li>目的IP：限制同源IP。</li>
+                            <li>目的端口：端口与端口掩码范围是0-65535。</li>
+                            <li>另：源IP与目的IP不能相同</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1"
+                           href="#accordion1_4">
+                            4.配置生效范围</a>
+                    </h4>
+                </div>
+                <div id="accordion1_4" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        配置生效范围，分为“全部”和“选择区域”。“全部”指所有地区；“选择区域”需选择区域和运营商，并且可以同时选择多个区域和多个运营商，即某个地区的某个运营商流量生效，
+                        或者某个地区的所有流量生效，或者某个运营商的所有流量生效。
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1"
+                           href="#accordion1_6">
+                            5.配置标签 </a>
+                    </h4>
+                </div>
+                <div id="accordion1_6" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <ul>
+                            <li>来函：选择来函文件类型，必选项；</li>
+                            <li>类型：指明该配置的类型，可同时选多个，比如信息内容安全、网络攻击等，非必选项；</li>
+                            <li>性质：指明该配置的性质，可同时选多个，比如政治事务、暴力恐怖等，非必选项；</li>
+                            <li>用户标签：用户自定义标签，可同时选多个，非必选项；</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1"
+                           href="#accordion1_7">
+                            6.预期效果 </a>
+                    </h4>
+                </div>
+                <div id="accordion1_7" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <ul>
+                            <li>执行动作选择“阻断”，未选择行为类型，该APP全部功能无法正常使用；如果选择了行为类型，该APP的对应行为无法正常使用；</li>
+                            <li>执行动作选择“监视”，该APP被正常使用。</li>
+                            <li>执行动作选择“限速”，户会感知网速变差，当限速比例高达**时，APP出现无法使用的情况。</li>
+                            <li>若指定了客户端IP，该配置只对该用户生效，其他用户不受影响。</li>
+                            <li>若选择了记录日志，日志界面出现该配置的日志。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="../../static/global/plugins/respond.min.js"></script>
+<script src="../../static/global/plugins/excanvas.min.js"></script>
+<![endif]-->
+<script src="../../static/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../../static/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script>
+    jQuery(document).ready(function () {
+
+    });
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>

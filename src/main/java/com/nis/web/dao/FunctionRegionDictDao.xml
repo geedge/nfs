@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.FunctionRegionDictDao" >
+  <resultMap id="BaseResultMap" type="com.nis.domain.FunctionRegionDict" >
+    <id column="dict_id" property="dictId" jdbcType="INTEGER" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+    <result column="config_region_value" property="configRegionValue" jdbcType="VARCHAR" />
+    <result column="config_region_code" property="configRegionCode" jdbcType="INTEGER" />
+    <result column="config_district" property="configDistrict" jdbcType="VARCHAR" />
+    <result column="config_desc" property="configDesc" jdbcType="VARCHAR" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="is_maat" property="isMaat" jdbcType="INTEGER" />
+    <result column="region_type" property="regionType" jdbcType="INTEGER" />
+    <result column="config_multi_keywords" property="configMultiKeywords" jdbcType="VARCHAR" />
+    <result column="config_hex" property="configHex" jdbcType="VARCHAR" />
+    <result column="config_expr_type" property="configExprType" jdbcType="VARCHAR" />
+    <result column="config_match_method" property="configMatchMethod" jdbcType="VARCHAR" />
+    <result column="config_service_type" property="configServiceType" jdbcType="VARCHAR" />
+    <result column="config_ip_port_show" property="configIpPortShow" jdbcType="VARCHAR" />
+    <result column="config_ip_type" property="configIpType" jdbcType="VARCHAR" />
+    <result column="config_ip_pattern" property="configIpPattern" jdbcType="VARCHAR" />
+    <result column="config_port_pattern" property="configPortPattern" jdbcType="VARCHAR" />
+    <result column="config_direction" property="configDirection" jdbcType="VARCHAR" />
+    <result column="config_protocol" property="configProtocol" jdbcType="VARCHAR" />
+    <result column="config_region_sort" property="configRegionSort" jdbcType="INTEGER" />
+    <result column="is_import" property="isImport" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    dict_id, function_id, config_region_value,config_region_code, config_district, config_desc, is_valid,is_maat,region_type
+    ,config_multi_keywords,config_hex,config_expr_type,config_match_method,config_service_type,config_ip_port_show,config_ip_type,
+    config_ip_pattern,config_port_pattern,config_direction,config_protocol,config_region_sort,is_import
+  </sql>
+  <select id="getList" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from function_region_dict
+    where  is_valid=1
+    <if test="functionId != null">
+     AND function_id = #{functionId,jdbcType=INTEGER}
+    </if>
+    <if test="configRegionValue != null and configRegionValue!=''">
+   		AND config_region_value=#{configRegionValue,jdbcType=VARCHAR}
+   	</if>
+   	<if test="configRegionCode != null">
+   		AND config_region_code=#{configRegionCode,jdbcType=VARCHAR}
+   	</if>
+   	<if test="configRegionSort != null">
+   		AND config_region_sort=#{configRegionSort,jdbcType=VARCHAR}
+   	</if>
+   	order by config_region_sort
+  </select>
+ 
+</mapper>

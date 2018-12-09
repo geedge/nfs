@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.specific.SpecificServiceHostCfgDao">
+
+	<resultMap id="specificServiceHostCfgResultMap"
+		type="com.nis.domain.specific.SpecificServiceHostCfg">
+		<id column="host_id" property="hostId" jdbcType="INTEGER" />
+		<result column="spec_service_id" property="specServiceId" jdbcType="INTEGER" />
+		<result column="ip_type" property="ipType" jdbcType="INTEGER" />
+	    <result column="ip_pattern" property="ipPattern" jdbcType="INTEGER" />
+	    <result column="dest_ip_address" property="destIpAddress" jdbcType="VARCHAR" />
+	    <result column="src_ip_address" property="srcIpAddress" jdbcType="VARCHAR" />
+	    <result column="dest_port" property="destPort" jdbcType="VARCHAR" />
+	    <result column="src_port" property="srcPort" jdbcType="VARCHAR" />
+	    <result column="port_pattern" property="portPattern" jdbcType="INTEGER" />
+	    <result column="direction" property="direction" jdbcType="INTEGER" />
+	    <result column="protocol" property="protocol" jdbcType="INTEGER" />
+		<result column="is_valid" property="isValid" jdbcType="INTEGER" />
+		<result column="is_audit" property="isAudit" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+		<result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+		<!-- 创建人员 -->
+		<association property="creator" javaType="com.nis.domain.SysUser">
+			<id property="id" column="creator_id" />
+		</association>
+		<!-- 修改人员 -->
+		<association property="editor" javaType="com.nis.domain.SysUser">
+			<id property="id" column="editor_id" />
+		</association>
+		<!-- 审核人员 -->
+		<association property="auditor" javaType="com.nis.domain.SysUser">
+			<id property="id" column="auditor_id" />
+		</association>
+	</resultMap>
+
+	<sql id="specificServiceHostCfgColumns">
+		s.host_id AS hostId,
+		s.spec_service_id AS specServiceId,
+		s.ip_type,s.src_ip_address,s.ip_pattern,s.port_pattern,s.src_port
+    	,s.protocol,s.direction,s.dest_ip_address,s.dest_port,
+		s.is_valid AS isValid,
+		s.is_audit AS isAudit,
+		s.creator_id AS "creator.id",
+		s.create_time AS createTime,
+		s.editor_id AS "editor.id",
+		s.edit_time AS editTime,
+		s.auditor_id AS "auditor.id",
+		s.audit_time AS auditTime
+	</sql>
+
+
+	<!-- 根据id查出对象 -->
+	<select id="getByHostId" resultType="com.nis.domain.specific.SpecificServiceHostCfg"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="specificServiceHostCfgColumns" />
+		from specific_service_host_cfg s where s.host_id = #{hostId}
+	</select>
+
+<!-- 查询分页 -->
+<select id="findSpecHostList" resultMap="specificServiceHostCfgResultMap" parameterType="com.nis.domain.specific.SpecificServiceHostCfg">
+select * from specific_service_host_cfg where is_valid = 1
+    <if test="isAudit !=null" >
+      AND is_audit = #{isAudit}
+    </if>
+    <if test="specServiceId !=null" >
+      AND spec_service_id = #{specServiceId}
+    </if>
+    <if test="ipType !=null" >
+      AND ip_type = #{ipType}
+    </if>
+    <if test="srcIpAddress !=null and srcIpAddress !='' " >
+      AND src_ip_address = #{srcIpAddress}
+    </if>
+    <if test="destIpAddress !=null and destIpAddress !='' " >
+      AND dest_ip_address = #{destIpAddress}
+    </if>
+    <if test="protocol !=null" >
+      AND protocol = #{protocol}
+    </if>
+    <if test="direction !=null" >
+      AND direction = #{direction}
+    </if>
+    <if test="beginDate !=null and beginDate !='' " >
+      AND create_time &gt;= #{beginDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endDate !=null and endDate !='' " >
+       AND create_time &lt;= #{endDate,jdbcType=TIMESTAMP}
+    </if> 
+     <if test="editBeginDate !=null and editBeginDate !='' " >
+      AND edit_time &gt;= #{editBeginDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="editEndDate !=null and editEndDate !='' " >
+       AND edit_time &lt;= #{editEndDate,jdbcType=TIMESTAMP}
+    </if> 
+    <if test="auditBeginDate !=null and auditBeginDate !='' " >
+      AND audit_time &gt;= #{auditBeginDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="auditEndDate !=null and auditEndDate !='' " >
+       AND audit_time &lt;= #{auditEndDate,jdbcType=TIMESTAMP}
+    </if> 
+    <choose>
+		<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+			ORDER BY ${page.orderBy}
+		</when>
+		<otherwise>
+			ORDER BY create_time desc
+		</otherwise>
+	</choose>
+    
+</select>
+
+<!-- 根据协议ID查询对象 -->
+<select id="getBySpecServiceId" resultType="com.nis.domain.specific.SpecificServiceHostCfg" parameterType="java.lang.Integer">
+select
+<include refid="specificServiceHostCfgColumns" />
+from specific_service_host_cfg s where s.spec_service_id = #{specServiceId}
+</select>
+
+	<!-- 新增 -->
+	<insert id="insert" parameterType="com.nis.domain.specific.SpecificServiceHostCfg">
+	insert into specific_service_host_cfg (spec_service_id,ip_type,
+    src_ip_address,
+    ip_pattern,
+    port_pattern,
+    src_port,
+    protocol,
+    direction,
+    dest_port,
+    dest_ip_address,
+    is_valid,is_audit,creator_id,create_time,editor_id,edit_time,auditor_id,audit_time)
+	values(#{specServiceId},#{ipType,jdbcType=INTEGER},
+    	#{srcIpAddress,jdbcType=VARCHAR},
+    	#{ipPattern,jdbcType=INTEGER},
+    	#{portPattern,jdbcType=INTEGER},
+    	#{srcPort,jdbcType=VARCHAR},
+    	#{protocol,jdbcType=INTEGER},
+    	#{direction,jdbcType=INTEGER},
+    	#{destPort,jdbcType=VARCHAR},
+    	#{destIpAddress,jdbcType=VARCHAR},
+    	#{isValid},#{isAudit},#{creator.id},#{createTime},#{editor.id},#{editTime},#{auditor.id},#{auditTime})
+	</insert>
+	<!-- 修改 -->
+	<update id="update" parameterType="com.nis.domain.specific.SpecificServiceHostCfg">
+	update specific_service_host_cfg s set 
+		s.spec_service_id = #{specServiceId},
+        s.IP_TYPE = #{ipType,jdbcType=INTEGER},
+   		s.IP_PATTERN=#{ipPattern,jdbcType=INTEGER},
+   		s.SRC_IP_ADDRESS=#{srcIpAddress,jdbcType=VARCHAR},
+   		s.DEST_IP_ADDRESS=#{destIpAddress,jdbcType=VARCHAR},
+   		s.PORT_PATTERN=#{portPattern,jdbcType=INTEGER},
+   		s.SRC_PORT=#{srcPort,jdbcType=VARCHAR},
+   		s.DEST_PORT=#{destPort,jdbcType=VARCHAR},
+        s.direction = #{direction,jdbcType=INTEGER},
+        s.protocol = #{protocol,jdbcType=INTEGER},
+		s.is_valid = #{isValid},
+		s.is_audit = #{isAudit},
+		s.creator_id = #{creator.id},
+		s.create_time = #{createTime},
+		s.editor_id = #{editor.id},
+		s.edit_time = #{editTime},
+		s.auditor_id = #{auditor.id},
+		s.audit_time = #{auditTime}
+		where s.host_id = #{hostId}
+	</update>
+	<!-- 删除 -->
+		<update id="delete" parameterType="java.lang.Integer">
+	update specific_service_host_cfg s set 
+		s.is_valid = 0
+		where s.host_id = #{hostId}
+	</update>
+	
+
+</mapper>

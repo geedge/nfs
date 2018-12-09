@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nis.web.dao.specific.ConfigGroupInfoDao">
+    <resultMap id="configGroupInfoMap" type="com.nis.domain.specific.ConfigGroupInfo">
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="group_id" property="groupId" jdbcType="BIGINT" />
+	    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+	    <result column="is_issued" property="isIssued" jdbcType="INTEGER" />
+	    <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
+	    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+	    <result column="group_type" property="groupType" jdbcType="INTEGER" />
+	    <result column="compile_id" property="compileId" jdbcType="INTEGER" />
+	    <result column="asn_id" property="asnId" jdbcType="BIGINT" />
+    </resultMap>
+  
+    <sql id="columns">
+	    id,group_id,group_name,is_issued,insert_time,update_time,group_type,compile_id,asn_id
+    </sql>   
+    <select id="findAllList" resultMap="configGroupInfoMap">
+    	select 
+    		<include refid="columns"></include>
+    	from config_group_info
+    	where group_type =#{groupType}
+    </select>
+    <select id="findAllListByGroupIno" resultMap="configGroupInfoMap">
+    	select 
+    		<include refid="columns"></include>
+    	from config_group_info
+    	<where>
+    		<if test="groupType != null">
+    			and group_type =#{groupType}
+    		</if>
+    		<if test="groupId != null ">
+    			and group_id =#{groupId}
+    		</if>
+    		<if test="compileId != null">
+    			and compile_id =#{compileId}
+    		</if>
+    		<if test="isIssued != null">
+    			and is_issued =#{isIssued}
+    		</if>
+    	</where>
+    </select>
+    <!-- 新增配置分组信息 -->
+ 	<insert id="insertConfigGroupInfo" parameterType="com.nis.domain.specific.ConfigGroupInfo" useGeneratedKeys="true">
+ 	insert into config_group_info (id,group_id,group_name,is_issued,insert_time,group_type,compile_id,asn_id)
+      values(#{id},#{groupId},#{groupName},#{isIssued},now(),#{groupType},#{compileId},#{asnId}) 
+ 	</insert>
+ 	<insert id="insertBatch">
+ 	insert into config_group_info (id,group_id,group_name,is_issued,insert_time,group_type,compile_id,asn_id)
+      values
+      <foreach collection ="list" item="info" separator =",">
+      (#{info.id},#{info.groupId},#{info.groupName},#{info.isIssued},now(),#{info.groupType},#{info.compileId},#{info.asnId}) 
+      </foreach>
+ 	</insert>
+ 	<!-- 修改配置分组状态信息 -->
+	<update id="updateConfigGroupInfobyGroupId" parameterType="com.nis.domain.specific.ConfigGroupInfo">
+	UPDATE config_group_info set is_issued = #{isIssued},update_time=now()
+	<if test="compileId != null and compileId !='' ">
+	  ,compile_id= #{compileId}
+	</if>
+	 where group_id = #{groupId}
+	</update>
+	<select id="getInfoByAsnNo" resultType="com.nis.domain.specific.ConfigGroupInfo" parameterType="java.lang.Long">
+	  select id,group_id,group_name,is_issued,insert_time,update_time,group_type,compile_id,asn_id
+	  from config_group_info c where c.asn_id= #{asnId} and c.group_type=4
+	</select>
+	<!-- 根据groupId查出配置分组信息 -->
+	<select id="getConfigGroupInfoByGroupId" resultType="com.nis.domain.specific.ConfigGroupInfo" parameterType="java.lang.Integer">
+	  select id,group_id,group_name,is_issued,insert_time,update_time,group_type,compile_id,asn_id
+	  from config_group_info where group_id= #{groupId}
+	</select>
+	<!-- <select id="findPolicyGroupInfosByType" resultType="com.nis.domain.specific.ConfigGroupInfo" parameterType="java.lang.Integer">
+	  select id,group_id,group_name,is_issued,insert_time,update_time,group_type,compile_id,asn_id
+	  from config_group_info c where c.group_type= #{groupType}
+	</select> -->
+	<select id="getIssuedConfigGroupInfoByGroupIds" resultType="java.lang.Integer" parameterType="java.lang.String">
+	  select count(1) from config_group_info c where c.group_id in(${groupIds}) and is_issued=1
+	</select>
+	<select id="getCountByType" resultType="java.lang.Long" parameterType="java.lang.Integer">
+	  select count(1) from config_group_info c where c.group_type=${groupType}
+	</select>
+</mapper>
