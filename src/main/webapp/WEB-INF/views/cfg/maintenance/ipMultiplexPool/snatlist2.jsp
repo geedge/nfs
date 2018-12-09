@@ -85,7 +85,7 @@
 					var dataArr = data.candidate_ip;
 					var html = ""
 						html = "<div style='width:98%; overflow: auto; height: 300px; margin-left: 1%; margin-right: 1%;'>"
-						html+="<table class='table table-bordered table-condensed text-nowrap' style='width: 100%;'>";
+						html+="<table class='table table-bordered table-condensed text-nowrap' style='width: 100%;margin-top: 1%;'>";
 	      			   	html+="<tbody>";
 	      			   		if(dataArr.length == 0){
 	      			   			html+="<tr>";
@@ -121,7 +121,7 @@
 			success:function(data,status){
 				var html = ""
 					html = "<div style='width:98%; overflow: auto; height: 300px; margin-left: 1%; margin-right: 1%;'>"
-					html+="<table class='table table-bordered table-condensed text-nowrap' style='width: 100%;'>";
+					html+="<table class='table table-bordered table-condensed text-nowrap' style='width: 100%;margin-top: 1%;'>";
       			   	html+="<tbody>";
       			   		if(data.length == 0){
       			   			html+="<tr>";
@@ -389,6 +389,7 @@
 									<th class="sort-column r.addr_pool_name"><spring:message code="address_pool"/></th>
 									<th class="sort-column r.ip_total"><spring:message code="ip_total"/></th>
 									<th><spring:message code="available_ip_total"/></th>
+									<th><spring:message code="log_total"/></th>
 									
 									<%-- <th><spring:message code="block_type"/></th> --%>
 									<th class="sort-column r.is_valid"><spring:message code="valid_identifier"/></th>
@@ -420,6 +421,7 @@
 									</td>
 									<td>${cfg.ipTotal }</td>
 									<td audit="${cfg.isAudit}" addrPoolId="${cfg.cfgId }"><div class="loading-total"></div></td>
+									<td audit="${cfg.isAudit}" functionId="${cfg.functionId}" compileId="${cfg.compileId}" action="${cfg.action}" serviceId="${cfg.serviceId}"><div class="loading-total"></div></td>
 									
 									<%-- <td>
 										<c:forEach items="${fns:getDictList('SERVICE_ACTION') }" var="dict">

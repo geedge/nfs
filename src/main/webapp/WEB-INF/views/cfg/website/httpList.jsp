@@ -561,7 +561,7 @@
 											</c:if>
 										</c:forEach>
 									</td>
-									 <td audit="${indexCfg.isAudit}" functionId="${indexCfg.functionId}" compileId="${indexCfg.compileId}" action="${indexCfg.action}" serviceId="${indexCfg.serviceId}"><div class="loading-total"></div></td>
+									 <td audit="${indexCfg.isAudit}" functionId="8" compileId="${indexCfg.compileId}" action="${indexCfg.action}" serviceId="${indexCfg.serviceId}"><div class="loading-total"></div></td>
 									<td>
 										<c:if test="${indexCfg.isAreaEffective==0}"><spring:message code="all"/></c:if>
 										<c:if test="${indexCfg.isAreaEffective==1}">

@@ -156,7 +156,7 @@ $(function(){
 									</div>
 									<div class="row ip">
 									    <div class="col-md-6">
-									        <div class="form-group">
+									        <div class="form-group hidden">
 									            <label class="control-label col-md-3"><font color="red">*</font><spring:message code="ip_pattern"/></label>
 									            <div class="col-md-6">
 									            	 <select name="ipPattern" class="selectpicker show-tick form-control required">
@@ -169,7 +169,7 @@ $(function(){
 									        </div>
 									    </div>
 									    <div class="col-md-6">
-									        <div class="form-group">
+									        <div class="form-group hidden">
 									            <label class="control-label col-md-3"><font color="red">*</font><spring:message code="port_pattern"/></label>
 									            <div class="col-md-6">
 									            	 <select name="portPattern" class="selectpicker show-tick form-control required">

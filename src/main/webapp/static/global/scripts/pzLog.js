@@ -114,7 +114,7 @@ var toLogSearch = function(index){
 			var date=$(this).attr("date");
 			var pathName=window.document.location.pathname.substring(0,window.document.location.pathname.indexOf("/nis")+4);
 			
-			switchMenu("152");
+			switchMenu("152",functionId);
 			window.location.href = pathName+"/toLogSearch?service="+serviceId+"&functionId="+functionId+"&cfgId="+compileId+"&date="+date+"&isLogTotalSearch=yes";			
 			
 		}
@@ -122,7 +122,7 @@ var toLogSearch = function(index){
 	
 }
 
-var switchMenu = function(topMenuId){
+var switchMenu = function(topMenuId,functionId){
 	// 顶部菜单切换	menuId： Policies/86 Logs/152
 	$(".hor-menu ul li",parent.document).each(function(){
 		var id = $(this).children("a").attr("id");
@@ -144,6 +144,9 @@ var switchMenu = function(topMenuId){
 			middleMenu.push($(this).attr("menu-name"));
 		}
 	});
+	if(functionId == 8){
+		middleMenu.pop();
+	}
 	
 	// 左侧菜单切换
 	$(".page-sidebar",parent.document).find("ul[id]").each(function(){
